@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Almoxarifado {
 
     private ArrayList<Produto> produtos = new ArrayList<>();
+    private ArrayList<Movimento> movimentos = new ArrayList<>();
 
     public Almoxarifado(ArrayList<Produto> produtos, ArrayList<Movimento> movimentos) {
         this.movimentos = movimentos;
