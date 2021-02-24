@@ -4,8 +4,18 @@
  * and open the template in the editor.
  */
 package syscond;
+import classeauxiliar.TipoConta;
+import controladores.ControladorApartamentoMorador;
+import java.util.Date;
+import negocios.ApartamentoRepositorio;
+import negocios.Financeiro;
 import negocios.FornecedorRepositorio;
+import negocios.FuncionarioRepositorio;
+import negocios.MoradorRepositorio;
 import pojos.Fornecedor;
+import pojos.Morador;
+
+       
 /**
  *
  * @author Mattskywalker
@@ -14,9 +24,84 @@ public class Main {
     
     public static void main(String[] arg){
         
-        FornecedorRepositorio cadastroFornecedor = new FornecedorRepositorio();
+        FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();
         
-        cadastroFornecedor.cadastrar("Breno", "1234567890", "81 91992517");
+        fornecedorRepositorio.cadastrar("Breno", "1234567890", "81 91992517");
+        fornecedorRepositorio.cadastrar("brenda", "123456789", "819192517");
+        fornecedorRepositorio.procurarFornecedor("1234567890");
+        //cadastro de fornecedor funcionando;
+        fornecedorRepositorio.deletar("1234567890");
+        System.out.println("Depois de deletar");
+        fornecedorRepositorio.procurarFornecedor("1234567890");
+        
+        fornecedorRepositorio.alterarNome("123456789", "Mateus");
+        fornecedorRepositorio.procurarFornecedor("123456789");
+        
+        fornecedorRepositorio.alterarTelefone("123456789", "321654987");
+        
+        
+        
+        //abaixo teste de cadastro de contas;
+        
+        
+        
+        Financeiro contabilidade = new Financeiro(); 
+        
+        contabilidade.registrarConta("Caça Tie", new Date("02/30/2021"), 30, "1234", TipoConta.PAGAR);
+        contabilidade.registrarConta("Blaster", new Date("10/12/2021"), 50, "4321", TipoConta.PAGAR);
+        contabilidade.registrarConta("Sabre de luz", new Date("11/12/2022"), 100, "421", TipoConta.RECEBER);
+        contabilidade.registrarConta("Droid de batalha", new Date("1/1/2023"), 50, "41", TipoConta.RECEBER);
+        
+        contabilidade.ListarContas();
+        
+        contabilidade.deletar("1234");
+        
+        contabilidade.ListarContas();
+        //positivo e funcional;
+        
+        System.out.println("");
+        System.out.println("Main: Iniciando testes do controlador Apartamento e Morador");
+        System.out.println("");
+        //cadastro de apartamento;
+        
+        ControladorApartamentoMorador controlador = new ControladorApartamentoMorador();
+        
+        controlador.CadastrarMorador("Flare", "0006", 10);// teste cadastrando morador em apartamento não existente
+        
+        controlador.CadastrarApartamento(1, "PRIMEIRO", "A");
+        controlador.CadastrarApartamento(2, "PRIMEIRO", "A");
+        controlador.CadastrarApartamento(3, "PRIMEIRO", "A");
+        controlador.CadastrarApartamento(4, "PRIMEIRO", "A");
+        
+        controlador.CadastrarMorador("Otavio", "Sonic", 4);
+        controlador.CadastrarMorador("Paulemir", "12345", 3);
+        
+        controlador.CadastrarMorador("Capivara", "0000", 3);
+        
+        //teste repositorio de funcionarios;
+        
+        System.out.println("");
+        System.out.println("Main: Teste do repositorio de funcionarios");
+        System.out.println("");
+        
+        FuncionarioRepositorio funcionarios = new FuncionarioRepositorio();
+        
+        funcionarios.cadastrar("Roger", "123", "Zelador");
+        funcionarios.cadastrar("Breno", "456", "Porteiro");
+        funcionarios.cadastrar("Madara", "1313", "SER FOD*");
+        
+        funcionarios.deletar("456");
+        funcionarios.alterarNome("123", "Rodoado");
+        funcionarios.procurarFuncionario("12312312312");
+        
+        funcionarios.deletar("123");
+        funcionarios.alterarFuncao("1313", "Gerente geral");
+        funcionarios.procurarFuncionario("123");
+        
+        //
+                
+        
+        
         
         
         

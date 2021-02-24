@@ -14,7 +14,7 @@ public class FornecedorRepositorio {
     
     private ArrayList<Fornecedor> todosFornecedores = new ArrayList<>();
     
-    public Fornecedor procurar(String chavePrimaria){
+    private Fornecedor procurar(String chavePrimaria){
         
         Fornecedor a = null;
         
@@ -22,21 +22,35 @@ public class FornecedorRepositorio {
         for(int i = 0;i < this.todosFornecedores.size();i++){
             
             if(this.todosFornecedores.get(i).getCnpj().equals(chavePrimaria)){
-                System.out.println("Fornecedor encontrado!");
+                //System.out.println("Fornecedor encontrado!");
                 a = this.todosFornecedores.get(i);
                 break;
             }
             else{
-                System.out.println("Fornecedor não encontrado");
                 a = null;
             }
             
         }
         
+        if(a == null){
+            //System.out.println("Fornecedor não encontrado");
+        }
         
         return a;
     }
     
+    public void procurarFornecedor(String chavePrimaria){
+        
+        Fornecedor a = this.procurar(chavePrimaria);
+        
+        if(a == null){
+            System.out.println("Usuario não encontrado!");
+        }
+        else{
+            System.out.println("Usuario encontrado: " + a.getNome());
+        }
+        
+    }
     
     public void cadastrar(String nome, String cnpj, String telefone){
         //verificar se o fornecedor já existe no sistema;
@@ -72,7 +86,9 @@ public class FornecedorRepositorio {
             System.out.println("Fornecedor não encontrado!");
         }
         else{
+            Fornecedor a = this.procurar(cnpj);
             this.todosFornecedores.remove(this.procurar(cnpj));
+            System.out.println(a.getNome() +" Deletado!");
         }
             
     }
@@ -84,7 +100,16 @@ public class FornecedorRepositorio {
         }
         else{
             for(int i = 0;i < this.todosFornecedores.size();i++){
-                this.todosFornecedores.get(i).setNome(nome);
+                if(this.procurar(cnpj).getCnpj().equals(cnpj)){
+                    //achamos quem nós queremos alterar
+                    String guardarnome = this.todosFornecedores.get(i).getNome();
+                    this.todosFornecedores.get(i).setNome(nome);
+                    System.out.println("Repositorio: Nome alterado");
+                    System.out.println("Repositorio: Nome antigo: "+guardarnome);
+                    System.out.println("Repositorio: Nome novo: " + this.todosFornecedores.get(i).getNome());
+                    break;
+                    
+                }
             }
         }
         
@@ -96,8 +121,18 @@ public class FornecedorRepositorio {
             System.out.println("Fornecedor não encontrado!");
         }
         else{
+            
             for(int i = 0;i < this.todosFornecedores.size();i++){
-                this.todosFornecedores.get(i).setNome(telefone);
+                if(this.procurar(cnpj).getCnpj().equals(cnpj)){
+                    //achamos quem nós queremos alterar
+                    String guardarTelefone= this.todosFornecedores.get(i).getTelefone();
+                    this.todosFornecedores.get(i).setTelefone(telefone);
+                    System.out.println("Repositorio: Telefone de: " + this.todosFornecedores.get(i).getNome() + " alterado");
+                    System.out.println("Repositorio: Telefone antigo: "+ guardarTelefone);
+                    System.out.println("Repositorio: Telefone novo: " + this.todosFornecedores.get(i).getTelefone());
+                    break;
+                    
+                }
             }
         }
         
