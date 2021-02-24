@@ -5,6 +5,7 @@
  */
 package negocios;
 
+import classeauxiliar.TipoMorador;
 import java.util.ArrayList;
 import pojos.Apartamento;
 import pojos.Morador;
@@ -37,22 +38,32 @@ public class MoradorRepositorio {
             return morador;
     }
     
-    public void adicionar(String nome, String cpf, Apartamento apartamento){
+    public void adicionar(String nome, String cpf, Apartamento apartamento, TipoMorador status){
         
         if(this.procurar(cpf) == null){
             
             
             //System.out.println("pronto para cadastrar");
-            Morador aux = new Morador(nome, cpf, apartamento);
+            Morador aux = new Morador(nome, cpf, apartamento,status);
             this.todosMoradores.add(aux);
             //System.out.println("Repositorio: Morador: "+ nome + "Cadastrado");
         }
         else{
-            System.out.println("Repositorio: Morador : "+ nome + " já foi cadastrado");
+            //System.out.println("Repositorio: Morador : "+ nome + " já foi cadastrado");
         }
         
     }
     
-    
+    public void deletar(String cpf){
+        
+        if(this.procurar(cpf).getCpf().equals(cpf)){
+            // encontrado
+            this.todosMoradores.remove(this.procurar(cpf));
+            
+        }
+        else{
+            System.out.println("Não encontrado para deletar");
+        }
+    }
     
 }

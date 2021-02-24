@@ -5,6 +5,7 @@
  */
 package syscond;
 import classeauxiliar.TipoConta;
+import classeauxiliar.TipoMorador;
 import controladores.ControladorApartamentoMorador;
 import java.util.Date;
 import negocios.ApartamentoRepositorio;
@@ -66,17 +67,25 @@ public class Main {
         
         ControladorApartamentoMorador controlador = new ControladorApartamentoMorador();
         
-        controlador.CadastrarMorador("Flare", "0006", 10);// teste cadastrando morador em apartamento não existente
+        controlador.CadastrarMorador("Flare", "0006", 10, TipoMorador.PROPIETARIO);// teste cadastrando morador em apartamento não existente
         
         controlador.CadastrarApartamento(1, "PRIMEIRO", "A");
         controlador.CadastrarApartamento(2, "PRIMEIRO", "A");
         controlador.CadastrarApartamento(3, "PRIMEIRO", "A");
         controlador.CadastrarApartamento(4, "PRIMEIRO", "A");
         
-        controlador.CadastrarMorador("Otavio", "Sonic", 4);
-        controlador.CadastrarMorador("Paulemir", "12345", 3);
+        controlador.CadastrarMorador("Breno", "123", 1, TipoMorador.PROPIETARIO);
+        controlador.CadastrarMorador("Orochimaru", "123", 1, TipoMorador.PROPIETARIO);
         
-        controlador.CadastrarMorador("Capivara", "0000", 3);
+        controlador.deletarMorador("123");
+        controlador.deletarMorador("cu");
+        
+        
+        
+        
+        
+        
+        
         
         //teste repositorio de funcionarios;
         
@@ -88,7 +97,7 @@ public class Main {
         
         funcionarios.cadastrar("Roger", "123", "Zelador");
         funcionarios.cadastrar("Breno", "456", "Porteiro");
-        funcionarios.cadastrar("Madara", "1313", "SER FOD*");
+        funcionarios.cadastrar("Madara", "1313", "SEI LA");
         
         funcionarios.deletar("456");
         funcionarios.alterarNome("123", "Rodoado");

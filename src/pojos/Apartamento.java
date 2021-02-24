@@ -5,6 +5,8 @@
  */
 package pojos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Mattskywalker
@@ -14,24 +16,22 @@ public class Apartamento {
     private int numero;
     private String andar;
     private String bloco;
-    private Morador morador;
+    private ArrayList<Morador> morador = new ArrayList<>();
 
-    public Apartamento(int numero, String andar, String bloco, Morador morador) {
+    public Apartamento(int numero, String andar, String bloco) {
         this.numero = numero;
         this.andar = andar;
         this.bloco = bloco;
-        this.morador  = morador;
+        
     }
 
-    public void setMorador(Morador morador) {
-        this.morador = morador;
-    }
-
-    public Morador getMorador() {
+    public ArrayList<Morador> getMorador() {
         return morador;
     }
 
-    
+    public void setMorador(ArrayList<Morador> morador) {
+        this.morador = morador;
+    }
     
     public int getNumero() {
         return numero;

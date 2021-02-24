@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import classeauxiliar.TipoMorador;
 import negocios.ApartamentoRepositorio;
 import negocios.MoradorRepositorio;
 import pojos.Apartamento;
@@ -34,27 +35,50 @@ public class ControladorApartamentoMorador {
     }
     
     
-    public void CadastrarMorador(String nome, String cpf, int numero){
-        if(this.apartamentos.procurar(numero) == null){
+    public void CadastrarMorador(String nome, String cpf, int numero, TipoMorador status){
+        if(this.apartamentos.procurar(numero) == null){// primeiro tramento, cadastrar morador em apartamento que não existe
            System.out.println("Controler: O apartamento que você tentou atribuir ao morador: "+ nome+ " não existe, Cadastro não realizado");
         }
-        else if(this.apartamentos.procurar(numero).getMorador() == null){
-            
+        else if(this.apartamentos.procurarStatus(numero) == null){// VERIFICA SE O CADASTRO DE PROPRIETARIO TA LIVRE
+            //pronto para registrar um proprietario;
             System.out.println("Controler: O apartamento numero: "+ numero +" está disponivel");
-            this.moradores.adicionar(nome, cpf, this.apartamentos.procurar(numero));
+            this.moradores.adicionar(nome, cpf, this.apartamentos.procurar(numero),TipoMorador.PROPIETARIO);
             System.out.println("Controler: O Morador: "+ nome +  " foi cadasrtrado");
-            this.apartamentos.procurar(numero).setMorador(this.moradores.procurar(cpf));//atribui morador ao apartamento
+            System.out.println("Controler: Status: Proprietario");
+            this.apartamentos.procurar(numero).getMorador().add(this.moradores.procurar(cpf));//atribui morador ao apartamento
             System.out.println("Controler: O morador: " + nome + " Foi atribuido ao apartamento numero: "+ numero);
-            
             
         }
         else{
             
-            System.out.println("Controler: O apartamento numero : "+numero+ " Já está ocupado pelo morador: " + this.apartamentos.procurar(numero).getMorador().getNome()+ " Cadastro não realizado!");
-        }
+            System.out.println("Controler: O apartamento numero: "+ numero +" está disponivel apenas para Dependentes");
+            this.moradores.adicionar(nome, cpf, this.apartamentos.procurar(numero),TipoMorador.DEPENDENTE);
+            System.out.println("Controler: O Morador: "+ nome +  " foi cadasrtrado");
+            System.out.println("Controler: Status: Dependente");
+            this.apartamentos.procurar(numero).getMorador().add(this.moradores.procurar(cpf));//atribui morador ao apartamento
+            System.out.println("Controler: O morador: " + nome + " Foi atribuido ao apartamento numero: "+ numero);
             
+            
+            //System.out.println("Controler: O apartamento numero : "+numero+ " Já está ocupado pelo morador: " + this.apartamentos.procurar(numero).getMorador().getNome()+ " Cadastro não realizado!");
+        }
+          
     }
     
+    public void deletarMorador(String cpf){
+        
+        if(this.moradores.procurar(cpf) == null){
+            
+            System.out.println("Controler: Usuario a ser deletado não existe no sistema");
+        }else{
+            
+            this.apartamentos.removerMorador(this.moradores.procurar(cpf),this.moradores.procurar(cpf).getApartamento().getNumero());
+        
+            this.moradores.deletar(cpf); 
+        }
+        
+        
+        
+    }
     
     
     

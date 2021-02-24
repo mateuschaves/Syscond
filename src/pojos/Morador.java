@@ -5,6 +5,9 @@
  */
 package pojos;
 
+import classeauxiliar.TipoMorador;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mattskywalker
@@ -14,11 +17,42 @@ public class Morador {
     private String nome;
     private String cpf;
     private Apartamento apartamento;
+    //private ArrayList<MoradorDependente> dependentes;
+    private ArrayList<Visitantes> visitantes;
+    private ArrayList<Carro> carros;
+    private TipoMorador status;
 
-    public Morador(String nome, String cpf, Apartamento apartamento) {
+    public Morador(String nome, String cpf, Apartamento apartamento,TipoMorador status) {
         this.nome = nome;
         this.cpf = cpf;
         this.apartamento = apartamento;
+        this.status = status;
+    }
+
+    public ArrayList<Carro> getCarros() {
+        return carros;
+    }
+
+    public void setCarros(ArrayList<Carro> carros) {
+        this.carros = carros;
+    }
+
+    public TipoMorador getStatus() {
+        return status;
+    }
+
+    public void setStatus(TipoMorador status) {
+        this.status = status;
+    }
+    
+    
+
+    public ArrayList<Visitantes> getVisitantes() {
+        return visitantes;
+    }
+
+    public void setVisitantes(ArrayList<Visitantes> visitantes) {
+        this.visitantes = visitantes;
     }
 
     
