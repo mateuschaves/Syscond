@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package negocios;
+package interfacedecodigo;
 
 /**
  *
  * @author Mattskywalker
  */
-public class CadastroFuncionario {
+public class NewClass {
     
 }
