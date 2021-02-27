@@ -12,5 +12,9 @@ package interfacedecodigo;
 public interface repositorio {
     
     public void adicionar(Object objeto);
+    public void remover(Object objeto);
+    public ArrayList<Object> listar(Object objeto);
+    public void alterar();
+    public Object procurar(Object objeto);
     
 }
