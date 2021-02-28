@@ -8,6 +8,8 @@ package negocios;
 import java.util.ArrayList;
 import pojos.Apartamento;
 import interfacedecodigo.ApartamentoRepositorioInterface;
+import exceptions.ApartamentoNaoEncontrado;
+import exceptions.ApartamentoJaExistente;
 
 /**
  *
@@ -16,63 +18,47 @@ import interfacedecodigo.ApartamentoRepositorioInterface;
 
 public class ApartamentoRepositorio implements ApartamentoRepositorioInterface {
 
-    private ArrayList<Apartamento> todosApartamentos = new ArrayList<>();
-    
-    
-    @Override
-	public Apartamento procurar(int numero) throws Exception {
-		Apartamento retorno = null;
-		
-		for(Apartamento ap : this.todosApartamentos) {
-			if(ap.getNumero() == numero) {
-				
-				int index  = this.todosApartamentos.indexOf(ap);
-				
-				retorno = this.todosApartamentos.get(index);
-				
+	private ArrayList<Apartamento> todosApartamentos = new ArrayList<Apartamento>();
+
+	public void adicionar(Apartamento apartamento, int... posicao) throws ApartamentoJaExistente {
+		if (this.todosApartamentos.size() == 0)
+			this.todosApartamentos.add(apartamento);
+		else
+			try {
+				procurar(apartamento.getNumero());
+				throw new ApartamentoJaExistente(apartamento.getNumero());
+			} catch (ApartamentoNaoEncontrado e) {
+				if (posicao.length > 0)
+					this.todosApartamentos.add(posicao[0], apartamento);
+				else
+					this.todosApartamentos.add(apartamento);
+			}
+	}
+
+	public void alterar(int numero, Apartamento apartamento) throws ApartamentoNaoEncontrado, ApartamentoJaExistente {
+		Apartamento velho = procurar(numero);
+		int posicao = this.todosApartamentos.indexOf(velho);
+		remover(velho);
+		adicionar(apartamento, posicao);
+	}
+
+	public ArrayList<Apartamento> listar() throws ApartamentoNaoEncontrado {
+		if (this.todosApartamentos.size() == 0)
+			throw new ApartamentoNaoEncontrado(0);
+		return this.todosApartamentos;
+	}
+
+	public Apartamento procurar(int numero) throws ApartamentoNaoEncontrado {
+		for (Apartamento apartamento : this.todosApartamentos) {
+			if (apartamento.getNumero() == numero) {
+				return apartamento;
 			}
 		}
-		
-		if(retorno == null) {
-			throw new Exception("Apartamento numero: " + numero +" não encontrado ou não cadastrado no sistema"); 
-			
-		}
-		
-		return retorno;
+		throw new ApartamentoNaoEncontrado(numero);
 	}
 
-	@Override
-	public void adicionar(Apartamento apartamento) {
-		// 
-		this.todosApartamentos.add(apartamento);
-	}
-
-	@Override
 	public void remover(Apartamento apartamento) {
-		
 		this.todosApartamentos.remove(apartamento);
-		
 	}
 
-	@Override
-	public ArrayList<Apartamento> listar() {
-		
-		return this.todosApartamentos;
-		
-	}
-	
-	
-	
-
-	@Override
-	public void alterar(int numero, Apartamento apartamento) throws Exception{
-		
-		if(this.procurar(numero).equals(apartamento)) {
-			
-			int index = this.todosApartamentos.indexOf(apartamento);
-			this.todosApartamentos.add(index, apartamento);
-			
-		}
-	}
-    
 }

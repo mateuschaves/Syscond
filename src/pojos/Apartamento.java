@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Mattskywalker
  */
 public class Apartamento {
-    
+
     private int numero;
     private int andar;
     private String bloco;
@@ -22,7 +22,7 @@ public class Apartamento {
         this.numero = numero;
         this.andar = andar;
         this.bloco = bloco;
-        
+
     }
 
     public ArrayList<Morador> getMorador() {
@@ -32,7 +32,7 @@ public class Apartamento {
     public void setMorador(ArrayList<Morador> morador) {
         this.morador = morador;
     }
-    
+
     public int getNumero() {
         return numero;
     }
@@ -56,8 +56,5 @@ public class Apartamento {
     public void setBloco(String bloco) {
         this.bloco = bloco;
     }
-    
-    
-    
-    
+
 }
