@@ -13,6 +13,7 @@ import negocios.Financeiro;
 import negocios.FornecedorRepositorio;
 import negocios.FuncionarioRepositorio;
 import negocios.MoradorRepositorio;
+import pojos.Apartamento;
 import pojos.Fornecedor;
 import pojos.Morador;
 
@@ -26,6 +27,8 @@ public class Main {
     public static void main(String[] arg){
         
         FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();
+        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();
+        
         
         fornecedorRepositorio.cadastrar("Breno", "1234567890", "81 91992517");
         fornecedorRepositorio.cadastrar("brenda", "123456789", "819192517");
@@ -63,26 +66,23 @@ public class Main {
         System.out.println("");
         System.out.println("Main: Iniciando testes do controlador Apartamento e Morador");
         System.out.println("");
+        
         //cadastro de apartamento;
         
-        ControladorApartamentoMorador controlador = new ControladorApartamentoMorador();
-        
-        controlador.CadastrarMorador("Flare", "0006", 10, TipoMorador.PROPIETARIO);// teste cadastrando morador em apartamento não existente
-        
-        controlador.CadastrarApartamento(1, "PRIMEIRO", "A");
-        controlador.CadastrarApartamento(2, "PRIMEIRO", "A");
-        controlador.CadastrarApartamento(3, "PRIMEIRO", "A");
-        controlador.CadastrarApartamento(4, "PRIMEIRO", "A");
-        
-        controlador.CadastrarMorador("Breno", "123", 1, TipoMorador.PROPIETARIO);
-        controlador.CadastrarMorador("Orochimaru", "123", 1, TipoMorador.PROPIETARIO);
-        
-        controlador.deletarMorador("123");
-        controlador.deletarMorador("cu");
+        Apartamento ap1 = new Apartamento(1,1,"B");
+        Apartamento ap2 = new Apartamento(2,1,"B");
+        Apartamento ap3 = new Apartamento(3,1,"B");
+        Apartamento ap4 = new Apartamento(4,1,"B");
         
         
-        
-        
+        apartamentos.adicionar(ap1);
+        System.out.println("Apartamento numero: " + ap1.getNumero() + " Cadastrado com sucesso!");
+        apartamentos.adicionar(ap2);
+        System.out.println("Apartamento numero: " + ap2.getNumero() + " Cadastrado com sucesso!");
+        apartamentos.adicionar(ap3);
+        System.out.println("Apartamento numero: " + ap3.getNumero() + " Cadastrado com sucesso!");
+        apartamentos.adicionar(ap4);
+        System.out.println("Apartamento numero: " + ap4.getNumero() + " Cadastrado com sucesso!");
         
         
         
