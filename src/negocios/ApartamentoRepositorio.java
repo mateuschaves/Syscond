@@ -17,6 +17,29 @@ import interfacedecodigo.ApartamentoRepositorioInterface;
 public class ApartamentoRepositorio implements ApartamentoRepositorioInterface {
 
     private ArrayList<Apartamento> todosApartamentos = new ArrayList<>();
+    
+    
+    @Override
+	public Apartamento procurar(int numero) throws Exception {
+		Apartamento retorno = null;
+		
+		for(Apartamento ap : this.todosApartamentos) {
+			if(ap.getNumero() == numero) {
+				
+				int index  = this.todosApartamentos.indexOf(ap);
+				
+				retorno = this.todosApartamentos.get(index);
+				
+			}
+		}
+		
+		if(retorno == null) {
+			throw new Exception("Apartamento numero: " + numero +" não encontrado ou não cadastrado no sistema"); 
+			
+		}
+		
+		return retorno;
+	}
 
 	@Override
 	public void adicionar(Apartamento apartamento) {
@@ -37,18 +60,19 @@ public class ApartamentoRepositorio implements ApartamentoRepositorioInterface {
 		return this.todosApartamentos;
 		
 	}
+	
+	
+	
 
 	@Override
-	public void alterar(Apartamento apartamento) {// pendente
+	public void alterar(int numero, Apartamento apartamento) throws Exception{
 		
-		
+		if(this.procurar(numero).equals(apartamento)) {
+			
+			int index = this.todosApartamentos.indexOf(apartamento);
+			this.todosApartamentos.add(index, apartamento);
+			
+		}
 	}
-
-	@Override
-	public Apartamento procurar(int numero) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-    
     
 }
