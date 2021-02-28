@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class Apartamento {
     
     private int numero;
-    private String andar;
+    private int andar;
     private String bloco;
     private ArrayList<Morador> morador = new ArrayList<>();
 
-    public Apartamento(int numero, String andar, String bloco) {
+    public Apartamento(int numero, int andar, String bloco) {
         this.numero = numero;
         this.andar = andar;
         this.bloco = bloco;
@@ -41,11 +41,11 @@ public class Apartamento {
         this.numero = numero;
     }
 
-    public String getAndar() {
+    public int getAndar() {
         return andar;
     }
 
-    public void setAndar(String andar) {
+    public void setAndar(int andar) {
         this.andar = andar;
     }
 
