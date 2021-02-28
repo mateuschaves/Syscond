@@ -11,8 +11,8 @@ public interface ApartamentoRepositorioInterface {
 
     public ArrayList<Apartamento> listar();
 
-    public void alterar(Apartamento apartamento);
+    public void alterar(int numero, Apartamento apartamento) throws Exception;
 
-    public Apartamento procurar(int numero);
+    public Apartamento procurar(int numero) throws Exception;
     
 }
