@@ -6,7 +6,7 @@
 package syscond;
 import classeauxiliar.TipoConta;
 import classeauxiliar.TipoMorador;
-import controladores.ControladorApartamentoMorador;
+//import controladores.ControladorApartamentoMorador;
 import java.util.Date;
 import negocios.ApartamentoRepositorio;
 import negocios.Financeiro;
@@ -69,13 +69,13 @@ public class Main {
         
         //cadastro de apartamento;
         
-        Apartamento ap1 = new Apartamento(1,1,"B");
+        Apartamento ap1 = new Apartamento(1,1,"B");// objetos apartamento criados;
         Apartamento ap2 = new Apartamento(2,1,"B");
         Apartamento ap3 = new Apartamento(3,1,"B");
         Apartamento ap4 = new Apartamento(4,1,"B");
         
         
-        apartamentos.adicionar(ap1);
+        apartamentos.adicionar(ap1);//objetos apartamento adicionados no repositorio;
         System.out.println("Apartamento numero: " + ap1.getNumero() + " Cadastrado com sucesso!");
         apartamentos.adicionar(ap2);
         System.out.println("Apartamento numero: " + ap2.getNumero() + " Cadastrado com sucesso!");
@@ -84,7 +84,34 @@ public class Main {
         apartamentos.adicionar(ap4);
         System.out.println("Apartamento numero: " + ap4.getNumero() + " Cadastrado com sucesso!");
         
+        //apartamentos.adicionar(ap4);
         
+        
+        System.out.println("------------------");//tentativa de alterar um dado de um objeto que não existe;
+        try {
+        	apartamentos.alterar(5, ap4);
+        }
+        catch(Exception e){
+        	
+        	System.out.println(e.getMessage());//print do erro retornado;
+        }
+        System.out.println("------------------");
+        
+        apartamentos.remover(ap4);//teste da função remover do repositorio;
+        
+        for(Apartamento a : apartamentos.listar()){//listagem dos apartamentos existentes no repositorios;
+        	
+        	System.out.println("Apartamento: "+ a.getNumero());
+        }
+        
+        try {
+        	apartamentos.procurar(6);
+        }
+        catch(Exception e) {
+        	
+        	System.out.println(e.getMessage());// teste procurar pelo id;
+        	
+        }
         
         
         //teste repositorio de funcionarios;
