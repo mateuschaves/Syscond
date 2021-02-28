@@ -13,7 +13,7 @@ import pojos.Funcionario;
  */
 public class FuncionarioRepositorio { 
     
-    private ArrayList<Funcionario> todosfuncionarios = new ArrayList();
+    private ArrayList<Funcionario> todosfuncionarios = new ArrayList<Funcionario>();
     
     private Funcionario procurar (String cpf) {
         
