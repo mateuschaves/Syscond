@@ -1,18 +1,18 @@
 package interfacedecodigo;
 
 import java.util.ArrayList;
-
 import pojos.Apartamento;
-import pojos.Morador;
 
 public interface ApartamentoRepositorioInterface {
-    public void adicionar(int numero, String andar, String bloco, Morador morador);
+	
+    public void adicionar(Apartamento apartamento);
 
-    public void remover(Morador morador, int numero);
+    public void remover(Apartamento apartamento);
 
     public ArrayList<Apartamento> listar();
 
     public void alterar(Apartamento apartamento);
 
-    public Apartamento procurar(int id);
+    public Apartamento procurar(int numero);
+    
 }
