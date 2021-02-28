@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package interfacedecodigo;
-
+import java.util.ArrayList;
 /**
  *
  * @author Mattskywalker
  */
-public interface repositorio {
+public interface Repositorio {
     
     public void adicionar(Object objeto);
     public void remover(Object objeto);
