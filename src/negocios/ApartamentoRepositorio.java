@@ -21,9 +21,6 @@ public class ApartamentoRepositorio implements ApartamentoRepositorioInterface {
 	private ArrayList<Apartamento> todosApartamentos = new ArrayList<Apartamento>();
 
 	public void adicionar(Apartamento apartamento, int... posicao) throws ApartamentoJaExistente {
-		if (this.todosApartamentos.size() == 0)
-			this.todosApartamentos.add(apartamento);
-		else
 			try {
 				procurar(apartamento.getNumero());
 				throw new ApartamentoJaExistente(apartamento.getNumero());
