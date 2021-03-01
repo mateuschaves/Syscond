@@ -5,6 +5,9 @@
  */
 package pojos;
 import java.util.ArrayList;
+
+import exceptions.HistoricoVazio;
+
 /**
  *
  * @author Mattskywalker
@@ -15,7 +18,7 @@ public class Produto {
     private String codigo;
     private double quantidade;
     private double precoMedio;
-    
+
     private ArrayList<Double> historicoPreco = new ArrayList<>();
 
     public Produto(String nome, double preco, String codigo, double quantidade) {
@@ -30,7 +33,6 @@ public class Produto {
         this.preco = preco;
         this.quantidade = quantidade;
     }
-    
 
     public String getNome() {
         return nome;
@@ -48,8 +50,8 @@ public class Produto {
         return quantidade;
     }
 
-    public double getPrecoMedio() {
-        return precoMedio;
+    public double getPrecoMedio() throws HistoricoVazio {
+        return negocios.Almoxarifado.calculaPrecoMedio(this.historicoPreco);
     }
 
     public ArrayList<Double> getHistoricoPreco() {
