@@ -6,6 +6,9 @@
 package syscond;
 import classeauxiliar.TipoConta;
 import classeauxiliar.TipoMorador;
+import exceptions.ApartamentoJaExistente;
+import exceptions.ApartamentoNaoEncontrado;
+
 //import controladores.ControladorApartamentoMorador;
 import java.util.Date;
 import negocios.ApartamentoRepositorio;
@@ -24,7 +27,7 @@ import pojos.Morador;
  */
 public class Main {
     
-    public static void main(String[] arg){
+    public static void main(String[] arg) throws ApartamentoJaExistente, ApartamentoNaoEncontrado{
         
         FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();
         ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();
@@ -51,7 +54,7 @@ public class Main {
         
         Financeiro contabilidade = new Financeiro(); 
         
-        contabilidade.registrarConta("CaÃ§a Tie", new Date("02/30/2021"), 30, "1234", TipoConta.PAGAR);
+        contabilidade.registrarConta("Caça Tie", new Date("02/30/2021"), 30, "1234", TipoConta.PAGAR);
         contabilidade.registrarConta("Blaster", new Date("10/12/2021"), 50, "4321", TipoConta.PAGAR);
         contabilidade.registrarConta("Sabre de luz", new Date("11/12/2022"), 100, "421", TipoConta.RECEBER);
         contabilidade.registrarConta("Droid de batalha", new Date("1/1/2023"), 50, "41", TipoConta.RECEBER);
