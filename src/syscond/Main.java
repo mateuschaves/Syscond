@@ -8,6 +8,8 @@ import classeauxiliar.TipoConta;
 import classeauxiliar.TipoMorador;
 import exceptions.ApartamentoJaExistente;
 import exceptions.ApartamentoNaoEncontrado;
+import interfacedecodigo.FuncionarioRepositorioInterface;
+
 
 //import controladores.ControladorApartamentoMorador;
 import java.util.Date;
@@ -18,6 +20,7 @@ import negocios.FuncionarioRepositorio;
 import negocios.MoradorRepositorio;
 import pojos.Apartamento;
 import pojos.Fornecedor;
+import pojos.Funcionario;
 import pojos.Morador;
 
        
@@ -120,28 +123,29 @@ public class Main {
         System.out.println("Main: Teste do repositorio de funcionarios");
         System.out.println("");
         
-        FuncionarioRepositorio funcionarios = new FuncionarioRepositorio();
+        FuncionarioRepositorioInterface funcionarios = new FuncionarioRepositorio();
+        Funcionario funcionario;
         
-        funcionarios.cadastrar("Roger", "123", "Zelador");
-        funcionarios.cadastrar("Breno", "456", "Porteiro");
-        funcionarios.cadastrar("Madara", "1313", "SEI LA");
-        
-        funcionarios.deletar("456");
-        funcionarios.alterarNome("123", "Rodoado");
-        funcionarios.procurarFuncionario("12312312312");
-        
-        funcionarios.deletar("123");
-        funcionarios.alterarFuncao("1313", "Gerente geral");
-        funcionarios.procurarFuncionario("123");
-        
-        //
-                
+        funcionarios.adicionar(funcionario = new Funcionario("Breno","123123123","Duelista"));
+        funcionarios.adicionar(funcionario = new Funcionario("Judeu","123","Senhor"));
+        funcionarios.adicionar(funcionario = new Funcionario("Vini","123123","Senhor dos Dragões"));
+        funcionarios.adicionar(funcionario = new Funcionario("Mattskywalker","0","Vagabundo"));
         
         
+        funcionarios.alterar(funcionario = new Funcionario("Mateus","0","Darth Vader"));
+        
+        
+        for(Funcionario fun : funcionarios.listar()) {//listagem;
+        	
+        	System.out.println("Lista de Funcionarios Cadastrados: " + fun.getNome());
+        	System.out.println("Função: " + fun.getFuncao());
+        	System.out.println("");
+        	
+        }
         
         
         
-       
+        
     }
     
 }
