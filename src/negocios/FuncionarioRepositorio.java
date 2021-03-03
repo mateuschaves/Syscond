@@ -6,6 +6,7 @@
 package negocios;
 import java.util.ArrayList;
 
+import exceptions.funcionario.FuncionarioNãoEncontrado;
 import interfacedecodigo.FuncionarioRepositorioInterface;
 import pojos.Funcionario;
 
@@ -18,7 +19,7 @@ public class FuncionarioRepositorio implements FuncionarioRepositorioInterface{
     private ArrayList<Funcionario> allFuncionarios = new ArrayList<>();
 
 	@Override
-	public Funcionario procurar(String cpf) {
+	public Funcionario procurar(String cpf) throws FuncionarioNãoEncontrado{
 		
 		for(Funcionario a : this.allFuncionarios) {
 			
@@ -33,7 +34,7 @@ public class FuncionarioRepositorio implements FuncionarioRepositorioInterface{
 	}
 
 	@Override
-	public Funcionario procurar(Funcionario funcionario) {
+	public Funcionario procurar(Funcionario funcionario) throws FuncionarioNãoEncontrado{
 		
 		for(Funcionario a : this.allFuncionarios) {
 			
@@ -69,7 +70,7 @@ public class FuncionarioRepositorio implements FuncionarioRepositorioInterface{
 	}
 
 	@Override
-	public void alterar(Funcionario funcionario) {
+	public void alterar(Funcionario funcionario) throws FuncionarioNãoEncontrado{
 		
 		Funcionario cadastrado = this.procurar(funcionario.getCpf());
 		int indice = this.allFuncionarios.indexOf(cadastrado);
