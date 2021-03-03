@@ -29,19 +29,19 @@ public class Main {
     
     public static void main(String[] arg) throws ApartamentoJaExistente, ApartamentoNaoEncontrado{
         
-        FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();
-        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();
+        FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();//inicia repositorio de fornecedor;
+        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();//inicia repositorio de apartamentos;
+        Financeiro contabilidade = new Financeiro();//inicia o financeiro, onde são registradas as contas a pagar e receber;
         
-        
-        fornecedorRepositorio.cadastrar("Breno", "1234567890", "81 91992517");
+        fornecedorRepositorio.cadastrar("Breno", "1234567890", "81 91992517");//cadastro de fornecedores;
         fornecedorRepositorio.cadastrar("brenda", "123456789", "819192517");
         fornecedorRepositorio.procurarFornecedor("1234567890");
         //cadastro de fornecedor funcionando;
-        fornecedorRepositorio.deletar("1234567890");
+        fornecedorRepositorio.deletar("1234567890");//deletar fornecedores;
         System.out.println("Depois de deletar");
-        fornecedorRepositorio.procurarFornecedor("1234567890");
+        fornecedorRepositorio.procurarFornecedor("1234567890");//procurar;
         
-        fornecedorRepositorio.alterarNome("123456789", "Mateus");
+        fornecedorRepositorio.alterarNome("123456789", "Mateus");//alterar;
         fornecedorRepositorio.procurarFornecedor("123456789");
         
         fornecedorRepositorio.alterarTelefone("123456789", "321654987");
@@ -50,9 +50,6 @@ public class Main {
         
         //abaixo teste de cadastro de contas;
         
-        
-        
-        Financeiro contabilidade = new Financeiro(); 
         
         contabilidade.registrarConta("Caça Tie", new Date("02/30/2021"), 30, "1234", TipoConta.PAGAR);
         contabilidade.registrarConta("Blaster", new Date("10/12/2021"), 50, "4321", TipoConta.PAGAR);
