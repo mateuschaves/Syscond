@@ -6,7 +6,7 @@
 package negocios;
 import java.util.ArrayList;
 
-import exceptions.FornecedorNãoEncontrado;
+import exceptions.fornecedor.FornecedorNãoEncontrado;
 import interfacedecodigo.FornecedorRepositorioInterface;
 import pojos.Fornecedor;
 /**

@@ -11,10 +11,10 @@ import java.lang.Math;
 
 import pojos.Produto;
 import classeauxiliar.Dados;
-import exceptions.HistoricoVazio;
-import exceptions.ProdutoEmEstoqueCritico;
-import exceptions.ProdutoJaExistente;
-import exceptions.ProdutoNaoEncontrado;
+import exceptions.historico.HistoricoVazio;
+import exceptions.produto.ProdutoEmEstoqueCritico;
+import exceptions.produto.ProdutoJaExistente;
+import exceptions.produto.ProdutoNaoEncontrado;
 import interfacedecodigo.AlmoxarifadoInterface;
 
 /**

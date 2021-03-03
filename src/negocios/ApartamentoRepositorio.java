@@ -6,10 +6,11 @@
 package negocios;
 
 import java.util.ArrayList;
+
+import exceptions.apartamento.ApartamentoJaExistente;
+import exceptions.apartamento.ApartamentoNaoEncontrado;
 import pojos.Apartamento;
 import interfacedecodigo.ApartamentoRepositorioInterface;
-import exceptions.ApartamentoNaoEncontrado;
-import exceptions.ApartamentoJaExistente;
 
 /**
  *
