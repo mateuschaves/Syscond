@@ -15,13 +15,13 @@ import exceptions.HistoricoVazio;
 import exceptions.ProdutoEmEstoqueCritico;
 import exceptions.ProdutoJaExistente;
 import exceptions.ProdutoNaoEncontrado;
-import interfacedecodigo.AlmoxarifacoInterface;
+import interfacedecodigo.AlmoxarifadoInterface;
 
 /**
  *
  * @author Mattskywalker
  */
-public class Almoxarifado implements AlmoxarifacoInterface {
+public class Almoxarifado implements AlmoxarifadoInterface {
 
     private ArrayList<Produto> produtos;
     private ArrayList<Dados> historico;
