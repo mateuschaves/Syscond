@@ -32,7 +32,7 @@ public class Financeiro {
             } 
         }
         if(a == null){
-            System.out.println("Conta nao encontrada");
+            System.out.println("Conta n„o encontrada");
         }
         
         return a;
@@ -60,7 +60,7 @@ public class Financeiro {
         Conta aux  = this.Procurar(codigo);
         
         if(aux == null){// verifica se a conta existe
-            System.out.println("Conta a ser paga n√£o encontrada!");
+            System.out.println("Conta a ser paga n„o encontrada!");
         }
         else{
             //se chegou aqui a conta existe no sistema;
@@ -81,10 +81,10 @@ public class Financeiro {
             
             for(Conta conta : this.todasContas){
                 System.out.println("");
-                System.out.println("Descri√ß√£o da conta: "+  conta.getDescricao());
+                System.out.println("DescriÁ„o da conta: "+  conta.getDescricao());
                 System.out.println("Codigo: " + conta.getCodigo());
                 System.out.println("Valor: " + conta.getValor());
-                System.out.println("Data de Cria√ß√£o: " + conta.getDataInicial());
+                System.out.println("Data de CriaÁ„o: " + conta.getDataInicial());
                 System.out.println("Data de vencimento: "+conta.getDataVencimento());
                 System.out.print("Conta √†: ");
                 System.out.print(conta.getTipoConta() == TipoConta.PAGAR? "PAGAR" : "RECEBER");
@@ -111,12 +111,12 @@ public class Financeiro {
                 
                 if(conta.getTipoConta() == tipo){
                     
-                    System.out.println("Descri√ß√£o da conta: "+  conta.getDescricao());
+                    System.out.println("DescriÁ„o da conta: "+  conta.getDescricao());
                     System.out.println("Codigo: " + conta.getCodigo());
                     System.out.println("Valor: " + conta.getValor());
-                    System.out.println("Data de Cria√ß√£o: " + conta.getDataInicial());
+                    System.out.println("Data de CriaÁ„o: " + conta.getDataInicial());
                     System.out.println("Data de vencimento: "+conta.getDataVencimento());
-                    System.out.print("Conta √†: ");
+                    System.out.print("Conta ‡: ");
                     System.out.println(conta.getTipoConta() == TipoConta.PAGAR? " PAGAR" : " RECEBER");
                     System.out.println("");
                     
@@ -134,7 +134,7 @@ public class Financeiro {
             // TEMOS UMA CONTA A PAGAR;
             Conta a = new Conta(descricao, dataVencimento,valor,codigo,tipoConta);
             this.todasContas.add(a);
-            System.out.println("Descri√ß√£o: "+ a.getDescricao());
+            System.out.println("DescriÁ„o: "+ a.getDescricao());
             System.out.println("Conta a Pagar, Registrada com Sucesso!");
         }
         else{
@@ -143,7 +143,7 @@ public class Financeiro {
             Conta a = new Conta(descricao, dataVencimento,valor, codigo,tipoConta);
             this.todasContas.add(a);
             
-            System.out.println("Descri√ß√£o: "+ a.getDescricao());
+            System.out.println("DescriÁ„o: "+ a.getDescricao());
             System.out.println("Conta a receber, Registrada com Sucesso!");
             
         }
