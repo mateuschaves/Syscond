@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.fornecedor;
 
 public class FornecedorNãoEncontrado extends Exception{
 
