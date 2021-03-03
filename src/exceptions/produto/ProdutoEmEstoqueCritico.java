@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.produto;
 
 public class ProdutoEmEstoqueCritico extends Exception{
 

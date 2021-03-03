@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.produto;
 
 public class ProdutoJaExistente extends Exception{
     /**

@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.historico;
 
 public class HistoricoVazio extends Exception{
     /**
