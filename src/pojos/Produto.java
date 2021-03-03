@@ -6,7 +6,7 @@
 package pojos;
 import java.util.ArrayList;
 
-import exceptions.HistoricoVazio;
+import exceptions.historico.HistoricoVazio;
 
 /**
  *
