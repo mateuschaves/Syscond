@@ -6,6 +6,7 @@
 package negocios;
 import java.util.ArrayList;
 
+import exceptions.FornecedorNãoEncontrado;
 import interfacedecodigo.FornecedorRepositorioInterface;
 import pojos.Fornecedor;
 /**
@@ -16,9 +17,9 @@ public class FornecedorRepositorio implements FornecedorRepositorioInterface{
     
     private ArrayList<Fornecedor> todosFornecedores = new ArrayList<>();
     
-public Fornecedor procurar(String cpf) {
+    public Fornecedor procurar(String cpf) throws FornecedorNãoEncontrado {
 		
-		for(Fornecedor a : this.todosFornecedores) {
+		for(Fornecedor a : this.todosFornecedores){
 			
 			if(a.getCnpj().equals(cpf)) {
 				return a;
@@ -31,7 +32,7 @@ public Fornecedor procurar(String cpf) {
 	}
 
 	@Override
-	public Fornecedor procurar(Fornecedor fornecedor) {
+	public Fornecedor procurar(Fornecedor fornecedor) throws FornecedorNãoEncontrado{
 		
 		for(Fornecedor a : this.todosFornecedores) {
 			
@@ -67,7 +68,7 @@ public Fornecedor procurar(String cpf) {
 	}
 
 	@Override
-	public void alterar(Fornecedor fornecedor) {
+	public void alterar(Fornecedor fornecedor) throws FornecedorNãoEncontrado {
 		
 		Fornecedor cadastrado = this.procurar(fornecedor.getCnpj());
 		int indice = this.todosFornecedores.indexOf(cadastrado);
