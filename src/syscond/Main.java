@@ -5,23 +5,17 @@
  */
 package syscond;
 import classeauxiliar.TipoConta;
-import classeauxiliar.TipoMorador;
-import exceptions.ApartamentoJaExistente;
-import exceptions.ApartamentoNaoEncontrado;
-import interfacedecodigo.FornecedorRepositorioInterface;
-import interfacedecodigo.FuncionarioRepositorioInterface;
+import exceptions.apartamento.ApartamentoJaExistente;
+import exceptions.apartamento.ApartamentoNaoEncontrado;
+import exceptions.fornecedor.FornecedorNãoEncontrado;
+import exceptions.funcionario.FuncionarioNãoEncontrado;
+import interfacedecodigo.*;
 
 
 //import controladores.ControladorApartamentoMorador;
 import java.util.Date;
-import negocios.ApartamentoRepositorio;
-import negocios.Financeiro;
-import negocios.FornecedorRepositorio;
-import negocios.FuncionarioRepositorio;
-import pojos.Apartamento;
-import pojos.Fornecedor;
-import pojos.Funcionario;
-import pojos.Morador;
+import negocios.*;
+import pojos.*;
 
        
 /**
@@ -30,10 +24,11 @@ import pojos.Morador;
  */
 public class Main {
     
-    public static void main(String[] arg) throws ApartamentoJaExistente, ApartamentoNaoEncontrado{
+    public static void main(String[] arg) throws ApartamentoJaExistente, ApartamentoNaoEncontrado, FornecedorNãoEncontrado, FuncionarioNãoEncontrado{
         
-        FornecedorRepositorioInterface fornecedores = new FornecedorRepositorio();
-        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();
+        FornecedorRepositorioInterface fornecedores = new FornecedorRepositorio();//interface repositorios de fornecedores;
+        ApartamentoRepositorioInterface apartamentos = new ApartamentoRepositorio();//interface repositorio de apartamentos;
+        
         Financeiro contabilidade = new Financeiro();
         
         //teste do cadastro de fornecedores;
@@ -47,6 +42,16 @@ public class Main {
         fornecedores.adicionar(fornecedor = new Fornecedor("Boba Fett", "2", "157"));
         fornecedores.adicionar(fornecedor = new Fornecedor("Han Solo", "3", "171"));
         fornecedores.adicionar(fornecedor = new Fornecedor("Hondo Ohnaka", "4", "190"));
+        
+        try {
+        	System.out.println("Fornecedor encontrado: "  + fornecedores.procurar("0").getNome());
+        }
+        catch(Exception e){
+        	System.out.println("Erro: " + e.getMessage());
+        	
+        }
+        
+       
         
         
         System.out.println("Fornecedores:");
@@ -142,7 +147,12 @@ public class Main {
         funcionarios.adicionar(funcionario = new Funcionario("Vini","123123","Senhor dos Dragões"));
         funcionarios.adicionar(funcionario = new Funcionario("Mattskywalker","0","Vagabundo"));
         
-        
+        try {
+        	System.out.println("Funcionario: " + funcionarios.procurar("1000").getNome());
+        }
+        catch(Exception e) {
+        	System.out.println("Erro: " + e.getMessage());
+        }
         funcionarios.alterar(funcionario = new Funcionario("Mateus","0","Darth Vader"));
         
         
