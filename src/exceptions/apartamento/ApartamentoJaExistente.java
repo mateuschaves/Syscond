@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.apartamento;
 
 public class ApartamentoJaExistente extends Exception{
     /**
