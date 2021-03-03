@@ -6,7 +6,7 @@ import exceptions.ProdutoNaoEncontrado;
 import exceptions.ProdutoJaExistente;
 
 
-public interface AlmoxarifacoInterface {
+public interface AlmoxarifadoInterface {
 	
     public void adicionar(Produto produto, int... posicao) throws ProdutoJaExistente;
     public void alterar(String codigoDeBarras, Produto novo) throws ProdutoNaoEncontrado, ProdutoJaExistente;
