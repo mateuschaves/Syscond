@@ -8,6 +8,7 @@ import classeauxiliar.TipoConta;
 import classeauxiliar.TipoMorador;
 import exceptions.ApartamentoJaExistente;
 import exceptions.ApartamentoNaoEncontrado;
+import interfacedecodigo.FornecedorRepositorioInterface;
 import interfacedecodigo.FuncionarioRepositorioInterface;
 
 
@@ -17,7 +18,6 @@ import negocios.ApartamentoRepositorio;
 import negocios.Financeiro;
 import negocios.FornecedorRepositorio;
 import negocios.FuncionarioRepositorio;
-import negocios.MoradorRepositorio;
 import pojos.Apartamento;
 import pojos.Fornecedor;
 import pojos.Funcionario;
@@ -32,23 +32,34 @@ public class Main {
     
     public static void main(String[] arg) throws ApartamentoJaExistente, ApartamentoNaoEncontrado{
         
-        FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();//inicia repositorio de fornecedor;
-        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();//inicia repositorio de apartamentos;
-        Financeiro contabilidade = new Financeiro();//inicia o financeiro, onde são registradas as contas a pagar e receber;
+        FornecedorRepositorioInterface fornecedores = new FornecedorRepositorio();
+        ApartamentoRepositorio apartamentos = new ApartamentoRepositorio();
+        Financeiro contabilidade = new Financeiro();
         
-        fornecedorRepositorio.cadastrar("Breno", "1234567890", "81 91992517");//cadastro de fornecedores;
-        fornecedorRepositorio.cadastrar("brenda", "123456789", "819192517");
-        fornecedorRepositorio.procurarFornecedor("1234567890");
-        //cadastro de fornecedor funcionando;
-        fornecedorRepositorio.deletar("1234567890");//deletar fornecedores;
-        System.out.println("Depois de deletar");
-        fornecedorRepositorio.procurarFornecedor("1234567890");//procurar;
+        //teste do cadastro de fornecedores;
         
-        fornecedorRepositorio.alterarNome("123456789", "Mateus");//alterar;
-        fornecedorRepositorio.procurarFornecedor("123456789");
+        System.out.println("Fornecedores cadastrados: ");
+        System.out.println("");
         
-        fornecedorRepositorio.alterarTelefone("123456789", "321654987");
+        Fornecedor fornecedor;
         
+        fornecedores.adicionar(fornecedor = new Fornecedor("Jaba The Hutt", "1", "180"));
+        fornecedores.adicionar(fornecedor = new Fornecedor("Boba Fett", "2", "157"));
+        fornecedores.adicionar(fornecedor = new Fornecedor("Han Solo", "3", "171"));
+        fornecedores.adicionar(fornecedor = new Fornecedor("Hondo Ohnaka", "4", "190"));
+        
+        
+        System.out.println("Fornecedores:");
+        System.out.println("");
+        
+        fornecedores.alterar(fornecedor = new Fornecedor("Han Solo","3","100"));
+        
+        for(Fornecedor cadastros : fornecedores.listar()) {
+        	
+        	System.out.println("Fornecedores cadastrados: " + cadastros.getNome());
+        	System.out.println("Fornecedores cadastrados: " + cadastros.getTelefone());
+        	System.out.println("");
+        }
         
         
         //abaixo teste de cadastro de contas;
