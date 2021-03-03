@@ -6,6 +6,7 @@
 package interfacedecodigo;
 import java.util.ArrayList;
 
+import exceptions.funcionario.FuncionarioNãoEncontrado;
 import pojos.Funcionario;
 /**
  *
@@ -13,12 +14,12 @@ import pojos.Funcionario;
  */
 public interface FuncionarioRepositorioInterface {
     
-	public Funcionario procurar(String id);
-	public Funcionario procurar(Funcionario funcionario);
+	public Funcionario procurar(String id) throws FuncionarioNãoEncontrado;
+	public Funcionario procurar(Funcionario funcionario) throws FuncionarioNãoEncontrado;
     public void adicionar(Funcionario funcionario);
     public void remover(Funcionario funcionario);
     public ArrayList<Funcionario> listar();
-    public void alterar(Funcionario funcionario);
+    public void alterar(Funcionario funcionario) throws FuncionarioNãoEncontrado;
 	
     
     

@@ -2,7 +2,7 @@ package interfacedecodigo;
 
 import java.util.ArrayList;
 
-import exceptions.FornecedorNãoEncontrado;
+import exceptions.fornecedor.FornecedorNãoEncontrado;
 import pojos.Fornecedor;
 
 public interface FornecedorRepositorioInterface {

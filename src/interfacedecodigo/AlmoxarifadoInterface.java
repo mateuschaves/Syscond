@@ -1,9 +1,10 @@
 package interfacedecodigo;
 
 import java.util.ArrayList;
+
+import exceptions.produto.ProdutoJaExistente;
+import exceptions.produto.ProdutoNaoEncontrado;
 import pojos.Produto;
-import exceptions.ProdutoNaoEncontrado;
-import exceptions.ProdutoJaExistente;
 
 
 public interface AlmoxarifadoInterface {

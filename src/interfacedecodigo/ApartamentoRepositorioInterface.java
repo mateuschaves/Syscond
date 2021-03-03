@@ -1,9 +1,10 @@
 package interfacedecodigo;
 
 import java.util.ArrayList;
+
+import exceptions.apartamento.ApartamentoJaExistente;
+import exceptions.apartamento.ApartamentoNaoEncontrado;
 import pojos.Apartamento;
-import exceptions.ApartamentoJaExistente;
-import exceptions.ApartamentoNaoEncontrado;
 
 public interface ApartamentoRepositorioInterface {
 	
