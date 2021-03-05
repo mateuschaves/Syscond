@@ -18,7 +18,7 @@ public class Carro {
     
     
     
-    Carro(Morador proprietario, String modelo, String placa, String cor){
+   public Carro(Morador proprietario, String modelo, String placa, String cor){
     	
     	this.proprietario = proprietario;
     	this.modelo = modelo;
@@ -27,51 +27,36 @@ public class Carro {
     }
 
 	public String getModelo() {
-      
 		return this.modelo;
-		
 	}
 	
 	public void setModelo(String modelo){
-		
 		this.modelo = modelo;
-		
 	}
 	
 	public String getplaca() {
-	      
 		return this.placa;
-		
 	}
 	
 	public void setplaca(String placa){
-		
 		this.placa = placa;
-		
 	}
 	
 	
 	public String getCor() {
-	      
 		return this.cor;
-		
 	}
 	
 	public void setCor(String cor){
-		
 		this.cor = cor;
-		
 	}
 	
 	
 	public Morador getProprietario() {
-	      
 		return this.proprietario;
-		
 	}
 	
 	public void setProprietario(Morador proprietario){
-		
 		this.proprietario = proprietario;	
 	}	
-}	
+}
