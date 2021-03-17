@@ -1,4 +1,4 @@
-package repositorios;
+/*package repositorios;
 
 import java.util.ArrayList;
 
@@ -14,3 +14,4 @@ public interface ApartamentoRepositorioInterface {
     public Apartamento procurar(int numero) throws ApartamentoNaoEncontrado;
     public void remover(Apartamento apartamento) throws ApartamentoNaoEncontrado;
 }
+*/

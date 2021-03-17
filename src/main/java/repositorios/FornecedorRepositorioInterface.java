@@ -1,8 +1,8 @@
-package repositorios;
+/*package repositorios;
 
 import java.util.ArrayList;
 
-import exceptions.fornecedor.FornecedorN�oEncontrado;
+import exceptions.fornecedor.FornecedorNaoEncontrado;
 import pojos.Fornecedor;
 
 public interface FornecedorRepositorioInterface {
@@ -15,3 +15,4 @@ public interface FornecedorRepositorioInterface {
     public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado;
 	
 }
+*/

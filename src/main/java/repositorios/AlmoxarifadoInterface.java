@@ -1,4 +1,4 @@
-package repositorios;
+/*package repositorios;
 
 import java.util.ArrayList;
 
@@ -16,3 +16,4 @@ public interface AlmoxarifadoInterface {
 }
 
     
+*/

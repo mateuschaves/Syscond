@@ -1,11 +1,11 @@
 package exceptions.funcionario;
 
-public class FuncionarioN�oEncontrado extends Exception{
+public class FuncionarioNaoEncontrado extends Exception{
 	
 	
 	private static final long serialVersionUID = 1L;
 
-	public FuncionarioN�oEncontrado(String mensagem) {
+	public FuncionarioNaoEncontrado(String mensagem) {
 		super(mensagem);
 	}
 }
