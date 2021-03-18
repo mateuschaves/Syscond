@@ -9,8 +9,7 @@ import pojos.Fornecedor;
 
 public interface FornecedorDaoInterface {
 	
-	public Fornecedor procurar(String id) throws FornecedorNaoEncontrado;
-	public Fornecedor procurar(Fornecedor fornecedor) throws FornecedorNaoEncontrado;
+	public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado;
     public void adicionar(Fornecedor fornecedor);
     public void remover(Fornecedor fornecedor);
     public List<Fornecedor> listar();
