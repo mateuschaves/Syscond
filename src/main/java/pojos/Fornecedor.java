@@ -14,6 +14,10 @@ public class Fornecedor {
     @Column
     String telefone;
 
+
+    public Fornecedor() {
+    }
+
     public Fornecedor(String cnpj, String nome, String telefone) {
         this.cnpj = cnpj;
         this.nome = nome;

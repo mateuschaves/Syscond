@@ -50,10 +50,10 @@ public class Produto {
         return quantidade;
     }
 
-    public double getPrecoMedio() throws HistoricoVazio {
+    /*public double getPrecoMedio() throws HistoricoVazio {
         return negocios.Almoxarifado.calculaPrecoMedio(this.historicoPreco);
     }
-
+*/
     public ArrayList<Double> getHistoricoPreco() {
         return historicoPreco;
     }

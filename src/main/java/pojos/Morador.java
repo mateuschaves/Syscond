@@ -5,7 +5,7 @@
  */
 package pojos;
 
-import classeauxiliar.TipoMorador;
+//import classeauxiliar.TipoMorador;
 import java.util.ArrayList;
 
 /**
@@ -20,13 +20,13 @@ public class Morador {
     //private ArrayList<MoradorDependente> dependentes;
     private ArrayList<Visitantes> visitantes;
     private ArrayList<Carro> carros;
-    private TipoMorador status;
+    //private TipoMorador status;
 
-    public Morador(String nome, String cpf, Apartamento apartamento,TipoMorador status) {
+    public Morador(String nome, String cpf, Apartamento apartamento/*,TipoMorador status*/) {
         this.nome = nome;
         this.cpf = cpf;
         this.apartamento = apartamento;
-        this.status = status;
+        //this.status = status;
         this.carros = new ArrayList<Carro>();
         this.visitantes = new ArrayList<Visitantes>();
         
@@ -40,16 +40,14 @@ public class Morador {
         this.carros = carros;
     }
 
-    public TipoMorador getStatus() {
+    /*public TipoMorador getStatus() {
         return status;
     }
 
     public void setStatus(TipoMorador status) {
         this.status = status;
     }
-    
-    
-
+    */
     public ArrayList<Visitantes> getVisitantes() {
         return visitantes;
     }
@@ -58,10 +56,6 @@ public class Morador {
         this.visitantes = visitantes;
     }
 
-    
-    
-    
-    
     public String getNome() {
         return nome;
     }
