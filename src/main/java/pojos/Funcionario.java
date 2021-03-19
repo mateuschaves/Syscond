@@ -22,8 +22,11 @@ public class Funcionario {
     private String nome;
     @Column(nullable = false)
     private String funcao;
-    
-    public Funcionario (String nome, String cpf,String funcao){
+
+    public Funcionario() {
+    }
+
+    public Funcionario (String nome, String cpf, String funcao){
            this.nome = nome;
            this.cpf = cpf;
            this.funcao = funcao;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
  *
  * @author Mattskywalker
  */
+/*
 public class Apartamento {
 
     private int numero;
@@ -58,3 +59,4 @@ public class Apartamento {
     }
 
 }
+*/

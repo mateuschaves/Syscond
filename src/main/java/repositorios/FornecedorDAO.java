@@ -15,26 +15,27 @@ import java.util.List;
 public class FornecedorDAO implements FornecedorDaoInterface {
 
     @Override
-    public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado {
+    public Fornecedor procurar(String cnpj){
 
-        List<Fornecedor> fornecedorList = this.listar();
-
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        Fornecedor retorno = null;
         try {
+            tx.begin();
+            retorno = em.find(Fornecedor.class,cnpj);
+            tx.commit();
+            retorno.getNome();
 
-            for (Fornecedor a: fornecedorList) {
+        }catch(NullPointerException e){
 
-                if(a.getCnpj().equals(cnpj)){
-
-                    return a;
-                }
-            }
-        }catch(Exception e){
-            e.printStackTrace();
             System.err.println("ERRO: " + e.getMessage());
 
+        }finally {
+            em.close();
         }
 
-        return null;
+
+        return retorno;
     }
 
     @Override
@@ -49,11 +50,10 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             tx.commit();
         }catch (Exception a){
             //a.printStackTrace();
-            System.err.println(a.getMessage());
+            System.err.println("Id já existente: " + a.getMessage());
         }finally {
             em.close();
         }
-
 
     }
 
@@ -75,7 +75,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     public List<Fornecedor> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-        Query query = em.createQuery("select a from Fornecedor a",Fornecedor.class);
+        Query query = em.createQuery("select a from Fornecedor a", Fornecedor.class);
 
         List<Fornecedor> lista = query.getResultList();
         return lista;
@@ -84,8 +84,25 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     @Override
     public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
 
-        Fornecedor deletado = procurar(fornecedor.getCnpj());
-        this.remover(deletado);
-        this.adicionar(fornecedor);
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try{
+            Fornecedor exemplo = this.procurar(fornecedor.getCnpj());
+            exemplo.setCnpj(fornecedor.getCnpj());
+            exemplo.setNome(fornecedor.getNome());
+            exemplo.setTelefone(fornecedor.getTelefone());
+
+            tx.begin();
+            em.merge(exemplo);
+            tx.commit();
+        }
+        catch(Exception e){
+
+            System.err.println("ERRO: " + e.getMessage());
+        }finally {
+            em.close();
+
+        }
     }
 }

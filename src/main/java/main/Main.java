@@ -23,10 +23,16 @@ public class Main {
         FornecedorDaoInterface fornecedorDao = new FornecedorDAO();
 
         //fornecedorDao.adicionar(fornecedor);
-        fornecedorDao.adicionar(fornecedor1);
+        try {
+            System.out.println("Fornecedor procurado: " + fornecedorDao.procurar("1235").getNome());
+        }catch (NullPointerException e){
+            System.err.println("ERRO: EITA, PORRA DO CARALHO, AGORA FUDEU, FILHA DA PUTA");
+        }
+
 
 
         System.out.println("Lista de fornecedores: ");
+
         for (Fornecedor a: fornecedorDao.listar()) {
 
             System.out.println("Fornecedor: " + a.getNome());
@@ -36,7 +42,7 @@ public class Main {
 
         fornecedorDao.remover(fornecedor);
 
-        fornecedorDao.alterar(new Fornecedor("12345","Luana Martins","indefinido"));
+        fornecedorDao.alterar(new Fornecedor("12345","Luana Martins de Andrade Lima","indefinido"));
 
         System.out.println("Lista de fornecedores: ");
         for (Fornecedor a: fornecedorDao.listar()) {

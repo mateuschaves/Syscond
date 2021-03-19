@@ -3,27 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pojos;
+/*package pojos;
 
 //import classeauxiliar.TipoMorador;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mattskywalker
  */
+/*
+@Entity
 public class Morador {
-    
-    private String nome;
+
+    @Id
     private String cpf;
+    @Column(nullable = false)
+    private String nome;
+    @Column(nullable = false)
     private Apartamento apartamento;
-    //private ArrayList<MoradorDependente> dependentes;
+    //private  dependentes;
     private ArrayList<Visitantes> visitantes;
     private ArrayList<Carro> carros;
     //private TipoMorador status;
 
-    public Morador(String nome, String cpf, Apartamento apartamento/*,TipoMorador status*/) {
-        this.nome = nome;
+    public Morador(String nome, String cpf, Apartamento apartamento/*,TipoMorador status*///)/// {
+       /* this.nome = nome;
         this.cpf = cpf;
         this.apartamento = apartamento;
         //this.status = status;
@@ -48,6 +56,7 @@ public class Morador {
         this.status = status;
     }
     */
+/*
     public ArrayList<Visitantes> getVisitantes() {
         return visitantes;
     }
@@ -82,3 +91,6 @@ public class Morador {
     
     
 }
+
+
+*/
