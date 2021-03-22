@@ -2,28 +2,26 @@ package repositorios;
 
 import dao.JPAUtil;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
-import org.hibernate.HibernateException;
-import org.hibernate.exception.ConstraintViolationException;
+import pojos.Carro;
 import pojos.Fornecedor;
 
-import javax.persistence.*;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.List;
 
-public class FornecedorDAO implements FornecedorDaoInterface {
+public class CarroDAO implements CarroDaoInterface{
 
     @Override
-    public Fornecedor procurar(String cnpj){
+    public Carro procurar(String placa){
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        Fornecedor retorno = null;
+        Carro retorno = null;
         try {
             tx.begin();
-            retorno = em.find(Fornecedor.class,cnpj);
+            retorno = em.find(Carro.class,placa);
             tx.commit();
 
         }catch(NullPointerException e){
@@ -37,14 +35,14 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     }
 
     @Override
-    public void adicionar(Fornecedor fornecedor) {
+    public void adicionar(Carro carro) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
             tx.begin();
-            em.persist(fornecedor);
+            em.persist(carro);
             tx.commit();
         }catch (Exception a){
             //a.printStackTrace();
@@ -56,41 +54,42 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     }
 
     @Override
-    public void remover(Fornecedor fornecedor) {
+    public void remover(Carro carro) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        fornecedor = em.merge(fornecedor);
-        em.remove(fornecedor);
+        carro = em.merge(carro);
+        em.remove(carro);
         tx.commit();
         em.close();
 
     }
 
     @Override
-    public List<Fornecedor> listar() {
+    public List<Carro> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-        Query query = em.createQuery("select a from Fornecedor a", Fornecedor.class);
+        Query query = em.createQuery("select a from Carro a", Carro.class);
 
-        List<Fornecedor> lista = query.getResultList();
+        List<Carro> lista = query.getResultList();
         return lista;
     }
 
     @Override
-    public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
+    public void alterar(Carro carro){
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
 
-            Fornecedor exemplo = this.procurar(fornecedor.getCnpj());
-            exemplo.setCnpj(fornecedor.getCnpj());
-            exemplo.setNome(fornecedor.getNome());
-            exemplo.setTelefone(fornecedor.getTelefone());
+            Carro exemplo = this.procurar(carro.getPlaca());
+            exemplo.setPlaca(carro.getPlaca());
+            exemplo.setModelo(carro.getModelo());
+            exemplo.setCor(carro.getCor());
+            exemplo.setProprietario(carro.getProprietario());
 
             tx.begin();
             em.merge(exemplo);
