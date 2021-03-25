@@ -22,7 +22,6 @@ public class Carro {
     @Column
     private String cor;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "morador")
     private Morador proprietario;
 
     public Carro() {
@@ -59,6 +58,8 @@ public class Carro {
         this.cor = cor;
     }
 
+
+    @JoinColumn(name = "proprietarioCpf")
     public Morador getProprietario() {
         return proprietario;
     }

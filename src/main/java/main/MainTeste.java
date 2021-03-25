@@ -3,13 +3,13 @@ package main;
 import dao.JPAUtil;
 import pojos.Carro;
 import pojos.Morador;
-import repositorios.CarroDAO;
-import repositorios.CarroDaoInterface;
-import sun.security.util.ArrayUtil;
+import dao.CarroDAO;
+import dao.CarroDaoInterface;
+import dao.MoradorDAO;
+import dao.MoradorDaoInterface;
 //import pojos.Carro;
 //import pojos.Morador;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.*;
@@ -21,30 +21,37 @@ public class MainTeste {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        CarroDaoInterface carros = new CarroDAO();
+        CarroDaoInterface carrosDao = new CarroDAO();
+        MoradorDaoInterface moradorDao = new MoradorDAO();
 
-        Set<Carro> setCarros = new Type()
+        Set<Carro> setCarros = new HashSet<Carro>();
 
-        Carro carro = new Carro("KKK-1010","GOL 2020 1.6","PRETO",null);
-        Carro carro2 = new Carro("SEX-0432","VOYAGE 2020 1.6","ROSA",null);
+        Morador morador = new Morador("123.445.789-31","Darth-Vader",setCarros);
+
+        Carro carro = new Carro("SIT-6666","I8","PRETO",morador);
+        Carro carro2 = new Carro("XXX-9999","VOYAGE 2020 1.6","ROSA",morador);
 
         setCarros.add(carro);
         setCarros.add(carro2);
 
-        carros.adicionar(carro);
-        carros.adicionar(carro2);
 
-        System.out.println("Carro: " + carros.procurar("SEX-0432").getModelo());
-
-        carros.alterar(new Carro("SEX-0432","VOYAGE 2020 1.6","VERDE",null));
+        moradorDao.adicionar(morador);
+        carrosDao.adicionar(carro);
+        carrosDao.adicionar(carro2);
 
 
-        for (Carro a:
+
+        //System.out.println("Carro: " + carros.procurar("SEX-0432").getModelo());
+
+        //carros.alterar(new Carro("SEX-0432","VOYAGE 2020 1.6","VERDE",null));
+
+
+        /*for (Carro a:
              carros.listar()) {
             System.out.println("Cor: " + a.getCor());
-        }
+        }*/
 
-        Morador morador = new Morador("69","Mateus Martins",)
+
 
 
 

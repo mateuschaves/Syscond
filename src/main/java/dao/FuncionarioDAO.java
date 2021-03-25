@@ -1,4 +1,4 @@
-package repositorios;
+package dao;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 
-import dao.JPAUtil;
 import exceptions.funcionario.FuncionarioJaExistente;
 import exceptions.funcionario.FuncionarioNaoEncontrado;
 import pojos.Funcionario;

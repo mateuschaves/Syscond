@@ -1,4 +1,4 @@
-package repositorios;
+package dao;
 
 
 import pojos.Carro;

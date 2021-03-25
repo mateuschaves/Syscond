@@ -2,22 +2,14 @@ package main;
 
 import dao.JPAUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import exceptions.funcionario.FuncionarioJaExistente;
 import exceptions.funcionario.FuncionarioNaoEncontrado;
-import pojos.Fornecedor;
 import pojos.Funcionario;
-import repositorios.FornecedorDAO;
-import repositorios.FornecedorDaoInterface;
-import repositorios.FuncionarioDAO;
-import repositorios.FuncionarioDaoInterface;
+import dao.FuncionarioDAO;
+import dao.FuncionarioDaoInterface;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
 

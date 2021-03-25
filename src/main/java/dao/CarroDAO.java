@@ -1,9 +1,6 @@
-package repositorios;
+package dao;
 
-import dao.JPAUtil;
-import exceptions.fornecedor.FornecedorNaoEncontrado;
 import pojos.Carro;
-import pojos.Fornecedor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
