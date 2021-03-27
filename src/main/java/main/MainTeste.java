@@ -1,30 +1,24 @@
 package main;
 
-import dao.JPAUtil;
+
+import dao.*;
 import pojos.Carro;
 import pojos.Morador;
-import dao.CarroDAO;
-import dao.CarroDaoInterface;
-import dao.MoradorDAO;
-import dao.MoradorDaoInterface;
+import pojos.Produto;
 //import pojos.Carro;
 //import pojos.Morador;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import java.util.*;
 
 public class MainTeste {
 
     public static void main(String[] args){
 
-        EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
+        /*
         CarroDaoInterface carrosDao = new CarroDAO();
         MoradorDaoInterface moradorDao = new MoradorDAO();
 
-        Set<Carro> setCarros = new HashSet<Carro>();
+        Set<Carro> setCarros = new HashSet<>();
 
         Morador morador = new Morador("123.445.789-31","Darth-Vader",setCarros);
 
@@ -34,24 +28,51 @@ public class MainTeste {
         setCarros.add(carro);
         setCarros.add(carro2);
 
-
         moradorDao.adicionar(morador);
         carrosDao.adicionar(carro);
         carrosDao.adicionar(carro2);
 
+        */
 
 
-        //System.out.println("Carro: " + carros.procurar("SEX-0432").getModelo());
+        ProdutoDaoInterface produtos = new ProdutoDAO();
+        Produto produto = new Produto("Sabão em pó",10,"1",12);
 
-        //carros.alterar(new Carro("SEX-0432","VOYAGE 2020 1.6","VERDE",null));
+        //produtos.adicionar(produto);
+        List<Produto> produtoList = new ArrayList<>();
 
+        produtos.alterar(produto);
+        try{
 
-        /*for (Carro a:
-             carros.listar()) {
-            System.out.println("Cor: " + a.getCor());
-        }*/
+            produtoList = produtos.listar();
 
+            for (Produto a:
+            produtoList) {
 
+                System.out.println("Produto: " + a.getNome());
+            }
+        }catch (Exception e){
+
+            System.err.println(e.getMessage());
+
+        }
+
+        produtos.remover(produto);
+
+        try{
+
+            produtoList = produtos.listar();
+
+            for (Produto a:
+                    produtoList) {
+
+                System.out.println("Produto: " + a.getNome());
+            }
+        }catch (Exception e){
+
+            System.err.println(e.getMessage());
+
+        }
 
 
 
