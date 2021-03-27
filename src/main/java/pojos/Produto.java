@@ -8,18 +8,32 @@ import java.util.ArrayList;
 
 import exceptions.historico.HistoricoVazio;
 
+import javax.persistence.*;
+
 /**
  *
  * @author Mattskywalker
  */
+
+@Entity
 public class Produto {
-    private String nome;
-    private double preco;
+
+    @Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String codigo;
+    @Column
+    private String nome;
+    @Column
+    private double preco;
+    @Column
     private double quantidade;
+    @Column
     private double precoMedio;
 
     private ArrayList<Double> historicoPreco = new ArrayList<>();
+
+    public Produto() {
+    }
 
     public Produto(String nome, double preco, String codigo, double quantidade) {
         this.nome = nome;
