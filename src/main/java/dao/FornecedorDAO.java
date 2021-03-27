@@ -5,6 +5,7 @@ import pojos.Fornecedor;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FornecedorDAO implements FornecedorDaoInterface {
@@ -55,13 +56,15 @@ public class FornecedorDAO implements FornecedorDaoInterface {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-
-        tx.begin();
-        fornecedor = em.merge(fornecedor);
-        em.remove(fornecedor);
-        tx.commit();
-        em.close();
-
+        try {
+            tx.begin();
+            fornecedor = em.merge(fornecedor);
+            em.remove(fornecedor);
+            tx.commit();
+            em.close();
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
     @Override
@@ -70,7 +73,14 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         EntityManager em = JPAUtil.getEntityManager();
         Query query = em.createQuery("select a from Fornecedor a", Fornecedor.class);
 
-        List<Fornecedor> lista = query.getResultList();
+        List<Fornecedor> lista = new ArrayList<>();
+
+        try {
+            lista = query.getResultList();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
         return lista;
     }
 
