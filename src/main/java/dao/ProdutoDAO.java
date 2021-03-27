@@ -1,7 +1,6 @@
 package dao;
 
-import exceptions.funcionario.FuncionarioNaoEncontrado;
-import pojos.Funcionario;
+
 import pojos.Produto;
 
 import javax.persistence.EntityManager;
@@ -57,11 +56,9 @@ public class ProdutoDAO implements ProdutoDaoInterface{
     public List<Produto> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
         Query query = em.createQuery("select a from Produto a",Produto.class);
 
         List<Produto> lista = new ArrayList<Produto>();
-
         try {
             return lista = query.getResultList();
 
