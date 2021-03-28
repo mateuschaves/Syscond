@@ -5,6 +5,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@NamedQueries({ 
+    @NamedQuery(name = "Fornecedor.buscaPorCNPJ", query = "select f from Fornecedor f where f.cnpj = :cnpj"),
+    @NamedQuery(name = "Fornecedor.buscaTodos", query = "select f from Fornecedor f") })
+
 @Entity
 public class Fornecedor {
     @Id
