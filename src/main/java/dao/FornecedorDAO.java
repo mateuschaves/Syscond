@@ -12,99 +12,75 @@ import java.util.List;
 public class FornecedorDAO implements FornecedorDaoInterface {
 
     @Override
-    public Fornecedor procurar(String cnpj){
-
-        EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-        Fornecedor retorno = null;
-        try {
-            tx.begin();
-            retorno = em.find(Fornecedor.class,cnpj);
-            tx.commit();
-
-        }catch(NullPointerException e){
-
-            System.err.println("ERRO: " + e.getMessage());
-
-        }finally {
-            em.close();
-        }
-        return retorno;
-    }
-
-    @Override
     public void adicionar(Fornecedor fornecedor) throws FornecedorJaExistente {
-
         EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-        tx.begin();
+        em.getTransaction().begin();
         try{
             em.persist(fornecedor);
         }catch (EntityExistsException  a){
             throw new FornecedorJaExistente(fornecedor.getCnpj());
         }finally {
-            tx.commit();
+            em.getTransaction().commit();
             em.close();
         }
-
-    }
-
-    @Override
-    public void remover(Fornecedor fornecedor) {
-
-        EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            fornecedor = em.merge(fornecedor);
-            em.remove(fornecedor);
-            tx.commit();
-        }catch (Exception e){
-            e.getMessage();
-        }finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public List<Fornecedor> listar() {
-
-        EntityManager em = JPAUtil.getEntityManager();
-        Query query = em.createQuery("select a from Fornecedor a", Fornecedor.class);
-
-        List<Fornecedor> lista = new ArrayList<>();
-
-        try {
-            lista = query.getResultList();
-        }catch (Exception e){
-            e.getMessage();
-        }finally {
-            em.close();
-        }
-
-        return lista;
     }
 
     @Override
     public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
-
         EntityManager em = JPAUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
+        em.getTransaction().begin();
         try{
-            tx.begin();
             em.merge(fornecedor);
-            tx.commit();
         }
-        catch(Exception e){
-
-            System.err.println("ERRO: " + e.getMessage());
-
+        catch(IllegalArgumentException  e){
+            throw new FornecedorNaoEncontrado(fornecedor.getCnpj());
         }finally {
+            em.getTransaction().commit();
             em.close();
-
         }
     }
+
+    @Override
+    public List<Fornecedor> listar() throws FornecedorNaoEncontrado {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return (ArrayList<Fornecedor>) em
+                    .createNamedQuery("Fornecedor.buscaTodos", Fornecedor.class)
+                    .getResultList();
+        } catch (NoResultException e) {
+            throw new FornecedorNaoEncontrado("");
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado{
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return (Fornecedor) em
+                    .createNamedQuery("Fornecedor.buscaPorCNPJ", Fornecedor.class)
+                    .setParameter("cnpj", cnpj)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            throw new FornecedorNaoEncontrado(cnpj);
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void remover(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.remove(em.merge(fornecedor));
+        }catch (IllegalArgumentException e){
+            throw new FornecedorNaoEncontrado(fornecedor.getCnpj());
+        }finally {
+            em.getTransaction().commit();
+            em.close();
+        }
+    }
+    
 }
