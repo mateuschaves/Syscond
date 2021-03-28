@@ -1,5 +1,6 @@
 package dao;
 
+import exceptions.fornecedor.FornecedorJaExistente;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import pojos.Fornecedor;
 
@@ -33,7 +34,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     }
 
     @Override
-    public void adicionar(Fornecedor fornecedor) {
+    public void adicionar(Fornecedor fornecedor) throws FornecedorJaExistente {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -42,9 +43,8 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             tx.begin();
             em.persist(fornecedor);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (EntityExistsException  a){
+            throw new FornecedorJaExistente(fornecedor.getCnpj());
         }finally {
             em.close();
         }
