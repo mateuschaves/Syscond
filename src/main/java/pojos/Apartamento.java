@@ -5,48 +5,66 @@
  */
 package pojos;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Mattskywalker
  */
-/*
+@Entity
+@Table(name = "apartamento",schema = "syscond")
 public class Apartamento {
 
-    private int numero;
-    private int andar;
+    @Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private String numero;
+    @Column
+    private String andar;
+    @Column
     private String bloco;
-    private ArrayList<Morador> morador = new ArrayList<>();
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "apartamento")
+    private List<Morador> moradores = new ArrayList<>();
 
-    public Apartamento(int numero, int andar, String bloco) {
+    public Apartamento() {
+    }
+
+    public Apartamento(String numero) {
+        this.numero = numero;
+    }
+
+    public Apartamento(String numero, List<Morador> moradores) {
+        this.numero = numero;
+        this.moradores = moradores;
+    }
+
+    public Apartamento(String numero, String andar, String bloco) {
         this.numero = numero;
         this.andar = andar;
         this.bloco = bloco;
-
     }
 
-    public ArrayList<Morador> getMorador() {
-        return morador;
+    public Apartamento(String numero, String andar, String bloco, List<Morador> moradores) {
+        this.numero = numero;
+        this.andar = andar;
+        this.bloco = bloco;
+        this.moradores = moradores;
     }
 
-    public void setMorador(ArrayList<Morador> morador) {
-        this.morador = morador;
-    }
-
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
-    public int getAndar() {
+    public String getAndar() {
         return andar;
     }
 
-    public void setAndar(int andar) {
+    public void setAndar(String andar) {
         this.andar = andar;
     }
 
@@ -58,5 +76,11 @@ public class Apartamento {
         this.bloco = bloco;
     }
 
+    public List<Morador> getMorador() {
+        return moradores;
+    }
+
+    public void setMorador(List<Morador> morador) {
+        this.moradores = morador;
+    }
 }
-*/

@@ -30,6 +30,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         EntityManager em = JPAUtil.getEntityManager();
         em.getTransaction().begin();
         try{
+            fornecedor = em.merge(fornecedor);
             em.merge(fornecedor);
         }
         catch(IllegalArgumentException  e){

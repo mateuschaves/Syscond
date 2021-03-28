@@ -1,24 +1,26 @@
 package dao;
 
+
 import pojos.Carro;
+import pojos.Visitante;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import java.util.List;
 
-public class CarroDAO implements CarroDaoInterface{
+public class VisitanteDAO implements VisitanteDaoInterface{
+
 
     @Override
-    public Carro procurar(String placa){
+    public Visitante procurar(String cpf) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        Carro retorno = null;
+        Visitante retorno = null;
         try {
             tx.begin();
-            retorno = em.find(Carro.class,placa);
+            retorno = em.find(Visitante.class,cpf);
             tx.commit();
 
         }catch(NullPointerException e){
@@ -29,17 +31,18 @@ public class CarroDAO implements CarroDaoInterface{
             em.close();
         }
         return retorno;
+
     }
 
     @Override
-    public void adicionar(Carro carro) {
+    public void adicionar(Visitante visitante) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
             tx.begin();
-            em.persist(carro);
+            em.persist(visitante);
             tx.commit();
         }catch (Exception a){
             //a.printStackTrace();
@@ -51,34 +54,29 @@ public class CarroDAO implements CarroDaoInterface{
     }
 
     @Override
-    public void remover(Carro carro) {
+    public void remover(Visitante visitante) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
             tx.begin();
-            carro = em.merge(carro);
-            em.remove(carro);
+            visitante = em.merge(visitante);
+            em.remove(visitante);
             tx.commit();
         }catch (Exception e){
             e.getMessage();
         }finally {
             em.close();
         }
-
-
-
     }
 
     @Override
-    public List<Carro> listar() {
+    public List<Visitante> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-
-
         try {
-            return (List<Carro>) em.createQuery("select a from Carro a", Carro.class)
+            return (List<Visitante>) em.createQuery("select a from Visitante a", Visitante.class)
                     .getResultList();
         }catch (Exception e){
             e.getMessage();
@@ -86,20 +84,19 @@ public class CarroDAO implements CarroDaoInterface{
             em.close();
         }
 
-        return (List<Carro>) null;
+        return (List<Visitante>) null;
     }
 
     @Override
-    public void alterar(Carro carro){
+    public void alterar(Visitante visitante) {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-
         try{
 
             tx.begin();
-            carro = em.merge(carro);
-            em.merge(carro);
+            visitante = em.merge(visitante);
+            em.merge(visitante);
             tx.commit();
         }
         catch(Exception e){

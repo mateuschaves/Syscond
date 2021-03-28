@@ -7,10 +7,7 @@ package pojos;
 
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -24,17 +21,52 @@ public class Morador {
     @Id
     private String cpf;
     @Column
-    private String nome;
-    //@OneToMany(mappedBy = "proprietario")
+    private String nomeVisitante;
+    @ManyToOne
+    private Apartamento apartamento;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "proprietario")
-    private Set<Carro> carros;
+    private List<Carro> carros;
+
+    @OneToMany(mappedBy = "MoradorResponsavel")
+    private List<Visitante> visitantesList;
 
     public Morador() {
     }
 
-    public Morador(String cpf, String nome, Set<Carro> carros) {
+    public Morador(String cpf) {
         this.cpf = cpf;
-        this.nome = nome;
+    }
+
+    public Morador(String cpf, String nome, Apartamento apartamento, List<Carro> carros, List<Visitante> visitantesList) {
+        this.cpf = cpf;
+        this.nomeVisitante = nome;
+        this.apartamento = apartamento;
+        this.carros = carros;
+        this.visitantesList = visitantesList;
+    }
+
+    public Morador(String cpf, List<Carro> carros) {
+        this.cpf = cpf;
+        this.carros = carros;
+    }
+
+    public Morador(String cpf, String nome, Apartamento apartamento, List<Carro> carros) {
+        this.cpf = cpf;
+        this.nomeVisitante = nome;
+        this.apartamento = apartamento;
+        this.carros = carros;
+    }
+
+    public Morador(String cpf, String nome, Apartamento apartamento) {
+        this.cpf = cpf;
+        this.nomeVisitante = nome;
+        this.apartamento = apartamento;
+    }
+
+    public Morador(String cpf, String nome, List<Carro> carros) {
+        this.cpf = cpf;
+        this.nomeVisitante = nome;
         this.carros = carros;
     }
 
@@ -47,18 +79,35 @@ public class Morador {
     }
 
     public String getNome() {
-        return nome;
+        return nomeVisitante;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeVisitante = nome;
     }
 
-    public Set<Carro> getCarros() {
+    public List<Carro> getCarros() {
         return carros;
     }
 
-    public void setCarros(Set<Carro> carros) {
+    public void setCarros(List<Carro> carros) {
         this.carros = carros;
+    }
+
+    @JoinColumn(name = "apartamentoMorador")
+    public Apartamento getApartamento() {
+        return apartamento;
+    }
+
+    public void setApartamento(Apartamento apartamento) {
+        this.apartamento = apartamento;
+    }
+
+    public List<Visitante> getVisitantesList() {
+        return visitantesList;
+    }
+
+    public void setVisitantesList(List<Visitante> visitantesList) {
+        this.visitantesList = visitantesList;
     }
 }
