@@ -61,9 +61,10 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             fornecedor = em.merge(fornecedor);
             em.remove(fornecedor);
             tx.commit();
-            em.close();
         }catch (Exception e){
             e.getMessage();
+        }finally {
+            em.close();
         }
     }
 
@@ -79,6 +80,8 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             lista = query.getResultList();
         }catch (Exception e){
             e.getMessage();
+        }finally {
+            em.close();
         }
 
         return lista;
@@ -91,19 +94,14 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         EntityTransaction tx = em.getTransaction();
 
         try{
-
-            Fornecedor exemplo = this.procurar(fornecedor.getCnpj());
-            exemplo.setCnpj(fornecedor.getCnpj());
-            exemplo.setNome(fornecedor.getNome());
-            exemplo.setTelefone(fornecedor.getTelefone());
-
             tx.begin();
-            em.merge(exemplo);
+            em.merge(fornecedor);
             tx.commit();
         }
         catch(Exception e){
 
             System.err.println("ERRO: " + e.getMessage());
+
         }finally {
             em.close();
 

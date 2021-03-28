@@ -1,6 +1,7 @@
 package dao;
 
 
+import pojos.Fornecedor;
 import pojos.Produto;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,25 @@ public class ProdutoDAO implements ProdutoDaoInterface{
 
     @Override
     public Produto procurar(String codigoDeBarras) {
-        return null;
+
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        Produto retorno = null;
+        try {
+            tx.begin();
+            retorno = em.find(Produto.class,codigoDeBarras);
+            tx.commit();
+
+        }catch(NullPointerException e){
+
+            System.err.println("ERRO: " + e.getMessage());
+
+        }finally {
+            em.close();
+        }
+        return retorno;
+
     }
 
     @Override
@@ -46,10 +65,11 @@ public class ProdutoDAO implements ProdutoDaoInterface{
             morador = em.merge(morador);
             em.remove(morador);
             tx.commit();
-            em.close();
-
         }catch(Exception e){
             e.getMessage();
+        }
+        finally {
+            em.close();
         }
     }
 
@@ -82,9 +102,11 @@ public class ProdutoDAO implements ProdutoDaoInterface{
             tx.begin();
             em.merge(produto);
             tx.commit();
-            em.close();
+
         }catch (Exception e){
             e.getMessage();
+        }finally {
+            em.close();
         }
     }
 }

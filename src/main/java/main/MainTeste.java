@@ -31,7 +31,6 @@ public class MainTeste {
         moradorDao.adicionar(morador);
         carrosDao.adicionar(carro);
         carrosDao.adicionar(carro2);
-
         */
 
 
@@ -73,8 +72,7 @@ public class MainTeste {
             System.err.println(e.getMessage());
 
         }
-
-
+        JPAUtil.close();
 
     }
 }

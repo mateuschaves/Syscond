@@ -40,9 +40,6 @@ public class MoradorDAO implements MoradorDaoInterface{
         try{
             tx.begin();
             em.persist(morador);
-
-
-
             tx.commit();
         }catch (Exception a){
             //a.printStackTrace();
@@ -59,11 +56,16 @@ public class MoradorDAO implements MoradorDaoInterface{
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        tx.begin();
-        morador = em.merge(morador);
-        em.remove(morador);
-        tx.commit();
-        em.close();
+        try{
+            tx.begin();
+            morador = em.merge(morador);
+            em.remove(morador);
+            tx.commit();
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            em.close();
+        }
 
     }
 
@@ -71,10 +73,19 @@ public class MoradorDAO implements MoradorDaoInterface{
     public List<Morador> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-        Query query = em.createQuery("select a from Morador a", Morador.class);
 
-        List<Morador> lista = query.getResultList();
-        return lista;
+        try{
+            return (List<Morador>) em.createQuery("select a from Morador a", Morador.class).getResultList();
+        }catch (Exception e){
+
+            e.getMessage();
+
+
+        }finally {
+            em.close();
+        }
+
+        return (List<Morador>) null;
     }
 
     @Override
@@ -85,22 +96,14 @@ public class MoradorDAO implements MoradorDaoInterface{
 
         try{
 
-            Morador exemplo = this.procurar(morador.getCpf());
-            exemplo.setCpf(morador.getCpf());
-            exemplo.setNome(morador.getNome());
-            exemplo.setCarros(morador.getCarros());
-
-
             tx.begin();
-            em.merge(exemplo);
+            em.merge(morador);
             tx.commit();
         }
         catch(Exception e){
-
             System.err.println("ERRO: " + e.getMessage());
         }finally {
             em.close();
-
         }
     }
 

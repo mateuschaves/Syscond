@@ -56,11 +56,18 @@ public class CarroDAO implements CarroDaoInterface{
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        tx.begin();
-        carro = em.merge(carro);
-        em.remove(carro);
-        tx.commit();
-        em.close();
+        try{
+            tx.begin();
+            carro = em.merge(carro);
+            em.remove(carro);
+            tx.commit();
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            em.close();
+        }
+
+
 
     }
 
@@ -68,10 +75,18 @@ public class CarroDAO implements CarroDaoInterface{
     public List<Carro> listar() {
 
         EntityManager em = JPAUtil.getEntityManager();
-        Query query = em.createQuery("select a from Carro a", Carro.class);
 
-        List<Carro> lista = query.getResultList();
-        return lista;
+
+        try {
+            return (List<Carro>) em.createQuery("select a from Carro a", Carro.class)
+                    .getResultList();
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            em.close();
+        }
+
+        return (List<Carro>) null;
     }
 
     @Override
@@ -82,14 +97,8 @@ public class CarroDAO implements CarroDaoInterface{
 
         try{
 
-            Carro exemplo = this.procurar(carro.getPlaca());
-            exemplo.setPlaca(carro.getPlaca());
-            exemplo.setModelo(carro.getModelo());
-            exemplo.setCor(carro.getCor());
-            exemplo.setProprietario(carro.getProprietario());
-
             tx.begin();
-            em.merge(exemplo);
+            em.merge(carro);
             tx.commit();
         }
         catch(Exception e){
