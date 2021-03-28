@@ -31,7 +31,6 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         em.getTransaction().begin();
         try{
             em.merge(fornecedor);
-            
         }
         catch(IllegalArgumentException  e){
             throw new FornecedorNaoEncontrado(fornecedor.getCnpj());
