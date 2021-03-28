@@ -95,6 +95,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
 
         try{
             tx.begin();
+            fornecedor = em.merge(fornecedor);
             em.merge(fornecedor);
             tx.commit();
         }
