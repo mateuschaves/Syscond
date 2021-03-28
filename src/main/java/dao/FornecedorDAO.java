@@ -39,8 +39,8 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
+        tx.begin();
         try{
-            tx.begin();
             em.persist(fornecedor);
         }catch (EntityExistsException  a){
             throw new FornecedorJaExistente(fornecedor.getCnpj());
