@@ -42,10 +42,10 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         try{
             tx.begin();
             em.persist(fornecedor);
-            tx.commit();
         }catch (EntityExistsException  a){
             throw new FornecedorJaExistente(fornecedor.getCnpj());
         }finally {
+            tx.commit();
             em.close();
         }
 
