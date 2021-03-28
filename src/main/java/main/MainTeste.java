@@ -14,24 +14,24 @@ public class MainTeste {
 
     public static void main(String[] args){
 
-        /*
+
         CarroDaoInterface carrosDao = new CarroDAO();
         MoradorDaoInterface moradorDao = new MoradorDAO();
 
-        Set<Carro> setCarros = new HashSet<>();
+        List<Carro> listaCarros = new ArrayList<>();
 
-        Morador morador = new Morador("123.445.789-31","Darth-Vader",setCarros);
+        Morador morador = new Morador("123.445.789-31","Darth-Vader",listaCarros);
 
         Carro carro = new Carro("SIT-6666","I8","PRETO",morador);
         Carro carro2 = new Carro("XXX-9999","VOYAGE 2020 1.6","ROSA",morador);
 
-        setCarros.add(carro);
-        setCarros.add(carro2);
+        listaCarros.add(carro);
+        listaCarros.add(carro2);
 
         moradorDao.adicionar(morador);
         carrosDao.adicionar(carro);
         carrosDao.adicionar(carro2);
-        */
+
 
 
         ProdutoDaoInterface produtos = new ProdutoDAO();

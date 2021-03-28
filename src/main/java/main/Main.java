@@ -1,15 +1,12 @@
 package main;
 
-import dao.JPAUtil;
-import dao.ProdutoDAO;
-import dao.ProdutoDaoInterface;
+import dao.*;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import exceptions.funcionario.FuncionarioJaExistente;
 import exceptions.funcionario.FuncionarioNaoEncontrado;
+import pojos.Fornecedor;
 import pojos.Funcionario;
 import pojos.Produto;
-import dao.FuncionarioDAO;
-import dao.FuncionarioDaoInterface;
 
 import java.io.IOException;
 
@@ -84,43 +81,41 @@ public class Main {
             System.out.println("A lista de funcionários está vazia.");
         }
 
-        // Fornecedor fornecedor = new Fornecedor("1234","Breno","indefinido");
-        // Fornecedor fornecedor1 = new Fornecedor("12345","Luana","indefinido");
+         Fornecedor fornecedor = new Fornecedor("1234","Breno","indefinido");
+         Fornecedor fornecedor1 = new Fornecedor("12345","Luana","indefinido");
 
-        // FornecedorDaoInterface fornecedorDao = new FornecedorDAO();
+         FornecedorDaoInterface fornecedorDao = new FornecedorDAO();
 
-        // //fornecedorDao.adicionar(fornecedor);
-        // try {
-        //     System.out.println("Fornecedor procurado: " + fornecedorDao.procurar("1235").getNome());
-        // }catch (NullPointerException e){
-        //     System.err.println("ERRO: EITA, PORRA DO CARALHO, AGORA FUDEU, FILHA DA PUTA");
-        // }
+        fornecedorDao.adicionar(fornecedor);
+         try {
+             System.out.println("Fornecedor procurado: " + fornecedorDao.procurar("1235").getNome());
+         }catch (NullPointerException e){
+            System.err.println("ERRO: ponto nulo");
+         }
 
 
 
-        // System.out.println("Lista de fornecedores: ");
+         System.out.println("Lista de fornecedores: ");
 
-        // for (Fornecedor a: fornecedorDao.listar()) {
+        for (Fornecedor a: fornecedorDao.listar()) {
+             System.out.println("Fornecedor: " + a.getNome());
+        }
 
-        //     System.out.println("Fornecedor: " + a.getNome());
-        // }
-
-        // try {
-        //     System.out.println("Fornecedor encontrado: " + fornecedorDao.procurar("123").getNome());
-        // } catch (NullPointerException e) {
-        //     e.printStackTrace();
-        // }
+        try {
+             System.out.println("Fornecedor encontrado: " + fornecedorDao.procurar("123").getNome());
+        } catch (NullPointerException e) {
+             e.printStackTrace();
+        }
         
 
-        // fornecedorDao.remover(fornecedor);
+        fornecedorDao.remover(fornecedor);
 
-        // fornecedorDao.alterar(new Fornecedor("12345","Luana Martins de Andrade Lima","indefinido"));
+         fornecedorDao.alterar(new Fornecedor("12345","Luana Martins de Andrade Lima","indefinido"));
 
-        // System.out.println("Lista de fornecedores: ");
-        // for (Fornecedor a: fornecedorDao.listar()) {
-
-        //     System.out.println("Fornecedor: " + a.getNome());
-        // }
+        System.out.println("Lista de fornecedores: ");
+        for (Fornecedor a: fornecedorDao.listar()) {
+            System.out.println("Fornecedor: " + a.getNome());
+        }
         
         JPAUtil.close();
 
