@@ -1,10 +1,10 @@
 package exceptions.fornecedor;
 
-public class FornecedorNaoEncontrado extends Exception{
+public class FornecedorJaExistente extends Exception{
 
 	private static final long serialVersionUID = 1L;
 	
-	public FornecedorNaoEncontrado(String cnpj) {
+	public FornecedorJaExistente(String cnpj) {
 		super(cnpj);
 	}
 	
