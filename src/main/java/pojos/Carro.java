@@ -27,6 +27,12 @@ public class Carro {
     public Carro() {
     }
 
+    public Carro(String placa, String modelo, String cor) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.cor = cor;
+    }
+
     public Carro(String placa, String modelo, String cor, Morador proprietario) {
         this.placa = placa;
         this.modelo = modelo;
