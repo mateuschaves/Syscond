@@ -9,12 +9,12 @@ public interface ProdutoDaoInterface {
 
     public Produto procurar(String codigoDeBarras);
 
-    public void adicionar(Produto morador);
+    public void adicionar(Produto produto);
 
-    public void remover(Produto morador);
+    public void remover(Produto produto);
 
     public List<Produto> listar();
 
-    public void alterar(Produto morador);
+    public void alterar(Produto produto);
 
 }

@@ -1,11 +1,13 @@
 package main;
 
 import dao.JPAUtil;
-
+import dao.ProdutoDAO;
+import dao.ProdutoDaoInterface;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import exceptions.funcionario.FuncionarioJaExistente;
 import exceptions.funcionario.FuncionarioNaoEncontrado;
 import pojos.Funcionario;
+import pojos.Produto;
 import dao.FuncionarioDAO;
 import dao.FuncionarioDaoInterface;
 
@@ -20,7 +22,14 @@ public class Main {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF); //or whatever level you need
         //magical - do not touch
         
-        
+        ProdutoDaoInterface produtoDao = new ProdutoDAO();
+        try {
+            produtoDao.adicionar(new Produto("Sabão", 10, "1231", 4));
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar o produto");
+
+        }
+
         FuncionarioDaoInterface funcionarioDao = new FuncionarioDAO();
         try {
             funcionarioDao.adicionar(new Funcionario("Alexandre", "37455002025", "Contabilidade"));

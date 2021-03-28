@@ -16,10 +16,11 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "produto",schema = "syscond")
 public class Produto {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private String codigo;
     @Column
     private String nome;

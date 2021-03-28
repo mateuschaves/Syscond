@@ -27,10 +27,11 @@ public class ProdutoDAO implements ProdutoDaoInterface{
             tx.begin();
             em.persist(produto);
             tx.commit();
-            em.close();
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
             e.getMessage();
+        } finally {
+            em.close();
         }
 
     }
