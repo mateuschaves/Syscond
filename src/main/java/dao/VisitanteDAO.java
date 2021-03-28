@@ -92,10 +92,10 @@ public class VisitanteDAO implements VisitanteDaoInterface{
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-
         try{
 
             tx.begin();
+            visitante = em.merge(visitante);
             em.merge(visitante);
             tx.commit();
         }

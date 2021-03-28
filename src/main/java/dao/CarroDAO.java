@@ -98,6 +98,7 @@ public class CarroDAO implements CarroDaoInterface{
         try{
 
             tx.begin();
+            carro = em.merge(carro);
             em.merge(carro);
             tx.commit();
         }

@@ -81,6 +81,8 @@ public class Main {
             System.out.println("A lista de funcionários está vazia.");
         }
 
+
+        /*
          Fornecedor fornecedor = new Fornecedor("1234","Breno","indefinido");
          Fornecedor fornecedor1 = new Fornecedor("12345","Luana","indefinido");
 
@@ -116,7 +118,7 @@ public class Main {
         for (Fornecedor a: fornecedorDao.listar()) {
             System.out.println("Fornecedor: " + a.getNome());
         }
-        
+        */
         JPAUtil.close();
 
     }

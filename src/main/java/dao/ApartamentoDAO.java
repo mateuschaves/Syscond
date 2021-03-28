@@ -41,6 +41,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         try{
 
             tx.begin();
+            apartamento =  em.merge(apartamento);
             em.merge(apartamento);
             tx.commit();
         }

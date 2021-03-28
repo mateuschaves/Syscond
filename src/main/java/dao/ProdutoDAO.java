@@ -100,6 +100,7 @@ public class ProdutoDAO implements ProdutoDaoInterface{
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
+            produto = em.merge(produto);
             em.merge(produto);
             tx.commit();
 

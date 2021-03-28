@@ -69,7 +69,7 @@ public class MainMetodosMoradorApartamento {
         visitanteDAO.adicionar(v2);
 
 
-
+        visitanteDAO.alterar(new Visitante("4","Touma_lá_da_cá",moradorDAO.procurar("5")));
 
 
     }
