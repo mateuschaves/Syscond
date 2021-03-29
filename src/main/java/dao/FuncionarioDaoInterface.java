@@ -11,7 +11,7 @@ public interface FuncionarioDaoInterface {
 
     public void adicionar(Funcionario funcionario) throws FuncionarioJaExistente;
 
-    public void alterar(Funcionario funcionario) throws FuncionarioNaoEncontrado, FuncionarioJaExistente;
+    public void alterar(Funcionario funcionario) throws FuncionarioNaoEncontrado;
 
     public ArrayList<Funcionario> listar() throws FuncionarioNaoEncontrado;
 
