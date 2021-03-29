@@ -1,6 +1,10 @@
 package main;
 
 import dao.*;
+import exceptions.carro.CarroJaExistente;
+import exceptions.morador.MoradorJaExistente;
+import exceptions.morador.MoradorNaoEncontrado;
+import exceptions.visitante.VisitanteJaExistente;
 import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
@@ -47,7 +51,11 @@ public class MainMetodosMoradorApartamento {
         //listaCarros.add(c1);
 
 
-        moradorDAO.adicionar(m1);
+        try {
+            moradorDAO.adicionar(m1);
+        } catch (MoradorJaExistente e) {
+            System.out.println("O morador de cpf " + e.getMessage() + " já foi adicionado no sistema.");
+        }
         //carroDAO.adicionar(c1);
 
 
@@ -55,29 +63,45 @@ public class MainMetodosMoradorApartamento {
 
         Carro carroNovo = new Carro("M4-A1","Honda civic","Rosa",m1);
 
-        carroDAO.adicionar(carroNovo);
+        try {
+            carroDAO.adicionar(carroNovo);
+        } catch (CarroJaExistente e) {
+            System.out.println("O carro de placa " + e.getMessage() + " já foi adicionado no sistema.");
+        }
 
         //criando um visitante;
 
         Visitante v1 = new Visitante("1999","Kaifuku",m1);
 
 
-
-        Visitante v2 = new Visitante("4","Touma",moradorDAO.procurar("5"));
-
-        visitanteDAO.adicionar(v1);
-        visitanteDAO.adicionar(v2);
-
+        Visitante v2 = null;
+        try {
+            v2 = new Visitante("4","Touma",moradorDAO.procurar("5"));
+        } catch (MoradorNaoEncontrado e) {
+            System.out.println("O morador com cpf " + e.getMessage() + " não foi encontrado no sistema.");
+        }
 
         try {
+            visitanteDAO.adicionar(v1);
+        } catch (VisitanteJaExistente e) {
+            System.out.println("O visitante de cpf " + e.getMessage() + " já foi adicionado no sistema.");
+        }
+        try {
+            visitanteDAO.adicionar(v2);
+        } catch (VisitanteJaExistente e) {
+            System.out.println("O visitante de cpf " + e.getMessage() + " já foi adicionado no sistema.");
+        }
+
+
+        //try {
              //visitanteDAO.alterar(new Visitante("10", "Hamazura", moradorDAO.procurar("5")));
             //apartamentoDAO.alterar(new Apartamento("4", "HELL", "5º"));
             //carroDAO.alterar(new Carro("M4-A1","Honda civic","Vermelho Sangue!",m1));
             // moradorDAO.alterar(new Morador("6","Kaifuku",ap1,listaCarros));
 
-        }catch (Exception e){
-            System.err.println("fudeu");
-        }
+        //}catch (Exception e){
+        //    System.err.println("fudeu");
+        //}
     }
 
 }
