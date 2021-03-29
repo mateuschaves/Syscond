@@ -69,9 +69,15 @@ public class MainMetodosMoradorApartamento {
         visitanteDAO.adicionar(v2);
 
 
-        visitanteDAO.alterar(new Visitante("4","Touma_lá_da_cá",moradorDAO.procurar("5")));
+        try {
+             //visitanteDAO.alterar(new Visitante("10", "Hamazura", moradorDAO.procurar("5")));
+            //apartamentoDAO.alterar(new Apartamento("4", "HELL", "5º"));
+            //carroDAO.alterar(new Carro("M4-A1","Honda civic","Vermelho Sangue!",m1));
+            // moradorDAO.alterar(new Morador("6","Kaifuku",ap1,listaCarros));
 
-
+        }catch (Exception e){
+            System.err.println("fudeu");
+        }
     }
 
 }
