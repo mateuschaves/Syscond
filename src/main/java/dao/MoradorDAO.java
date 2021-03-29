@@ -1,16 +1,18 @@
 package dao;
 
+import exceptions.carro.CarroJaExistente;
+import exceptions.carro.CarroNaoEncontrado;
+import exceptions.morador.MoradorJaExistente;
+import exceptions.morador.MoradorNaoEncontrado;
 import pojos.Morador;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 public class MoradorDAO implements MoradorDaoInterface{
 
     @Override
-    public Morador procurar(String cpf){
+    public Morador procurar(String cpf) throws MoradorNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -21,9 +23,8 @@ public class MoradorDAO implements MoradorDaoInterface{
             retorno = em.find(Morador.class,cpf);
             tx.commit();
 
-        }catch(NullPointerException e){
-
-            System.err.println("ERRO: " + e.getMessage());
+        }catch(Exception e){
+            throw new MoradorNaoEncontrado(cpf);
 
         }finally {
             em.close();
@@ -32,7 +33,7 @@ public class MoradorDAO implements MoradorDaoInterface{
     }
 
     @Override
-    public void adicionar(Morador morador) {
+    public void adicionar(Morador morador) throws MoradorJaExistente {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -41,9 +42,8 @@ public class MoradorDAO implements MoradorDaoInterface{
             tx.begin();
             em.persist(morador);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (EntityExistsException a){
+            throw new MoradorJaExistente(morador.getCpf());
         }finally {
             em.close();
         }
@@ -51,7 +51,7 @@ public class MoradorDAO implements MoradorDaoInterface{
     }
 
     @Override
-    public void remover(Morador morador) {
+    public void remover(Morador morador) throws MoradorNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -62,11 +62,8 @@ public class MoradorDAO implements MoradorDaoInterface{
             em.remove(morador);
             tx.commit();
 
-        }catch (Exception e){
-
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
-                    " pois o objeto alvo não existe no banco de dados");
+        }catch (MoradorNaoEncontrado e){
+            throw new MoradorNaoEncontrado(morador.getCpf());
         }finally {
             em.close();
         }
@@ -74,26 +71,21 @@ public class MoradorDAO implements MoradorDaoInterface{
     }
 
     @Override
-    public List<Morador> listar() {
+    public List<Morador> listar() throws MoradorNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
 
         try{
             return (List<Morador>) em.createQuery("select a from Morador a", Morador.class).getResultList();
         }catch (Exception e){
-
-            e.getMessage();
-
-
+            throw new MoradorNaoEncontrado();
         }finally {
             em.close();
         }
-
-        return (List<Morador>) null;
     }
 
     @Override
-    public void alterar(Morador morador){
+    public void alterar(Morador morador) throws MoradorNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -104,11 +96,8 @@ public class MoradorDAO implements MoradorDaoInterface{
             em.merge(morador);
             tx.commit();
         }
-        catch(Exception e){
-
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
-                    " pois o objeto alvo não existe no banco de dados");
+        catch(MoradorNaoEncontrado | NullPointerException e){
+            throw new MoradorNaoEncontrado(morador.getCpf());
 
         }finally {
             em.close();

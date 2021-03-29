@@ -1,9 +1,12 @@
 package dao;
 
 
+import exceptions.visitante.VisitanteJaExistente;
+import exceptions.visitante.VisitanteNaoEncontrado;
 import pojos.Carro;
 import pojos.Visitante;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -13,7 +16,7 @@ public class VisitanteDAO implements VisitanteDaoInterface{
 
 
     @Override
-    public Visitante procurar(String cpf) {
+    public Visitante procurar(String cpf) throws VisitanteNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -24,9 +27,8 @@ public class VisitanteDAO implements VisitanteDaoInterface{
             retorno = em.find(Visitante.class,cpf);
             tx.commit();
 
-        }catch(NoResultException e){
-
-            System.err.println("ERRO: " + e.getMessage());
+        }catch(Exception e){
+            throw new VisitanteNaoEncontrado(cpf);
 
         }finally {
             em.close();
@@ -36,7 +38,7 @@ public class VisitanteDAO implements VisitanteDaoInterface{
     }
 
     @Override
-    public void adicionar(Visitante visitante) {
+    public void adicionar(Visitante visitante) throws VisitanteJaExistente {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -45,9 +47,8 @@ public class VisitanteDAO implements VisitanteDaoInterface{
             tx.begin();
             em.persist(visitante);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (EntityExistsException a){
+            throw new VisitanteJaExistente(visitante.getCpf());
         }finally {
             em.close();
         }
@@ -55,7 +56,7 @@ public class VisitanteDAO implements VisitanteDaoInterface{
     }
 
     @Override
-    public void remover(Visitante visitante) {
+    public void remover(Visitante visitante) throws VisitanteNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -66,30 +67,28 @@ public class VisitanteDAO implements VisitanteDaoInterface{
             em.remove(visitante);
             tx.commit();
         }catch (Exception e){
-            e.getMessage();
+            throw new VisitanteNaoEncontrado(visitante.getCpf());
         }finally {
             em.close();
         }
     }
 
     @Override
-    public List<Visitante> listar() {
+    public List<Visitante> listar() throws VisitanteNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         try {
             return (List<Visitante>) em.createQuery("select a from Visitante a", Visitante.class)
                     .getResultList();
         }catch (Exception e){
-            e.getMessage();
+            throw new VisitanteNaoEncontrado();
         }finally {
             em.close();
         }
-
-        return (List<Visitante>) null;
     }
 
     @Override
-    public void alterar(Visitante visitante) {
+    public void alterar(Visitante visitante) throws VisitanteNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -100,11 +99,8 @@ public class VisitanteDAO implements VisitanteDaoInterface{
             em.merge(visitante);
             tx.commit();
         }
-        catch(NullPointerException e){
-
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
-                    " pois o objeto alvo não existe no banco de dados");
+        catch(NullPointerException | VisitanteNaoEncontrado e){
+            throw new VisitanteNaoEncontrado(visitante.getCpf());
         }finally {
             em.close();
 

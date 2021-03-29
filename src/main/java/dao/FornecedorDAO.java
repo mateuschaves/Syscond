@@ -37,11 +37,9 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             em.merge(fornecedor);
             tx.commit();
         }
-        catch(IllegalArgumentException  e){
+        catch(NullPointerException  e){
 
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
-                    " pois o objeto alvo não existe no banco de dados");
+            throw new FornecedorNaoEncontrado(fornecedor.getCnpj());
 
         }finally {
 

@@ -1,16 +1,16 @@
 package dao;
 
+import exceptions.carro.CarroJaExistente;
+import exceptions.carro.CarroNaoEncontrado;
 import pojos.Carro;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 public class CarroDAO implements CarroDaoInterface{
 
     @Override
-    public Carro procurar(String placa){
+    public Carro procurar(String placa) throws CarroNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -21,10 +21,8 @@ public class CarroDAO implements CarroDaoInterface{
             retorno = em.find(Carro.class,placa);
             tx.commit();
 
-        }catch(NullPointerException e){
-
-            System.err.println("ERRO: " + e.getMessage());
-
+        }catch(Exception e){
+            throw new CarroNaoEncontrado(placa);
         }finally {
             em.close();
         }
@@ -32,7 +30,7 @@ public class CarroDAO implements CarroDaoInterface{
     }
 
     @Override
-    public void adicionar(Carro carro) {
+    public void adicionar(Carro carro) throws CarroJaExistente {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -41,9 +39,8 @@ public class CarroDAO implements CarroDaoInterface{
             tx.begin();
             em.persist(carro);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (EntityExistsException a){
+            throw new CarroJaExistente(carro.getPlaca());
         }finally {
             em.close();
         }
@@ -51,7 +48,7 @@ public class CarroDAO implements CarroDaoInterface{
     }
 
     @Override
-    public void remover(Carro carro) {
+    public void remover(Carro carro) throws CarroNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -62,7 +59,7 @@ public class CarroDAO implements CarroDaoInterface{
             em.remove(carro);
             tx.commit();
         }catch (Exception e){
-            e.getMessage();
+            throw new CarroNaoEncontrado(carro.getPlaca());
         }finally {
             em.close();
         }
@@ -72,42 +69,32 @@ public class CarroDAO implements CarroDaoInterface{
     }
 
     @Override
-    public List<Carro> listar() {
-
+    public List<Carro> listar() throws CarroNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
-
-
         try {
             return (List<Carro>) em.createQuery("select a from Carro a", Carro.class)
                     .getResultList();
         }catch (Exception e){
-            e.getMessage();
+            throw new CarroNaoEncontrado();
         }finally {
             em.close();
         }
-
-        return (List<Carro>) null;
     }
 
     @Override
-    public void alterar(Carro carro){
+    public void alterar(Carro carro) throws CarroNaoEncontrado {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
-
             tx.begin();
             this.procurar(carro.getPlaca()).getPlaca();
             em.merge(carro);
             tx.commit();
         }
-        catch(Exception e){
-
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
-                    " pois o objeto alvo não existe no banco de dados");
-
+        catch(CarroNaoEncontrado | NullPointerException e){
+            throw new CarroNaoEncontrado(carro.getPlaca());
         }finally {
             em.close();
 
