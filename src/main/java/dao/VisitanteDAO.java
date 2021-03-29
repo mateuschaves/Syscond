@@ -6,6 +6,7 @@ import pojos.Visitante;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class VisitanteDAO implements VisitanteDaoInterface{
@@ -23,7 +24,7 @@ public class VisitanteDAO implements VisitanteDaoInterface{
             retorno = em.find(Visitante.class,cpf);
             tx.commit();
 
-        }catch(NullPointerException e){
+        }catch(NoResultException e){
 
             System.err.println("ERRO: " + e.getMessage());
 
@@ -95,13 +96,15 @@ public class VisitanteDAO implements VisitanteDaoInterface{
         try{
 
             tx.begin();
-            visitante = em.merge(visitante);
+            this.procurar(visitante.getCpf()).getCpf();
             em.merge(visitante);
             tx.commit();
         }
-        catch(Exception e){
+        catch(NullPointerException e){
 
             System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
 

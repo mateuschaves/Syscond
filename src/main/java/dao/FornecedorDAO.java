@@ -28,15 +28,23 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     @Override
     public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
-        em.getTransaction().begin();
+        EntityTransaction tx = em.getTransaction();
+
         try{
-            fornecedor = em.merge(fornecedor);
+
+            tx.begin();
+            this.procurar(fornecedor.getCnpj()).getNome();
             em.merge(fornecedor);
+            tx.commit();
         }
         catch(IllegalArgumentException  e){
-            throw new FornecedorNaoEncontrado(fornecedor.getCnpj());
+
+            System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
+
         }finally {
-            em.getTransaction().commit();
+
             em.close();
         }
     }

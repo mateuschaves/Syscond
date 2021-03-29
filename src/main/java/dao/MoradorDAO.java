@@ -58,11 +58,15 @@ public class MoradorDAO implements MoradorDaoInterface{
 
         try{
             tx.begin();
-            morador = em.merge(morador);
+            this.procurar(morador.getCpf()).getNome();
             em.remove(morador);
             tx.commit();
+
         }catch (Exception e){
-            e.getMessage();
+
+            System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
         }
@@ -95,13 +99,17 @@ public class MoradorDAO implements MoradorDaoInterface{
         EntityTransaction tx = em.getTransaction();
 
         try{
-
             tx.begin();
+            this.procurar(morador.getCpf()).getCpf();
             em.merge(morador);
             tx.commit();
         }
         catch(Exception e){
+
             System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
+
         }finally {
             em.close();
         }

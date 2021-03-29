@@ -29,8 +29,25 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
 
     @Override
     public void alterar(Funcionario funcionario) throws FuncionarioNaoEncontrado, FuncionarioJaExistente {
-        remover(funcionario.getCpf());
-        adicionar(funcionario);
+
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try{
+
+            tx.begin();
+            this.procurar(funcionario.getCpf()).getCpf();
+            em.merge(funcionario);
+            tx.commit();
+        }
+        catch(Exception e){
+            System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
+        }finally {
+            em.close();
+        }
+
     }
 
     @Override

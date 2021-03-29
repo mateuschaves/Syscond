@@ -100,12 +100,13 @@ public class ProdutoDAO implements ProdutoDaoInterface{
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            produto = em.merge(produto);
+            this.procurar(produto.getCodigo()).getCodigo();
             em.merge(produto);
             tx.commit();
-
         }catch (Exception e){
-            e.getMessage();
+            System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
         }

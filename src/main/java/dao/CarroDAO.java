@@ -98,13 +98,16 @@ public class CarroDAO implements CarroDaoInterface{
         try{
 
             tx.begin();
-            carro = em.merge(carro);
+            this.procurar(carro.getPlaca()).getPlaca();
             em.merge(carro);
             tx.commit();
         }
         catch(Exception e){
 
             System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
+
         }finally {
             em.close();
 

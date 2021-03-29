@@ -41,12 +41,14 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         try{
 
             tx.begin();
-            apartamento =  em.merge(apartamento);
+            this.procurar(apartamento.getNumero()).getNumero();
             em.merge(apartamento);
             tx.commit();
         }
         catch(Exception e){
             System.err.println("ERRO: " + e.getMessage());
+            System.err.println("Não foi possivel alterar os dados," +
+                    " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
         }
