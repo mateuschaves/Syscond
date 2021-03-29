@@ -8,4 +8,8 @@ public class FuncionarioNaoEncontrado extends Exception{
 	public FuncionarioNaoEncontrado(String mensagem) {
 		super(mensagem);
 	}
+
+    public FuncionarioNaoEncontrado() {
+        super();
+    }
 }
