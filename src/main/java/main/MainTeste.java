@@ -2,6 +2,9 @@ package main;
 
 
 import dao.*;
+import exceptions.carro.CarroJaExistente;
+import exceptions.morador.MoradorJaExistente;
+import exceptions.produto.ProdutoNaoEncontrado;
 import pojos.Carro;
 import pojos.Morador;
 import pojos.Produto;
@@ -28,11 +31,21 @@ public class MainTeste {
         listaCarros.add(carro);
         listaCarros.add(carro2);
 
-        moradorDao.adicionar(morador);
-        carrosDao.adicionar(carro);
-        carrosDao.adicionar(carro2);
-
-
+        try {
+            moradorDao.adicionar(morador);
+        } catch (MoradorJaExistente e) {
+            System.out.println("O morador de cpf " + e.getMessage() + " já foi adicionado no sistema.");
+        }
+        try {
+            carrosDao.adicionar(carro);
+        } catch (CarroJaExistente e) {
+            System.out.println("O carro de placa " + e.getMessage() + " já foi adicionado no sistema.");
+        }
+        try {
+            carrosDao.adicionar(carro2);
+        } catch (CarroJaExistente e) {
+            System.out.println("O carro de placa " + e.getMessage() + " já foi adicionado no sistema.");
+        }
 
         ProdutoDaoInterface produtos = new ProdutoDAO();
         Produto produto = new Produto("Sabão em pó",10,"1",12);
@@ -40,7 +53,11 @@ public class MainTeste {
         //produtos.adicionar(produto);
         List<Produto> produtoList = new ArrayList<>();
 
-        produtos.alterar(produto);
+        try {
+            produtos.alterar(produto);
+        } catch (ProdutoNaoEncontrado e) {
+            System.out.println("O produto com código de barras " + e.getMessage() + " não foi encontrado no sistema.");
+        }
         try{
 
             produtoList = produtos.listar();
@@ -56,7 +73,11 @@ public class MainTeste {
 
         }
 
-        produtos.remover(produto);
+        try {
+            produtos.remover(produto);
+        } catch (ProdutoNaoEncontrado e) {
+            System.out.println("O produto com código de barras " + e.getMessage() + " não foi encontrado no sistema.");
+        }
 
         try{
 
