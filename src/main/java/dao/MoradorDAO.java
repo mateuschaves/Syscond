@@ -58,14 +58,14 @@ public class MoradorDAO implements MoradorDaoInterface{
 
         try{
             tx.begin();
-            this.procurar(morador.getCpf()).getNome();
+            morador = em.merge(morador);
             em.remove(morador);
             tx.commit();
 
         }catch (Exception e){
 
             System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
+            System.err.println("Não foi possivel apagar os dados," +
                     " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
