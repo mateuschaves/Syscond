@@ -83,8 +83,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
                     <configuration>
-                        <source>15</source> <!-- TROCA PRA TUA VERSÃO, COMPANHEIRO -->
-                        <target>15</target> <!-- TROCA PRA TUA VERSÃO, COMPANHEIRO -->
+                        <source>${env.JAVA_VERSION}</source>
+                        <target>${env.JAVA_VERSION}</target>
                     </configuration>
                 </plugin>
                 <plugin>
