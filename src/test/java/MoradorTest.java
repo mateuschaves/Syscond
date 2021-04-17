@@ -5,7 +5,7 @@ import pojos.Morador;
 
 import java.util.ArrayList;
 
-public class MoradorTeste {
+public class MoradorTest {
     @Test
     public void testNome(){
         Assert.assertEquals(
