@@ -1,12 +1,11 @@
+import dao.ApartamentoDAO;
+import dao.MoradorDAO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
-import dao.MoradorDAO;
-import dao.ApartamentoDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,4 +106,3 @@ public class MoradorTest {
         Assert.assertEquals(newName, moradorUpdated.getNome());
     }
 }
-
