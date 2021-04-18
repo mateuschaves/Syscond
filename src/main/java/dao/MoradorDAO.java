@@ -115,4 +115,20 @@ public class MoradorDAO implements MoradorDaoInterface{
         }
     }
 
+    public void cleanUp(){
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.createNativeQuery("SET FOREIGN_KEY_CHECKS = 0;").executeUpdate();
+            em.createNativeQuery("truncate table morador;").executeUpdate();
+            em.createNativeQuery("SET FOREIGN_KEY_CHECKS = 1;").executeUpdate();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
 }
