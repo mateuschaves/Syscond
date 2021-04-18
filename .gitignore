@@ -8,3 +8,4 @@ target
 src/main/resources/META-INF/persistence.xml
 docker-compose.yml
 Syscond_maven.iml
+syscond.iml

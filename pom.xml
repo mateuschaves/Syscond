@@ -23,6 +23,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>4.3.8.Final</version>
@@ -52,6 +64,14 @@
     </dependencies>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
         <pluginManagement>
             <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
@@ -69,8 +89,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
                     <configuration>
-                        <source>1.8</source> <!-- TROCA PRA TUA VERSÃO, COMPANHEIRO -->
-                        <target>1.8</target> <!-- TROCA PRA TUA VERSÃO, COMPANHEIRO -->
+                        <source>${env.JAVA_VERSION}</source>
+                        <target>${env.JAVA_VERSION}</target>
                     </configuration>
                 </plugin>
                 <plugin>
