@@ -1,5 +1,7 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
@@ -8,26 +10,40 @@ import dao.ApartamentoDAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
-public class MoradorTeste {
+public class MoradorTest {
 
-    private final Apartamento apartamentoMock = new Apartamento("1", "Primeiro", "B");
     private final List<Carro> carrosMock = new ArrayList<>();
-    private final Morador moradorMock = new Morador("115", "Mateus Henrique", this.apartamentoMock, this.carrosMock);
 
     private final MoradorDAO moradorDao = new MoradorDAO();
     private final ApartamentoDAO apartamentoDAO = new ApartamentoDAO();
 
 
 
-    private void createMorador() {
+    private Morador createMorador() {
         try {
-            this.apartamentoDAO.adicionar(this.apartamentoMock);
-            this.moradorDao.adicionar(this.moradorMock);
+            Random rand = new Random();
+            Apartamento apartamentoMock = new Apartamento(Integer.toString(rand.nextInt()), "Primeiro", "B");
+            Morador moradorMock = new Morador(Integer.toString(rand.nextInt()), "Mateus Henrique", apartamentoMock, this.carrosMock);
+
+            this.apartamentoDAO.adicionar(apartamentoMock);
+            this.moradorDao.adicionar(moradorMock);
+
+            return moradorMock;
         }catch (Exception e) {
             System.out.println("createMorador failed");
+            return null;
         }
+    }
+
+    @Before
+    public void cleanUp(){
+        System.out.println("Limpando dados...");
+        this.apartamentoDAO.cleanUp();
+        this.moradorDao.cleanUp();
+        System.out.println("Dados limpos");
     }
 
     @Test
@@ -47,12 +63,12 @@ public class MoradorTeste {
     @Test
     public void shouldCreateMoradorSuccessfully(){
         try {
-            this.createMorador();
+            Morador moradorMock = this.createMorador();
             List<Morador> moradores = this.moradorDao.listar();
             Assert.assertEquals(1, moradores.size());
             Morador morador = moradores.get(0);
-            Assert.assertEquals(this.moradorMock.getNome(), morador.getNome());
-            Assert.assertEquals(this.moradorMock.getCpf(), morador.getCpf());
+            Assert.assertEquals(moradorMock.getNome(), morador.getNome());
+            Assert.assertEquals(moradorMock.getCpf(), morador.getCpf());
         }catch (Exception e) {
             System.out.println("shouldCreateMoradorSuccessfully failed");
         }
@@ -73,10 +89,10 @@ public class MoradorTeste {
 
     @Test
     public void shouldBeAbleToRemoveMorador(){
-        this.createMorador();
+        Morador moradorMock = this.createMorador();
         List<Morador> moradoresBeforeRemove = this.moradorDao.listar();
         Assert.assertEquals(1, moradoresBeforeRemove.size());
-        this.moradorDao.remover(this.moradorMock);
+        this.moradorDao.remover(moradorMock);
         List<Morador> moradoresAfterRemove = this.moradorDao.listar();
         Assert.assertEquals(0, moradoresAfterRemove.size());
     }
@@ -84,10 +100,10 @@ public class MoradorTeste {
     @Test
     public void shouldBeAbleToUpdateMorador(){
         String newName = "Mateus Henrique Editado";
-        this.createMorador();
-        this.moradorMock.setNome(newName);
-        this.moradorDao.alterar(this.moradorMock);
-        Morador moradorUpdated = this.moradorDao.procurar(this.moradorMock.getCpf());
+        Morador moradorMock = this.createMorador();
+        moradorMock.setNome(newName);
+        this.moradorDao.alterar(moradorMock);
+        Morador moradorUpdated = this.moradorDao.procurar(moradorMock.getCpf());
         Assert.assertEquals(newName, moradorUpdated.getNome());
     }
 }
