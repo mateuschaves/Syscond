@@ -8,8 +8,14 @@ package pojos;
 import javax.persistence.*;
 
 /**
+ *  @author Mateus Martins
+ *  @author Breno Araujo
+ *  @author Eduardo Marinho
+ *  @author Mateus Henrique
  *
- * @author Mattskywalker
+ *  pojo de visitante com seus atributos mapeados, entidades, colouna, chave primaria;
+ *  com relacionamento com morador, varios visitantes para um morador (n para 1);
+ *  Alem de seus construtores gets e sets.
  */
 
 @Entity

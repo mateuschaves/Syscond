@@ -6,6 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+/**
+ *   @author Mateus Martins
+ *   @author Breno Araujo
+ *   @author Eduardo Marinho
+ *   @author Mateus Henrique
+ *
+ *   pojo de funcionario com seus atributos mapeados, entidades, colouna, chave primaria.
+ *   Alem de seus construtores gets e sets.
+*/
+
 @NamedQueries({ @NamedQuery(name = "Funcionario.buscaPorCPF", query = "select f from Funcionario f where f.cpf = :cpf"),
                 @NamedQuery(name = "Funcionario.buscaTodos", query = "select f from Funcionario f") })
 @Entity

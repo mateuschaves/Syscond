@@ -11,8 +11,14 @@ import exceptions.historico.HistoricoVazio;
 import javax.persistence.*;
 
 /**
+ * @author Mateus Martins
+ * @author Breno Araujo
+ * @author Eduardo Marinho
+ * @author Mateus Henrique
  *
- * @author Mattskywalker
+ * pojo de produto com seus atributos mapeados, entidades, colouna, chave primaria;
+ * com relacionamento com fornecedor (falta fazer),  (n para 1);
+ * Alem de seus construtores gets e sets.
  */
 
 @Entity

@@ -8,6 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+/**
+ *   @author Mateus Martins
+ *   @author Breno Araujo
+ *   @author Eduardo Marinho
+ *   @author Mateus Henrique
+ *
+ *   pojo de fornecedor com seus atributos mapeados, entidades, colouna, chave primaria e
+ *   com relacionamento com produto (falta fazer),  (1 para n).
+ *   Alem de seus construtores gets e sets.
+*/
 @NamedQueries({ 
     @NamedQuery(name = "Fornecedor.buscaPorCNPJ", query = "select f from Fornecedor f where f.cnpj = :cnpj"),
     @NamedQuery(name = "Fornecedor.buscaTodos", query = "select f from Fornecedor f") })

@@ -11,7 +11,14 @@ import java.util.List;
 
 /**
  *
- * @author Mattskywalker
+ * @author Mateus Martins
+ * @author Breno Araujo
+ * @author Eduardo Marinho
+ * @author Mateus Henrique
+ *
+ * pojo de apartamaneto com seus atributos mapeados, entidades, colounas, chave primaria
+ * com relacionamento com morador, um apartamento para varios moradores (1 para n).
+ * Alem de seus construtores gets e sets.
  */
 @Entity
 @Table(name = "apartamento",schema = "syscond")

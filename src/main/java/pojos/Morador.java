@@ -10,8 +10,16 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
+ *  @author Mateus Martins
+ *  @author Breno Araujo
+ *  @author Eduardo Marinho
+ *  @author Mateus Henrique
  *
- * @author Mattskywalker
+ *  pojo de morador com seus atributos mapeados, entidades, colouna, chave primaria;
+ *  com relacionamento com apartamento, varios moradores para um apartamento (n para 1);
+ *  com relacionamento com carros, varios carros  para um morador (n para 1);
+ *  com relacionamento com visitante, varios visitantes para um morador (n para 1);
+ *  Alem de seus construtores gets e sets.
  */
 
 @Entity

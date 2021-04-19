@@ -5,12 +5,19 @@
  */
 package pojos;
 
-/*
+import javax.persistence.*;
+/**
  *
- * @author Mattskywalker
+ *   @author Mateus Martins
+ *   @author Breno Araujo
+ *   @author Eduardo Marinho
+ *   @author Mateus Henrique
+ *
+ *   pojo de carro com seus atributos mapeados, entidades, colouna, chave primaria e
+ *   com relacionamento com morador, varios carros para um morador (n para 1).
+ *   Alem de seus construtores gets e sets.
  */
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "carro",schema = "syscond")
