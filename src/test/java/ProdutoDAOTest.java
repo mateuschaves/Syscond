@@ -63,10 +63,10 @@ public class ProdutoDAOTest {
     public void shouldBeAbleToUpdateProduto() {
         this.produtoDAO.adicionar(produtoMock);
 
-      //  this.produtoMock.setNome("Kit Sabão para diluir OMO 500ml com garrafa");
-      //  this.produtoMock.setPreco(21.99);
+        this.produtoMock.setNome("Kit Sabão para diluir OMO 500ml com garrafa");
+        this.produtoMock.setPreco(21.99);
         /*this.produtoMock.setCodigo(produto.getCodigo()); Código é a chave primária*/
-      //  this.produtoMock.setQuantidade(5);
+        this.produtoMock.setQuantidade(5);
 
         this.produtoDAO.alterar(this.produtoMock);
 
