@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package pojos;
-import java.util.ArrayList;
 
-import exceptions.historico.HistoricoVazio;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Random;
 
 /**
  *   @author Mateus Martins
@@ -17,6 +18,7 @@ import javax.persistence.*;
  *   @author Mateus Henrique;
  *   descricao:
  *   pojo de produto com seus atributos mapeados, entidades, colouna, chave primaria;
+ *   com relacionamento com fornecedor (falta fazer),  (n para 1);
  *   Alem de seus construtores gets e sets;
  *   nome deve ser obrigatorio e unico;
  *   codigo deve ser obrigatorio, unico e deve aceitar apenas numeros;
@@ -26,7 +28,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "produto",schema = "syscond")
+@Table(name = "produto", schema = "syscond")
 public class Produto {
 
     @Id
@@ -38,35 +40,39 @@ public class Produto {
     private double preco;
     @Column
     private double quantidade;
-    @Column
-    private double precoMedio;
+    /*@Column
+    private double precoMedio; FIXME Isso precisa ser implementado ou removido
+    /*private ArrayList<Double> historicoPreco; FIXME Isso precisa ser implementado ou removido*/
 
-    private ArrayList<Double> historicoPreco = new ArrayList<>();
 
     public Produto() {
+        this.codigo = "789" + new Random().nextInt((int) Math.pow(10, 10));
+        this.nome = "";
+        this.preco = 0.0;
+        this.quantidade = 0.0;
+    }
+
+    /**
+     * @param nome ,
+     * @param preco e
+     * @param quantidade sao os parametros usados nesse segundo construtor de produto.
+     */
+    public Produto(String nome, double preco, double quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
     }
 
     /**
      * @param nome ,
      * @param preco ,
      * @param codigo e
-     * @param quantidade sao os parametros usados nesse segundo construtor de produto, pois o primeiro construtor eh vazio.
+     * @param quantidade sao os parametros usados nesse terceiro construtor de produto.
      */
     public Produto(String nome, double preco, String codigo, double quantidade) {
         this.nome = nome;
         this.preco = preco;
         this.codigo = codigo;
-        this.quantidade = quantidade;
-    }
-
-    /**
-     * @param nome ,
-     * @param preco e
-     * @param quantidade sao os parametros usados nesse terceiro construtor de produto.
-     */
-    public Produto(String nome, double preco, double quantidade) {
-        this.nome = nome;
-        this.preco = preco;
         this.quantidade = quantidade;
     }
 
@@ -78,11 +84,28 @@ public class Produto {
     }
 
     /**
+     *
+     * @param nome eh atribuido um novo nome para o produto.
+     */
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    /**
      * @return retorna o preco do produto.
      */
     public double getPreco() {
         return preco;
     }
+
+    /**
+     *
+     * @param preco eh atribuido um novo preco para o produto.
+     */
+    public void setPreco(double preco){
+        this.preco = preco;
+    }
+
 
     /**
      * @return retorna o codigo do produto.
@@ -92,23 +115,40 @@ public class Produto {
     }
 
     /**
+     *
+     * @param codigo eh atribuido um novo codigo para o produto.
+     */
+    public void setCodigo(String codigo){
+        this.codigo = codigo;
+    }
+
+    /**
      * @return retorna a quantidade do produto.
      */
     public double getQuantidade() {
         return quantidade;
     }
 
-    /*public double getPrecoMedio() throws HistoricoVazio {
-        return negocios.Almoxarifado.calculaPrecoMedio(this.historicoPreco);
-    }
-*/
     /**
-     * @return retorna o historico de precos dos produtos.
+     *
+     * @param quantidade eh atribuido uma nova quantidade para o produto.
      */
+    public void setQuantidade(double quantidade){
+        this.quantidade = quantidade;
+    }
+
+
+
+    /*
+    public double getPrecoMedio() throws HistoricoVazio {
+        return negocios.Almoxarifado.calculaPrecoMedio(this.historicoPreco);
+    } FIXME Isso precisa ser implementado ou removido
+
+
     public ArrayList<Double> getHistoricoPreco() {
         return historicoPreco;
-    }
-    
-    
-    
+    } FIXME Isso precisa ser implementado ou removido
+    */
+
+
 }
