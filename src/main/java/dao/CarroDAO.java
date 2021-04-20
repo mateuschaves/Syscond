@@ -9,6 +9,11 @@ import java.util.List;
 
 public class CarroDAO implements CarroDaoInterface{
 
+    /**
+     *
+     * @param placa utilizado para procurar um carro;
+     * @return retorna um carro.
+     */
     @Override
     public Carro procurar(String placa){
 
@@ -31,6 +36,9 @@ public class CarroDAO implements CarroDaoInterface{
         return retorno;
     }
 
+    /**
+     * @param carro utilizado para adicionar um carro.
+     */
     @Override
     public void adicionar(Carro carro) {
 
@@ -50,6 +58,10 @@ public class CarroDAO implements CarroDaoInterface{
 
     }
 
+    /**
+     *
+     * @param carro utilizado para remover um carro.
+     */
     @Override
     public void remover(Carro carro) {
 
@@ -71,6 +83,9 @@ public class CarroDAO implements CarroDaoInterface{
 
     }
 
+    /**
+     * @return retorna uma lista de carros.
+     */
     @Override
     public List<Carro> listar() {
 
@@ -89,6 +104,10 @@ public class CarroDAO implements CarroDaoInterface{
         return (List<Carro>) null;
     }
 
+    /**
+     *
+     * @param carro utilizado para alterar um carro.
+     */
     @Override
     public void alterar(Carro carro){
 

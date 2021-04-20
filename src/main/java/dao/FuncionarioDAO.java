@@ -12,6 +12,12 @@ import pojos.Funcionario;
 
 public class FuncionarioDAO implements FuncionarioDaoInterface {
 
+    /**
+     *
+     * @param funcionario utilizado para adicionar um funcionario;
+     * @throws FuncionarioJaExistente caso um usuario queira adicionar um funcionario que ja existe no
+     * banco de dados.
+     */
     @Override
     public void adicionar(Funcionario funcionario) throws FuncionarioJaExistente {
         try {
@@ -27,6 +33,13 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param funcionario utilizado para alterar um funcionario;
+     * @throws FuncionarioNaoEncontrado caso um usuario queira alterar um funcionario que nao existe BD;
+     * @throws FuncionarioJaExistente confere se o funcionario existe no BD,pois nao eh possivel alterar algo que
+     * nao existe.
+     */
     @Override
     public void alterar(Funcionario funcionario) throws FuncionarioNaoEncontrado, FuncionarioJaExistente {
 
@@ -50,6 +63,11 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
 
     }
 
+    /**
+     *
+     * @return retorna uma ArrayList de funcionarios;
+     * @throws FuncionarioNaoEncontrado caso o Arraylist esteja vazio.
+     */
     @Override
     public ArrayList<Funcionario> listar() throws FuncionarioNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
@@ -63,6 +81,12 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param cpf utilizado para procurar um funcionario;
+     * @return retorna um funcionario;
+     * @throws FuncionarioNaoEncontrado caso um usuario queira procurar um funcionario que nao existe BD.
+     */
     @Override
     public Funcionario procurar(String cpf) throws FuncionarioNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
@@ -76,6 +100,11 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param funcionario utilizado para apagar um funcionario;
+     * @throws FuncionarioNaoEncontrado caso um usuario queira deletar um funcionario que nao existe BD.
+     */
     @Override
     public void remover(Funcionario funcionario) throws FuncionarioNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
@@ -87,6 +116,11 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         em.close();
     }
 
+    /**
+     *
+     * @param cpf outra forma de deletar um funcionario;
+     * @throws FuncionarioNaoEncontrado caso um usuario queira deletar um funcionario que nao existe BD.
+     */
     public void remover(String cpf) throws FuncionarioNaoEncontrado{
         remover(procurar(cpf));
     }

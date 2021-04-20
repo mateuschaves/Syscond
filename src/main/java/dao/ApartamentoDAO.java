@@ -15,6 +15,11 @@ import java.util.List;
 public class ApartamentoDAO implements ApartamentoDaoInterface{
 
 
+    /**
+     *
+     * @param apartamento utilizado para adicionar um apartamento;
+     * @throws ApartamentoJaExistente caso o usuario tente adicionar um apartamento que ja existe.
+     */
     @Override
     public void adicionar(Apartamento apartamento) throws ApartamentoJaExistente {
 
@@ -33,6 +38,13 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }
     }
 
+    /**
+     *
+     * @param apartamento utilizado para alterar um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queira alterar um apartamento que nao existe;
+     * @throws ApartamentoJaExistente confere se o apartamento existe, pois nao eh possivel alterar algo que
+     * nao existe;
+     */
     @Override
     public void alterar(Apartamento apartamento) throws ApartamentoNaoEncontrado, ApartamentoJaExistente {
         EntityManager em = JPAUtil.getEntityManager();
@@ -54,6 +66,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de apartamentos;
+     * @throws ApartamentoNaoEncontrado caso a lista esteja vazia.
+     */
     @Override
     public List<Apartamento> listar() throws ApartamentoNaoEncontrado {
 
@@ -75,6 +92,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         return lista;
     }
 
+    /**
+     * @param numero procura o apartamento pelo seu numero;
+     * @return retorna um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queria procurar um apartamento que nao existe.
+     */
     @Override
     public Apartamento procurar(String numero) throws ApartamentoNaoEncontrado {
 
@@ -98,6 +120,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         return retorno;
     }
 
+    /**
+     *
+     * @param apartamento caso um usuario queira apagar um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queira deletar um apartamento que nao existe.
+     */
     @Override
     public void remover(Apartamento apartamento) throws ApartamentoNaoEncontrado {
 
@@ -120,6 +147,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }
 
     }
+
 
     public void cleanUp() {
         EntityManager em = JPAUtil.getEntityManager();

@@ -13,7 +13,11 @@ import java.util.List;
 
 public class ProdutoDAO implements ProdutoDaoInterface{
 
-
+    /**
+     *
+     * @param codigoDeBarras utilizado para procurar um produto;
+     * @return retorna um produto.
+     */
     @Override
     public Produto procurar(String codigoDeBarras) {
 
@@ -37,6 +41,10 @@ public class ProdutoDAO implements ProdutoDaoInterface{
 
     }
 
+    /**
+     *
+     * @param produto utilizado para adicionar um produto.
+     */
     @Override
     public void adicionar(Produto produto) {
 
@@ -55,15 +63,19 @@ public class ProdutoDAO implements ProdutoDaoInterface{
 
     }
 
+    /**
+     *
+     * @param produto utilizado para remover um produto.
+     */
     @Override
-    public void remover(Produto morador) {
+    public void remover(Produto produto) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         try{
             tx.begin();
-            morador = em.merge(morador);
-            em.remove(morador);
+            produto = em.merge(produto);
+            em.remove(produto);
             tx.commit();
         }catch(Exception e){
             e.getMessage();
@@ -73,6 +85,10 @@ public class ProdutoDAO implements ProdutoDaoInterface{
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista;
+     */
     @Override
     public List<Produto> listar() {
 
@@ -93,6 +109,10 @@ public class ProdutoDAO implements ProdutoDaoInterface{
         return null;
     }
 
+    /**
+     *
+     * @param produto utilizado para alterar um produto.
+     */
     @Override
     public void alterar(Produto produto) {
 

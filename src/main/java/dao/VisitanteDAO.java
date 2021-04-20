@@ -11,7 +11,11 @@ import java.util.List;
 
 public class VisitanteDAO implements VisitanteDaoInterface{
 
-
+    /**
+     *
+     * @param cpf utilizado para procurar um visitante;
+     * @return retorna um visitante.
+     */
     @Override
     public Visitante procurar(String cpf) {
 
@@ -35,6 +39,10 @@ public class VisitanteDAO implements VisitanteDaoInterface{
 
     }
 
+    /**
+     *
+     * @param visitante utilizado para adicionar um visitante.
+     */
     @Override
     public void adicionar(Visitante visitante) {
 
@@ -54,6 +62,10 @@ public class VisitanteDAO implements VisitanteDaoInterface{
 
     }
 
+    /**
+     *
+     * @param visitante utilizado para deletar um visitante.
+     */
     @Override
     public void remover(Visitante visitante) {
 
@@ -72,6 +84,10 @@ public class VisitanteDAO implements VisitanteDaoInterface{
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de visitantes.
+     */
     @Override
     public List<Visitante> listar() {
 
@@ -88,6 +104,10 @@ public class VisitanteDAO implements VisitanteDaoInterface{
         return (List<Visitante>) null;
     }
 
+    /**
+     *
+     * @param visitante utilizado para alterar um visitante.
+     */
     @Override
     public void alterar(Visitante visitante) {
 

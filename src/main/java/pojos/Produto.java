@@ -17,7 +17,6 @@ import javax.persistence.*;
  *   @author Mateus Henrique;
  *   descricao:
  *   pojo de produto com seus atributos mapeados, entidades, colouna, chave primaria;
- *   com relacionamento com fornecedor (falta fazer),  (n para 1);
  *   Alem de seus construtores gets e sets;
  *   nome deve ser obrigatorio e unico;
  *   codigo deve ser obrigatorio, unico e deve aceitar apenas numeros;

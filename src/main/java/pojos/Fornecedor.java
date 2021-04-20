@@ -15,7 +15,6 @@ import javax.persistence.NamedQuery;
  *   @author Mateus Henrique;
  *   descricao:
  *   pojo de fornecedor com seus atributos mapeados, entidades, colouna, chave primaria;
- *   com relacionamento com produto (falta fazer),  (1 para n);
  *   Alem de seus construtores gets e sets;
  *   nome deve ser obrigatorio e deve aceitar apenas letras;
  *   cnpj deve ser obrigatorio, unico e no formato: 99.999.999/9999-99;

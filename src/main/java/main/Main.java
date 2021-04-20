@@ -196,7 +196,7 @@ public class Main {
             produtoDao.adicionar(new Produto("Detergente", 2, "2", 10));
             produtoDao.adicionar(new Produto("Luvas", 50, "3", 2));
             produtoDao.adicionar(new Produto("Sabão em barra", 5, "4", 6));
-            produtoDao.adicionar(new Produto("Água sanitária", 10, "5", 13));
+
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar o produto");
 

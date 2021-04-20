@@ -1,5 +1,10 @@
 package exceptions.funcionario;
 
+/**
+ *  @author grupo Sith;
+ *  exception criada caso um funcionario nao seja encontrado.
+ */
+
 public class FuncionarioNaoEncontrado extends Exception{
 	
 	
