@@ -49,14 +49,14 @@ public class MoradorTest {
     public void testNome(){
         Assert.assertEquals(
                 "Eduardo",
-                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<>())).getNome());
+                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<Carro>())).getNome());
     }
 
     @Test
     public void testCPF(){
         Assert.assertEquals(
                 "1",
-                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<>())).getCpf());
+                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<Carro>())).getCpf());
     }
 
     @Test
