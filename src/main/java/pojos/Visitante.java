@@ -6,6 +6,8 @@
 package pojos;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *  @author Mateus Martins
@@ -27,10 +29,15 @@ import javax.persistence.*;
 public class Visitante {
 
     @Id
+    @NotNull(message = "o cpf do visitante nao pode ser nullo!")
+    @Pattern(message = "Entrada invalida o cpf deve seguir o formato!", regexp = "^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$")
     private String cpf;
     @Column
+    @NotNull(message = "o nome do visitante nao pode ser nullo!")
+    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[0-9a-zA-Z çÇ]*")
     private String nome;
     @ManyToOne
+    @NotNull(message = "um visitante precisa ter um morador para visitar!")
     private Morador MoradorResponsavel;
 
     public Visitante() {
