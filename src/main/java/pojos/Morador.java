@@ -7,6 +7,8 @@ package pojos;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 /**
@@ -33,6 +35,9 @@ import java.util.List;
 public class Morador {
 
     @Id
+    @NotNull
+    @Pattern(message = "Entrada invalida! por favor, utilize o formato padrão de CPF",
+            regexp = "[0-9]{3}[.]{1}[0-9]{3}[.]{1}[0-9]{3}[-]{1}[0-9]{2}")
     private String cpf;
     @Column
     private String nomeMorador;
