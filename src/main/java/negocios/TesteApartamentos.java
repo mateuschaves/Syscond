@@ -25,7 +25,13 @@ public class TesteApartamentos {
 
         apartamentoNegocios.listarApartamentos();
 
-        moradorNegocios.cadastrar("123.627.134-31","Mateus Martins","1");
+        //metodos da camada de negocios de moraodor;
+
+        moradorNegocios.cadastrar("123.623.444-32","Manuela D'avila Gráça","1");
+
+        moradorNegocios.deletar("123.623.444-32");
+
+        moradorNegocios.listarMoradores();
 
 
     }

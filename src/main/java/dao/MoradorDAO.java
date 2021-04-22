@@ -55,7 +55,7 @@ public class MoradorDAO implements MoradorDaoInterface{
 
             if(exceptionName.equals("javax.validation.ConstraintViolationException")){
                 System.out.println("Erro: Erro na entrada dos dados => " + exceptionName);
-                //System.out.println("Message: " + e.getCause().getMessage());
+                System.out.println("Message: " + e.getCause().getMessage());
             }else{
                 System.out.println("Erro:" + exceptionName);
                 System.out.println("Message: " + e.getMessage());
