@@ -31,7 +31,8 @@ public class Carro {
 
     @Id
     @NotNull(message = "a placa nao pode ser nula!")
-    @Pattern(message="Entrada invalida!, São permitidos apenas numeros!", regexp = "^[A-Z]{3}[-]?[0-9]?[A-Z0-9][0-9]{2}$")
+    @Pattern(message="Entrada invalida!, deve ser ultilizado um formato de palca de carro",
+             regexp = "^(([A-Z]{3}[-]{1}[0-9]{4})|([A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}))$")
     private String placa;
     @Column
     @NotNull(message = "o modelo é obrigatorio!")
@@ -42,7 +43,7 @@ public class Carro {
     @Pattern(message = "Entrada invalida! Apenas Letras!", regexp = "[A-Za-z ]+[ç]*[Ç]*")
     private String cor;
     @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull(message = "um carro precisar ter um dono!")
+    //@NotNull(message = "um carro precisar ter um dono!")
     private Morador proprietario;
 
     public Carro() {
