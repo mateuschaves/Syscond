@@ -34,7 +34,7 @@ public class Visitante {
     private String cpf;
     @Column
     @NotNull(message = "o nome do visitante nao pode ser nullo!")
-    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[0-9a-zA-Z çÇ]*")
+    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[a-zA-Z çÇ]*")
     private String nome;
     @ManyToOne
     @NotNull(message = "um visitante precisa ter um morador para visitar!")
