@@ -5,6 +5,9 @@
  */
 package pojos;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -34,7 +37,7 @@ public class Apartamento {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull(message = "O numero do apartamento não pode ser nulo")
-    @Pattern(message="Entrada invalida!, São permitidos apenas numeros!", regexp = "[0-9]*")
+    @Pattern(message="Entrada invalida!, São permitidos apenas numeros!", regexp = "[0-9^]+")
     private String numero;
     @Column
     @NotNull(message = "O andar não pode ser nulo")
@@ -42,7 +45,7 @@ public class Apartamento {
     private String andar;
     @Column
     @NotNull(message = "O bloco não pode ser nulo")
-    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[0-9a-zA-Z ]*")
+    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[0-9a-zA-Z çÇ]*")
     private String bloco;
     @OneToMany (fetch = FetchType.LAZY, mappedBy = "apartamento")
     private List<Morador> moradores = new ArrayList<>();
