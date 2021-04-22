@@ -1,9 +1,14 @@
 package negocios;
 
-public class Teste {
+import dao.ApartamentoDaoInterface;
+import dao.MoradorDAO;
+import dao.MoradorDaoInterface;
+
+public class TesteApartamentos {
     public static void main(String [] args){
 
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
+        MoradorNegocios moradorNegocios = new MoradorNegocios();
 
         apartamentoNegocios.cadastrar("636","1","B");
         apartamentoNegocios.cadastrar("200","1","B");
@@ -19,6 +24,9 @@ public class Teste {
 
 
         apartamentoNegocios.listarApartamentos();
+
+        moradorNegocios.cadastrar("123.627.134-31","Mateus Martins","1");
+
 
     }
 }
