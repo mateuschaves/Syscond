@@ -63,6 +63,7 @@ public class MoradorTest {
     public void shouldCreateMoradorSuccessfully(){
         try {
             Morador moradorMock = this.createMorador();
+            Assert.assertNotNull(moradorMock);
             List<Morador> moradores = this.moradorDao.listar();
             Assert.assertEquals(1, moradores.size());
             Morador morador = moradores.get(0);
@@ -100,6 +101,7 @@ public class MoradorTest {
     public void shouldBeAbleToUpdateMorador(){
         String newName = "Mateus Henrique Editado";
         Morador moradorMock = this.createMorador();
+        Assert.assertNotNull(moradorMock);
         moradorMock.setNome(newName);
         this.moradorDao.alterar(moradorMock);
         Morador moradorUpdated = this.moradorDao.procurar(moradorMock.getCpf());
