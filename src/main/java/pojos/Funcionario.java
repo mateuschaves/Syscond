@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *   @author Mateus Martins
@@ -26,10 +28,15 @@ import javax.persistence.NamedQuery;
 public class Funcionario {
 
         @Id
+        @NotNull(message = "o cpf do funcionario nao pode ser nullo!")
+        @Pattern(message = "Entrada invalida o cpf deve seguir o formato!", regexp = "^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$")
         private String cpf;
         @Column(nullable = false)
+        @NotNull(message = "o nome do funcionario nao pode ser nullo!")
+        @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[a-zA-Z çÇ]*")
         private String nome;
         @Column(nullable = false)
+        @NotNull(message = "um funcionario precisar ter uma função!")
         private String funcao;
 
         public Funcionario() {
