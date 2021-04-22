@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *   @author Mateus Martins
@@ -27,11 +29,18 @@ import javax.persistence.NamedQuery;
 
 @Entity
 public class Fornecedor {
+
     @Id
+    @NotNull(message = "o fornecedor deve ter um cnpj nao nulo!")
+    @Pattern(message = "Entrada invalida o cnpj deve seguir o formato!", regexp = "^[0-9]{2}[.][0-9]{3}[.][0-9]{3}[/][0-9]{4}[-][0-9]{2}$")
     String cnpj;
     @Column(nullable = false)
+    @NotNull(message = "o nome do fornecedor nao pode ser nullo!")
+    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[a-zA-Z çÇ]*")
     String nome;
     @Column
+    @NotNull(message = "o telefone nao pode ser nulo!")
+    @Pattern(message = "Entrada invalida o telefone deve estar no formato!",regexp = "^[+0-9 ]*[0-9 ]{2}[9 ][0-9]{4}[-][0-9]{4}$")
     String telefone;
 
 
