@@ -40,14 +40,19 @@ public class Morador {
             regexp = "[0-9]{3}[.]{1}[0-9]{3}[.]{1}[0-9]{3}[-]{1}[0-9]{2}")
     private String cpf;
     @Column
+    @NotNull
+    @Pattern(message = "Entrada invalida!, Apenas Letras são permitidas", regexp = "[a-zA-Z\\wÀ-ú'çÇ ]+")
     private String nomeMorador;
     @ManyToOne
+    @NotNull
     private Apartamento apartamento;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "proprietario")
+
     private List<Carro> carros;
 
     @OneToMany(mappedBy = "MoradorResponsavel")
+
     private List<Visitante> visitantesList;
 
     public Morador() {
