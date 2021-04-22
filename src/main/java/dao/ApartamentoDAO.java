@@ -2,15 +2,19 @@ package dao;
 
 import exceptions.apartamento.ApartamentoJaExistente;
 import exceptions.apartamento.ApartamentoNaoEncontrado;
+import org.hibernate.exception.ConstraintViolationException;
 import pojos.Apartamento;
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.validation.ConstraintViolation;
+import javax.validation.ValidationException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ApartamentoDAO implements ApartamentoDaoInterface{
 
@@ -30,9 +34,9 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
             tx.begin();
             em.persist(apartamento);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Id já existente: " + e.getCause().getMessage());
         }finally {
             em.close();
         }
