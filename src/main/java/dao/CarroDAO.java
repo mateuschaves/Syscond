@@ -51,7 +51,7 @@ public class CarroDAO implements CarroDaoInterface{
             tx.commit();
         }catch (Exception a){
             //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+            System.out.println("Id já existente: " + a.getCause().getMessage());
         }finally {
             em.close();
         }

@@ -6,6 +6,9 @@
 package pojos;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  *
  *   @author Mateus Martins
@@ -25,13 +28,21 @@ import javax.persistence.*;
 @Entity
 @Table(name = "carro",schema = "syscond")
 public class Carro {
+
     @Id
+    @NotNull(message = "a placa nao pode ser nula!")
+    @Pattern(message="Entrada invalida!, São permitidos apenas numeros!", regexp = "^[A-Z]{3}[-]?[0-9]?[A-Z0-9][0-9]{2}$")
     private String placa;
     @Column
+    @NotNull(message = "o modelo é obrigatorio!")
+    @Pattern(message = "Entrada invalida!, Caracteres especiais nao sao permitidos!", regexp = "[A-Za-z0-9 ]*")
     private String modelo;
     @Column
+    @NotNull(message = "a cor é obrigatoria!")
+    @Pattern(message = "Entrada invalida! Apenas Letras!", regexp = "[A-Za-z ]*[ç]*[Ç]*")
     private String cor;
     @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull(message = "um carro precisar ter um dono!")
     private Morador proprietario;
 
     public Carro() {
