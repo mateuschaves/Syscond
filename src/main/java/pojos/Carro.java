@@ -35,11 +35,11 @@ public class Carro {
     private String placa;
     @Column
     @NotNull(message = "o modelo é obrigatorio!")
-    @Pattern(message = "Entrada invalida!, Caracteres especiais nao sao permitidos!", regexp = "[A-Za-z0-9 ]*")
+    @Pattern(message = "Entrada invalida!, Caracteres especiais nao sao permitidos!", regexp = "[A-Za-z0-9 ]+")
     private String modelo;
     @Column
     @NotNull(message = "a cor é obrigatoria!")
-    @Pattern(message = "Entrada invalida! Apenas Letras!", regexp = "[A-Za-z ]*[ç]*[Ç]*")
+    @Pattern(message = "Entrada invalida! Apenas Letras!", regexp = "[A-Za-z ]+[ç]*[Ç]*")
     private String cor;
     @ManyToOne(fetch = FetchType.LAZY)
     @NotNull(message = "um carro precisar ter um dono!")
