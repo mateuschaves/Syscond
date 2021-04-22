@@ -95,6 +95,18 @@ public class Apartamento {
     }
 
     /**
+     * @param numero ,
+     * @param andar ,
+     */
+
+    public Apartamento(String numero, String andar) {
+        this.numero = numero;
+        this.andar = andar;
+    }
+
+
+
+    /**
      * @return retorna o numero do apartamento.
      */
     public String getNumero() {
