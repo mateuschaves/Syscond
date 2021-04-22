@@ -19,15 +19,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.0.1.Final</version>
-            <scope>compile</scope>
+            <version>6.2.0.Final</version>
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
 
         <dependency>
@@ -88,7 +86,6 @@
             <version>1.0.0.Final</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -117,8 +114,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
                     <configuration>
-                        <source>${8}</source>
-                        <target>${8}</target>
+                        <source>${env.JAVA_VERSION}</source>
+                        <target>${env.JAVA_VERSION}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -152,14 +149,6 @@
                     <version>1.4.0</version>
                     <configuration>
                         <mainClass>main.Main</mainClass>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.0</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
                     </configuration>
                 </plugin>
             </plugins>

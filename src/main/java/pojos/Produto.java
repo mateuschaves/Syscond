@@ -45,7 +45,7 @@ public class Produto {
 
 
     public Produto() {
-        this.codigo = "789" + new Random().nextInt((int) Math.pow(10, 10));
+        this.codigo = "789" + Math.abs(new Random().nextInt((int) Math.pow(10, 10)));
         this.nome = "";
         this.preco = 0.0;
         this.quantidade = 0.0;
