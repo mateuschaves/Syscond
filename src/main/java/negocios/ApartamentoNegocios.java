@@ -3,8 +3,6 @@ package negocios;
 import dao.ApartamentoDAO;
 import dao.ApartamentoDaoInterface;
 import pojos.Apartamento;
-import utils.Rulles;
-
 import java.util.List;
 
 public class ApartamentoNegocios {
