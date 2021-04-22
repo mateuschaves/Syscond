@@ -42,7 +42,7 @@ public class Apartamento {
     private String andar;
     @Column
     @NotNull(message = "O bloco não pode ser nulo")
-    @Pattern(message="Entrada invalida!, São permitidos apenas numeros!", regexp = "[0-9a-zA-Z]*")
+    @Pattern(message="Entrada invalida!, São permitidos apenas letras!", regexp = "[0-9a-zA-Z ]*")
     private String bloco;
     @OneToMany (fetch = FetchType.LAZY, mappedBy = "apartamento")
     private List<Morador> moradores = new ArrayList<>();
