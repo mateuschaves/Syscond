@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ApartamentoNegocios {
 
-    Rulles rulles = new Rulles();
     ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
 
     public void cadastrar(String numero, String andar, String bloco){
