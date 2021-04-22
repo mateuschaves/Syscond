@@ -56,8 +56,9 @@ public class Carro {
      */
     public Carro(String placa, String modelo, String cor) {
         this.placa = placa;
-        this.modelo = modelo;
         this.cor = cor;
+        this.modelo = modelo;
+
     }
 
     /**
