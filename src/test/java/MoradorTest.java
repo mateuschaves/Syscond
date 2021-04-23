@@ -1,4 +1,5 @@
 import dao.ApartamentoDAO;
+import dao.JPAUtil;
 import dao.MoradorDAO;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,6 +8,7 @@ import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -49,10 +51,11 @@ public class MoradorTest {
 
     @Before
     public void cleanUp(){
-        System.out.println("Limpando dados...");
-        this.apartamentoDAO.cleanUp();
-        this.moradorDao.cleanUp();
-        System.out.println("Dados limpos");
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.createNativeQuery("delete from morador").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Test
