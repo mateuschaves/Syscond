@@ -106,7 +106,6 @@ public class MoradorDAO implements MoradorDaoInterface{
         }
 
     }
-
     /**
      *
      * @return retorna uma lista de moradores.
@@ -121,7 +120,8 @@ public class MoradorDAO implements MoradorDaoInterface{
         }catch (Exception e){
 
             e.getMessage();
-
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("ERRO: Não foi possivel Listar os Moradores" );
 
         }finally {
             em.close();
