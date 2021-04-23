@@ -3,27 +3,28 @@ package negocios;
 import dao.ApartamentoDAO;
 import dao.ApartamentoDaoInterface;
 import pojos.Apartamento;
+import pojos.Morador;
+
 import java.util.List;
 
 public class ApartamentoNegocios {
 
     ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
 
-    public void cadastrar(String numero, String andar, String bloco){
-        Apartamento ap = new Apartamento(numero,andar,bloco);
+    public void cadastrar(Apartamento apartamento){
 
         try{
-            apartamentoDao.adicionar(ap);
+            apartamentoDao.adicionar(apartamento);
         }catch (Exception e){
-
+            //e.printStackTrace();
         }
     }
-    public void deletar(String numero){
-        Apartamento ap = new Apartamento(numero);
-        try{
-            apartamentoDao.remover(ap);
-        }catch(Exception e){
 
+    public void deletar(Apartamento apartamento){
+        try{
+            apartamentoDao.remover(apartamento);
+        }catch(Exception e){
+            //e.printStackTrace();
         }
     }
 
@@ -49,10 +50,10 @@ public class ApartamentoNegocios {
 
     }
 
-    public void alterarID(String numero, String novoNumero){
+    public void alterarID(Apartamento apartamento, String novoNumero){
         Apartamento target = null;
         try{
-            target = apartamentoDao.procurar(numero);
+            target = apartamentoDao.procurar(apartamento);
             apartamentoDao.remover(target);
             target.setNumero(novoNumero);
             apartamentoDao.adicionar(target);
@@ -63,36 +64,21 @@ public class ApartamentoNegocios {
 
     }
 
-    public void alterar(String numero,String andar,String bloco){
-        Apartamento target = new Apartamento(numero,andar,bloco);
+    public void alterar(Apartamento apartamento){
 
         try {
-            apartamentoDao.alterar(target);
+            apartamentoDao.alterar(apartamento);
         }catch (Exception e){
-            System.out.println("ApartamerntoNegocios: Erro: ");
+            System.out.println("ApartamerntoNegocios: Erro: " + e.getMessage());
         }
     }
-    public void alterarBloco(String numero,String bloco){
-        Apartamento target = null;
 
-        try {
-            target = apartamentoDao.procurar(numero);
-            target.setBloco(bloco);
-            apartamentoDao.alterar(target);
-        }catch (Exception e){
-            System.out.println("ApartamerntoNegocios: Erro: ");
-        }
-    }
-    public void alterarAndar(String numero,String andar){
-        Apartamento target = null;
+    public Apartamento pesquisar(Apartamento apartamento){
 
-        try {
-            target = apartamentoDao.procurar(numero);
-            target.setAndar(andar);
-            apartamentoDao.alterar(target);
-        }catch (Exception e){
-            System.out.println("ApartamerntoNegocios: Erro: ");
-        }
+        return(apartamentoDao.procurar(apartamento));
+
     }
+
+
 
 }
