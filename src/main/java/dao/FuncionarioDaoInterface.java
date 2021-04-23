@@ -41,6 +41,12 @@ public interface FuncionarioDaoInterface {
     public Funcionario procurar(String id) throws FuncionarioNaoEncontrado;
 
     /**
+     * @return retorna um funcionario;
+     * @param funcionario utilizado para procurar um funcionario;
+     */
+
+    public Funcionario procurar(Funcionario funcionario);
+    /**
      * @throws FuncionarioNaoEncontrado caso um usuario queira deletar um funcionario que nao existe BD;
      * @param funcionario utilizado para apagar um funcionario.
      */

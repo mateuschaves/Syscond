@@ -8,6 +8,7 @@ import javax.persistence.NoResultException;
 
 import exceptions.funcionario.FuncionarioJaExistente;
 import exceptions.funcionario.FuncionarioNaoEncontrado;
+import pojos.Apartamento;
 import pojos.Funcionario;
 
 public class FuncionarioDAO implements FuncionarioDaoInterface {
@@ -98,6 +99,17 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         } finally {
             em.close();
         }
+    }
+
+    public Funcionario procurar(Funcionario funcionario){
+        Funcionario returned = null;
+        try {
+            returned = procurar(funcionario.getCpf());
+        }catch (Exception e){
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o apartamento: " + funcionario.getCpf());
+        }
+        return returned;
     }
 
     /**
