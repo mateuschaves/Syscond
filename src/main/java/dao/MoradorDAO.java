@@ -23,16 +23,27 @@ public class MoradorDAO implements MoradorDaoInterface{
         try {
             tx.begin();
             retorno = em.find(Morador.class,cpf);
+            System.out.println("Retorno: " + retorno.getNome());
             tx.commit();
 
-        }catch(NullPointerException e){
-
-            System.err.println("ERRO: " + e.getMessage());
+        }catch(Exception e){
+            //e.printStackTrace();
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar os dados.");
 
         }finally {
             em.close();
         }
         return retorno;
+    }
+
+    /**
+     *
+     * @param morador utilizado para procurar um morador;
+     * @return retorna uma morador.
+     */
+    public Morador procurar(Morador morador){
+        return(this.procurar(morador.getCpf()));
     }
 
     /**
@@ -77,6 +88,9 @@ public class MoradorDAO implements MoradorDaoInterface{
         EntityTransaction tx = em.getTransaction();
 
         try{
+
+            procurar(morador.getCpf()).getCpf();
+
             tx.begin();
             morador = em.merge(morador);
             em.remove(morador);
@@ -84,8 +98,8 @@ public class MoradorDAO implements MoradorDaoInterface{
 
         }catch (Exception e){
 
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel apagar os dados," +
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel apagar os dados," +
                     " pois o objeto alvo não existe no banco de dados");
         }finally {
             em.close();
@@ -134,8 +148,8 @@ public class MoradorDAO implements MoradorDaoInterface{
         }
         catch(Exception e){
 
-            System.err.println("ERRO: " + e.getMessage());
-            System.err.println("Não foi possivel alterar os dados," +
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel alterar os dados," +
                     " pois o objeto alvo não existe no banco de dados");
 
         }finally {
