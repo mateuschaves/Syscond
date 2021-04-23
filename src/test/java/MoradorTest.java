@@ -115,7 +115,10 @@ public class MoradorTest {
         String newName = "Mateus Henrique Editado";
         Morador moradorMock = this.createMorador();
         Assert.assertNotNull(moradorMock);
+
+        //System.out.println("nome do vagabundo: " + moradorMock.getNome());
         moradorMock.setNome(newName);
+
         this.moradorDao.alterar(moradorMock);
         Morador moradorUpdated = this.moradorDao.procurar(moradorMock.getCpf());
         Assert.assertEquals(newName, moradorUpdated.getNome());
