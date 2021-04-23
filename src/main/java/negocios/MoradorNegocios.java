@@ -16,13 +16,9 @@ public class MoradorNegocios {
     private ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
     private MoradorDaoInterface moradorDao = new MoradorDAO();
 
-    public void cadastrar(String cpf, String nome, String numeroApartamento){
-
-        Apartamento ap = null;
+    public void cadastrar(Morador morador){
 
         try{
-            ap = apartamentoDao.procurar(numeroApartamento);
-            Morador morador = new Morador(cpf, nome, ap);
             moradorDao.adicionar(morador);
 
         }catch(Exception e){
@@ -30,8 +26,7 @@ public class MoradorNegocios {
         }
 
     }
-    public void deletar(String cpf){
-        Morador morador = new Morador(cpf);
+    public void deletar(Morador morador){
         try{
             moradorDao.remover(morador);
         }catch(Exception e){
@@ -57,6 +52,11 @@ public class MoradorNegocios {
         }catch(Exception e){
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
         }
+
+    }
+    public void alterar(Morador morador){
+
+        moradorDao.alterar(morador);
 
     }
 
