@@ -4,9 +4,10 @@ import exceptions.fornecedor.FornecedorJaExistente;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import pojos.Fornecedor;
 
-import javax.persistence.*;
-
-import java.util.ArrayList;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class FornecedorDAO implements FornecedorDaoInterface {
@@ -42,7 +43,6 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         try{
 
             tx.begin();
-            this.procurar(fornecedor.getCnpj()).getNome();
             em.merge(fornecedor);
             tx.commit();
         }
@@ -67,7 +67,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     public List<Fornecedor> listar() throws FornecedorNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return (ArrayList<Fornecedor>) em
+            return em
                     .createNamedQuery("Fornecedor.buscaTodos", Fornecedor.class)
                     .getResultList();
         } catch (NoResultException e) {
@@ -87,7 +87,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
     public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado{
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return (Fornecedor) em
+            return em
                     .createNamedQuery("Fornecedor.buscaPorCNPJ", Fornecedor.class)
                     .setParameter("cnpj", cnpj)
                     .getSingleResult();
