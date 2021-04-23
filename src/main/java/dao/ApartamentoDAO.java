@@ -137,9 +137,8 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
     /**
      * @param apartamento procura o apartamento pelo seu numero;
      * @return retorna um apartamento;
-     * @throws ApartamentoNaoEncontrado caso um usuario queria procurar um apartamento que nao existe.
      */
-    private Apartamento procurar(Apartamento apartamento){
+    public Apartamento procurar(Apartamento apartamento){
         Apartamento returned = null;
         try {
             returned = procurar(apartamento.getNumero());

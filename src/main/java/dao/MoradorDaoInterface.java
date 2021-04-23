@@ -16,6 +16,13 @@ public interface MoradorDaoInterface {
 
     /**
      *
+     * @param morador utilizado para procurar um morador;
+     * @return retorna um morador.
+     */
+    public Morador procurar(Morador morador);
+
+    /**
+     *
      * @param morador utilizado para inserir um morador.
      */
     public void adicionar(Morador morador);

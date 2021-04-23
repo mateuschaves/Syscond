@@ -37,6 +37,13 @@ public interface ApartamentoDaoInterface {
     public Apartamento procurar(String numero) throws ApartamentoNaoEncontrado;
 
     /**
+     * @param apartamento procura o apartamento pelo seu numero;
+     * @return retorna um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queira procurar um apartamento que nao existe.
+     */
+    public Apartamento procurar(Apartamento apartamento);s
+
+    /**
      * @param apartamento caso um usuario queira apagar um apartamento;
      * @throws ApartamentoNaoEncontrado caso um usuario queira deletar um apartamento que nao existe.
      */
