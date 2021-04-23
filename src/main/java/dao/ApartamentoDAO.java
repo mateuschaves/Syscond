@@ -2,8 +2,11 @@ package dao;
 
 import exceptions.apartamento.ApartamentoJaExistente;
 import exceptions.apartamento.ApartamentoNaoEncontrado;
+import javassist.bytecode.stackmap.BasicBlock;
 import org.hibernate.exception.ConstraintViolationException;
 import pojos.Apartamento;
+import pojos.Carro;
+import pojos.Morador;
 
 
 import javax.persistence.*;
@@ -62,7 +65,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         EntityTransaction tx = em.getTransaction();
 
         try{
-
+            procurar(apartamento).getNumero();
             tx.begin();
             this.procurar(apartamento.getNumero()).getNumero();
             em.merge(apartamento);
@@ -124,11 +127,27 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }catch(NullPointerException e){
 
             System.err.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o apartamento: " + numero);
 
         }finally {
             em.close();
         }
         return retorno;
+    }
+    /**
+     * @param apartamento procura o apartamento pelo seu numero;
+     * @return retorna um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queria procurar um apartamento que nao existe.
+     */
+    private Apartamento procurar(Apartamento apartamento){
+        Apartamento returned = null;
+        try {
+            returned = procurar(apartamento.getNumero());
+        }catch (Exception e){
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o apartamento: " + apartamento.getNumero());
+        }
+        return returned;
     }
 
     /**
@@ -143,7 +162,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         EntityTransaction tx = em.getTransaction();
 
         try{
-
+            procurar(apartamento).getNumero();
             tx.begin();
             apartamento = em.merge(apartamento);
             em.remove(apartamento);
