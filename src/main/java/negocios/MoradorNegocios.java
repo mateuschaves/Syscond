@@ -60,6 +60,10 @@ public class MoradorNegocios {
 
     }
 
+    public Morador pesquisar(Morador morador){
+        return(moradorDao.procurar(morador));
+    }
+
 
 
 
