@@ -130,4 +130,17 @@ public class VisitanteDAO implements VisitanteDaoInterface{
 
         }
     }
+    @Override
+    public Visitante procurar(Visitante visitante){
+        Visitante returned = null;
+        try{
+            returned = procurar(visitante.getCpf());
+        }catch (Exception e){
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o seu visitante: " + visitante.getNome());
+        }
+        return returned;
+    }
+
+
 }

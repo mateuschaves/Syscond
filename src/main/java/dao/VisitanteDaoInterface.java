@@ -16,6 +16,14 @@ public interface VisitanteDaoInterface {
 
     /**
      *
+     * @param visitante utilizado para procurar um visitante;
+     * @return retorna um visitante.
+     */
+    public Visitante procurar(Visitante visitante);
+
+
+    /**
+     *
      * @param visitante utilizado para adicionar um visitante.
      */
     public void adicionar(Visitante visitante);
