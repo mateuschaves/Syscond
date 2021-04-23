@@ -17,6 +17,12 @@ public interface CarroDaoInterface {
     public Carro procurar(String placa);
 
     /**
+     * @param carro utilizado para procurar um carro;
+     * @return retorna um carro.
+     */
+    public Carro procurar(Carro carro);
+
+    /**
      * @param carro utilizado para adicionar um carro.
      */
     public void adicionar(Carro carro);

@@ -1,5 +1,6 @@
 package dao;
 
+import pojos.Apartamento;
 import pojos.Carro;
 
 import javax.persistence.EntityManager;
@@ -91,12 +92,12 @@ public class CarroDAO implements CarroDaoInterface{
 
         EntityManager em = JPAUtil.getEntityManager();
 
-
         try {
             return (List<Carro>) em.createQuery("select a from Carro a", Carro.class)
                     .getResultList();
         }catch (Exception e){
-            e.getMessage();
+            e.printStackTrace();
+            System.out.println("ERRO" + e.getMessage());
         }finally {
             em.close();
         }
@@ -132,4 +133,22 @@ public class CarroDAO implements CarroDaoInterface{
 
         }
     }
+
+    /**
+     * @param carro procura o carro por um ojeto carro;
+     * @return retorna um carro;
+     */
+    @Override
+    public Carro procurar(Carro carro){
+        Carro returned = null;
+        try{
+            returned = procurar(carro.getPlaca());
+        }catch (Exception e){
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o seu carro: " + carro.getPlaca());
+        }
+        return returned;
+    }
+
+
 }
