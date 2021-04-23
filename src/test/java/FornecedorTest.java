@@ -1,8 +1,12 @@
 import dao.FornecedorDAO;
+import dao.JPAUtil;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import pojos.Fornecedor;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +22,15 @@ public class FornecedorTest {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Before
+    public void cleanUp() {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.createNativeQuery("delete from Fornecedor").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Test
@@ -36,6 +49,12 @@ public class FornecedorTest {
         try {
             List<Fornecedor> fornecedores = fornecedorDAO.listar();
             Assert.assertEquals(1, fornecedores.size());
+
+            Fornecedor fornecedorCreated = fornecedorDAO.procurar(fornecedorMock.getCnpj());
+            Assert.assertNotNull(fornecedorCreated);
+            Assert.assertEquals(fornecedorMock.getCnpj(), fornecedorCreated.getCnpj());
+            Assert.assertEquals(fornecedorMock.getNome(), fornecedorCreated.getNome());
+            Assert.assertEquals(fornecedorMock.getTelefone(), fornecedorCreated.getTelefone());
         } catch (Exception e) {
         }
     }
@@ -78,6 +97,30 @@ public class FornecedorTest {
 
         } catch (Exception e) {
             System.out.println("shouldListOneFornecedorWhenOneWasCreated failed");
+        }
+    }
+
+    @Test
+    public void shouldBeAbleToUpdateFornecedor() {
+        Random rand = new Random();
+        int cnpj = rand.nextInt();
+        String name = "Fornecedor TOP";
+        String phone = "81 973248342";
+        Fornecedor fornecedorMock = this.createFornecedor(cnpj, name, phone);
+
+        try {
+            this.fornecedorDAO.adicionar(fornecedorMock);
+
+            fornecedorMock.setNome("Fornecedor Editado");
+
+            this.fornecedorDAO.alterar(fornecedorMock);
+
+            Fornecedor fornecedorUpdated = this.fornecedorDAO.procurar(fornecedorMock.getCnpj());
+
+            Assert.assertNotNull(fornecedorUpdated);
+            Assert.assertEquals("Fornecedor Editado", fornecedorUpdated.getNome());
+        } catch (Exception e) {
+
         }
     }
 }
