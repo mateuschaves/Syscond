@@ -2,21 +2,27 @@ package dao;
 
 import exceptions.apartamento.ApartamentoJaExistente;
 import exceptions.apartamento.ApartamentoNaoEncontrado;
+import org.hibernate.exception.ConstraintViolationException;
 import pojos.Apartamento;
 
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.ValidationException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ApartamentoDAO implements ApartamentoDaoInterface{
 
-
+    /**
+     *
+     * @param apartamento utilizado para adicionar um apartamento;
+     * @throws ApartamentoJaExistente caso o usuario tente adicionar um apartamento que ja existe.
+     */
     @Override
-    public void adicionar(Apartamento apartamento) throws ApartamentoJaExistente {
+    public void adicionar(Apartamento apartamento) throws ApartamentoJaExistente, RollbackException {
 
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -25,14 +31,31 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
             tx.begin();
             em.persist(apartamento);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
-        }finally {
+        }catch (Exception e) {
+            //e.printStackTrace();
+            String exceptionName = e.getCause().getClass().getName();
+
+            if(exceptionName.equals("javax.validation.ConstraintViolationException")){
+                System.out.println("Erro: Erro na entrada dos dados => " + exceptionName);
+                System.out.println("Message: " + e.getCause().getMessage());
+            }else{
+                System.out.println("Erro:" + exceptionName);
+                System.out.println("Message: " + e.getMessage());
+            }
+
+        }
+        finally {
             em.close();
         }
     }
 
+    /**
+     *
+     * @param apartamento utilizado para alterar um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queira alterar um apartamento que nao existe;
+     * @throws ApartamentoJaExistente confere se o apartamento existe, pois nao eh possivel alterar algo que
+     * nao existe;
+     */
     @Override
     public void alterar(Apartamento apartamento) throws ApartamentoNaoEncontrado, ApartamentoJaExistente {
         EntityManager em = JPAUtil.getEntityManager();
@@ -54,6 +77,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de apartamentos;
+     * @throws ApartamentoNaoEncontrado caso a lista esteja vazia.
+     */
     @Override
     public List<Apartamento> listar() throws ApartamentoNaoEncontrado {
 
@@ -75,6 +103,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         return lista;
     }
 
+    /**
+     * @param numero procura o apartamento pelo seu numero;
+     * @return retorna um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queria procurar um apartamento que nao existe.
+     */
     @Override
     public Apartamento procurar(String numero) throws ApartamentoNaoEncontrado {
 
@@ -98,6 +131,11 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         return retorno;
     }
 
+    /**
+     *
+     * @param apartamento caso um usuario queira apagar um apartamento;
+     * @throws ApartamentoNaoEncontrado caso um usuario queira deletar um apartamento que nao existe.
+     */
     @Override
     public void remover(Apartamento apartamento) throws ApartamentoNaoEncontrado {
 
@@ -120,6 +158,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
         }
 
     }
+
 
     public void cleanUp() {
         EntityManager em = JPAUtil.getEntityManager();

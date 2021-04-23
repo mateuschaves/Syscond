@@ -8,7 +8,11 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class MoradorDAO implements MoradorDaoInterface{
-
+    /**
+     *
+     * @param cpf utilizado para procurar um morador;
+     * @return retorna uma morador.
+     */
     @Override
     public Morador procurar(String cpf){
 
@@ -31,6 +35,10 @@ public class MoradorDAO implements MoradorDaoInterface{
         return retorno;
     }
 
+    /**
+     *
+     * @param morador utilizado para inserir um morador.
+     */
     @Override
     public void adicionar(Morador morador) {
 
@@ -41,15 +49,27 @@ public class MoradorDAO implements MoradorDaoInterface{
             tx.begin();
             em.persist(morador);
             tx.commit();
-        }catch (Exception a){
-            //a.printStackTrace();
-            System.err.println("Id já existente: " + a.getMessage());
+        }catch (Exception e){
+            //e.printStackTrace();
+            String exceptionName = e.getCause().getClass().getName();
+
+            if(exceptionName.equals("javax.validation.ConstraintViolationException")){
+                System.out.println("Erro: Erro na entrada dos dados => " + exceptionName);
+                System.out.println("Message: " + e.getCause().getMessage());
+            }else{
+                System.out.println("Erro:" + exceptionName);
+                System.out.println("Message: " + e.getMessage());
+            }
         }finally {
             em.close();
         }
 
     }
 
+    /**
+     *
+     * @param morador utilizado para apagar um morador.
+     */
     @Override
     public void remover(Morador morador) {
 
@@ -73,6 +93,10 @@ public class MoradorDAO implements MoradorDaoInterface{
 
     }
 
+    /**
+     *
+     * @return retorna uma lista de moradores.
+     */
     @Override
     public List<Morador> listar() {
 
@@ -92,6 +116,10 @@ public class MoradorDAO implements MoradorDaoInterface{
         return (List<Morador>) null;
     }
 
+    /**
+     *
+     * @param morador utilizado para alterar um morador.
+     */
     @Override
     public void alterar(Morador morador){
 

@@ -1,16 +1,17 @@
+import dao.ApartamentoDAO;
+import dao.MoradorDAO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
-import dao.MoradorDAO;
-import dao.ApartamentoDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class MoradorTest {
@@ -25,9 +26,17 @@ public class MoradorTest {
     private Morador createMorador() {
         try {
             Random rand = new Random();
-            Apartamento apartamentoMock = new Apartamento(Integer.toString(rand.nextInt()), "Primeiro", "B");
-            Morador moradorMock = new Morador(Integer.toString(rand.nextInt()), "Mateus Henrique", apartamentoMock, this.carrosMock);
-
+            Apartamento apartamentoMock = new Apartamento(Integer.toString(Math.abs(rand.nextInt())),
+                    Integer.toString(Math.abs(rand.nextInt())), "B");
+            String cpf = "";
+            for(int i = 1; i < 12; i++){
+                cpf = cpf.concat(Integer.toString(Math.abs(rand.nextInt((10)))));
+            }
+            Pattern pattern = Pattern.compile("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})");
+            Matcher matcher = pattern.matcher(cpf);
+            if (matcher.matches()) cpf = matcher.replaceAll("$1.$2.$3-$4");
+            Morador moradorMock = new Morador(cpf, "Mateus Henrique"
+                    , apartamentoMock, this.carrosMock);
             this.apartamentoDAO.adicionar(apartamentoMock);
             this.moradorDao.adicionar(moradorMock);
 
@@ -50,20 +59,21 @@ public class MoradorTest {
     public void testNome(){
         Assert.assertEquals(
                 "Eduardo",
-                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<>())).getNome());
+                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<Carro>())).getNome());
     }
 
     @Test
     public void testCPF(){
         Assert.assertEquals(
                 "1",
-                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<>())).getCpf());
+                (new Morador("1", "Eduardo", new Apartamento(), new ArrayList<Carro>())).getCpf());
     }
 
     @Test
     public void shouldCreateMoradorSuccessfully(){
         try {
             Morador moradorMock = this.createMorador();
+            Assert.assertNotNull(moradorMock);
             List<Morador> moradores = this.moradorDao.listar();
             Assert.assertEquals(1, moradores.size());
             Morador morador = moradores.get(0);
@@ -101,10 +111,10 @@ public class MoradorTest {
     public void shouldBeAbleToUpdateMorador(){
         String newName = "Mateus Henrique Editado";
         Morador moradorMock = this.createMorador();
+        Assert.assertNotNull(moradorMock);
         moradorMock.setNome(newName);
         this.moradorDao.alterar(moradorMock);
         Morador moradorUpdated = this.moradorDao.procurar(moradorMock.getCpf());
         Assert.assertEquals(newName, moradorUpdated.getNome());
     }
 }
-

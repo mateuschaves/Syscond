@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FornecedorDAO implements FornecedorDaoInterface {
-
+    /**
+     *
+     * @param fornecedor utilizado para adicionar um fornecedor;
+     * @throws FornecedorJaExistente caso o usuario tente adicionar um fornecedor que ja existe no BD.
+     */
     @Override
     public void adicionar(Fornecedor fornecedor) throws FornecedorJaExistente {
         EntityManager em = JPAUtil.getEntityManager();
@@ -25,6 +29,11 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param fornecedor utilizado para alterar um fornecedor;
+     * @throws FornecedorNaoEncontrado caso o usuario tente alterar um fornecedor que nao existe no BD.
+     */
     @Override
     public void alterar(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
@@ -49,6 +58,11 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de fornecedores;
+     * @throws FornecedorNaoEncontrado caso a lista esteja vazia.
+     */
     @Override
     public List<Fornecedor> listar() throws FornecedorNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
@@ -63,6 +77,12 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param cnpj utilizado para procurar um fornecedor;
+     * @return retorna um fornecedor;
+     * @throws FornecedorNaoEncontrado caso um usuario queira procurar um fornecedor que nao existe no BD.
+     */
     @Override
     public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado{
         EntityManager em = JPAUtil.getEntityManager();
@@ -78,6 +98,11 @@ public class FornecedorDAO implements FornecedorDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param fornecedor utilizado para apagar um fornecedor;
+     * @throws FornecedorNaoEncontrado caso o usuario tente deletar um fornecedor que nao existe no BD.
+     */
     @Override
     public void remover(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
         EntityManager em = JPAUtil.getEntityManager();
