@@ -41,7 +41,7 @@ public interface ApartamentoDaoInterface {
      * @return retorna um apartamento;
      * @throws ApartamentoNaoEncontrado caso um usuario queira procurar um apartamento que nao existe.
      */
-    public Apartamento procurar(Apartamento apartamento);s
+    public Apartamento procurar(Apartamento apartamento);
 
     /**
      * @param apartamento caso um usuario queira apagar um apartamento;
