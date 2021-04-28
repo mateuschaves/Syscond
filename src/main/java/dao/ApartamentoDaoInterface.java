@@ -7,6 +7,9 @@ import exceptions.apartamento.ApartamentoJaExistente;
 import exceptions.apartamento.ApartamentoNaoEncontrado;
 import pojos.Apartamento;
 
+/**
+ * @author grupo Sith; Interface de apartamento com suas assinaturas
+ */
 public interface ApartamentoDaoInterface {
 	/**
      * @param apartamento utilizado para adicionar um apartamento;
@@ -39,7 +42,6 @@ public interface ApartamentoDaoInterface {
     /**
      * @param apartamento procura o apartamento pelo seu numero;
      * @return retorna um apartamento;
-     * @throws ApartamentoNaoEncontrado caso um usuario queira procurar um apartamento que nao existe.
      */
     public Apartamento procurar(Apartamento apartamento);
 

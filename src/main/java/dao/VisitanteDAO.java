@@ -9,6 +9,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a interface de visitante sobrescrevendo suas assinaturas
+ */
 public class VisitanteDAO implements VisitanteDaoInterface{
 
     /**

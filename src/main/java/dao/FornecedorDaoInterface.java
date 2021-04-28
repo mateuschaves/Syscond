@@ -10,6 +10,9 @@ import exceptions.fornecedor.FornecedorNaoEncontrado;
 
 import pojos.Fornecedor;
 
+/**
+ * @author grupo Sith; Interface de fornecedor com suas assinaturas
+ */
 public interface FornecedorDaoInterface {
 
     /**

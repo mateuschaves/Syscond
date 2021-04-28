@@ -10,6 +10,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a anterface de fornecedor sobrescrevendo suas assinaturas
+ */
 public class FornecedorDAO implements FornecedorDaoInterface {
     /**
      *

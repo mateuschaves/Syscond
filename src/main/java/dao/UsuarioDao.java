@@ -11,7 +11,15 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a interface de usuario sobrescrevendo suas assinaturas
+ */
 public class UsuarioDao implements UsuarioDaoInterface{
+    /**
+     *
+     * @param login utilizado para procurar um usuario;
+     * @return retorna um usuario.
+     */
     @Override
     public Usuario procurar(String login) {
 
@@ -33,6 +41,11 @@ public class UsuarioDao implements UsuarioDaoInterface{
         return retorno;
     }
 
+    /**
+     *
+     * @param usuario utilizado para procurar um usuario;
+     * @return retorna um usuario.
+     */
     @Override
     public Usuario procurar(Usuario usuario) {
 
@@ -40,6 +53,10 @@ public class UsuarioDao implements UsuarioDaoInterface{
 
     }
 
+    /**
+     *
+     * @param usuario utilizado para adicionar um usuario.
+     */
     @Override
     public void adicionar(Usuario usuario) {
 
@@ -67,6 +84,11 @@ public class UsuarioDao implements UsuarioDaoInterface{
         }
     }
 
+    /**
+     *
+     * @param usuario utilizado para apagar um usuario.
+     */
+
     @Override
     public void remover(Usuario usuario){
         EntityManager em = JPAUtil.getEntityManager();
@@ -89,6 +111,10 @@ public class UsuarioDao implements UsuarioDaoInterface{
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de usuarios.
+     */
     @Override
     public List<Usuario> listar() {
 
@@ -109,6 +135,10 @@ public class UsuarioDao implements UsuarioDaoInterface{
         return lista;
     }
 
+    /**
+     *
+     * @param usuario utilizado para alterar um usuario.
+     */
     @Override
     public void alterar(Usuario usuario) {
 

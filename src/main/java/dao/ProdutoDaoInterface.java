@@ -4,6 +4,9 @@ import pojos.Produto;
 
 import java.util.List;
 
+/**
+ * @author grupo Sith; Interface de produto com suas assinaturas
+ */
 public interface ProdutoDaoInterface {
 
     /**

@@ -7,6 +7,9 @@ import pojos.Usuario;
 
 import java.util.List;
 
+/**
+ * @author grupo Sith; Interface de usuario com suas assinaturas
+ */
 public interface UsuarioDaoInterface {
 
     /**

@@ -9,6 +9,9 @@ import exceptions.funcionario.FuncionarioNaoEncontrado;
 
 import pojos.Funcionario;
 
+/**
+ * @author grupo Sith; Interface de funcionario com suas assinaturas
+ */
 public interface FuncionarioDaoInterface {
 
     /**

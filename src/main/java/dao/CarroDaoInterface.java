@@ -8,6 +8,9 @@ import pojos.Carro;
 
 import java.util.List;
 
+/**
+ * @author grupo Sith; Interface de carro com suas assinaturas
+ */
 public interface CarroDaoInterface {
 
     /**

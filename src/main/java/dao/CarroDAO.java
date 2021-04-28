@@ -8,6 +8,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a anterface de carro sobrescrevendo suas assinaturas
+ */
 public class CarroDAO implements CarroDaoInterface{
 
     /**
@@ -136,7 +139,7 @@ public class CarroDAO implements CarroDaoInterface{
 
     /**
      * @param carro procura o carro por um ojeto carro;
-     * @return retorna um carro;
+     * @return retorna um carro.
      */
     @Override
     public Carro procurar(Carro carro){

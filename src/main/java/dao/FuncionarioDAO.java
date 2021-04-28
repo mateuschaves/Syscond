@@ -11,6 +11,9 @@ import exceptions.funcionario.FuncionarioNaoEncontrado;
 import pojos.Apartamento;
 import pojos.Funcionario;
 
+/**
+ * @author grupo Sith; Implementando a interface de funcionario sobrescrevendo suas assinaturas
+ */
 public class FuncionarioDAO implements FuncionarioDaoInterface {
 
     /**
@@ -101,6 +104,11 @@ public class FuncionarioDAO implements FuncionarioDaoInterface {
         }
     }
 
+    /**
+     *
+     * @param funcionario utilizado para procurar um funcionario;
+     * @return retorna um funcionario
+     */
     public Funcionario procurar(Funcionario funcionario){
         Funcionario returned = null;
         try {

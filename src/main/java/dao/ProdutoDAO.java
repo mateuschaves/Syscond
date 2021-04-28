@@ -11,6 +11,9 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a interface de produto sobrescrevendo suas assinaturas
+ */
 public class ProdutoDAO implements ProdutoDaoInterface{
 
     /**

@@ -5,6 +5,9 @@ import pojos.Visitante;
 
 import java.util.List;
 
+/**
+ * @author grupo Sith; Implementando a interface de visitante com suas assinaturas
+ */
 public interface VisitanteDaoInterface {
 
     /**
