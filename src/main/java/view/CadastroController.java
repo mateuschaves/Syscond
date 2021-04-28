@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
 
-public class CadastroControler implements Initializable {
+public class CadastroController implements Initializable {
 
     @FXML
     private TextField textFieldNome;

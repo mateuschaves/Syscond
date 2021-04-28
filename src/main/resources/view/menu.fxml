@@ -40,13 +40,22 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity"
+      maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0"
+      prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Arquivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Exit">
+              <MenuItem fx:id="menuItemExit"
+                        mnemonicParsing="false"
+                        text="Exit"
+                        onAction="#exit">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -59,7 +68,10 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Cadastrar">
             <items>
-              <MenuItem mnemonicParsing="false" text="Fornecedor">
+              <MenuItem fx:id="menuItemCadastrarFornecedor"
+                        mnemonicParsing="false"
+                        text="Fornecedor"
+                        onAction="#showPopup">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
