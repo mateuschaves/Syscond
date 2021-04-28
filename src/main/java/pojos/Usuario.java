@@ -11,6 +11,7 @@ public class Usuario {
 
     @Id
     @NotNull
+    @Pattern(message = "Nome de usuario Invelido", regexp = "[^ ]")
     private String login;
     @Column
     @NotNull
