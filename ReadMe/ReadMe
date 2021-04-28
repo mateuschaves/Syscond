@@ -1,0 +1,7 @@
+Projeto Syscond
+
+Agora que estamos usando javaFX, pra poder funcionar precisamos da jdk versão 15
+
+Variavel de ambiente para o Runner:
+
+JAVA_HOME="diretorio do teu JDK"
