@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroControler">
+   <children>
+      <AnchorPane prefHeight="483.0" prefWidth="640.0" style="-fx-background-color: #F5EFED;">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="405.0" layoutY="56.0" opacity="0.1" rotate="180.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="56.0">
+               <image>
+                  <Image url="@../img/residential.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D y="1.0" />
+               </rotationAxis>
+            </ImageView>
+            <PasswordField fx:id="passwordFieldSenha" layoutX="80.0" layoutY="265.0" prefHeight="26.0" prefWidth="262.0" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="80.0" />
+            <Label layoutX="80.0" layoutY="166.0" prefHeight="0.0" prefWidth="50.0" text="Login" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="166.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="236.0" prefHeight="30.0" prefWidth="92.0" text="Senha" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="468.0" AnchorPane.topAnchor="236.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button id="buttonCadastrar" layoutX="80.0" layoutY="398.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Cadastrar" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="398.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="223.0" layoutY="398.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Voltar" AnchorPane.rightAnchor="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <TextField fx:id="textFieldLogin" layoutX="80.0" layoutY="196.0" prefHeight="26.0" prefWidth="262.0" />
+            <PasswordField fx:id="PsConfirmarSenha" layoutX="80.0" layoutY="339.0" prefHeight="26.0" prefWidth="262.0" />
+            <Label layoutX="80.0" layoutY="306.0" prefHeight="30.0" prefWidth="218.0" text="Confirme sua senha">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="40.0" prefHeight="30.0" prefWidth="167.0" text="Cadastrar">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNome" layoutX="80.0" layoutY="129.0" prefHeight="26.0" prefWidth="262.0" />
+            <Label layoutX="80.0" layoutY="94.0" prefHeight="30.0" prefWidth="76.0" text="Nome">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
