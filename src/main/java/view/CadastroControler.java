@@ -57,6 +57,14 @@ public class CadastroControler implements Initializable {
         }
     }
 
+    public void voltar(){
+        try {
+            view.App.setRoot("login");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -24,7 +24,7 @@
                   <Point3D y="1.0" />
                </rotationAxis>
             </ImageView>
-            <PasswordField layoutX="79.0" layoutY="160.0" prefHeight="26.0" prefWidth="262.0" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="80.0" />
+            <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="160.0" prefHeight="26.0" prefWidth="262.0" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="80.0" />
             <Label layoutX="82.0" layoutY="29.0" prefHeight="0.0" prefWidth="50.0" text="Login" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="60.0">
                <font>
                   <Font size="20.0" />
@@ -52,7 +52,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <TextField layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="textFieldLogin" layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="262.0" />
          </children>
       </AnchorPane>
    </children>

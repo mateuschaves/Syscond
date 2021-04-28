@@ -55,7 +55,25 @@ public class UsuarioNegocios {
        return usuarioDao.procurar(usuario);
     }
 
-    public void autenticar(){
+    public boolean autenticar(Usuario usuario){
+
+        Usuario user = pesquisar(usuario);
+
+        try{
+            user.getLogin();
+            if(usuario.getLogin().equals(user.getLogin())
+                    &&usuario.getSenha().equals(user.getSenha())){
+
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch(Exception e){
+
+            System.out.println("ERRO: "  + e.getMessage());
+            return false;
+        }
 
     }
 

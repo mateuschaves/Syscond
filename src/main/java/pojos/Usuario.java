@@ -21,6 +21,14 @@ public class Usuario {
     @Pattern(message = "Entrada invalida!, Apenas Letras são permitidas", regexp = "[a-zA-Z\\wÀ-ú'çÇ ]+")
     private String nome;
 
+    public Usuario() {
+    }
+
+    public Usuario(@NotNull @Pattern(message = "Nome de usuario Invelido", regexp = "[^ ]") String login, @NotNull String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+
     public Usuario(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
