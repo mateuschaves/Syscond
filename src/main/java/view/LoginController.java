@@ -36,6 +36,11 @@ public class LoginController {
             alert.setTitle("Sucesso!");
             alert.setHeaderText("Bem vindo ao Syscond");
             alert.show();
+            try {
+                view.App.setRoot("menu");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }
         else{
