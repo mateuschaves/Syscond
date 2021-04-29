@@ -67,7 +67,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Cadastrar">
             <items>
-              <MenuItem onAction="#showPopup" mnemonicParsing="false" text="Fornecedor">
+              <MenuItem onAction="#cadastrarFornecedor" mnemonicParsing="false" text="Fornecedor">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +75,7 @@
                            </image>
                         </ImageView>
                      </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Apartamentos">
+                  <MenuItem onAction="#cadastrarApartamento" mnemonicParsing="false" text="Apartamentos">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

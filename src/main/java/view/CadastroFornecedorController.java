@@ -9,7 +9,7 @@ import inutils.MaskFormatter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CadastroFornecedorController implements Initializable {
+public class CadastroFornecedorController extends MenuController{
 
     @FXML
     private TextField textFieldCNPJ;
@@ -17,15 +17,9 @@ public class CadastroFornecedorController implements Initializable {
 
     MaskFormatter maskFormatter = new MaskFormatter(textFieldCNPJ);
 
-    public void teste(){
-        maskFormatter.setMask(MaskFormatter.CPF);
-        maskFormatter.showMask();
+    public void cadastrarFornecedor(){
+
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        maskFormatter.setMask(MaskFormatter.CPF);
-        maskFormatter.showMask();
-    }
 }

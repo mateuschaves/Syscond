@@ -24,16 +24,24 @@ public class MenuController {
         System.exit(0);
     }
 
+    public void frameHandler (String frame, BorderPane pane ){
+        Node node = null;
+        try{
+            node = FXMLLoader.load(getClass().getResource(frame));
 
-
-    public void showPopup(){
-
-        try {
-            App.setRoot("teste");
-        } catch (IOException e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
 
+        pane.getChildren().clear();
+        pane.getChildren().add(node);
+    }
+
+    public void cadastrarFornecedor(){
+        this.frameHandler("cadastroFornecedor.fxml",borderPane);
+    }
+    public void cadastrarApartamento(){
+        this.frameHandler("cadastroApartamento.fxml",borderPane);
     }
 
     public void voltar(){
