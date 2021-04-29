@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
 
 import java.io.IOException;
 
@@ -19,32 +21,19 @@ public class App extends Application {
 
     private static Scene mainScene;
 
+
     @Override
     public void start(Stage stage) throws IOException {
 
         mainScene = new Scene(loadFXML("login"), 600, 400);
         stage.setScene(mainScene);
+        stage.getIcons().add(new Image("/img/syscondLogo.png"));
         stage.show();
 
     }
 
     static void setRoot(String fxml) throws IOException {
         mainScene.setRoot(loadFXML(fxml));
-
-
-    }
-
-    static void changeView(String view,double width,double height){
-
-        try {
-            mainScene.getWindow().setWidth(width);
-            mainScene.getWindow().setHeight(height);
-            setRoot(view);
-
-        }catch (Exception e){
-            e.printStackTrace();
-
-        }
 
 
     }

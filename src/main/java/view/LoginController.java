@@ -58,7 +58,7 @@ public class LoginController {
     @FXML
     private void cadastrar() throws IOException{
         //System.out.println("Cadastrar");
-        view.App.changeView("cadastrar",640,520);
+        view.App.setRoot("cadastrar");
         //view.App.setRoot("cadastrar");
     }
     @FXML

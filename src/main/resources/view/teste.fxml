@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchor" prefHeight="376.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
-   <children>
-      <TextField layoutX="75.0" layoutY="86.0" promptText="Numero" />
-      <TextField layoutX="75.0" layoutY="140.0" promptText="Bloco" />
-      <TextField layoutX="75.0" layoutY="201.0" promptText="Bloco" />
-      <Label layoutX="75.0" layoutY="51.0" text="Cadastrar Apartamento" />
-   </children>
-</AnchorPane>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Arquivo">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Sair">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#showPopup" text="Fornecedor">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/fornecedorImage.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Apartamentos">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/residential.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Ajuda">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Sobre">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/question.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <Label text="Syscond by Sith Systems©" BorderPane.alignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="80.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/residential.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+      </Label>
+   </bottom>
+   <left>
+      <Pane BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Cadastrar fornecedor">
+               <FlowPane.margin>
+                  <Insets top="20.0" />
+               </FlowPane.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="10.0" />
+               </FlowPane.margin>
+            </Text>
+            <TextField>
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CNPJ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </Text>
+            <TextField>
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </Text>
+            <TextField>
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </TextField>
+            <FlowPane prefHeight="51.0" prefWidth="224.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Cadastrar">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button onAction="#voltar" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Voltar">
+                     <FlowPane.margin>
+                        <Insets left="24.0" top="1.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+               <FlowPane.margin>
+                  <Insets top="20.0" />
+               </FlowPane.margin>
+            </FlowPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </FlowPane>
+   </center>
+</BorderPane>

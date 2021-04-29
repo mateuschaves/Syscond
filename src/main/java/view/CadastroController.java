@@ -61,7 +61,7 @@ public class CadastroController implements Initializable {
 
     public void voltar(){
         try {
-            view.App.changeView("login",640,400);
+            view.App.setRoot("login");
         }catch(Exception e){
             e.printStackTrace();
         }
