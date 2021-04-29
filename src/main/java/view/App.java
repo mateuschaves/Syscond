@@ -1,9 +1,11 @@
 package view;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -15,19 +17,35 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    private static Scene mainScene;
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        scene = new Scene(loadFXML("login"), 640, 480);
-        stage.setScene(scene);
+        mainScene = new Scene(loadFXML("login"), 640, 400);
+        stage.setScene(mainScene);
         stage.show();
 
     }
 
     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        mainScene.setRoot(loadFXML(fxml));
+
+
+    }
+
+    static void changeView(String view,double width,double height){
+
+        try {
+            mainScene.getWindow().setWidth(width);
+            mainScene.getWindow().setHeight(height);
+            setRoot(view);
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
 
     }
 

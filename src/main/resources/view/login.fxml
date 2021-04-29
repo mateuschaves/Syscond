@@ -24,7 +24,10 @@
                   <Point3D y="1.0" />
                </rotationAxis>
             </ImageView>
-            <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="160.0" prefHeight="26.0" prefWidth="262.0" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="80.0" />
+            <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="160.0" prefHeight="26.0" prefWidth="262.0" promptText="Senha" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font size="13.0" />
+               </font></PasswordField>
             <Label layoutX="82.0" layoutY="29.0" prefHeight="0.0" prefWidth="50.0" text="Login" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="60.0">
                <font>
                   <Font size="20.0" />
@@ -41,18 +44,12 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button
-                    fx:id="buttonCadastrar"
-                    layoutX="223.0"
-                    layoutY="285.0"
-                    mnemonicParsing="false"
-                    onAction="#cadastrar"
-                    prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Sign up" AnchorPane.rightAnchor="298.0">
+            <Button fx:id="buttonCadastrar" layoutX="223.0" layoutY="285.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Sign up" AnchorPane.rightAnchor="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="textFieldLogin" layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="textFieldLogin" layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="262.0" promptText="Login" />
          </children>
       </AnchorPane>
    </children>
