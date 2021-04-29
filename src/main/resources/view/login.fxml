@@ -9,10 +9,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="400.0" maxWidth="640.0" minHeight="400.0" minWidth="640.0" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5EFED;">
          <children>
@@ -24,16 +24,12 @@
                   <Point3D y="1.0" />
                </rotationAxis>
             </ImageView>
-            <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="160.0" prefHeight="26.0" prefWidth="262.0" promptText="Senha" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="80.0">
-               <font>
-                  <Font size="13.0" />
-               </font></PasswordField>
-            <Label layoutX="82.0" layoutY="29.0" prefHeight="0.0" prefWidth="50.0" text="Login" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="60.0">
+            <Label layoutX="80.0" layoutY="53.0" prefHeight="30.0" prefWidth="262.0" text="Login" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="53.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="78.0" layoutY="130.0" prefHeight="30.0" prefWidth="92.0" text="Password" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="468.0" AnchorPane.topAnchor="130.0">
+            <Label layoutX="78.0" layoutY="130.0" prefHeight="30.0" prefWidth="262.0" text="Password" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="258.0" AnchorPane.topAnchor="130.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -44,13 +40,14 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="buttonCadastrar" layoutX="223.0" layoutY="285.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Sign up" AnchorPane.rightAnchor="298.0">
+            <Button fx:id="buttonCadastrar" layoutX="223.0" layoutY="285.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="36.0" prefWidth="119.0" style="-fx-font-size: 18;" text="Sign up" AnchorPane.rightAnchor="258.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
             <TextField fx:id="textFieldLogin" layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="262.0" promptText="Login" />
+            <PasswordField fx:id="passwordField" layoutX="80.0" layoutY="167.0" prefHeight="26.0" prefWidth="262.0" promptText="Senha" />
          </children>
       </AnchorPane>
    </children>
-</VBox>
+</HBox>

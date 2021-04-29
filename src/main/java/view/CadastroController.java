@@ -3,7 +3,9 @@ package view;
 import dao.UsuarioDao;
 import dao.UsuarioDaoInterface;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 
@@ -59,7 +61,7 @@ public class CadastroController implements Initializable {
 
     public void voltar(){
         try {
-            view.App.setRoot("login");
+            view.App.changeView("login",640,400);
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchor" prefHeight="376.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+   <children>
+      <TextField layoutX="75.0" layoutY="86.0" promptText="Numero" />
+      <TextField layoutX="75.0" layoutY="140.0" promptText="Bloco" />
+      <TextField layoutX="75.0" layoutY="201.0" promptText="Bloco" />
+      <Label layoutX="75.0" layoutY="51.0" text="Cadastrar Apartamento" />
+   </children>
+</AnchorPane>
