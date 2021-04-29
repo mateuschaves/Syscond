@@ -3,6 +3,7 @@ package dao;
 import exceptions.fornecedor.FornecedorJaExistente;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 import pojos.Fornecedor;
+import pojos.Funcionario;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
@@ -79,6 +80,25 @@ public class FornecedorDAO implements FornecedorDaoInterface {
             em.close();
         }
     }
+
+    /**
+     *
+     * @param fornecedor é utilizado para encontrar um fornecedor;
+     * @return retorna um fornecedor.
+     */
+    @Override
+    public Fornecedor procurar(Fornecedor fornecedor){
+
+        Fornecedor returned = null;
+        try {
+            returned = procurar(fornecedor.getCnpj());
+        }catch (Exception e){
+            System.out.println("ERRO: " + e.getMessage());
+            System.out.println("Não foi possivel encontrar o fornecedor : " + fornecedor.getNome());
+        }
+        return returned;
+    }
+
 
     /**
      *

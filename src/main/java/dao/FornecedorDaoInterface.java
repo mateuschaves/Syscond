@@ -9,6 +9,7 @@ import exceptions.fornecedor.FornecedorJaExistente;
 import exceptions.fornecedor.FornecedorNaoEncontrado;
 
 import pojos.Fornecedor;
+import pojos.Funcionario;
 
 /**
  * @author grupo Sith; Interface de fornecedor com suas assinaturas
@@ -21,6 +22,13 @@ public interface FornecedorDaoInterface {
      * @throws FornecedorNaoEncontrado caso um usuario queira procurar um fornecedor que nao existe no BD.
      */
 	public Fornecedor procurar(String cnpj) throws FornecedorNaoEncontrado;
+
+
+    /**
+     * @return retorna um fornecedor;
+     * @param fornecedor utilizado para procurar um fornecedor.
+     */
+    public Fornecedor procurar(Fornecedor fornecedor);
 
 	/**
      * @throws FornecedorJaExistente caso o usuario tente adicionar um fornecedor que ja existe no BD;
