@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ApartamentoNegocios {
 
+
     ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
 
     public void cadastrar(Apartamento apartamento){
@@ -28,7 +29,7 @@ public class ApartamentoNegocios {
         }
     }
 
-    public void listarApartamentos(){
+    public List<Apartamento> listarApartamentos(){
         int index = 0;
         List<Apartamento> listaApartamentos = null;
 
@@ -42,11 +43,13 @@ public class ApartamentoNegocios {
                 System.out.println("Numero: " + a.getNumero());
                 System.out.println("Andar: " + a.getAndar());
                 System.out.println("Bloco: " + a.getBloco());
-
             }
+            return listaApartamentos;
         }catch(Exception e){
             System.out.println("ApartamentoNegocios: Erro: " + e.getMessage());
         }
+
+        return listaApartamentos;
 
     }
 

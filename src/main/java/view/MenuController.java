@@ -43,6 +43,9 @@ public class MenuController {
     public void callCadastrarApartamento(){
         this.frameHandler("cadastroApartamento.fxml",borderPane);
     }
+    public void callCadastrarMorador(){
+        this.frameHandler("cadastroMorador.fxml",borderPane);
+    }
 
     public void voltar(){
 

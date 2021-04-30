@@ -41,21 +41,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="borderPane"
-            maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="view.MenuController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Arquivo">
             <items>
-              <MenuItem onAction="#exit" mnemonicParsing="false" text="Sair">
+              <MenuItem mnemonicParsing="false" onAction="#exit" text="Sair">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -67,7 +59,16 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Cadastrar">
             <items>
-              <MenuItem onAction="#callCadastrarFornecedor" mnemonicParsing="false" text="Fornecedor">
+                  <MenuItem onAction="#callCadastrarMorador" mnemonicParsing="false" text="Morador">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/moradores.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+              <MenuItem mnemonicParsing="false" onAction="#callCadastrarFornecedor" text="Fornecedor">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,11 +76,11 @@
                            </image>
                         </ImageView>
                      </graphic></MenuItem>
-                  <MenuItem onAction="#callCadastrarApartamento" mnemonicParsing="false" text="Apartamentos">
+                  <MenuItem mnemonicParsing="false" onAction="#callCadastrarApartamento" text="Apartamentos">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/residential.png" />
+                              <Image url="@../img/menuImage.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -92,7 +93,7 @@
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/question.png" />
+                              <Image url="@../img/information-button.png" />
                            </image>
                         </ImageView>
                      </graphic></MenuItem>
