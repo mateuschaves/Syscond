@@ -17,7 +17,8 @@ public class LoginController {
     @FXML
     private TextField textFieldLogin;
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordFieldSenha;
+
 
 
     @FXML
@@ -25,7 +26,7 @@ public class LoginController {
 
         UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
 
-        String login = textFieldLogin.getText(), senha = passwordField.getText();
+        String login = textFieldLogin.getText(), senha = passwordFieldSenha.getText();
 
         Usuario user = new Usuario(login,senha);
 
@@ -58,7 +59,7 @@ public class LoginController {
     @FXML
     private void cadastrar() throws IOException{
         //System.out.println("Cadastrar");
-        view.App.setRoot("cadastrar");
+        view.App.setRoot("cadastroUsuarioLogin");
         //view.App.setRoot("cadastrar");
     }
     @FXML

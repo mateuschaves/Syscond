@@ -40,7 +40,7 @@ public class CadastroUsuarioController implements Initializable {
 
 
         if(!senha.equals(confirmarSenha)){
-            System.out.println("FUDEU");
+            System.out.println("Erro ao logar;");
             return;
         }
 
@@ -61,7 +61,7 @@ public class CadastroUsuarioController implements Initializable {
 
     public void voltar(){
         try {
-            view.App.setRoot("login");
+            view.App.setRoot("loginInicial");
         }catch(Exception e){
             e.printStackTrace();
         }

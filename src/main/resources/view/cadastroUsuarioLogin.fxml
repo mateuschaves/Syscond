@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -15,40 +16,58 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroUsuarioController">
    <left>
-      <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="358.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" focusTraversable="true" orientation="VERTICAL" prefHeight="330.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="29.0" prefWidth="45.0" text="Login">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Label text="Nome">
                <FlowPane.margin>
                   <Insets top="10.0" />
                </FlowPane.margin>
             </Label>
-            <TextField fx:id="textFieldLogin" prefHeight="25.0" prefWidth="190.0" promptText="Digite seu Login" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
+            <TextField fx:id="textFieldNome" cache="true" depthTest="ENABLE" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
+               <FlowPane.margin>
+                  <Insets top="5.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="Login">
+               <FlowPane.margin>
+                  <Insets top="2.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="textFieldLogin" cache="true" depthTest="ENABLE" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
                <FlowPane.margin>
                   <Insets top="2.0" />
                </FlowPane.margin>
             </TextField>
-            <Label text="Password">
+            <Label text="Senha">
                <FlowPane.margin>
-                  <Insets top="5.0" />
+                  <Insets top="2.0" />
                </FlowPane.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
             </Label>
-            <PasswordField fx:id="passwordFieldSenha" promptText="Digite sua Senha" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;">
+            <PasswordField fx:id="passwordFieldSenha" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;">
                <FlowPane.margin>
                   <Insets top="2.0" />
                </FlowPane.margin>
             </PasswordField>
-            <AnchorPane prefHeight="60.0" prefWidth="190.0">
+            <Label text="Confirme sua senha">
+               <FlowPane.margin>
+                  <Insets top="2.0" />
+               </FlowPane.margin>
+            </Label>
+            <PasswordField fx:id="PsConfirmarSenha" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;">
+               <FlowPane.margin>
+                  <Insets top="2.0" />
+               </FlowPane.margin>
+            </PasswordField>
+            <AnchorPane prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <JFXButton layoutY="15.0" onAction="#autenticar" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Login" />
-                  <JFXButton layoutX="112.0" layoutY="15.0" onAction="#cadastrar" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" text="Sing up" />
+                  <JFXButton buttonType="RAISED" layoutY="15.0" onAction="#cadastrar" prefHeight="30.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Cadastrar">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="112.0" layoutY="15.0" onAction="#voltar" prefHeight="30.0" prefWidth="100.0" ripplerFill="RED" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
                </children>
             </AnchorPane>
          </children>
@@ -59,7 +78,7 @@
          <children>
             <FlowPane prefHeight="80.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #CED4DA;" text="Login" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #CED4DA;" text="Cadastrar-se" textAlignment="CENTER">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -84,7 +103,7 @@
    <bottom>
       <FlowPane alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <FlowPane alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;">
+            <FlowPane alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;">
                <children>
                   <Label prefHeight="40.0" prefWidth="180.0" text="Syscond by Sith Systems©">
                      <graphic>
