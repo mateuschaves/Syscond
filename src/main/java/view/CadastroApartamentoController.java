@@ -22,7 +22,8 @@ public class CadastroApartamentoController extends MenuController{
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
 
         String numero = textFieldNumero.getText(),
-                andar = textFieldAndar.getText(),bloco = textFieldBloco.getText();
+                andar = textFieldAndar.getText(),
+                bloco = textFieldBloco.getText();
 
         Apartamento apartamento = new Apartamento(numero,andar,bloco);
 

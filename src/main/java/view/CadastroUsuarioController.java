@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
 
-public class CadastroController implements Initializable {
+public class CadastroUsuarioController implements Initializable {
 
     @FXML
     private TextField textFieldNome;

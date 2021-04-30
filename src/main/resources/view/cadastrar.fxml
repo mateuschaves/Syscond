@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroController">
+<VBox alignment="CENTER" fillWidth="false" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroUsuarioController">
    <children>
       <AnchorPane prefHeight="483.0" prefWidth="640.0" style="-fx-background-color: #F5EFED;">
          <children>

@@ -37,10 +37,10 @@ public class MenuController {
         pane.getChildren().add(node);
     }
 
-    public void cadastrarFornecedor(){
+    public void callCadastrarFornecedor(){
         this.frameHandler("cadastroFornecedor.fxml",borderPane);
     }
-    public void cadastrarApartamento(){
+    public void callCadastrarApartamento(){
         this.frameHandler("cadastroApartamento.fxml",borderPane);
     }
 

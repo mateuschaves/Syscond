@@ -85,7 +85,7 @@
             </TextField>
             <Pane prefHeight="44.0" prefWidth="200.0">
                <children>
-                  <Button layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Cadastrar" />
+                  <Button layoutY="2.0" mnemonicParsing="false"  onAction="#cadastrarApartamento" prefHeight="40.0" prefWidth="100.0" text="Cadastrar" />
                   <Button layoutX="147.0" layoutY="2.0" mnemonicParsing="false" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" text="Voltar" />
                </children>
                <FlowPane.margin>
