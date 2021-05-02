@@ -73,7 +73,7 @@
                   <Insets top="8.0" />
                </FlowPane.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="170.0" ripplerFill="#adb5bd" text="Logout">
+            <JFXButton onAction="#logOut" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="170.0" ripplerFill="#adb5bd" text="Logout">
                <graphic>
                   <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                      <children>
@@ -92,7 +92,7 @@
                   <Insets top="8.0" />
                </FlowPane.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Sair">
+            <JFXButton onAction="#systemExit" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Sair">
                <graphic>
                   <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                      <children>

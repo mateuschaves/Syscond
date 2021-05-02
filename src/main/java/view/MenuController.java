@@ -29,6 +29,15 @@ public class MenuController implements Initializable {
     private Label labelUsuario;
 
 
+    public void logOut(){
+        try{
+            view.App.setRoot("loginInicial");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    };
+
     public void systemExit(){
         System.exit(0);
     }

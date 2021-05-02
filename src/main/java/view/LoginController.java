@@ -51,7 +51,6 @@ public class LoginController implements Initializable {
                 currentUserWriter.writeUser(autenticado.getNome());
                 rememberMeRegister();
                 view.App.setRoot("menu");
-
                 //System.out.println("login: " + login);
             }catch (Exception e){
                 e.printStackTrace();
