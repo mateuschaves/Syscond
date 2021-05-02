@@ -1,119 +1,194 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
-
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+   <left>
+      <FlowPane alignment="TOP_RIGHT" prefHeight="330.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="170.0" ripplerFill="#adb5bd" text="Cadastros">
+               <graphic>
+                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/mainMenu/cadastros.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </FlowPane>
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="8.0" />
+               </FlowPane.margin>
+            </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="180.0" ripplerFill="#adb5bd" text="Consulta rápida" textAlignment="RIGHT">
+               <graphic>
+                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/mainMenu/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </FlowPane>
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="8.0" />
+               </FlowPane.margin>
+            </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="170.0" ripplerFill="#adb5bd" text="Sobre">
+               <graphic>
+                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/question.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </FlowPane>
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="8.0" />
+               </FlowPane.margin>
+            </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="170.0" ripplerFill="#adb5bd" text="Logout">
+               <graphic>
+                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/mainMenu/sair.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </FlowPane>
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="8.0" />
+               </FlowPane.margin>
+            </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Sair">
+               <graphic>
+                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/mainMenu/remove.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </FlowPane>
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets top="8.0" />
+               </FlowPane.margin>
+            </JFXButton>
+         </children>
+      </FlowPane>
+   </left>
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Arquivo">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#exit" text="Sair">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/logout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MenuItem>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Cadastrar">
-            <items>
-                  <MenuItem onAction="#callCadastrarMorador" mnemonicParsing="false" text="Morador">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/moradores.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-              <MenuItem mnemonicParsing="false" onAction="#callCadastrarFornecedor" text="Fornecedor">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/fornecedorImage.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#callCadastrarApartamento" text="Apartamentos">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/menuImage.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Ajuda">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Sobre">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/information-button.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MenuItem>
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <FlowPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #F8F9FA;" BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane prefHeight="80.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #CED4DA;" text="Syscond" textAlignment="CENTER">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets top="30.0" />
+                     </FlowPane.margin>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane orientation="VERTICAL" prefHeight="50.0" prefWidth="20.0">
+               <children>
+                  <Rectangle fill="#ced4da" height="40.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Polygon fill="#6a7580" points="33.0, 22.0, 33.0, 30.5, 53.0, 22.0" stroke="#1e1b1c" strokeType="INSIDE" strokeWidth="0.0" />
+               </children>
+               <FlowPane.margin>
+                  <Insets top="30.0" />
+               </FlowPane.margin>
+            </FlowPane>
+            <Label fx:id="labelUsuario" text="Usuario:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="30.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+      </FlowPane>
    </top>
    <bottom>
-      <Label text="Syscond by Sith Systems©" BorderPane.alignment="CENTER">
-         <graphic>
-            <ImageView fitHeight="32.0" fitWidth="80.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/residential.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <BorderPane.margin>
-            <Insets bottom="15.0" />
-         </BorderPane.margin>
-      </Label>
+      <FlowPane alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;">
+               <children>
+                  <Label prefHeight="40.0" prefWidth="180.0" text="Syscond by Sith Systems©">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="80.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/dialogIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" />
+                     </FlowPane.margin>
+                  </Label>
+               </children>
+            </FlowPane>
+         </children>
+      </FlowPane>
    </bottom>
+   <center>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Group opacity="0.16">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/residential.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutY="150.0" text="Syscond">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+         </children>
+      </FlowPane>
+   </center>
 </BorderPane>

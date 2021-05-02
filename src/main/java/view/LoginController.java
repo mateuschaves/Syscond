@@ -1,44 +1,58 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import negocios.UsuarioNegocios;
 
 import javafx.scene.control.PasswordField;
 import pojos.Usuario;
+import view.auxiliar.CurrentUserWriter;
+import view.auxiliar.RememberMe;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
+
+    UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
 
     @FXML
     private TextField textFieldLogin;
     @FXML
     private PasswordField passwordFieldSenha;
+    @FXML
+    private CheckBox rememberMeBox;
 
+    private CurrentUserWriter currentUserWriter = new CurrentUserWriter();
+    private RememberMe rememberMe = new RememberMe();
 
 
     @FXML
     private void autenticar(){
 
-        UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
-
         String login = textFieldLogin.getText(), senha = passwordFieldSenha.getText();
 
         Usuario user = new Usuario(login,senha);
 
-        if(usuarioNegocios.autenticar(user)){
+        Usuario autenticado = usuarioNegocios.autenticar(user);
+
+        if(autenticado != null){// se o usuario conseguir entrar;
+
             System.out.println(usuarioNegocios.autenticar(user));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
             alert.setTitle("Sucesso!");
             alert.setHeaderText("Bem vindo ao Syscond");
             alert.show();
             try {
+                currentUserWriter.writeUser(autenticado.getNome());
+                rememberMeRegister();
                 view.App.setRoot("menu");
+
+                //System.out.println("login: " + login);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -62,9 +76,39 @@ public class LoginController {
         view.App.setRoot("cadastroUsuarioLogin");
         //view.App.setRoot("cadastrar");
     }
-    @FXML
-    private void switchToSecondary() throws IOException {
-        view.App.setRoot("secondary");
+
+    private void rememberMeRegister(){
+        if(this.rememberMeBox.isSelected()){
+            System.out.println("SELECTED");
+            try {
+                rememberMe.writeUser(textFieldLogin.getText());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            rememberMe.deleteFile();
+        }
     }
 
+    private void rememberMeStart(){
+
+        try{
+            rememberMe.readUser().equals(null);
+            String login = rememberMe.readUser();
+
+            Usuario current = usuarioNegocios.pesquisar(login);
+
+            rememberMeBox.setSelected(true);
+
+            this.textFieldLogin.setText(current.getLogin());
+            this.passwordFieldSenha.setText(current.getSenha());
+        }catch (NullPointerException e){
+            System.out.println("Erro: "+ e.getMessage());
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        rememberMeStart();
+    }
 }

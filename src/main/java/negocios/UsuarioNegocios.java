@@ -51,11 +51,15 @@ public class UsuarioNegocios {
         usuarioDao.alterar(usuario);
 
     }
-    public Usuario pesquisar(Usuario usuario){
-       return usuarioDao.procurar(usuario);
+    public Usuario pesquisar(String login){
+       return usuarioDao.procurar(login);
     }
 
-    public boolean autenticar(Usuario usuario){
+    public Usuario pesquisar(Usuario usuario){
+        return usuarioDao.procurar(usuario);
+    }
+
+    public Usuario autenticar(Usuario usuario){
 
         Usuario user = pesquisar(usuario);
 
@@ -64,15 +68,15 @@ public class UsuarioNegocios {
             if(usuario.getLogin().equals(user.getLogin())
                     &&usuario.getSenha().equals(user.getSenha())){
 
-                return true;
+                return user;
             }else{
-                return false;
+                return null;
             }
 
         }catch(Exception e){
 
             System.out.println("ERRO: "  + e.getMessage());
-            return false;
+            return null;
         }
 
     }
