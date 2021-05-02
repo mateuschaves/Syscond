@@ -28,7 +28,7 @@ public class CurrentUserWriter {
 
             user = lerArq.readLine(); // lê a primeira linha
             arq.close();
-            file.delete();
+
             return user;
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n",

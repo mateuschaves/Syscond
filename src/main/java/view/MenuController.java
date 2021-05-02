@@ -42,12 +42,12 @@ public class MenuController implements Initializable {
         System.exit(0);
     }
 
-    private void setRoot(String fxml){
+    public void setRoot(String fxml){
 
         try {
             view.App.setRoot(fxml);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }
@@ -65,19 +65,21 @@ public class MenuController implements Initializable {
         pane.getChildren().add(node);
     }
 
+    public void callCadastros(){
+        this.setRoot("NovaTelaCadastro");
+    }
+
     /*
     public void callCadastrarFornecedor(){
         this.frameHandler("cadastroFornecedor.fxml",borderPane);
     }
-    public void callCadastrarApartamento(){
-        this.frameHandler("cadastroApartamento.fxml",borderPane);
-    }
+
 
     public void callCadastrarMorador(){
         this.frameHandler("cadastroMorador.fxml",borderPane);
     }
      */
-    public void voltar(){
+    public void backMenu(){
 
         try {
             App.setRoot("menu");
