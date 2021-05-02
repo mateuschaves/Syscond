@@ -1,13 +1,13 @@
 package view;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import negocios.UsuarioNegocios;
 
-import javafx.scene.control.PasswordField;
 import pojos.Usuario;
 import view.auxiliar.CurrentUserWriter;
 import view.auxiliar.RememberMe;
@@ -27,9 +27,10 @@ public class LoginController implements Initializable {
     @FXML
     private CheckBox rememberMeBox;
 
+    @FXML
+    private BorderPane pane;
     private CurrentUserWriter currentUserWriter = new CurrentUserWriter();
     private RememberMe rememberMe = new RememberMe();
-
 
     @FXML
     private void autenticar(){
@@ -109,5 +110,9 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         rememberMeStart();
+        pane.setOnKeyPressed( (keyEvent) -> {
+            if(keyEvent.getCode() == KeyCode.ENTER)
+                autenticar();
+        } );
     }
 }

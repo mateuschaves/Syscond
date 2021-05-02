@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <left>
       <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="358.0" prefWidth="240.0" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
          <children>
@@ -53,7 +53,7 @@
             </CheckBox>
             <AnchorPane prefHeight="60.0" prefWidth="190.0">
                <children>
-                  <JFXButton layoutY="15.0" onAction="#autenticar" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Login" />
+                  <JFXButton fx:id="buttonLogin" layoutY="15.0" onAction="#autenticar" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Login" />
                   <JFXButton layoutX="112.0" layoutY="15.0" onAction="#cadastrar" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" text="Sing up" />
                </children>
                <opaqueInsets>
