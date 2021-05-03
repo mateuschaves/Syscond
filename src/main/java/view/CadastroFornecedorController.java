@@ -8,10 +8,11 @@ import inutils.MaskFormatter;
 import negocios.FornecedorNegocios;
 import pojos.Fornecedor;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CadastroFornecedorController extends MenuController{
+public class CadastroFornecedorController{
 
     @FXML
     private TextField textFieldNome;
@@ -33,8 +34,14 @@ public class CadastroFornecedorController extends MenuController{
         Fornecedor fornecedor = new Fornecedor(cnpj,nome,telefone);
 
         fornecedorNegocios.cadastrar(fornecedor);
+    }
 
-
+    public void voltar(){
+        try {
+            App.setRoot("menuCadastro");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

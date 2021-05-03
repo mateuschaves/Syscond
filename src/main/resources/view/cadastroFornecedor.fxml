@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroFornecedorController">
-   <bottom>
-      <Label text="Syscond by Sith Systems©" BorderPane.alignment="CENTER">
-         <graphic>
-            <ImageView fitHeight="32.0" fitWidth="80.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/residential.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <BorderPane.margin>
-            <Insets bottom="15.0" />
-         </BorderPane.margin>
-      </Label>
-   </bottom>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroFornecedorController">
    <left>
       <Pane BorderPane.alignment="CENTER" />
    </left>
@@ -34,9 +18,9 @@
       <Pane BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="469.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Cadastrar fornecedor">
+            <Label text="Cadastrar Fornecedor">
                <FlowPane.margin>
                   <Insets top="20.0" />
                </FlowPane.margin>
@@ -52,7 +36,7 @@
                   <Insets top="10.0" />
                </FlowPane.margin>
             </Text>
-            <TextField fx:id="textFieldNome">
+            <TextField fx:id="textFieldNome" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
                <FlowPane.margin>
                   <Insets top="5.0" />
                </FlowPane.margin>
@@ -65,7 +49,7 @@
                   <Insets top="5.0" />
                </FlowPane.margin>
             </Text>
-            <TextField fx:id="textFieldCNPJ">
+            <TextField fx:id="textFieldCNPJ" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
                <FlowPane.margin>
                   <Insets top="5.0" />
                </FlowPane.margin>
@@ -78,28 +62,20 @@
                   <Insets top="5.0" />
                </FlowPane.margin>
             </Text>
-            <TextField fx:id="textFieldTelefone">
+            <TextField fx:id="textFieldTelefone" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
                <FlowPane.margin>
                   <Insets top="5.0" />
                </FlowPane.margin>
             </TextField>
-            <FlowPane prefHeight="51.0" prefWidth="224.0">
-               <children>
-                  <Button onAction="#cadastrarFornecedor" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Cadastrar">
-                     <FlowPane.margin>
-                        <Insets />
-                     </FlowPane.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" text="Voltar">
-                     <FlowPane.margin>
-                        <Insets left="24.0" top="1.0" />
-                     </FlowPane.margin>
-                  </Button>
-               </children>
+            <Pane prefHeight="44.0" prefWidth="247.0">
                <FlowPane.margin>
                   <Insets top="20.0" />
                </FlowPane.margin>
-            </FlowPane>
+               <children>
+                  <JFXButton fx:id="cadastrarFornecedor" layoutY="2.0" onAction="#cadastrarFornecedor" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Cadastar" />
+                  <JFXButton fx:id="voltar" layoutX="147.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Voltar" />
+               </children>
+            </Pane>
          </children>
          <BorderPane.margin>
             <Insets top="16.0" />
