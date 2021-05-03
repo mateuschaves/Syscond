@@ -58,6 +58,20 @@ public class MenuCadastroController extends MenuController implements Initializa
 
     }
 
+    public void exibirCadastroFuncionario(){
+
+        Node node;
+
+        try{
+            node = FXMLLoader.load(getClass().getResource("cadastroFuncionario.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 
