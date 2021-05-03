@@ -4,85 +4,71 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroFornecedorController">
-   <left>
-      <Pane BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <Pane BorderPane.alignment="CENTER" />
-   </right>
-   <center>
-      <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="469.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+<FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroFornecedorController">
+   <children>
+      <Label text="Cadastrar Fornecedor">
+         <FlowPane.margin>
+            <Insets top="20.0" />
+         </FlowPane.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <FlowPane.margin>
+            <Insets top="10.0" />
+         </FlowPane.margin>
+      </Text>
+      <TextField fx:id="textFieldNome" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </TextField>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CNPJ">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </Text>
+      <TextField fx:id="textFieldCNPJ" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </TextField>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </Text>
+      <TextField fx:id="textFieldTelefone" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </TextField>
+      <Pane prefHeight="44.0" prefWidth="247.0">
+         <FlowPane.margin>
+            <Insets top="20.0" />
+         </FlowPane.margin>
          <children>
-            <Label text="Cadastrar Fornecedor">
-               <FlowPane.margin>
-                  <Insets top="20.0" />
-               </FlowPane.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets top="10.0" />
-               </FlowPane.margin>
-            </Text>
-            <TextField fx:id="textFieldNome" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
-               <FlowPane.margin>
-                  <Insets top="5.0" />
-               </FlowPane.margin>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CNPJ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets top="5.0" />
-               </FlowPane.margin>
-            </Text>
-            <TextField fx:id="textFieldCNPJ" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
-               <FlowPane.margin>
-                  <Insets top="5.0" />
-               </FlowPane.margin>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets top="5.0" />
-               </FlowPane.margin>
-            </Text>
-            <TextField fx:id="textFieldTelefone" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;">
-               <FlowPane.margin>
-                  <Insets top="5.0" />
-               </FlowPane.margin>
-            </TextField>
-            <Pane prefHeight="44.0" prefWidth="247.0">
-               <FlowPane.margin>
-                  <Insets top="20.0" />
-               </FlowPane.margin>
-               <children>
-                  <JFXButton fx:id="cadastrarFornecedor" layoutY="2.0" onAction="#cadastrarFornecedor" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Cadastar" />
-                  <JFXButton fx:id="voltar" layoutX="147.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Voltar" />
-               </children>
-            </Pane>
+            <JFXButton fx:id="cadastrarFornecedor" layoutY="2.0" onAction="#cadastrarFornecedor" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Cadastrar" />
+            <JFXButton fx:id="voltar" layoutX="147.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Voltar" />
          </children>
-         <BorderPane.margin>
-            <Insets top="16.0" />
-         </BorderPane.margin>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </FlowPane>
-   </center>
-</BorderPane>
+      </Pane>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</FlowPane>
