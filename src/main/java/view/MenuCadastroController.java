@@ -85,6 +85,19 @@ public class MenuCadastroController extends MenuController implements Initializa
         }
     }
 
+    public void exibirCadastroCarro(){
+
+        Node node;
+
+        try {
+            node = FXMLLoader.load(getClass().getResource("cadastroCarro.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
