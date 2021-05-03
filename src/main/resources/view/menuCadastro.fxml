@@ -133,7 +133,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" layoutX="20.0" layoutY="276.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Usuários">
+                  <JFXButton onAction="#exibirCadastroUsuario" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="276.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Usuários">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                            <children>

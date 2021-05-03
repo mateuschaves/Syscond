@@ -70,6 +70,14 @@ public class CadastroUsuarioController implements Initializable {
         }
     }
 
+    public void voltartela(){
+        try {
+            view.App.setRoot("menuCadastro");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
