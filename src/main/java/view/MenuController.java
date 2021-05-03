@@ -66,7 +66,7 @@ public class MenuController implements Initializable {
     }
 
     public void callCadastros(){
-        this.setRoot("NovaTelaCadastro");
+        this.setRoot("menuCadastro");
     }
 
     /*
@@ -79,18 +79,13 @@ public class MenuController implements Initializable {
         this.frameHandler("cadastroMorador.fxml",borderPane);
     }
      */
-    public void backMenu(){
-
-        try {
-            App.setRoot("menu");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void writeUser(Label label){
+        CurrentUserWriter currentUserWriter = new CurrentUserWriter();
+        label.setText("Usuário: " + currentUserWriter.readUser());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CurrentUserWriter currentUserWriter = new CurrentUserWriter();
-        labelUsuario.setText("Usuario: " + currentUserWriter.readUser());
+        writeUser(labelUsuario);
     }
 }

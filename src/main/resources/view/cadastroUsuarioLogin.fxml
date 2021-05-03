@@ -55,7 +55,7 @@
                   <Insets top="2.0" />
                </FlowPane.margin>
             </Label>
-            <PasswordField fx:id="PsConfirmarSenha" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;">
+            <PasswordField fx:id="confirmarSenha" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;">
                <FlowPane.margin>
                   <Insets top="2.0" />
                </FlowPane.margin>

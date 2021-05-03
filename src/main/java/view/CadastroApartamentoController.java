@@ -6,8 +6,11 @@ import negocios.ApartamentoNegocios;
 import pojos.Apartamento;
 
 import java.awt.*;
+import java.io.IOException;
 
-public class CadastroApartamentoController extends MenuController{
+import static view.App.setRoot;
+
+public class CadastroApartamentoController{
 
     @FXML
     private TextField textFieldNumero;
@@ -29,5 +32,14 @@ public class CadastroApartamentoController extends MenuController{
 
         apartamentoNegocios.cadastrar(apartamento);
     }
+
+    public void voltar(){
+        try {
+            App.setRoot("menuCadastro");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
