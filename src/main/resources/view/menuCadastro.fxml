@@ -53,7 +53,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" layoutX="10.0" layoutY="46.0" prefHeight="40.0" prefWidth="160.0" ripplerFill="#adb5bd" text="Visitantes" textAlignment="RIGHT">
+                  <JFXButton onAction="#exibirCadastroVisitante" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="46.0" prefHeight="40.0" prefWidth="160.0" ripplerFill="#adb5bd" text="Visitantes" textAlignment="RIGHT">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                            <children>

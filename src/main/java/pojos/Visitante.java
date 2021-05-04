@@ -55,8 +55,18 @@ public class Visitante {
     }
 
     /**
-     * @return retorna o cpf do visitante.
+     *
+     * @param cpf e
+     * @param nome sao os parametros usados nesse terceiro construtor de visitante.
      */
+    public Visitante(String cpf, String nome) {
+        this.cpf = cpf;
+        this.nome = nome;
+    }
+
+        /**
+         * @return retorna o cpf do visitante.
+         */
     public String getCpf() {
         return cpf;
     }
