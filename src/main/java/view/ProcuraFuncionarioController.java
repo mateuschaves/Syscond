@@ -11,18 +11,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
-import negocios.FornecedorNegocios;
-import pojos.Fornecedor;
+import negocios.FuncionarioNegocios;
+import pojos.Funcionario;
 import utils.Campos;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProcuraFornecedor implements Initializable {
+public class ProcuraFuncionarioController implements Initializable{
 
     @FXML
-    private TextField textFieldCnpj;
+    private TextField textFieldCpf;
     @FXML
     private FlowPane mainPane;
     @FXML
@@ -30,25 +30,25 @@ public class ProcuraFornecedor implements Initializable {
     @FXML
     private TableColumn nomeCollumn;
     @FXML
-    private TableColumn telefoneCollumn;
+    private TableColumn funcaoColumn;
 
     @FXML
-    private void procurarFornecedor(){
-        FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
-        String cnpj = textFieldCnpj.getText();
+    private void procurarFuncionario(){
+        FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
+        String cpf = textFieldCpf.getText();
 
 
         try{
 
-            Fornecedor fornecedor = new Fornecedor(cnpj);
-            fornecedor = fornecedorNegocios.pesquisar(fornecedor);
-            System.out.println("Nome do Fornecedor: " + fornecedor.getNome());
+            Funcionario funcionario = new Funcionario(cpf);
+            funcionario = funcionarioNegocios.pesquisar(funcionario);
+            System.out.println("Nome do Funcionario: " + funcionario.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
-                    new Campos(fornecedor.getNome(),fornecedor.getTelefone())
+                    new Campos(funcionario.getNome(),funcionario.getFuncao())
             );
             //Creating columns
             nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
-            telefoneCollumn.setCellValueFactory(new PropertyValueFactory("campo2"));
+            funcaoColumn.setCellValueFactory(new PropertyValueFactory("campo2"));
             //Adding data to the table
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
@@ -75,11 +75,9 @@ public class ProcuraFornecedor implements Initializable {
         });
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
-                procurarFornecedor();
+                procurarFuncionario();
             }
         });
 
     }
-
-
 }

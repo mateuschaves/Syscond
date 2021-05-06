@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcuraFornecedor">
+<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcuraFornecedorController">
    <children>
       <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
          <children>
