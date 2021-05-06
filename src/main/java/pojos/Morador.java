@@ -6,7 +6,10 @@
 package pojos;
 
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -36,8 +39,8 @@ public class Morador {
 
     @Id
     @NotNull
-    @Pattern(message = "Entrada invalida! por favor, utilize o formato padrão de CPF",
-            regexp = "[0-9]{3}[.]{1}[0-9]{3}[.]{1}[0-9]{3}[-]{1}[0-9]{2}")
+    @NotEmpty
+    @Column
     private String cpf;
     @Column
     @NotNull
@@ -55,7 +58,14 @@ public class Morador {
 
     private List<Visitante> visitantesList;
 
+    private String numero;
+
     public Morador() {
+    }
+
+    public Morador(String nomeMorador, Apartamento apartamento) {
+        this.nomeMorador = nomeMorador;
+        this.apartamento = apartamento;
     }
 
     /**
@@ -122,6 +132,14 @@ public class Morador {
         this.cpf = cpf;
         this.nomeMorador = nome;
         this.carros = carros;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     /**

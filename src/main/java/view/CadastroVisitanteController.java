@@ -5,15 +5,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
 import negocios.MoradorNegocios;
 import negocios.VisitanteNegocios;
 import pojos.Morador;
 import pojos.Visitante;
+import utils.Campos;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,40 +33,35 @@ public class CadastroVisitanteController implements Initializable{
     @FXML
     private FlowPane mainPane;
     @FXML
-    private TableView<Objeto> tableView;
+    private TableView<Campos> tableView = new TableView<Campos>();
     @FXML
-    private TableColumn<Morador,String> nomeCollumn;
+    private TableColumn nomeCollumn;
     @FXML
-    private TableColumn<Morador,String> apartamentoColumn;
-
-    private class Objeto{//Objeto criado só pra receber os dados de apartamento;
-        // que vão ser exibidos na tabela;
-        String nome;
-        String numeroAp;
-
-        public Objeto(String nome,String numeroAP) {
-            this.nome = nome;
-            this.numeroAp = numeroAP;
-        }
-    }
-
-    private ObservableList<Objeto> listaMorador(){
-        return FXCollections.observableArrayList(new Objeto("hehe","fa"));
-    }
+    private TableColumn apartamentoColumn;
 
     @FXML
     private void procurar (){
         MoradorNegocios moradorNegocios = new MoradorNegocios();
-        String cpfResponsavel = responsavel.getText();
-        Morador morador;
+        String cpf = responsavel.getText();
+
 
         try{
-            morador = moradorNegocios.pesquisar(new Morador(cpfResponsavel));
-            System.out.println("Encontrado :" + morador.getNome());
 
-            tableView.setItems(listaMorador());
+            Morador morador = new Morador(cpf);
+            morador = moradorNegocios.pesquisar(morador);
+            System.out.println("Morador: " + morador.getNome());
+            final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
+                    new Campos(morador.getNome(),morador.getApartamento().getNumero())
+            );
+            //Creating columns
+            nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
+            apartamentoColumn.setCellValueFactory(new PropertyValueFactory("campo2"));
+            //Adding data to the table
+            ObservableList<String> list = FXCollections.observableArrayList();
+            tableView.setItems(dataCampos);
+            tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         }catch (Exception e){
-
             e.printStackTrace();
         }
 
