@@ -34,7 +34,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" layoutY="54.0" prefHeight="46.0" prefWidth="180.0" ripplerFill="#adb5bd" text="Consulta rápida" textAlignment="RIGHT">
+                  <JFXButton alignment="CENTER_RIGHT" layoutY="54.0" onAction="#callConsulta" prefHeight="46.0" prefWidth="180.0" ripplerFill="#adb5bd" text="Consulta rápida" textAlignment="RIGHT">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                            <children>

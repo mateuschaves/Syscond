@@ -8,7 +8,17 @@ public class MenuConsultaController extends MenuController {
         setRoot("menu");
     }
 
-    public void exibirListarVisitante() {
+    public void exibirListarVisitante() {}
 
-    }
+    public void exibirListarCarro(){}
+
+    public void exibirListarFuncionario(){}
+
+    public void exibirListarUsuario(){}
+
+    public void exibirListarFornecedor(){}
+
+    public void exibirListarAp(){}
+
+
 }

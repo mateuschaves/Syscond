@@ -60,6 +60,8 @@ public class MenuController implements Initializable {
         this.setRoot("menuCadastro");
     }
 
+    public void callConsulta(){this.setRoot("menuConsulta");}
+
     /*
     public void callCadastrarFornecedor(){
         this.frameHandler("cadastroFornecedor.fxml",borderPane);
