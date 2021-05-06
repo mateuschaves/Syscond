@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.MoradorNegocios;
 import negocios.VisitanteNegocios;
 import pojos.Morador;
@@ -17,6 +19,7 @@ import utils.Campos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CadastroVisitanteController implements Initializable{
@@ -72,7 +75,7 @@ public class CadastroVisitanteController implements Initializable{
     }
 
     @FXML
-    private void cadastrarVisitante(){
+    private void cadastrarVisitante() throws IOException {
 
         String  cpf = textFieldCpf.getText(),
                 nome = textFieldNome.getText();
@@ -83,6 +86,24 @@ public class CadastroVisitanteController implements Initializable{
         Visitante visitante = new Visitante(cpf,nome);
 
         visitanteNegocios.cadastrar(visitante);
+
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        ((Stage)dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/img/syscondLogo.png"));
+        dialog.setHeaderText("Visitante adicionado com sucesso.");
+        dialog.setContentText("Deseja adicionar outro visitante?");
+        ButtonType oneMore = new ButtonType("Quero adicionar +1 visitante");
+        ButtonType enoughCars = new ButtonType("Não, obrigado", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getButtonTypes().setAll(oneMore, enoughCars);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == oneMore){
+            textFieldCpf.setText("");
+            textFieldNome.setText("");
+            responsavel.setText("");
+            textFieldCpf.requestFocus();
+        }else{
+            dialog.close();
+            App.setRoot("menuCadastro");
+        }
     }
 
     @FXML
