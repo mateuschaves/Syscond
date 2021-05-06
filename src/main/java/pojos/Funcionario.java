@@ -54,6 +54,14 @@ public class Funcionario {
         }
 
         /**
+         *
+         * @param cpf é o parametro usado nesse terceiro de funcionario.
+         */
+        public Funcionario(String cpf){
+                this.cpf = cpf;
+        }
+
+        /**
          * @return retorna o nome do funcionario.
          */
         public String getNome() {
