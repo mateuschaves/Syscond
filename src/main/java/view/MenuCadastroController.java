@@ -111,7 +111,8 @@ public class MenuCadastroController extends MenuController implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        writeUser(labelUsuario);
+        writeUser(labelUsuario);// ecreve na tela o nome do usurio atual logado;
+
         pane.setOnKeyPressed( (keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ESCAPE)
                 backMenu();
