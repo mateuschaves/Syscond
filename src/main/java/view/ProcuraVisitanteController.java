@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
@@ -36,11 +33,11 @@ public class ProcuraVisitanteController implements Initializable {
     private void procurarVisitante(){
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
         String cpf = textFieldCpf.getText();
-
+        Visitante visitante;
 
         try{
 
-            Visitante visitante = new Visitante(cpf);
+            visitante = new Visitante(cpf);
             visitante = visitanteNegocios.pesquisar(visitante);
             System.out.println("Visitante: " + visitante.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
@@ -56,6 +53,12 @@ public class ProcuraVisitanteController implements Initializable {
 
         }catch (Exception e){
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("O visitante buscado não existe! ou não está associado!");
+            alert.setTitle("Visitante não encontrado");
+            alert.setContentText("não foi possivel encontrar este visitante, Caso queira cadastrar este visitante, " +
+                    "você pode ir no menu cadastros e adicionar!");
+            alert.show();
         }
     }
     @FXML
