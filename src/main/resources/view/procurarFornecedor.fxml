@@ -62,8 +62,8 @@
       </Text>
       <TableView fx:id="tableView" prefHeight="67.0" prefWidth="386.0">
         <columns>
-          <TableColumn fx:id="nomeCollumn" prefWidth="194.0" text="Nome" />
-          <TableColumn fx:id="telefoneCollumn" prefWidth="191.0" text="Telefone" />
+          <TableColumn fx:id="nomeCollumn" prefWidth="195.0" text="Nome" />
+          <TableColumn fx:id="telefoneCollumn" prefWidth="188.0" text="Telefone" />
         </columns>
          <FlowPane.margin>
             <Insets />
