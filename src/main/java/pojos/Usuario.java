@@ -24,6 +24,11 @@ public class Usuario {
     public Usuario() {
     }
 
+
+    public Usuario(String login){
+        this.login = login;
+    }
+
     public Usuario(@NotNull @Pattern(message = "Nome de usuario Invelido", regexp = "[^ ]") String login, @NotNull String senha) {
         this.login = login;
         this.senha = senha;
