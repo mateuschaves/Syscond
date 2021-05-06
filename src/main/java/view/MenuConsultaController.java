@@ -2,7 +2,9 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -17,16 +19,51 @@ public class MenuConsultaController extends MenuController implements Initializa
     private BorderPane pane;
     @FXML
     private Label labelUsuario;
+    @FXML
+    private FlowPane formularyPane;
 
     public void backMenu() {
         setRoot("menu");
     }
 
-    public void exibirListarVisitante() {}
+    public void exibirListarVisitante() {
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarVisitante.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-    public void exibirListarCarro(){}
+    }
 
-    public void exibirListarFuncionario(){}
+    public void exibirListarCarro(){
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarCarro.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void exibirListarFuncionario(){
+
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarFuncionario.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void exibirListarUsuario(){}
 

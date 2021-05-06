@@ -64,6 +64,14 @@ public class Visitante {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @param cpf é o parametro usado nesse quarto construtor de visitante.
+     */
+    public Visitante(String cpf) {
+        this.cpf = cpf;
+    }
+
         /**
          * @return retorna o cpf do visitante.
          */
