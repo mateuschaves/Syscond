@@ -42,8 +42,8 @@ public class Carro {
     @NotNull(message = "a cor é obrigatoria!")
     @Pattern(message = "Entrada invalida! Apenas Letras!", regexp = "[A-Za-z ]+[ç]*[Ç]*")
     private String cor;
-    @ManyToOne(fetch = FetchType.LAZY)
-    //@NotNull(message = "um carro precisar ter um dono!")
+    @ManyToOne
+    @NotNull(message = "um carro precisar ter um dono!")
     private Morador proprietario;
 
     public Carro() {
@@ -72,6 +72,14 @@ public class Carro {
         this.modelo = modelo;
         this.cor = cor;
         this.proprietario = proprietario;
+    }
+
+    /**
+     *
+     * @param placa é o parametro usado nesse quarto construtor de carro.
+     */
+    public Carro(String placa){
+        this.placa = placa;
     }
 
     /**
