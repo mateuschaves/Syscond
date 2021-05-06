@@ -1,13 +1,14 @@
 package view;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import negocios.UsuarioNegocios;
-
 import pojos.Usuario;
 import view.auxiliar.CurrentUserWriter;
 import view.auxiliar.RememberMe;
@@ -51,7 +52,7 @@ public class LoginController implements Initializable {
             try {
                 currentUserWriter.writeUser(autenticado.getNome());
                 rememberMeRegister();
-                view.App.setRoot("menu");
+                App.setRoot("menu");
                 //System.out.println("login: " + login);
             }catch (Exception e){
                 e.printStackTrace();
@@ -73,7 +74,7 @@ public class LoginController implements Initializable {
     @FXML
     private void cadastrar() throws IOException{
         //System.out.println("Cadastrar");
-        view.App.setRoot("cadastroUsuarioLogin");
+        App.setRoot("cadastroUsuarioLogin");
         //view.App.setRoot("cadastrar");
     }
 

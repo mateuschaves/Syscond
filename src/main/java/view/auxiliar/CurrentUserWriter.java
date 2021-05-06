@@ -1,7 +1,6 @@
 package view.auxiliar;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class CurrentUserWriter {
     private File file = new File("src/main/resources/userUtil/CurrentUser.txt");

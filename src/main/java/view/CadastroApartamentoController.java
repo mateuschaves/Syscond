@@ -5,10 +5,7 @@ import javafx.scene.control.TextField;
 import negocios.ApartamentoNegocios;
 import pojos.Apartamento;
 
-import java.awt.*;
 import java.io.IOException;
-
-import static view.App.setRoot;
 
 public class CadastroApartamentoController{
 

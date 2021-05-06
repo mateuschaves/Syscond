@@ -1,6 +1,5 @@
 package view;
 
-import com.mysql.cj.conf.BooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -8,10 +7,11 @@ import javafx.scene.control.TableView;
 import negocios.ApartamentoNegocios;
 import pojos.Apartamento;
 
-import javax.persistence.Table;
 import java.net.URL;
-import java.text.CollationElementIterator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class CadastroMordadorController implements Initializable {
 

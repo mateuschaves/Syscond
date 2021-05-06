@@ -3,22 +3,30 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroVisitanteController">
+<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroVisitanteController">
    <children>
-      <Label text="Cadastrar Visitante">
+      <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="204.0" text="Cadastrar Visitante">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
          <FlowPane.margin>
-            <Insets top="20.0" />
+            <Insets />
          </FlowPane.margin>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      </FlowPane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CPF">
          <font>
             <Font size="18.0" />
@@ -45,6 +53,48 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </TextField>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;" text="CPF do morador Responsável">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </Text>
+      <TextField fx:id="responsavel" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </TextField>
+      <JFXButton fx:id="procurarMorador" alignment="CENTER" onAction="#procurar" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Procurar">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/magnifying-glass.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </JFXButton>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dados encontrados:">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
+      </Text>
+      <TableView fx:id="tableView" prefHeight="76.0" prefWidth="420.0">
+        <columns>
+          <TableColumn fx:id="nome" prefWidth="282.0" text="Nome" />
+          <TableColumn fx:id="apartamento" prefWidth="137.0" text="Apartamento" />
+        </columns>
+         <FlowPane.margin>
+            <Insets />
+         </FlowPane.margin>
+      </TableView>
       <Text strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="18.0" />
@@ -53,13 +103,13 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </Text>
-      <Pane prefHeight="44.0" prefWidth="200.0">
+      <Pane prefHeight="44.0" prefWidth="247.0">
          <children>
             <JFXButton fx:id="cadastrarVisitante" layoutY="2.0" onAction="#cadastrarVisitante" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Cadastrar" />
             <JFXButton fx:id="voltar" layoutX="147.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
          </children>
          <FlowPane.margin>
-            <Insets top="20.0" />
+            <Insets />
          </FlowPane.margin>
       </Pane>
    </children>

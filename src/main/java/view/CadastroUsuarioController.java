@@ -5,14 +5,17 @@ import dao.UsuarioDaoInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import javafx.scene.control.TextField;
+import javafx.stage.StageStyle;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
+
+import javax.swing.text.html.Option;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class CadastroUsuarioController implements Initializable {
 
@@ -57,6 +60,25 @@ public class CadastroUsuarioController implements Initializable {
         UsuarioDaoInterface usuarioDao = new UsuarioDao();
         try {
             usuarioDao.adicionar(usuario);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+            alert.setTitle("Sucesso!");
+            alert.setHeaderText("Novo usuario de systema cadastrado.");
+            alert.setContentText("Novo usuario: " + nome +
+                    " cadastrado, use seu login e senha para entrar no Syscond");
+
+            ButtonType logar = new ButtonType("Fazer Login");
+            ButtonType cadastrarNovo = new ButtonType("Cadastrar Novo Usuario");
+
+            alert.getButtonTypes().setAll(logar,cadastrarNovo);
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.get() == logar){
+                voltar();
+            }
+
+            return;
+
         }catch (Exception e){
             System.out.println("ERRO");
         }
@@ -64,7 +86,7 @@ public class CadastroUsuarioController implements Initializable {
 
     public void voltar(){
         try {
-            view.App.setRoot("loginInicial");
+            App.setRoot("loginInicial");
         }catch(Exception e){
             e.printStackTrace();
         }
