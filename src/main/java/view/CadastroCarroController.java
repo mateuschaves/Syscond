@@ -6,6 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import negocios.CarroNegocios;
 import pojos.Carro;
 
@@ -35,6 +37,7 @@ public class CadastroCarroController{
         carroNegocios.cadastrar(carro);
 
         Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        ((Stage)dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/img/syscondLogo.png"));
         dialog.setHeaderText("Carro adicionado com sucesso.");
         dialog.setContentText("Deseja adicionar outro carro?");
         ButtonType oneMore = new ButtonType("Quero adicionar +1 carro");
