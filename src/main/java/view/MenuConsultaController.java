@@ -93,7 +93,17 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
-    public void exibirListarAp(){}
+    public void exibirListarAp(){
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarApartamento.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
