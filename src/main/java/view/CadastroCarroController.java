@@ -2,13 +2,15 @@ package view;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import negocios.CarroNegocios;
 import pojos.Carro;
+
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 public class CadastroCarroController{
 
@@ -20,7 +22,7 @@ public class CadastroCarroController{
     private TextField textFieldCor;
 
 
-    public void cadastrarCarro(){
+    public void cadastrarCarro() throws IOException {
 
         String  placa = textFieldPlaca.getText(),
                 modelo = textFieldModelo.getText(),
@@ -31,6 +33,23 @@ public class CadastroCarroController{
         Carro carro = new Carro(placa,modelo,cor);
 
         carroNegocios.cadastrar(carro);
+
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog.setHeaderText("Carro adicionado com sucesso.");
+        dialog.setContentText("Deseja adicionar outro carro?");
+        ButtonType oneMore = new ButtonType("Quero adicionar +1 carro");
+        ButtonType enoughCars = new ButtonType("Não, obrigado", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getButtonTypes().setAll(oneMore, enoughCars);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == oneMore){
+            textFieldCor.setText("");
+            textFieldPlaca.setText("");
+            textFieldModelo.setText("");
+            textFieldPlaca.requestFocus();
+        }else{
+            dialog.close();
+            App.setRoot("menuCadastro");
+        }
     }
 
     public void voltar(){
