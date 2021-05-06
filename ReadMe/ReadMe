@@ -5,3 +5,6 @@ Agora que estamos usando javaFX, pra poder funcionar precisamos da jdk versão 1
 Variavel de ambiente para o Runner:
 
 JAVA_HOME="diretorio do teu JDK"
+
+Para conseguir rodar o nosso projeto precisa criar o arquivo (CurrentUser.txt) no seguinte diretório abaixo:
+"src/main/resources/userUtil/CurrentUser.txt"
