@@ -2,15 +2,17 @@ package view;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import inutils.MaskFormatter;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import negocios.FornecedorNegocios;
 import pojos.Fornecedor;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 public class CadastroFornecedorController{
 
@@ -23,7 +25,7 @@ public class CadastroFornecedorController{
 
 
 
-    public void cadastrarFornecedor(){
+    public void cadastrarFornecedor() throws IOException {
 
         String nome = textFieldNome.getText(),
                 cnpj = textFieldCNPJ.getText(),
@@ -34,6 +36,24 @@ public class CadastroFornecedorController{
         Fornecedor fornecedor = new Fornecedor(cnpj,nome,telefone);
 
         fornecedorNegocios.cadastrar(fornecedor);
+
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        ((Stage)dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/img/syscondLogo.png"));
+        dialog.setHeaderText("Fornecedor adicionado com sucesso.");
+        dialog.setContentText("Deseja adicionar outro fornecedor?");
+        ButtonType oneMore = new ButtonType("Quero adicionar +1 fornecedor");
+        ButtonType enoughCars = new ButtonType("Não, obrigado", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getButtonTypes().setAll(oneMore, enoughCars);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == oneMore){
+            textFieldCNPJ.setText("");
+            textFieldNome.setText("");
+            textFieldTelefone.setText("");
+            textFieldCNPJ.requestFocus();
+        }else{
+            dialog.close();
+            App.setRoot("menuCadastro");
+        }
     }
 
     public void voltar(){
