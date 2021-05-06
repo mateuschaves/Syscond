@@ -56,6 +56,15 @@ public class Fornecedor {
         this.nome = nome;
         this.telefone = telefone;
     }
+
+    /**
+     *
+     * @param cnpj é o parametro usado nesse construtor de Fornecedor
+     */
+    public Fornecedor(String cnpj){
+        this.cnpj = cnpj;
+    }
+
     /**
      * @return retorna o cnpj do fornecedor.
      */

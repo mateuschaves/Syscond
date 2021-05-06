@@ -67,7 +67,20 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     public void exibirListarUsuario(){}
 
-    public void exibirListarFornecedor(){}
+
+    public void exibirListarFornecedor(){
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarFornecedor.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 
     public void exibirListarAp(){}
 
