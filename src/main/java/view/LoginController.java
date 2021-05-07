@@ -115,5 +115,7 @@ public class LoginController implements Initializable {
             if(keyEvent.getCode() == KeyCode.ENTER)
                 autenticar();
         } );
+
+
     }
 }

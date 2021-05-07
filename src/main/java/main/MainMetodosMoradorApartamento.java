@@ -1,6 +1,7 @@
 package main;
 
 import dao.*;
+import negocios.VisitanteNegocios;
 import pojos.Apartamento;
 import pojos.Carro;
 import pojos.Morador;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class MainMetodosMoradorApartamento {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         ApartamentoDaoInterface apartamentoDAO = new ApartamentoDAO();
         MoradorDaoInterface moradorDAO = new MoradorDAO();
@@ -19,65 +20,32 @@ public class MainMetodosMoradorApartamento {
         VisitanteDaoInterface visitanteDAO = new VisitanteDAO();
         //dao instanciadas;
 
-        Apartamento ap1 = new Apartamento("1","Primeiro","B");
-        Apartamento ap2 = new Apartamento("2","Primeiro","B");
-        Apartamento ap3 = new Apartamento("3","Segundo","B");
-        Apartamento ap4 = new Apartamento("4","Segundo","B");
+        Apartamento ap1 = new Apartamento("1", "Primeiro", "B");
+        Apartamento ap2 = new Apartamento("2", "Primeiro", "B");
+        Apartamento ap3 = new Apartamento("3", "Segundo", "B");
+        Apartamento ap4 = new Apartamento("4", "Segundo", "B");
 
 
-        try{
+        try {
             apartamentoDAO.adicionar(ap1);
             apartamentoDAO.adicionar(ap2);
             apartamentoDAO.adicionar(ap3);
             apartamentoDAO.adicionar(ap4);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }//apartamentos já vão estar cadastrados;
-
-
-
 
         List<Carro> listaCarros = new ArrayList<>();
 
 
-        Morador m1 = new Morador("6","Hamazura",ap1,listaCarros);
-        //Carro c1 = new Carro("H-123","Hilux","Laranja",m1);
-
-        //listaCarros.add(c1);
-
+        Morador m1 = new Morador(null, "Hamazura", ap1, listaCarros);
 
         moradorDAO.adicionar(m1);
-        //carroDAO.adicionar(c1);
+        VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
 
+        System.out.println(" ------------------ " + visitanteNegocios.pesquisar(new
+                Visitante("123.627.134.-31",null,null)).getNome());
 
-        //testando alterar;
-
-        Carro carroNovo = new Carro("M4-A1","Honda civic","Rosa",m1);
-
-        carroDAO.adicionar(carroNovo);
-
-        //criando um visitante;
-
-        Visitante v1 = new Visitante("1999","Kaifuku",m1);
-
-
-
-        Visitante v2 = new Visitante("4","Touma",moradorDAO.procurar("5"));
-
-        visitanteDAO.adicionar(v1);
-        visitanteDAO.adicionar(v2);
-
-
-        try {
-             //visitanteDAO.alterar(new Visitante("10", "Hamazura", moradorDAO.procurar("5")));
-            //apartamentoDAO.alterar(new Apartamento("4", "HELL", "5º"));
-            //carroDAO.alterar(new Carro("M4-A1","Honda civic","Vermelho Sangue!",m1));
-            // moradorDAO.alterar(new Morador("6","Kaifuku",ap1,listaCarros));
-
-        }catch (Exception e){
-            System.err.println("fudeu");
-        }
     }
-
 }

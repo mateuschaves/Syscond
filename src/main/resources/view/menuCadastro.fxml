@@ -37,7 +37,7 @@
             </FlowPane>
             <Group>
                <children>
-                  <JFXButton layoutX="20.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Moradores">
+                  <JFXButton onAction="#exibirCadastroMorador" layoutX="20.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Moradores">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                            <children>
