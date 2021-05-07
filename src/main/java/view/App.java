@@ -23,6 +23,9 @@ public class App extends Application {
         mainScene = new Scene(loadFXML("loginInicial"));
         stage.setScene(mainScene);
         stage.getIcons().add(new Image("/img/syscondLogo.png"));
+        stage.setOnCloseRequest(windowEvent -> {
+            System.exit(0);
+        });
         stage.show();
 
     }
