@@ -46,7 +46,14 @@ public class CadastroMordadorController implements Initializable {
             Collection<Campos> camposCollection = new ArrayList<>();
 
             for(Apartamento a: list){
-                if(!(a.getMorador() == null)){
+
+                try{
+                    a.getMorador().size();
+                    camposCollection.add(null);
+
+
+                }catch (Exception e){
+                    //e.printStackTrace();
                     camposCollection.add(new Campos(a.getNumero(),a.getAndar(),a.getBloco()));
                 }
             }
@@ -81,6 +88,8 @@ public class CadastroMordadorController implements Initializable {
             index++;
         }
         listarDisponiveis();
+
+
 
     }
 }

@@ -58,11 +58,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="-1.0" prefHeight="100.0" prefWidth="552.0">
+                        <TableView fx:id="tableViewCarro" layoutY="-1.0" prefHeight="100.0" prefWidth="552.0">
                           <columns>
-                            <TableColumn prefWidth="175.0" text="Placa" />
-                            <TableColumn prefWidth="174.0" text="Modelo" />
-                              <TableColumn prefWidth="201.0" text="Cor" />
+                            <TableColumn fx:id="placa" prefWidth="175.0" text="Placa" />
+                            <TableColumn fx:id="modelo" prefWidth="174.0" text="Modelo" />
+                              <TableColumn fx:id="cor" prefWidth="201.0" text="Cor" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -72,10 +72,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="100.0" prefWidth="552.0">
+                        <TableView fx:id="tableViewVisitante" prefHeight="100.0" prefWidth="552.0">
                           <columns>
-                            <TableColumn prefWidth="278.0" text="Nome" />
-                            <TableColumn prefWidth="273.0" text="CPF" />
+                            <TableColumn fx:id="nome" prefWidth="278.0" text="Nome" />
+                            <TableColumn fx:id="cpf" prefWidth="273.0" text="CPF" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -119,9 +119,9 @@
                   </Label>
                   <TableView fx:id="tableViewDisponiveis" prefHeight="119.0" prefWidth="322.0">
                     <columns>
-                      <TableColumn fx:id="numeroCollumn" prefWidth="75.0" text="Numero" />
-                      <TableColumn fx:id="andarCollumn" prefWidth="75.0" text="Andar" />
-                        <TableColumn fx:id="blocoCollumn" prefWidth="75.0" text="Bloco" />
+                      <TableColumn fx:id="numeroCollumn" prefWidth="110.0" text="Numero" />
+                      <TableColumn fx:id="andarCollumn" prefWidth="89.0" text="Andar" />
+                        <TableColumn fx:id="blocoCollumn" prefWidth="121.0" text="Bloco" />
                     </columns>
                   </TableView>
                </children>
