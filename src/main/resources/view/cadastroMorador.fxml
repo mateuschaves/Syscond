@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="590.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroMordadorController">
+<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="590.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadastroMordadorController">
    <children>
       <Label text="Cadastrar morador">
          <font>
@@ -52,48 +51,115 @@
             </FlowPane>
          </children>
       </Pane>
-      <TabPane prefHeight="128.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="249.0" prefWidth="552.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Veiculo">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="162.0" prefWidth="552.0">
                      <children>
                         <TableView fx:id="tableViewCarro" layoutY="-1.0" prefHeight="100.0" prefWidth="552.0">
                           <columns>
-                            <TableColumn fx:id="placa" prefWidth="175.0" text="Placa" />
-                            <TableColumn fx:id="modelo" prefWidth="174.0" text="Modelo" />
-                              <TableColumn fx:id="cor" prefWidth="201.0" text="Cor" />
+                            <TableColumn fx:id="placaCollumn" prefWidth="175.0" text="Placa" />
+                            <TableColumn fx:id="modeloCollumn" prefWidth="174.0" text="Modelo" />
+                              <TableColumn fx:id="corCollumn" prefWidth="201.0" text="Cor" />
                           </columns>
                         </TableView>
+                        <FlowPane layoutX="6.0" layoutY="99.0" orientation="VERTICAL" prefHeight="55.0" prefWidth="532.0">
+                           <children>
+                              <FlowPane orientation="VERTICAL" prefHeight="60.0">
+                                 <children>
+                                    <Label text="Placa">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="textPlaca" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="172.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                                 </children>
+                              </FlowPane>
+                              <FlowPane orientation="VERTICAL" prefHeight="57.0" prefWidth="169.0">
+                                 <children>
+                                    <Label text="Modelo">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="textModelo" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="169.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                                 </children>
+                              </FlowPane>
+                              <FlowPane orientation="VERTICAL" prefHeight="54.0" prefWidth="191.0">
+                                 <children>
+                                    <Label text="Cor">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="textCor" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                                 </children>
+                              </FlowPane>
+                           </children>
+                        </FlowPane>
+                        <JFXButton fx:id="adicionarVeiculos" buttonType="RAISED" layoutX="6.0" layoutY="159.0" onAction="#adicionarVeiculo" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Adicionar">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </JFXButton>
                      </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Visitante">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="552.0">
                      <children>
                         <TableView fx:id="tableViewVisitante" prefHeight="100.0" prefWidth="552.0">
                           <columns>
-                            <TableColumn fx:id="nome" prefWidth="278.0" text="Nome" />
-                            <TableColumn fx:id="cpf" prefWidth="273.0" text="CPF" />
+                            <TableColumn fx:id="nomeCollumn" prefWidth="278.0" text="Nome" />
+                            <TableColumn fx:id="cpfCollumn" prefWidth="273.0" text="CPF" />
                           </columns>
                         </TableView>
+                        <FlowPane layoutX="307.0" layoutY="100.0" orientation="VERTICAL" prefHeight="57.0" prefWidth="241.0">
+                           <children>
+                              <Label text="Cpf do visitante">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textCpf" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="240.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                           </children>
+                        </FlowPane>
+                        <FlowPane layoutX="7.0" layoutY="102.0" orientation="VERTICAL" prefHeight="54.0" prefWidth="272.0">
+                           <children>
+                              <Label text="Nome">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textNome" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="272.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                           </children>
+                        </FlowPane>
+                        <JFXButton fx:id="adicionaVisitantes" buttonType="RAISED" layoutX="7.0" layoutY="164.0" onAction="#adicionarVisitante" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Adicionar">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </JFXButton>
                      </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
+         <FlowPane.margin>
+            <Insets top="5.0" />
+         </FlowPane.margin>
       </TabPane>
       <AnchorPane>
          <children>
-            <FlowPane layoutX="15.0" orientation="VERTICAL" prefHeight="148.0" prefWidth="172.0">
+            <FlowPane alignment="CENTER" layoutX="-6.0" orientation="VERTICAL" prefHeight="148.0" prefWidth="193.0">
                <children>
-                  <Label text="Apartamento: ">
+                  <Label prefHeight="35.0" prefWidth="114.0" text="Apartamento: ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="apartamentoNumero" prefHeight="27.0" prefWidth="169.0" style="-fx-background-radius: 8; -fx-border-color: #000; -fx-border-radius: 8;" />
-                  <JFXButton fx:id="pesquisar" buttonType="RAISED" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Pesquisar">
+                  <TextField fx:id="textApartamento" cache="true" depthTest="ENABLE" prefHeight="27.0" prefWidth="172.0" style="-fx-border-color: #000; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                  <JFXButton fx:id="pesquisar" buttonType="RAISED" onAction="#pesquisarApartamento" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Pesquisar">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -129,9 +195,9 @@
          </children>
       </AnchorPane>
       <HBox alignment="TOP_CENTER" />
-      <AnchorPane prefHeight="69.0" prefWidth="200.0">
+      <AnchorPane prefHeight="56.0" prefWidth="506.0">
          <children>
-            <JFXButton buttonType="RAISED" layoutY="7.0" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Cadastrar">
+            <JFXButton buttonType="RAISED" layoutY="7.0" onAction="#cadastrar" prefHeight="42.0" prefWidth="106.0" ripplerFill="BLACK" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Cadastrar">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
