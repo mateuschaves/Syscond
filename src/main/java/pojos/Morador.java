@@ -58,8 +58,6 @@ public class Morador {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "MoradorResponsavel")
     private Collection<Visitante> visitantesList = new LinkedHashSet<Visitante>();
 
-    private String numero;
-
     public Morador() {
     }
 
@@ -133,15 +131,6 @@ public class Morador {
         this.nomeMorador = nome;
         this.carros = carros;
     }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     /**
      * @return retorna o cpf do morador.
      */
