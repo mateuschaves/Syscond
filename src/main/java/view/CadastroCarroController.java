@@ -1,6 +1,7 @@
 package view;
 
 
+import dao.MoradorDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,13 +36,16 @@ public class CadastroCarroController{
 
     public void cadastrarCarro() throws IOException {
 
+        MoradorDAO moradorDAO  = new MoradorDAO();
+        Morador donoDoCarro = moradorDAO.procurar(responsavel.getText());
+
         String  placa = textFieldPlaca.getText(),
                 modelo = textFieldModelo.getText(),
                 cor = textFieldCor.getText();
 
         CarroNegocios carroNegocios = new CarroNegocios();
 
-        Carro carro = new Carro(placa,modelo,cor);
+        Carro carro = new Carro(placa,modelo,cor, donoDoCarro);
 
         carroNegocios.cadastrar(carro);
 

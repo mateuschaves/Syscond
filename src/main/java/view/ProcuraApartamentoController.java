@@ -1,15 +1,15 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import negocios.ApartamentoNegocios;
 import negocios.CarroNegocios;
@@ -40,7 +40,10 @@ public class ProcuraApartamentoController implements Initializable {
     private TableColumn andarCollumn;
     @FXML
     private TableColumn numeroCollumn;
+    @FXML
+    private Button btApagar;
 
+    private Apartamento apartamentoDelete = new Apartamento();
 
     @FXML
     private void listarApartamentos() {
@@ -66,7 +69,16 @@ public class ProcuraApartamentoController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-
+            tableView.setOnMouseClicked((MouseEvent e) -> {
+                System.out.println(e.getSource().toString());
+                btApagar.setDisable(false);
+                String apartamentIdToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
+                String apartamentAndarToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
+                String apartamentBlocoToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
+                this.apartamentoDelete.setNumero(apartamentIdToDelete);
+                this.apartamentoDelete.setAndar(apartamentAndarToDelete);
+                this.apartamentoDelete.setBloco(apartamentBlocoToDelete);
+            });
 
         }catch (Exception e){
 
@@ -96,11 +108,18 @@ public class ProcuraApartamentoController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
+    @FXML
+    private void deletarApartamento(){
+        ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
+        apartamentoNegocios.deletar(this.apartamentoDelete);
+        this.listarApartamentos();
+    }
 
     @FXML
     private void voltar() {
@@ -110,6 +129,8 @@ public class ProcuraApartamentoController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

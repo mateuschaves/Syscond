@@ -67,16 +67,15 @@ public class Main {
 
 
     public static void testApartamentoEntity() {
-        Apartamento ap1 = new Apartamento("1", "Primeiro", "B");
-        Apartamento ap2 = new Apartamento("2", "Primeiro", "B");
-        Apartamento ap3 = new Apartamento("3", "Segundo", "B");
-        Apartamento ap4 = new Apartamento("4", "Segundo", "B");
-
         try{
+            List<Carro> listaCarros = new ArrayList<>();
+            Apartamento ap1 = new Apartamento("11111111", "Primeiro", "B");
+            Morador m1 = new Morador("123.123.123-12", "Hamazura", ap1, listaCarros);
+            Morador m2 = new Morador("123.123.123-19", "Mateus", ap1, listaCarros);
             apartamentoDAO.adicionar(ap1);
-            apartamentoDAO.adicionar(ap2);
-            apartamentoDAO.adicionar(ap3);
-            apartamentoDAO.adicionar(ap4);
+            moradorDAO.adicionar(m1);
+            moradorDAO.adicionar(m2);
+            apartamentoDAO.remover(ap1);
         }catch (Exception e){
             System.err.println(e.getMessage());
         }

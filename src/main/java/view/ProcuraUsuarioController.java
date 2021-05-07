@@ -1,15 +1,14 @@
 package view;
 
+import dao.UsuarioDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
@@ -31,6 +30,10 @@ public class ProcuraUsuarioController implements Initializable {
     private TableColumn nomeCollumn;
     @FXML
     private TableColumn senhaCollumn;
+    @FXML
+    private Button deletarUsuario;
+
+    private Usuario usuarioToDelete = new Usuario();
 
     @FXML
     private void procurarUsuario(){
@@ -42,6 +45,9 @@ public class ProcuraUsuarioController implements Initializable {
 
             Usuario usuario = new Usuario(login);
             usuario = usuarioNegocios.pesquisar(usuario);
+            if(usuario == null) {
+                return;
+            }
             System.out.println("Nome do Usuário: " + usuario.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(usuario.getNome(),usuario.getSenha())
@@ -54,6 +60,14 @@ public class ProcuraUsuarioController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+            tableView.setOnMouseClicked((MouseEvent e) -> {
+                System.out.println(e.getSource().toString());
+
+                this.deletarUsuario.setDisable(false);
+
+                this.usuarioToDelete.setLogin(login);
+            });
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -65,6 +79,14 @@ public class ProcuraUsuarioController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void deletarUsuario() {
+        UsuarioDao usuarioDao = new UsuarioDao();
+        this.usuarioToDelete = usuarioDao.procurar(this.usuarioToDelete.getLogin());
+        usuarioDao.remover(this.usuarioToDelete);
+        this.tableView.getItems().clear();
     }
 
     @Override

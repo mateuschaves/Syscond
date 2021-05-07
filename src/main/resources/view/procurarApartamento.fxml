@@ -51,6 +51,15 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="btApagar" alignment="CENTER" disable="true" layoutX="256.0" onAction="#deletarApartamento" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Apagar">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/mainMenu/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <FlowPane.margin>
             <Insets top="5.0" />

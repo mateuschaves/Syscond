@@ -128,6 +128,7 @@ public class FornecedorDAO implements FornecedorDaoInterface {
      */
     @Override
     public void remover(Fornecedor fornecedor) throws FornecedorNaoEncontrado {
+        System.out.println("REMOVENDOOOOO");
         EntityManager em = JPAUtil.getEntityManager();
         em.getTransaction().begin();
         try {

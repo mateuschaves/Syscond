@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import negocios.MoradorNegocios;
@@ -51,7 +52,7 @@ public class CadastroVisitanteController implements Initializable{
             morador = moradorNegocios.pesquisar(morador);
             System.out.println("Morador: " + morador.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
-                    new Campos(morador.getNome(),morador.getApartamento().getNumero())
+                    new Campos(morador.getCpf(),morador.getApartamento().getNumero())
             );
             //Creating columns
             nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));

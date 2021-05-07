@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import negocios.ApartamentoNegocios;
 import pojos.Apartamento;
 import utils.Campos;
@@ -65,6 +66,7 @@ public class CadastroMordadorController implements Initializable {
             blocoCollumn.setCellValueFactory(new PropertyValueFactory<>("campo3"));
 
             tableViewDisponiveis.setItems(dataCampos);
+
 
         }catch (Exception e){
             e.printStackTrace();

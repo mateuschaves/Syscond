@@ -1,15 +1,14 @@
 package view;
 
+import dao.CarroDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import negocios.CarroNegocios;
 import pojos.Carro;
@@ -33,6 +32,10 @@ public class ProcuraCarroController implements Initializable {
     private TableColumn corColumn;
     @FXML
     private TableColumn proprietarioColumn;
+    @FXML
+    private Button deletarCarro;
+
+    private Carro carroToDelete = new Carro();
 
 
 
@@ -46,6 +49,9 @@ public class ProcuraCarroController implements Initializable {
 
             Carro carro = new Carro(placa);
             carro = carroNegocios.pesquisar(carro);
+            if(carro == null) {
+                return;
+            }
             System.out.println(" Modelo do Carro: " + carro.getModelo());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(carro.getModelo(),carro.getCor(),carro.getProprietario().getNome())
@@ -58,7 +64,11 @@ public class ProcuraCarroController implements Initializable {
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
+            tableView.setOnMouseClicked((MouseEvent e) -> {
+                System.out.println(e.getSource().toString());
+                this.deletarCarro.setDisable(false);
+                this.carroToDelete.setPlaca(placa);
+            });
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -70,6 +80,15 @@ public class ProcuraCarroController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void deletarCarro() {
+        CarroDAO carroDAO = new CarroDAO();
+        this.carroToDelete = carroDAO.procurar(this.carroToDelete.getPlaca());
+        carroDAO.remover(this.carroToDelete);
+        this.tableView.getItems().clear();
+        this.textFieldPlaca.setText("");
     }
 
     @Override

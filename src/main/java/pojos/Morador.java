@@ -12,6 +12,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -50,13 +52,11 @@ public class Morador {
     @NotNull
     private Apartamento apartamento;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "proprietario")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "proprietario")
+    private Collection<Carro> carros = new LinkedHashSet<Carro>();
 
-    private List<Carro> carros;
-
-    @OneToMany(mappedBy = "MoradorResponsavel")
-
-    private List<Visitante> visitantesList;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "MoradorResponsavel")
+    private Collection<Visitante> visitantesList = new LinkedHashSet<Visitante>();
 
     private String numero;
 
@@ -173,8 +173,8 @@ public class Morador {
     /**
      * @return retorna a lista de carros associadas ao morador.
      */
-    public List<Carro> getCarros() {
-        return carros;
+    public Collection<Carro> getCarros() {
+        return this.carros;
     }
 
     /**
@@ -202,7 +202,7 @@ public class Morador {
     /**
      * @return retorna uma lista de visitantes do morador.
      */
-    public List<Visitante> getVisitantesList() {
+    public Collection<Visitante> getVisitantesList() {
         return visitantesList;
     }
 

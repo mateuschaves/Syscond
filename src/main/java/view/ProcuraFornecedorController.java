@@ -4,17 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import negocios.FornecedorNegocios;
 import pojos.Fornecedor;
 import utils.Campos;
 
+import javax.persistence.Table;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +30,12 @@ public class ProcuraFornecedorController implements Initializable {
     private TableColumn nomeCollumn;
     @FXML
     private TableColumn telefoneCollumn;
+    @FXML
+    private TableColumn cnpjCollumn;
+    @FXML
+    private Button deletarFornecedor;
+
+    private Fornecedor fornecedorToDelete = new Fornecedor();
 
     @FXML
     private void procurarFornecedor(){
@@ -44,15 +49,18 @@ public class ProcuraFornecedorController implements Initializable {
             fornecedor = fornecedorNegocios.pesquisar(fornecedor);
             System.out.println("Nome do Fornecedor: " + fornecedor.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
-                    new Campos(fornecedor.getNome(),fornecedor.getTelefone())
+                    new Campos(fornecedor.getNome(),fornecedor.getTelefone(),fornecedor.getCnpj())
             );
             //Creating columns
             nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
             telefoneCollumn.setCellValueFactory(new PropertyValueFactory("campo2"));
+            cnpjCollumn.setCellValueFactory(new PropertyValueFactory("campo3"));
             //Adding data to the table
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -65,6 +73,11 @@ public class ProcuraFornecedorController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void deletarFornecedor() {
+        FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
+        fornecedorNegocios.deletar(fornecedorToDelete);
     }
 
     @Override

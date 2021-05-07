@@ -39,6 +39,19 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
+    public void exibirListarMorador() {
+        Node node;
+        try{
+            node = FXMLLoader.load(getClass().getResource(
+                    "procurarMorador.fxml"));
+            formularyPane.getChildren().clear();
+            formularyPane.getChildren().add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     public void exibirListarCarro(){
         Node node;
         try{

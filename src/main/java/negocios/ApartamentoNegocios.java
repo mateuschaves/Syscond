@@ -23,6 +23,7 @@ public class ApartamentoNegocios {
 
     public void deletar(Apartamento apartamento){
         try{
+            System.out.println("Deletando apartamento:" + apartamento.getNumero());
             apartamentoDao.remover(apartamento);
         }catch(Exception e){
             //e.printStackTrace();

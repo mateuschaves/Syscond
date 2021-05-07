@@ -62,8 +62,9 @@
       </Text>
       <TableView fx:id="tableView" prefHeight="67.0" prefWidth="386.0">
         <columns>
-          <TableColumn fx:id="nomeCollumn" prefWidth="194.0" text="Nome do Visitante" />
-          <TableColumn fx:id="moradorColumn" prefWidth="188.0" text="Morador" />
+          <TableColumn fx:id="nomeCollumn" prefWidth="159.0" text="Nome do Visitante" />
+            <TableColumn fx:id="cpfColumn" prefWidth="109.0" text="CPF Visitante" />
+          <TableColumn fx:id="moradorColumn" prefWidth="117.0" text="Morador" />
         </columns>
          <FlowPane.margin>
             <Insets />
@@ -80,6 +81,15 @@
       <Pane prefHeight="44.0" prefWidth="247.0">
          <children>
             <JFXButton fx:id="voltar" layoutX="272.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
+            <JFXButton fx:id="deletarVisitante" alignment="CENTER" disable="true" layoutY="1.0" onAction="#deletarVisitante" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/mainMenu/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <FlowPane.margin>
             <Insets />
