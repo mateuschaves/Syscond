@@ -27,7 +27,7 @@ public class FuncionarioNegocios {
         }
     }
 
-    public void listarFuncionarios(){
+    public List<Funcionario> listarFuncionarios(){
         int index = 0;
         List<Funcionario> listaFuncionarios = null;
 
@@ -41,12 +41,12 @@ public class FuncionarioNegocios {
                 System.out.println("CPF: " + a.getCpf());
                 System.out.println("Nome: " + a.getNome());
                 System.out.println("Função: " + a.getFuncao());
-
             }
+            return listaFuncionarios;
         }catch(Exception e){
             System.out.println("Funcionario Negocios: Erro: " + e.getMessage());
         }
-
+        return listaFuncionarios;
     }
 
     public void alterarID(Funcionario funcionario, String cpf){
