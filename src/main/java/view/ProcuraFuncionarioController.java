@@ -148,11 +148,8 @@ public class ProcuraFuncionarioController implements Initializable{
     private void deletarFuncionario() {
         try {
             FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
-            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            this.funcionarioToDelete = funcionarioDAO.procurar(textFieldCpf.getText());
             funcionarioNegocios.deletar(this.funcionarioToDelete);
             this.listarFuncionario();
-            this.textFieldCpf.setText("");
         } catch (Exception e) {
         }
     }
