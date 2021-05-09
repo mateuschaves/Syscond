@@ -27,7 +27,7 @@ public class UsuarioNegocios {
             System.out.println("UsuarioNegocios: Erro: " + e.getMessage());
         }
     }
-    public void listarUsuarios(){
+    public List<Usuario> listarUsuarios(){
         int index = 0;
         List<Usuario> listaUsuarios = null;
 
@@ -39,12 +39,12 @@ public class UsuarioNegocios {
                 System.out.println("");
                 System.out.println(index + "º Usuario:");
                 System.out.println("Nome: " + a.getNome());
-
             }
+            return listaUsuarios;
         }catch(Exception e){
             System.out.println("UsuarioNegocios: Erro: " + e.getMessage());
         }
-
+        return listaUsuarios;
     }
     public void alterar(Usuario usuario){
 
