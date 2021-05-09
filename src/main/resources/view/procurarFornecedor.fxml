@@ -52,6 +52,23 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </JFXButton>
+      <Pane prefHeight="44.0" prefWidth="247.0">
+         <children>
+            <JFXButton fx:id="voltar" layoutX="272.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
+            <JFXButton fx:id="deletarFornecedor" alignment="CENTER" disable="true" layoutY="1.0" onAction="#deletarFornecedor" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/mainMenu/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <FlowPane.margin>
+            <Insets />
+         </FlowPane.margin>
+      </Pane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dados encontrados:">
          <font>
             <Font size="18.0" />
@@ -60,7 +77,7 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </Text>
-      <TableView fx:id="tableView" prefHeight="67.0" prefWidth="386.0">
+      <TableView fx:id="tableView" prefHeight="239.0" prefWidth="386.0">
         <columns>
           <TableColumn fx:id="nomeCollumn" prefWidth="133.0" text="Nome" />
           <TableColumn fx:id="telefoneCollumn" minWidth="0.0" prefWidth="120.0" text="Telefone" />
@@ -78,22 +95,5 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </Text>
-      <Pane prefHeight="44.0" prefWidth="247.0">
-         <children>
-            <JFXButton fx:id="voltar" layoutX="272.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
-            <JFXButton fx:id="deletarFornecedor" alignment="CENTER" disable="true" layoutY="-7.0" onAction="#deletarFornecedor" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/mainMenu/remove.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-         <FlowPane.margin>
-            <Insets />
-         </FlowPane.margin>
-      </Pane>
    </children>
 </FlowPane>

@@ -28,7 +28,7 @@ public class FornecedorNegocios {
         }
     }
 
-    public void listarFornecedores() {
+    public List<Fornecedor> listarFornecedores() {
         int index = 0;
         List<Fornecedor> listaFornecedores = null;
 
@@ -42,12 +42,12 @@ public class FornecedorNegocios {
                 System.out.println("Nome: " + a.getNome());
                 System.out.println("CNPJ: " + a.getCnpj());
                 System.out.println("Telefone: " + a.getTelefone());
-
             }
+            return listaFornecedores;
         } catch (Exception e) {
             System.out.println("FornecedorNegocios: Erro: " + e.getMessage());
         }
-
+            return listaFornecedores;
     }
 
     public void alterar(Fornecedor fornecedor) {

@@ -10,12 +10,17 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import negocios.FornecedorNegocios;
+import negocios.UsuarioNegocios;
 import pojos.Fornecedor;
+import pojos.Usuario;
 import utils.Campos;
 
 import javax.persistence.Table;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProcuraFornecedorController implements Initializable {
@@ -37,11 +42,57 @@ public class ProcuraFornecedorController implements Initializable {
 
     private Fornecedor fornecedorToDelete = new Fornecedor();
 
+
+    @FXML
+    private void listarFornecedor() {
+
+        FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
+
+        try{
+
+            List<Fornecedor> list = fornecedorNegocios.listarFornecedores();
+            Collection<Campos> listCampos = new ArrayList<>();
+
+            for(Fornecedor a: list){
+
+                listCampos.add(new Campos(a.getNome(),a.getTelefone(),a.getCnpj()));
+            }
+
+            final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(listCampos);
+
+            nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
+            telefoneCollumn.setCellValueFactory(new PropertyValueFactory<>("campo2"));
+            cnpjCollumn.setCellValueFactory(new PropertyValueFactory<>("campo3"));
+
+            tableView.setItems(dataCampos);
+            tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+            tableView.setOnMouseClicked((MouseEvent e) -> {
+                System.out.println(e.getSource().toString());
+                deletarFornecedor.setDisable(false);
+                String FornecedorNomeToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
+                String FornecedorTelefoneToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
+                String FornecedorCnpjToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
+                this.fornecedorToDelete.setNome(FornecedorNomeToDelete);
+                this.fornecedorToDelete.setTelefone(FornecedorTelefoneToDelete);
+                this.fornecedorToDelete.setCnpj(FornecedorCnpjToDelete);
+
+            });
+
+        }catch (Exception e){
+
+        }
+    }
+
     @FXML
     private void procurarFornecedor(){
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
         String cnpj = textFieldCnpj.getText();
 
+        if(cnpj == ""){
+            this.listarFornecedor();
+            return;
+        }
 
         try{
 
@@ -61,7 +112,6 @@ public class ProcuraFornecedorController implements Initializable {
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -78,13 +128,14 @@ public class ProcuraFornecedorController implements Initializable {
     private void deletarFornecedor() {
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
         fornecedorNegocios.deletar(fornecedorToDelete);
+        listarFornecedor();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        listarFornecedor();
         mainPane.setOnMousePressed(event -> {
-
         });
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
