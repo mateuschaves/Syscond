@@ -40,25 +40,18 @@ public class CarroNegocios {
         }
     }
 
-    public void listarCarros(){
+    public List<Carro> listarCarros(){
         int index = 0;
         List<Carro> listaCarros = null;
 
         try{
-            listaCarros = carroDao.listar();
-            System.out.println("Listando Carros: ");
-            for (Carro a:listaCarros) {
-                index++;
-                System.out.println("");
-                System.out.println(index + " Carro:");
-                System.out.println("Placa: " + a.getPlaca());
-                System.out.println("Cor: " + a.getCor());
-                System.out.println("Modelo: " + a.getModelo());
-                System.out.println("Dono do Carro: " + a.getProprietario().getNome());
-            }
+            return listaCarros = carroDao.listar();
+
+
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Carro Negocios: Erro: " + e.getMessage());
+            return null;
         }
 
     }

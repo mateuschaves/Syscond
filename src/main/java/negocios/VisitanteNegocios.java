@@ -40,24 +40,16 @@ public class VisitanteNegocios {
         }
     }
 
-    public void listarVisitante(){
+    public List<Visitante> listarVisitante(){
         int index = 0;
         List<Visitante> listaVisitante = null;
 
         try{
-            listaVisitante = visitanteDao.listar();
-            System.out.println("Listando Visitantes: ");
-            for (Visitante a:listaVisitante) {
-                index++;
-                System.out.println("");
-                System.out.println(index + " Visitante:");
-                System.out.println("Nome: " + a.getNome());
-                System.out.println("CPF: " + a.getCpf());
-                System.out.println("Nome do Morador a ser visitado!: " + a.getCpfMoradorResponsavel().getNome());
-            }
+            return listaVisitante = visitanteDao.listar();
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Visitante Negocios: Erro: " + e.getMessage());
+            return null;
         }
 
     }

@@ -115,4 +115,7 @@ public class Visitante {
     public void setCpfMoradorResponsavel(Morador cpfMoradorResponsavel) {
         this.MoradorResponsavel = cpfMoradorResponsavel;
     }
+    public Morador getMorador(){
+        return this.MoradorResponsavel;
+    }
 }

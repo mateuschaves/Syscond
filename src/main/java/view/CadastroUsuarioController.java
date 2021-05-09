@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
@@ -43,6 +45,8 @@ public class CadastroUsuarioController implements Initializable {
         if(!senha.equals(confirmarSenha)){
             System.out.println("Erro ao logar;");
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Erro");
             alert.setHeaderText("As senhas não batem");
             alert.setContentText("As senhas devem combinar, por favor verifique seus dados.");
@@ -61,7 +65,8 @@ public class CadastroUsuarioController implements Initializable {
         try {
             usuarioDao.adicionar(usuario);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Sucesso!");
             alert.setHeaderText("Novo usuario de systema cadastrado.");
             alert.setContentText("Novo usuario: " + nome +

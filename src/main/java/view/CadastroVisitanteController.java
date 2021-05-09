@@ -77,14 +77,18 @@ public class CadastroVisitanteController implements Initializable{
 
     @FXML
     private void cadastrarVisitante() throws IOException {
+        MoradorNegocios moradorNegocios = new MoradorNegocios();
 
         String  cpf = textFieldCpf.getText(),
-                nome = textFieldNome.getText();
+                nome = textFieldNome.getText(),
+                cpfResponsavel = responsavel.getText();
+
+        Morador morador = moradorNegocios.pesquisar(new Morador(cpfResponsavel));
 
 
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
 
-        Visitante visitante = new Visitante(cpf,nome);
+        Visitante visitante = new Visitante(cpf,nome,morador);
 
         visitanteNegocios.cadastrar(visitante);
 

@@ -6,8 +6,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import negocios.UsuarioNegocios;
 import pojos.Usuario;
 import view.auxiliar.CurrentUserWriter;
@@ -46,6 +48,8 @@ public class LoginController implements Initializable {
 
             System.out.println(usuarioNegocios.autenticar(user));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Sucesso!");
             alert.setHeaderText("Bem vindo ao Syscond");
             alert.show();
@@ -62,7 +66,8 @@ public class LoginController implements Initializable {
         else{
             System.out.println(usuarioNegocios.autenticar(user));
             Alert alert = new Alert(Alert.AlertType.ERROR);
-
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Erro!");
             alert.setHeaderText("Não foi possivel logar.");
             alert.setContentText("ouve um erro ao tentar logar no sistema," +

@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.ApartamentoNegocios;
 import negocios.CarroNegocios;
 import negocios.MoradorNegocios;
@@ -213,7 +215,9 @@ public class CadastroMordadorController implements Initializable {
         MoradorNegocios moradorNegocios = new MoradorNegocios();
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
         CarroNegocios carroNegocios = new CarroNegocios();
+        ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
 
+        apartamento = apartamentoNegocios.pesquisar(apartamento);
         Morador morador = new Morador(cpf,nome,apartamento,carros,visitantes);
 
         moradorNegocios.cadastrar(morador);
@@ -233,12 +237,20 @@ public class CadastroMordadorController implements Initializable {
 
         try{
             moradorNegocios.pesquisar(morador).getCpf();
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Morador Cadastrado");
             alert.setHeaderText("Morador cadastrado com sucesso!");
             alert.show();
+            textFieldCpf.setText("");
+            textFieldNome.setText("");
+            textApartamento.setText("");
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
             alert.setTitle("Morador não cadastrado");
             alert.setHeaderText("Morador não cadastrado!");
             alert.setContentText("ocorreu algum erro, verifique os dados e tente novamente!");

@@ -9,6 +9,7 @@ import pojos.Carro;
 import pojos.Morador;
 import pojos.Visitante;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MoradorNegocios {
@@ -33,24 +34,15 @@ public class MoradorNegocios {
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
         }
     }
-    public void listarMoradores(){
+    public List<Morador> listarMoradores(){
         int index = 0;
         List<Morador> listaMoradores = null;
 
         try{
-            listaMoradores = moradorDao.listar();
-            System.out.println("Listando Moradores: ");
-            for (Morador a:listaMoradores) {
-                index++;
-                System.out.println("");
-                System.out.println(index + "º Morador:");
-                System.out.println("Nome: " + a.getNome());
-                System.out.println("Cpf: " + a.getCpf());
-                System.out.println("Apartamento: Numero " + a.getApartamento().getNumero());
-
-            }
+            return listaMoradores = moradorDao.listar();
         }catch(Exception e){
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
+            return null;
         }
 
     }
