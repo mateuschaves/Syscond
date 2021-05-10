@@ -47,6 +47,7 @@ public class ApartamentoDAO implements ApartamentoDaoInterface{
             }else{
                 System.out.println("Erro:" + exceptionName);
                 System.out.println("Message: " + e.getMessage());
+                throw e;
             }
 
         }

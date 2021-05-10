@@ -12,15 +12,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane"
-            maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="view.MenuConsultaController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuConsultaController">
    <left>
-      <FlowPane alignment="TOP_RIGHT" columnHalignment="RIGHT" prefHeight="350.0" prefWidth="200.0" rowValignment="TOP" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_RIGHT" columnHalignment="RIGHT" prefHeight="470.0" prefWidth="200.0" rowValignment="TOP" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
          <children>
             <FlowPane alignment="CENTER" prefHeight="55.0" prefWidth="200.0">
                <children>
@@ -43,7 +37,7 @@
             </FlowPane>
             <Group>
                <children>
-                  <JFXButton onAction="#exibirListarMorador" layoutX="20.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Moradores">
+                  <JFXButton layoutX="20.0" onAction="#exibirListarMorador" prefHeight="40.0" prefWidth="150.0" ripplerFill="#adb5bd" text="Moradores">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="40.0" prefWidth="52.0">
                            <children>
@@ -221,7 +215,7 @@
       </FlowPane>
    </bottom>
    <center>
-      <FlowPane fx:id="formularyPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="formularyPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="CENTER">
          <children>
             <Group opacity="0.16">
                <children>

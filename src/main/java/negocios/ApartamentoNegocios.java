@@ -2,6 +2,7 @@ package negocios;
 
 import dao.ApartamentoDAO;
 import dao.ApartamentoDaoInterface;
+import exceptions.apartamento.ApartamentoJaExistente;
 import pojos.Apartamento;
 import pojos.Morador;
 
@@ -12,12 +13,13 @@ public class ApartamentoNegocios {
 
     ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
 
-    public void cadastrar(Apartamento apartamento){
+    public void cadastrar(Apartamento apartamento) throws ApartamentoJaExistente {
 
         try{
             apartamentoDao.adicionar(apartamento);
         }catch (Exception e){
-            //e.printStackTrace();
+            e.printStackTrace();
+            throw e;
         }
     }
 

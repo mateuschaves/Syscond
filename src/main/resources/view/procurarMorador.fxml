@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="652.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcurarMoradorController">
+<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcurarMoradorController">
     <children>
-        <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+        <FlowPane alignment="TOP_CENTER" prefHeight="32.0" prefWidth="615.0">
             <children>
-                <Label prefHeight="35.0" prefWidth="204.0" text="Procurar Morador">
+                <Label prefHeight="32.0" prefWidth="204.0" text="Procurar Morador">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -38,7 +38,7 @@
                 <Insets top="10.0" />
             </FlowPane.margin>
         </Text>
-        <TextField fx:id="textFieldCpf" prefHeight="27.0" prefWidth="247.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
+        <TextField fx:id="textFieldCpf" prefHeight="27.0" prefWidth="615.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
             <FlowPane.margin>
                 <Insets top="5.0" />
             </FlowPane.margin>
@@ -63,17 +63,17 @@
                 <Insets top="5.0" />
             </FlowPane.margin>
         </Text>
-      <TabPane prefHeight="371.0" prefWidth="654.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="226.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Moradores">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="518.0">
                      <children>
-                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="344.0" prefWidth="654.0">
+                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="216.0" prefWidth="615.0">
                            <columns>
-                              <TableColumn fx:id="nomeCollumn" prefWidth="295.0" text="Nome" />
-                              <TableColumn fx:id="cpfCollumn" prefWidth="216.0" text="CPF" />
-                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="141.0" text="Apartamento" />
+                              <TableColumn fx:id="nomeCollumn" prefWidth="300.0" text="Nome" />
+                              <TableColumn fx:id="cpfCollumn" prefWidth="212.0" text="CPF" />
+                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="102.0" text="Apartamento" />
                            </columns>
                         </TableView>
                      </children>
@@ -84,12 +84,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableCarro" prefHeight="343.0" prefWidth="654.0">
+                        <TableView fx:id="tableCarro" prefHeight="203.0" prefWidth="617.0">
                           <columns>
                             <TableColumn fx:id="placaCollumn" prefWidth="122.0" text="Placa" />
                             <TableColumn fx:id="modeloCollumn" prefWidth="195.0" text="Modelo" />
                               <TableColumn fx:id="corCollumn" prefWidth="102.0" text="Cor" />
-                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="234.0" text="Responsável" />
+                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="195.33331298828125" text="Responsável" />
                           </columns>
                         </TableView>
                      </children>
@@ -100,12 +100,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="visitanteTable" prefHeight="343.0" prefWidth="654.0">
+                        <TableView fx:id="visitanteTable" prefHeight="215.0" prefWidth="615.0">
                           <columns>
                             <TableColumn fx:id="nomeVisitanteCollumn" prefWidth="216.0" text="Nome" />
                             <TableColumn fx:id="cpfVisitanteCollumn" prefWidth="144.0" text="CPF" />
-                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="196.0" text="Responsável" />
-                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="97.0" text="Apatamento" />
+                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="148.00003051757812" text="Responsável" />
+                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="105.0" text="Apatamento" />
                           </columns>
                         </TableView>
                      </children>
@@ -127,7 +127,7 @@
         </Text>
         <Pane prefHeight="44.0" prefWidth="566.0">
             <children>
-                <JFXButton fx:id="voltar" layoutX="540.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
+                <JFXButton fx:id="voltar" layoutX="509.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
                 <JFXButton fx:id="deletarMorador" alignment="CENTER" disable="true" layoutX="7.0" layoutY="1.0" onAction="#deletarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
                     <graphic>
                         <ImageView disable="true" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

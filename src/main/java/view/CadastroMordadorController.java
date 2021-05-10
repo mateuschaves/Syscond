@@ -23,11 +23,9 @@ import pojos.Morador;
 import pojos.Visitante;
 import utils.Campos;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CadastroMordadorController implements Initializable {
 
@@ -84,7 +82,25 @@ public class CadastroMordadorController implements Initializable {
     private TextField textApartamento;
 
 
-    public void listarDisponiveis(){
+    private void voltar(){
+        try {
+            App.setRoot("menuCadastro");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void limparTela(){
+        tableViewVisitante.getItems().clear();
+        tableViewCarro.getItems().clear();
+
+        textFieldCpf.setText("");
+        textFieldNome.setText("");
+        textApartamento.setText("");
+
+    }
+
+    private void listarDisponiveis(){
 
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
 
@@ -207,17 +223,33 @@ public class CadastroMordadorController implements Initializable {
 
         String cpf = textFieldCpf.getText();
         String nome = textFieldNome.getText();
+        String numero = textApartamento.getText();
+
+        if(numero == ""){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Morador não cadastrado");
+            alert.setHeaderText("Morador não cadastrado!");
+            alert.setContentText("ocorreu algum erro, o campo apartamento selecionado, não pode ser nulo!");
+            alert.show();
+            return;
+        }
 
         List<Carro> carros = tableViewCarro.getItems();
         List<Visitante> visitantes = tableViewVisitante.getItems();
-        Apartamento apartamento = tableViewDisponiveis.getItems().get(0);
+
 
         MoradorNegocios moradorNegocios = new MoradorNegocios();
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
         CarroNegocios carroNegocios = new CarroNegocios();
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
 
+
+
+        Apartamento apartamento = new Apartamento(numero);
         apartamento = apartamentoNegocios.pesquisar(apartamento);
+
         Morador morador = new Morador(cpf,nome,apartamento,carros,visitantes);
 
         moradorNegocios.cadastrar(morador);
@@ -228,25 +260,36 @@ public class CadastroMordadorController implements Initializable {
                 carroNegocios.cadastrar(a);
             }
         }
+        int index = 0;
         if((visitantes.size() != 0)){
             for(Visitante a:visitantes){
                 a.setCpfMoradorResponsavel(morador);
                 visitanteNegocios.cadastrar(a);
+                System.out.println("Apartamento do visitante: " + visitanteNegocios.listarVisitante().get(index).getCpfMoradorResponsavel().getApartamento().getNumero());
+                index++;
             }
         }
-
         try{
             moradorNegocios.pesquisar(morador).getCpf();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
-                    new Image("/img/syscondLogo.png"));
-            alert.setTitle("Morador Cadastrado");
-            alert.setHeaderText("Morador cadastrado com sucesso!");
-            alert.show();
-            textFieldCpf.setText("");
-            textFieldNome.setText("");
-            textApartamento.setText("");
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+            ((Stage)dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/img/syscondLogo.png"));
+            dialog.setHeaderText("Morador adicionado com sucesso.");
+            dialog.setContentText("Deseja adicionar outro Morador?");
+            ButtonType oneMore = new ButtonType("Quero adicionar +1 Morador");
+            ButtonType enoughCars = new ButtonType("Não, obrigado", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getButtonTypes().setAll(oneMore, enoughCars);
+            Optional<ButtonType> result = dialog.showAndWait();
+
+            if(result.isPresent() && result.get() == oneMore){
+                this.limparTela();
+            }else{
+                voltar();
+                dialog.close();
+            }
+
+
+
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
@@ -274,6 +317,13 @@ public class CadastroMordadorController implements Initializable {
             index++;
         }
         listarDisponiveis();
+
+        tableViewDisponiveis.setOnMouseClicked((MouseEvent)->{
+
+            String numero = tableViewDisponiveis.getSelectionModel().getSelectedItem().getNumero();
+            textApartamento.setText(numero);
+            //this.pesquisarApartamento();
+        });
 
 
     }

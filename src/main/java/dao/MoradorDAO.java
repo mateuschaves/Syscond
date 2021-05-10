@@ -91,9 +91,7 @@ public class MoradorDAO implements MoradorDaoInterface{
         EntityTransaction tx = em.getTransaction();
 
         try{
-
-            procurar(morador.getCpf()).getCpf();
-
+            //procurar(morador.getCpf()).getCpf();
             tx.begin();
             morador = em.merge(morador);
             em.remove(morador);

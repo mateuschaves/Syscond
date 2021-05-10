@@ -31,6 +31,7 @@ public class MoradorNegocios {
         try{
             moradorDao.remover(morador);
         }catch(Exception e){
+            e.printStackTrace();
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
         }
     }

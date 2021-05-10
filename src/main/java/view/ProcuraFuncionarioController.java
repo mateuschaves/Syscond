@@ -117,6 +117,7 @@ public class ProcuraFuncionarioController implements Initializable{
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
             tableView.setOnMouseClicked((MouseEvent e) -> {
                     System.out.println(e.getSource().toString());
                     this.deletarFuncionario.setDisable(false);

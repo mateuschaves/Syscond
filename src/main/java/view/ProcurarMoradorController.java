@@ -272,10 +272,30 @@ public class ProcurarMoradorController implements Initializable {
 
     @FXML
     private void deletarMorador() {
-        MoradorDAO moradorDAO = new MoradorDAO();
-        this.moradorToDelete = moradorDAO.procurar(this.moradorToDelete.getCpf());
-        moradorDAO.remover(this.moradorToDelete);
+        MoradorNegocios moradorNegocios = new MoradorNegocios();
+        VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+        CarroNegocios carroNegocios = new CarroNegocios();
+
+        this.moradorToDelete = moradorNegocios.pesquisar(moradorToDelete);
+        System.err.println("Nome " + moradorToDelete.getNome());
+
+        //primeiro é preciso deletar os carros e os visitantes;
+        Collection<Carro> carroList = moradorToDelete.getCarros();
+        Collection<Visitante> visitanteList = moradorToDelete.getVisitantesList();
+
+        for(Carro a: carroList){
+            carroNegocios.deletar(a);
+        }
+        for(Visitante a: visitanteList){
+            visitanteNegocios.deletar(a);
+        }
+        //atualizamos o objeto, pois agora ele não tem mais visitantes;
+        this.moradorToDelete = moradorNegocios.pesquisar(moradorToDelete);
+
+        moradorNegocios.deletar(moradorToDelete);
+
         listarTodos();
+        deletarMorador.setDisable(true);
     }
 
     @Override
@@ -284,10 +304,23 @@ public class ProcurarMoradorController implements Initializable {
         mainPane.setOnMousePressed(event -> {
 
         });
-        mainPane.setOnKeyPressed((keyEvent) -> {
+        mainPane.setOnKeyPressed((keyEvent)->{
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarMorador();
             }
+        });
+
+        mainPane.setOnMousePressed((MouseEvent)->{
+            deletarMorador.setDisable(true);
+            mainPane.requestFocus();
+        });
+
+        tableView.setOnMouseClicked((MouseEvent e)->{
+
+            deletarMorador.setDisable(false);
+            moradorToDelete.setCpf(tableView.getSelectionModel().getSelectedItem().getCampo2());
+            //System.out.println(moradorToDelete.getCpf());
+
         });
 
         deletarMorador.setDisable(true);

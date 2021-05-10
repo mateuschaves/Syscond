@@ -52,7 +52,7 @@ public class CadastroVisitanteController implements Initializable{
             morador = moradorNegocios.pesquisar(morador);
             System.out.println("Morador: " + morador.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
-                    new Campos(morador.getCpf(),morador.getApartamento().getNumero())
+                    new Campos(morador.getNome(),morador.getApartamento().getNumero())
             );
             //Creating columns
             nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
