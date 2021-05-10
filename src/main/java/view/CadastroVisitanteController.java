@@ -41,7 +41,7 @@ public class CadastroVisitanteController implements Initializable{
     private TableColumn apartamentoColumn;
 
     @FXML
-    private void procurar (){
+    private Morador procurar (){
         MoradorNegocios moradorNegocios = new MoradorNegocios();
         String cpf = responsavel.getText();
 
@@ -61,6 +61,7 @@ public class CadastroVisitanteController implements Initializable{
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            return morador;
 
         }catch (Exception e){
             e.printStackTrace();
@@ -70,6 +71,7 @@ public class CadastroVisitanteController implements Initializable{
             alert.setContentText("não foi possivel encontrar este morador, Caso queira cadastrar-lo, " +
                     "é possível ir no menu cadastros e adicionar!");
             alert.show();
+            return null;
         }
 
 
@@ -83,8 +85,10 @@ public class CadastroVisitanteController implements Initializable{
                 nome = textFieldNome.getText(),
                 cpfResponsavel = responsavel.getText();
 
-        Morador morador = moradorNegocios.pesquisar(new Morador(cpfResponsavel));
-
+        Morador  morador = procurar();
+        if(morador == null){
+            return;
+        }
 
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
 

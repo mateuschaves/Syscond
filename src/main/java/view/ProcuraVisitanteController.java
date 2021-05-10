@@ -1,5 +1,7 @@
 package view;
 
+import dao.MoradorDAO;
+import dao.VisitanteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,11 +11,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import negocios.FuncionarioNegocios;
 import negocios.VisitanteNegocios;
+import pojos.Funcionario;
 import pojos.Visitante;
 import utils.Campos;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProcuraVisitanteController implements Initializable {
@@ -35,11 +42,59 @@ public class ProcuraVisitanteController implements Initializable {
 
     private Visitante visitanteToDelete = new Visitante();
 
+
+    @FXML
+    private void listarVisitante() {
+
+        VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+
+        try{
+
+            List<Visitante> list = visitanteNegocios.listarVisitante();
+            Collection<Campos> listCampos = new ArrayList<>();
+
+            for(Visitante a: list){
+
+                listCampos.add(new Campos(a.getNome(),a.getCpf(),a.getCpfMoradorResponsavel().getNome()));
+            }
+
+            final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(listCampos);
+
+            nomeCollumn.setCellValueFactory(new PropertyValueFactory<>("campo1"));
+            cpfColumn.setCellValueFactory(new PropertyValueFactory<>("campo2"));
+            moradorColumn.setCellValueFactory(new PropertyValueFactory<>("campo3"));
+
+            tableView.setItems(dataCampos);
+            tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+            tableView.setOnMouseClicked((MouseEvent e) -> {
+                System.out.println(e.getSource().toString());
+                deletarVisitante.setDisable(false);
+                String VisitanteNomeToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
+                String VisitanteCpfToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
+                String VisitanteMoradorToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
+                this.visitanteToDelete.setNome(VisitanteNomeToDelete);
+                this.visitanteToDelete.setCpf(VisitanteCpfToDelete);
+                this.visitanteToDelete.getCpfMoradorResponsavel();
+
+            });
+
+        }catch (Exception e){
+
+        }
+    }
+
+
     @FXML
     private void procurarVisitante(){
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
         String cpf = textFieldCpf.getText();
         Visitante visitante;
+
+        if(cpf == ""){
+            this.listarVisitante();
+            return;
+        }
 
         try{
 
@@ -71,9 +126,10 @@ public class ProcuraVisitanteController implements Initializable {
 
                 String nome = tableView.getSelectionModel().getSelectedItem().getCampo1();
                 String cpfVisitante = tableView.getSelectionModel().getSelectedItem().getCampo2();
-
+                String nomeMorador = tableView.getSelectionModel().getSelectedItem().getCampo3();
                 this.visitanteToDelete.setNome(nome);
                 this.visitanteToDelete.setCpf(cpfVisitante);
+                this.visitanteToDelete.getCpfMoradorResponsavel();
             });
 
         }catch (Exception e){
@@ -99,8 +155,8 @@ public class ProcuraVisitanteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        listarVisitante();
         mainPane.setOnMousePressed(event -> {
-
         });
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
@@ -113,9 +169,12 @@ public class ProcuraVisitanteController implements Initializable {
 
     @FXML
     private void deletarVisitante() {
-        VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
-        visitanteNegocios.deletar(this.visitanteToDelete);
-        this.procurarVisitante();
+        try {
+            VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+            visitanteNegocios.deletar(this.visitanteToDelete);
+            this.listarVisitante();
+        } catch (Exception e) {
+        }
     }
 
 }
