@@ -69,17 +69,6 @@ public class ProcuraApartamentoController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                btApagar.setDisable(false);
-                String apartamentIdToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String apartamentAndarToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String apartamentBlocoToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
-                this.apartamentoDelete.setNumero(apartamentIdToDelete);
-                this.apartamentoDelete.setAndar(apartamentAndarToDelete);
-                this.apartamentoDelete.setBloco(apartamentBlocoToDelete);
-            });
-
         }catch (Exception e){
 
         }
@@ -117,7 +106,13 @@ public class ProcuraApartamentoController implements Initializable {
     @FXML
     private void deletarApartamento(){
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
-        apartamentoNegocios.deletar(this.apartamentoDelete);
+
+        apartamentoDelete = apartamentoNegocios.pesquisar(apartamentoDelete);
+
+        System.out.println("APARTAMENTO: " + apartamentoDelete.getNumero());
+
+        apartamentoNegocios.deletar(apartamentoDelete);
+
         this.listarApartamentos();
     }
 
@@ -138,6 +133,14 @@ public class ProcuraApartamentoController implements Initializable {
         this.listarApartamentos();
         mainPane.setOnMousePressed(event -> {
 
+        });
+
+        btApagar.setDisable(true);
+
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+            btApagar.setDisable(false);
+            String numero = tableView.getSelectionModel().getSelectedItem().getCampo1();
+            apartamentoDelete = new Apartamento(numero);
         });
     }
 }

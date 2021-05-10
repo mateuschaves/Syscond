@@ -25,10 +25,26 @@ public class ApartamentoNegocios {
 
     public void deletar(Apartamento apartamento){
         try{
+            MoradorNegocios moradorNegocios = new MoradorNegocios();
+
+            List<Morador> moradorList  = moradorNegocios.listarMoradores();
+
+            String numeroApartamento = apartamento.getNumero();
+            System.out.println("Numero do apartamento: " + numeroApartamento);
+            for(Morador a : moradorList ){// deletando os diferentes;
+                String numeroMorador = a.getApartamento().getNumero();
+                System.out.println("Nome: " + a.getNome() + " Numero: "+ numeroMorador);
+                if(numeroMorador.equals(numeroApartamento)){// se o morador tiver o mesmo numero, significa qu ele mora lá
+
+                    moradorNegocios.deletar(a);
+                    System.out.println("IF: " + a.getNome());
+                }
+            }
+
             System.out.println("Deletando apartamento:" + apartamento.getNumero());
             apartamentoDao.remover(apartamento);
         }catch(Exception e){
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 

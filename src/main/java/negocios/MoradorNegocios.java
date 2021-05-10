@@ -10,6 +10,7 @@ import pojos.Morador;
 import pojos.Visitante;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MoradorNegocios {
@@ -29,9 +30,29 @@ public class MoradorNegocios {
     }
     public void deletar(Morador morador){
         try{
+
+            VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+            CarroNegocios carroNegocios = new CarroNegocios();
+
+            morador = this.pesquisar(morador);
+            System.err.println("Nome " + morador.getNome());
+
+            //primeiro é preciso deletar os carros e os visitantes;
+            Collection<Carro> carroList = morador.getCarros();
+            Collection<Visitante> visitanteList = morador.getVisitantesList();
+
+            for(Carro a: carroList){
+                carroNegocios.deletar(a);
+            }
+            for(Visitante a: visitanteList){
+                visitanteNegocios.deletar(a);
+            }
+            //atualizamos o objeto, pois agora ele não tem mais visitantes;
+            morador = this.pesquisar(morador);
+
             moradorDao.remover(morador);
+            
         }catch(Exception e){
-            e.printStackTrace();
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
         }
     }
