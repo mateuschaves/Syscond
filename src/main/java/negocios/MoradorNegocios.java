@@ -23,7 +23,7 @@ public class MoradorNegocios {
 
     /**
      *
-     * @param morador eh o parametro utilizado para cadastrar um morador.
+     * @param morador parametro utilizado para cadastrar um morador.
      */
     public void cadastrar(Morador morador){
 
@@ -38,7 +38,7 @@ public class MoradorNegocios {
 
     /**
      *
-     * @param morador eh o parametro utilizado para apagar um morador.
+     * @param morador parametro utilizado para apagar um morador.
      */
     public void deletar(Morador morador){
         try{
@@ -88,7 +88,7 @@ public class MoradorNegocios {
 
     /**
      *
-     * @param morador eh o parametro utilizado para alterar um morador.
+     * @param morador parametro utilizado para alterar um morador.
      */
     public void alterar(Morador morador){
 
@@ -98,7 +98,7 @@ public class MoradorNegocios {
 
     /**
      *
-     * @param morador eh o parametro utilizado para procurar um morador, quando acha
+     * @param morador parametro utilizado para procurar um morador, quando acha
      * @return retorna um morador pesquisado.
      */
     public Morador pesquisar(Morador morador){

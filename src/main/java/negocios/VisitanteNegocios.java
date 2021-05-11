@@ -19,7 +19,7 @@ public class VisitanteNegocios {
 
     /**
      *
-     * @param visitante eh o parametro usado para cadastrar um visitante.
+     * @param visitante parametro usado para cadastrar um visitante.
      */
     public void cadastrar(Visitante visitante){
         try {
@@ -32,7 +32,7 @@ public class VisitanteNegocios {
 
     /**
      *
-     * @param visitante eh o parametro usado para apagar um visitante.
+     * @param visitante parametro usado para apagar um visitante.
      */
     public void deletar(Visitante visitante){
         try {
@@ -44,7 +44,7 @@ public class VisitanteNegocios {
 
     /**
      *
-     * @param visitante eh o parametro usado para alterar um visitante.
+     * @param visitante parametro usado para alterar um visitante.
      */
     public void alterar(Visitante visitante){
 
@@ -75,7 +75,7 @@ public class VisitanteNegocios {
 
     /**
      *
-     * @param visitante eh o parametro usado para procurar um visitante, quando encontra
+     * @param visitante parametro usado para procurar um visitante, quando encontra
      * @return retorna um visitante pesquisado.
      */
     public Visitante pesquisar(Visitante visitante){

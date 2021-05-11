@@ -15,7 +15,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param usuario eh o parametro usado para cadastrar um usuario.
+     * @param usuario parametro usado para cadastrar um usuario.
      */
     public void cadastrar(Usuario usuario){
 
@@ -30,7 +30,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param usuario eh o parametro usado para apagar um usuario.
+     * @param usuario parametro usado para apagar um usuario.
      */
     public void deletar(Usuario usuario){
         try{
@@ -66,7 +66,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param usuario eh o parametro usado para alterar um usuario.
+     * @param usuario parametro usado para alterar um usuario.
      */
     public void alterar(Usuario usuario){
 
@@ -76,7 +76,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param login eh o parametro usado para procurar um usuario, quando acha
+     * @param login parametro usado para procurar um usuario, quando acha
      * @return retorna um usuario pesquisado.
      */
     public Usuario pesquisar(String login){
@@ -85,7 +85,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param usuario eh o parametro usado para procurar um usuario, quando acha
+     * @param usuario parametro usado para procurar um usuario, quando acha
      * @return retorna um usuario pesquisado.
      */
     public Usuario pesquisar(Usuario usuario){
@@ -94,7 +94,7 @@ public class UsuarioNegocios {
 
     /**
      *
-     * @param usuario eh o parametro usado para procurar por um usuario, quando encontra retorna um usuario,
+     * @param usuario parametro usado para procurar por um usuario, quando encontra retorna um usuario,
      * com isso, esse metodo verifica se o login e a senha que o usuario digitou eh a mesma que esta salva no
      * BD do sistema, se for a mesma,
      * @return retorna um usuario e a mensagem de bem vindo, se for diferente retorna null e uma mensagem de

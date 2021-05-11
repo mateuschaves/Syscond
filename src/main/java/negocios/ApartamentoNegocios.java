@@ -18,7 +18,7 @@ public class ApartamentoNegocios {
 
     /**
      *
-     * @param apartamento eh o parametro utilizado para cadastrar um apartamento;
+     * @param apartamento parametro utilizado para cadastrar um apartamento;
      * @throws ApartamentoJaExistente confere se esse apartamento ja existe no BD, se nao existir pode cadastrar.
      */
     public void cadastrar(Apartamento apartamento) throws ApartamentoJaExistente {
@@ -33,7 +33,7 @@ public class ApartamentoNegocios {
 
     /**
      *
-     * @param apartamento eh o parametro utilizado para apagar um apartamento.
+     * @param apartamento parametro utilizado para apagar um apartamento.
      */
     public void deletar(Apartamento apartamento){
         try{
@@ -109,7 +109,7 @@ public class ApartamentoNegocios {
 
     /**
      *
-     * @param apartamento eh o parametro usado para alterar um apartamento.
+     * @param apartamento parametro usado para alterar um apartamento.
      */
     public void alterar(Apartamento apartamento){
 

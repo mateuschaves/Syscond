@@ -19,7 +19,7 @@ public class CarroNegocios {
 
     /**
      *
-     * @param carro eh o parametro utilizado para cadastrar um carro.
+     * @param carro parametro utilizado para cadastrar um carro.
      */
     public void cadastrar(Carro carro){
         try {
@@ -32,7 +32,7 @@ public class CarroNegocios {
 
     /**
      *
-     * @param carro eh o parametro utilizado para deletar um carro.
+     * @param carro parametro utilizado para deletar um carro.
      */
     public void deletar(Carro carro){
         try {
@@ -44,7 +44,7 @@ public class CarroNegocios {
 
     /**
      *
-     * @param carro eh o parametro utilizado para alterar um carro.
+     * @param carro parametro utilizado para alterar um carro.
      */
     public void alterar(Carro carro){
 
@@ -77,7 +77,7 @@ public class CarroNegocios {
 
     /**
      *
-     * @param carro eh o parametro utilizado para procurar um carro e quando encontra,
+     * @param carro parametro utilizado para procurar um carro e quando encontra,
      * @return retorna o carro que foi pesquisado.
      */
     public Carro pesquisar(Carro carro){

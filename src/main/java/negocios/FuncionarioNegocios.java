@@ -15,7 +15,7 @@ public class FuncionarioNegocios {
 
     /**
      *
-     * @param funcionario eh o parametro utilizado para cadastrar um funcionario.
+     * @param funcionario parametro utilizado para cadastrar um funcionario.
      */
     public void cadastrar(Funcionario funcionario){
 
@@ -28,7 +28,7 @@ public class FuncionarioNegocios {
 
     /**
      *
-     * @param funcionario eh o parametro utilizado para apagar um funcionario.
+     * @param funcionario parametro utilizado para apagar um funcionario.
      */
     public void deletar(Funcionario funcionario){
         try{
@@ -66,7 +66,7 @@ public class FuncionarioNegocios {
 
     /**
      *
-     * @param funcionario eh o parametro utilizado para encontrar um apartamento e
+     * @param funcionario parametro utilizado para encontrar um apartamento e
      * @param cpf eh o usado para colocar um novo cpf nesse funcionario.
      */
     public void alterarID(Funcionario funcionario, String cpf){
@@ -85,7 +85,7 @@ public class FuncionarioNegocios {
 
     /**
      *
-     * @param funcionario eh o parametro utilizado para alterar um funcionario.
+     * @param funcionario parametro utilizado para alterar um funcionario.
      */
     public void alterar(Funcionario funcionario){
 
@@ -98,7 +98,7 @@ public class FuncionarioNegocios {
 
     /**
      *
-     * @param funcionario eh o parametro utilizado para procurar um funcionario, quando encontra
+     * @param funcionario parametro utilizado para procurar um funcionario, quando encontra
      * @return retorna um funcionario pesquisado.
      */
     public Funcionario pesquisar(Funcionario funcionario){

@@ -15,7 +15,7 @@ public class FornecedorNegocios {
 
     /**
      *
-     * @param fornecedor eh o parametro utilizado para cadastrar um fornecedor.
+     * @param fornecedor parametro utilizado para cadastrar um fornecedor.
      */
     public void cadastrar(Fornecedor fornecedor) {
 
@@ -29,7 +29,7 @@ public class FornecedorNegocios {
 
     /**
      *
-     * @param fornecedor eh o parametro utilizado para deletar um fornecedor.
+     * @param fornecedor parametro utilizado para deletar um fornecedor.
      */
     public void deletar(Fornecedor fornecedor) {
         try {
@@ -67,7 +67,7 @@ public class FornecedorNegocios {
 
     /**
      *
-     * @param fornecedor eh o parametro utilizado para modificar um fornecedor.
+     * @param fornecedor parametro utilizado para modificar um fornecedor.
      */
     public void alterar(Fornecedor fornecedor) {
 
@@ -80,7 +80,7 @@ public class FornecedorNegocios {
 
     /**
      *
-     * @param fornecedor eh o parametro utilizado para procurar um fornecedor, quando acha
+     * @param fornecedor parametro utilizado para procurar um fornecedor, quando acha
      * @return retorna o fornecedor pesquisado.
      */
     public Fornecedor pesquisar(Fornecedor fornecedor) {
