@@ -40,7 +40,7 @@ public interface UsuarioDaoInterface {
 
     public List<Usuario> listar();
     /**
-     * nao existe;
+     *
      * @param usuario utilizado para alterar um usuario.
      */
     public void alterar(Usuario usuario);
