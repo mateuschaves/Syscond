@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 /**
- *  Implementando a anterface de carro sobrescrevendo suas assinaturas
+ *  Implementando a interface de carro sobrescrevendo suas assinaturas
  */
 public class CarroDAO implements CarroDaoInterface{
 

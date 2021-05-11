@@ -12,7 +12,7 @@ import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
- * Implementando a anterface de fornecedor sobrescrevendo suas assinaturas
+ * Implementando a interface de fornecedor sobrescrevendo suas assinaturas
  */
 public class FornecedorDAO implements FornecedorDaoInterface {
     /**
