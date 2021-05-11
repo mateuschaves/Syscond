@@ -48,7 +48,7 @@ public class ProcuraFuncionarioController implements Initializable{
     private void listarFuncionario() {
 
         FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
-
+        this.textFieldCpf.setText("");
         try{
 
             List<Funcionario> list = funcionarioNegocios.listarFuncionarios();
@@ -65,20 +65,9 @@ public class ProcuraFuncionarioController implements Initializable{
             funcaoColumn.setCellValueFactory(new PropertyValueFactory<>("campo2"));
             cpfCollumn.setCellValueFactory(new PropertyValueFactory<>("campo3"));
 
+
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                deletarFuncionario.setDisable(false);
-                String FuncionarioNomeToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String FuncionarioFuncaoToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String FuncionarioCpfToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
-                this.funcionarioToDelete.setNome(FuncionarioNomeToDelete);
-                this.funcionarioToDelete.setFuncao(FuncionarioFuncaoToDelete);
-                this.funcionarioToDelete.setCpf(FuncionarioCpfToDelete);
-
-            });
 
         }catch (Exception e){
 
@@ -118,20 +107,6 @@ public class ProcuraFuncionarioController implements Initializable{
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                    System.out.println(e.getSource().toString());
-                    this.deletarFuncionario.setDisable(false);
-                    String nome = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                    String funcao = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                    String cpf1 = tableView.getSelectionModel().getSelectedItem().getCampo3();
-
-                    this.funcionarioToDelete.setNome(nome);
-                    this.funcionarioToDelete.setFuncao(funcao);
-                    this.funcionarioToDelete.setCpf(cpf1);
-            });
-                tableView.setItems(dataCampos);
-                tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -151,6 +126,8 @@ public class ProcuraFuncionarioController implements Initializable{
             FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
             funcionarioNegocios.deletar(this.funcionarioToDelete);
             this.listarFuncionario();
+            this.textFieldCpf.setText("");
+            this.deletarFuncionario.setDisable(true);
         } catch (Exception e) {
         }
     }
@@ -165,6 +142,14 @@ public class ProcuraFuncionarioController implements Initializable{
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarFuncionario();
             }
+        });
+
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+
+            this.deletarFuncionario.setDisable(false);
+            String cpf = tableView.getSelectionModel().getSelectedItem().getCampo3();
+
+            this.funcionarioToDelete.setCpf(cpf);
         });
 
     }
