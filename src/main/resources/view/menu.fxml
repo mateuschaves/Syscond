@@ -168,7 +168,7 @@
       </FlowPane>
    </bottom>
    <center>
-      <FlowPane fx:id="borderPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="mainPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Group opacity="0.16">
                <children>

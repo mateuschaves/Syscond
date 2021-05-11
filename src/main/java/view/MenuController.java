@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import view.auxiliar.CurrentUserWriter;
 
 import java.net.URL;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     @FXML
-    private BorderPane borderPane;
+    private FlowPane mainPane;
 
     @FXML
     private Label labelUsuario;
@@ -43,7 +44,7 @@ public class MenuController implements Initializable {
 
     }
 
-    public void frameHandler (String frame, BorderPane pane ){
+    public void frameHandler (String frame, FlowPane pane){
         Node node = null;
         try{
             node = FXMLLoader.load(getClass().getResource(frame));
@@ -61,6 +62,8 @@ public class MenuController implements Initializable {
     }
 
     public void callConsulta(){this.setRoot("menuConsulta");}
+
+    public void callSobre(){this.frameHandler("sobre.fxml",this.mainPane);};
 
     /*
     public void callCadastrarFornecedor(){
