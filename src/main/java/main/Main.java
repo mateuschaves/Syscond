@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * descricao: essa main procura testar a maioria das classes do sistema com suas
+ * funcionalidades e claro no nosso pc rodava professor! kkkk :)
+ */
+
 public class Main {
 
     static MoradorDaoInterface moradorDAO = new MoradorDAO();

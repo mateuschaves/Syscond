@@ -10,6 +10,10 @@ import pojos.Produto;
 
 import java.util.*;
 
+/**
+ * descricao: essa main procura testar as classes Morador, Carro e Produto com suas
+ * funcionalidades e claro no nosso pc rodava professor! kkkk :)
+ */
 public class MainTeste {
 
     public static void main(String[] args){

@@ -10,6 +10,11 @@ import pojos.Visitante;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * descricao: essa main procura testar as classes Morador e Apartamento com suas
+ * funcionalidades e claro no nosso pc rodava professor! kkkk :)
+ */
+
 public class MainMetodosMoradorApartamento {
 
     public static void main(String[] args) {

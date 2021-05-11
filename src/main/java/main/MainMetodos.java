@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author grupo Sith; descricao: essa main procurar testar o maximo de classes possiveis com todas as suas
+ * descricao: essa main procurar testar o maximo de classes possiveis com todas as suas
  * funcionalidades e claro no nosso pc rodava professor! kkkk :)
  */
 
