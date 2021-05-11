@@ -1,5 +1,6 @@
 package view;
 
+import com.jfoenix.controls.JFXButton;
 import dao.MoradorDAO;
 import dao.VisitanteDAO;
 import javafx.collections.FXCollections;
@@ -39,6 +40,8 @@ public class ProcuraVisitanteController implements Initializable {
     private TableColumn cpfColumn;
     @FXML
     private Button deletarVisitante;
+    @FXML
+    private JFXButton mostrarTodosButton;
 
     private Visitante visitanteToDelete = new Visitante();
 
@@ -47,6 +50,7 @@ public class ProcuraVisitanteController implements Initializable {
     private void listarVisitante() {
 
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+        textFieldCpf.setText("");
 
         try{
 
@@ -119,19 +123,6 @@ public class ProcuraVisitanteController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-
-                this.deletarVisitante.setDisable(false);
-
-                String nome = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String cpfVisitante = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String nomeMorador = tableView.getSelectionModel().getSelectedItem().getCampo3();
-                this.visitanteToDelete.setNome(nome);
-                this.visitanteToDelete.setCpf(cpfVisitante);
-                this.visitanteToDelete.getCpfMoradorResponsavel();
-            });
-
         }catch (Exception e){
             System.out.println(e.getMessage());
             //e.printStackTrace();
@@ -152,29 +143,39 @@ public class ProcuraVisitanteController implements Initializable {
         }
     }
 
+    @FXML
+    private void deletarVisitante() {
+        try {
+            VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
+            visitanteToDelete = visitanteNegocios.pesquisar(visitanteToDelete);
+
+            visitanteNegocios.deletar(this.visitanteToDelete);
+            this.listarVisitante();
+            deletarVisitante.setDisable(true);
+        } catch (Exception e) {
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listarVisitante();
         mainPane.setOnMousePressed(event -> {
         });
+
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarVisitante();
             }
         });
 
-    }
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+            this.deletarVisitante.setDisable(false);
+            String cpfVisitante = tableView.getSelectionModel().getSelectedItem().getCampo2();
+            this.visitanteToDelete.setCpf(cpfVisitante);
 
+        });
 
-    @FXML
-    private void deletarVisitante() {
-        try {
-            VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
-            visitanteNegocios.deletar(this.visitanteToDelete);
-            this.listarVisitante();
-        } catch (Exception e) {
-        }
     }
 
 }
