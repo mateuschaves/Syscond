@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author grupo Sith; Impplementando a interface de Apartamento sobrescrevendendo suas assinaturas
+ * Implementando a interface de Apartamento sobrescrevendendo suas assinaturas
  */
 public class ApartamentoDAO implements ApartamentoDaoInterface{
 

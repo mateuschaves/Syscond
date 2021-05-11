@@ -1,8 +1,7 @@
 package exceptions.apartamento;
 
 /**
- * @author grupo Sith;
- *  exception criada caso um apartamento ja exista.
+ *  Exception criada caso um apartamento ja exista.
  */
 
 public class ApartamentoJaExistente extends Exception{

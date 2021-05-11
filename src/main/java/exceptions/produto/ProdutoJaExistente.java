@@ -1,8 +1,7 @@
 package exceptions.produto;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um produto ja exista.
+ *  Exception criada caso um produto ja exista.
  */
 
 public class ProdutoJaExistente extends Exception{

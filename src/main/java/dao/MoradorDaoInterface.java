@@ -6,7 +6,7 @@ import pojos.Morador;
 import java.util.List;
 
 /**
- * @author grupo Sith; Interface de morador com suas assinaturas
+ * Interface de morador com suas assinaturas
  */
 public interface MoradorDaoInterface {
 

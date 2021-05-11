@@ -1,8 +1,7 @@
 package exceptions.funcionario;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um funcionario ja exista.
+ *  Exception criada caso um funcionario ja exista.
  */
 
 public class FuncionarioJaExistente extends Exception{

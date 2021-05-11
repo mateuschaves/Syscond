@@ -12,7 +12,7 @@ import pojos.Apartamento;
 import pojos.Funcionario;
 
 /**
- * @author grupo Sith; Implementando a interface de funcionario sobrescrevendo suas assinaturas
+ * Implementando a interface de funcionario sobrescrevendo suas assinaturas
  */
 public class FuncionarioDAO implements FuncionarioDaoInterface {
 

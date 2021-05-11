@@ -1,8 +1,7 @@
 package exceptions.historico;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um o historico estaja vazio.
+ *  Exception criada caso um o historico estaja vazio.
  */
 
 public class HistoricoVazio extends Exception{

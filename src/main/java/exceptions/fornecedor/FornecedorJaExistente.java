@@ -1,8 +1,7 @@
 package exceptions.fornecedor;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um fornecedor ja exista.
+ *  Exception criada caso um fornecedor ja exista.
  */
 
 public class FornecedorJaExistente extends Exception{

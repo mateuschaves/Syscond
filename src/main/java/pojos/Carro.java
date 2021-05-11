@@ -11,10 +11,6 @@ import javax.validation.constraints.Pattern;
 
 /**
  *
- *   @author Mateus Martins
- *   @author Breno Araujo
- *   @author Eduardo Marinho
- *   @author Mateus Henrique;
  *   descricao:
  *   pojo de carro com seus atributos mapeados, entidades, colouna, chave primaria;
  *   com relacionamento com morador, varios carros para um morador (n para 1);

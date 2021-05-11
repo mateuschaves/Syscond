@@ -1,8 +1,7 @@
 package exceptions.fornecedor;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um fornecedor nao seja achado.
+ *  Exception criada caso um fornecedor nao seja achado.
  */
 
 public class FornecedorNaoEncontrado extends Exception{

@@ -12,7 +12,7 @@ import pojos.Fornecedor;
 import pojos.Funcionario;
 
 /**
- * @author grupo Sith; Interface de fornecedor com suas assinaturas
+ *  Interface de fornecedor com suas assinaturas
  */
 public interface FornecedorDaoInterface {
 
