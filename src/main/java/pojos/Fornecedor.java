@@ -11,10 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- *   @author Mateus Martins
- *   @author Breno Araujo
- *   @author Eduardo Marinho
- *   @author Mateus Henrique;
+ *
  *   descricao:
  *   pojo de fornecedor com seus atributos mapeados, entidades, colouna, chave primaria;
  *   Alem de seus construtores gets e sets;

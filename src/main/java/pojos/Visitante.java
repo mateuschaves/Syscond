@@ -10,10 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- *  @author Mateus Martins
- *  @author Breno Araujo
- *  @author Eduardo Marinho
- *  @author Mateus Henrique;
+ *
  *  descricao:
  *  pojo de visitante com seus atributos mapeados, entidades, colouna, chave primaria;
  *  com relacionamento com morador, varios visitantes para um morador (n para 1);

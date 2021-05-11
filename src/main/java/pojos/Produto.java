@@ -12,10 +12,7 @@ import javax.persistence.Table;
 import java.util.Random;
 
 /**
- *   @author Mateus Martins
- *   @author Breno Araujo
- *   @author Eduardo Marinho
- *   @author Mateus Henrique;
+ *
  *   descricao:
  *   pojo de produto com seus atributos mapeados, entidades, colouna, chave primaria;
  *   Alem de seus construtores gets e sets;

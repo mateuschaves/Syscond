@@ -18,10 +18,6 @@ import java.util.List;
 
 /**
  *
- * @author Mateus Martins
- * @author Breno Araujo
- * @author Eduardo Marinho
- * @author Mateus Henrique;
  * descricao:
  * pojo de apartamaneto com seus atributos mapeados, entidades, colounas, chave primaria;
  * com relacionamento com morador, um apartamento para varios moradores (1 para n);
