@@ -52,7 +52,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="mostrarTodosButton" onAction="#listarVisitante" layoutX="432.0" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Mostrar todos" />
+            <JFXButton fx:id="mostrarTodosButton" layoutX="432.0" onAction="#listarVisitante" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Mostrar todos" />
          </children>
          <FlowPane.margin>
             <Insets top="8.0" />
@@ -70,7 +70,7 @@
         <columns>
           <TableColumn fx:id="nomeCollumn" prefWidth="159.0" text="Nome do Visitante" />
             <TableColumn fx:id="cpfColumn" prefWidth="109.0" text="CPF Visitante" />
-          <TableColumn fx:id="moradorColumn" prefWidth="117.0" text="Morador" />
+          <TableColumn fx:id="moradorColumn" prefWidth="262.0" text="Morador" />
         </columns>
          <FlowPane.margin>
             <Insets />
