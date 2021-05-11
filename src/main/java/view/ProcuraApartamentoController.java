@@ -117,6 +117,7 @@ public class ProcuraApartamentoController implements Initializable {
             alert.setContentText("O apartamento: " + numero + " não foi encontrado na base de dados " +
                     "caso queira casdastra-lo, basta ir em apartamentos, no menu de cadastros.");
             alert.show();
+            textFieldNumero.setText("");
             //e.printStackTrace();
         }
     }
@@ -144,8 +145,6 @@ public class ProcuraApartamentoController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

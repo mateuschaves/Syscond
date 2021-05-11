@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.CarroNegocios;
 import negocios.FuncionarioNegocios;
 import negocios.MoradorNegocios;
@@ -185,7 +187,15 @@ public class ProcurarMoradorController implements Initializable {
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Erro");
+            alert.setHeaderText("Morador não encontrado");
+            alert.setContentText("O Morador: " + cpf + " não foi encontrado na base de dados " +
+                    "caso queira casdastra-lo, basta ir em Morador, no menu de cadastros.");
+            alert.show();
+            textFieldCpf.setText("");
         }
     }
 

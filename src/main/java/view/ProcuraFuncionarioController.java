@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.FornecedorNegocios;
 import negocios.FuncionarioNegocios;
 import pojos.Fornecedor;
@@ -89,10 +91,7 @@ public class ProcuraFuncionarioController implements Initializable{
 
             Funcionario funcionario = new Funcionario(cpf);
             funcionario = funcionarioNegocios.pesquisar(funcionario);
-            if (funcionario == null) {
-                tableView.getItems().clear();
-                return;
-            }
+
             System.out.println("Nome do Funcionario: " + funcionario.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(funcionario.getNome(),funcionario.getFuncao(),funcionario.getCpf())
@@ -108,7 +107,15 @@ public class ProcuraFuncionarioController implements Initializable{
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Erro");
+            alert.setHeaderText("Funcionario não encontrado");
+            alert.setContentText("O Funcionario: " + cpf + " não foi encontrado na base de dados " +
+                    "caso queira casdastra-lo, basta ir em Funcionario, no menu de cadastros.");
+            alert.show();
+            textFieldCpf.setText("");
         }
     }
     @FXML
@@ -136,7 +143,6 @@ public class ProcuraFuncionarioController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listarFuncionario();
-
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarFuncionario();

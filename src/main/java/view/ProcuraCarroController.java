@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.CarroNegocios;
 import negocios.FuncionarioNegocios;
 import pojos.Carro;
@@ -49,7 +51,7 @@ public class ProcuraCarroController implements Initializable {
     private void listarCarro() {
 
         CarroNegocios carroNegocios = new CarroNegocios();
-
+        textFieldPlaca.setText("");
         try{
 
             List<Carro> list = carroNegocios.listarCarros();
@@ -102,9 +104,7 @@ public class ProcuraCarroController implements Initializable {
 
             Carro carro = new Carro(placa);
             carro = carroNegocios.pesquisar(carro);
-            if(carro == null) {
-                return;
-            }
+
             System.out.println(" Modelo do Carro: " + carro.getModelo());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(carro.getModelo(),carro.getCor(),carro.getProprietario().getNome(),carro.getPlaca())
@@ -118,23 +118,19 @@ public class ProcuraCarroController implements Initializable {
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                this.deletarCarro.setDisable(false);
-                String modelo = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String cor =    tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String placa1 = tableView.getSelectionModel().getSelectedItem().getCampo4();
 
-                this.carroToDelete.setModelo(modelo);
-                this.carroToDelete.setCor(cor);
-                this.carroToDelete.getProprietario();
-                this.carroToDelete.setPlaca(placa1);
-            });
-            tableView.setItems(dataCampos);
-            tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Erro");
+            alert.setHeaderText("Veículo não encontrado");
+            alert.setContentText("O Veiculo: " + placa + " não foi encontrado na base de dados " +
+                    "caso queira casdastra-lo, basta ir em Veiculos, no menu de cadastros.");
+            alert.show();
+            textFieldPlaca.setText("");
+            //e.printStackTrace();
         }
     }
     @FXML
@@ -149,8 +145,11 @@ public class ProcuraCarroController implements Initializable {
     @FXML
     private void deletarCarro() {
         CarroNegocios carroNegocios = new CarroNegocios();
+
+
         carroNegocios.deletar(this.carroToDelete);
         this.listarCarro();
+        this.textFieldPlaca.setText("");
     }
 
     @Override
@@ -158,11 +157,22 @@ public class ProcuraCarroController implements Initializable {
 
         listarCarro();
         mainPane.setOnMousePressed(event -> {
+            deletarCarro.setDisable(true);
+            mainPane.requestFocus();
         });
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarCarro();
             }
+        });
+
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+
+            this.deletarCarro.setDisable(false);
+
+            String placa = tableView.getSelectionModel().getSelectedItem().getCampo4();
+
+            this.carroToDelete.setPlaca(placa);
         });
 
     }

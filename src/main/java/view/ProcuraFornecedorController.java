@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.FornecedorNegocios;
 import negocios.UsuarioNegocios;
 import pojos.Fornecedor;
@@ -105,7 +107,15 @@ public class ProcuraFornecedorController implements Initializable {
 
 
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Erro");
+            alert.setHeaderText("Fornecedor não encontrado");
+            alert.setContentText("O Fornecedor: " + cnpj + " não foi encontrado na base de dados " +
+                    "caso queira casdastra-lo, basta ir em Fornecedor, no menu de cadastros.");
+            alert.show();
+            textFieldCnpj.setText("");
         }
     }
     @FXML

@@ -104,8 +104,6 @@ public class ProcuraVisitanteController implements Initializable {
 
             visitante = new Visitante(cpf);
             visitante = visitanteNegocios.pesquisar(visitante);
-            if(visitante == null)
-                return;
             System.out.println("Visitante: " + visitante.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(
@@ -132,6 +130,7 @@ public class ProcuraVisitanteController implements Initializable {
             alert.setContentText("não foi possivel encontrar este visitante, Caso queira cadastrar este visitante, " +
                     "você pode ir no menu cadastros e adicionar!");
             alert.show();
+            textFieldCpf.setText("");
         }
     }
     @FXML

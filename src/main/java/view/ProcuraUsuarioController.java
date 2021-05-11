@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import negocios.ApartamentoNegocios;
 import negocios.FornecedorNegocios;
 import negocios.UsuarioNegocios;
@@ -88,9 +90,6 @@ public class ProcuraUsuarioController implements Initializable {
 
             Usuario usuario = new Usuario(login);
             usuario = usuarioNegocios.pesquisar(usuario);
-            if(usuario == null) {
-                return;
-            }
             System.out.println("Nome do Usuário: " + usuario.getNome());
             final ObservableList<Campos> dataCampos = FXCollections.observableArrayList(
                     new Campos(usuario.getNome(),usuario.getSenha(),usuario.getLogin())
@@ -106,7 +105,15 @@ public class ProcuraUsuarioController implements Initializable {
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(
+                    new Image("/img/syscondLogo.png"));
+            alert.setTitle("Erro");
+            alert.setHeaderText("Usuario de sistema não encontrado");
+            alert.setContentText("O Usuario: " + login + " não foi encontrado na base de dados " +
+                    "caso queira casdastra-lo, basta ir em Usuário, no menu de cadastros.");
+            alert.show();
+            textFieldLogin.setText("");
         }
     }
     @FXML
