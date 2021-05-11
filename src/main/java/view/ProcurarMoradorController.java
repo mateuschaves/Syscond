@@ -195,6 +195,8 @@ public class ProcurarMoradorController implements Initializable {
         CarroNegocios carroNegocios = new CarroNegocios();
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
 
+        textFieldCpf.setText("");
+
         try{
             List<Morador> moradores = moradorNegocios.listarMoradores();
             List<Visitante> visitantes = visitanteNegocios.listarVisitante();
@@ -276,6 +278,7 @@ public class ProcurarMoradorController implements Initializable {
         MoradorNegocios moradorNegocios = new MoradorNegocios();
         moradorNegocios.deletar(moradorToDelete);
         listarTodos();
+        textFieldCpf.setText("");
         deletarMorador.setDisable(true);
     }
 

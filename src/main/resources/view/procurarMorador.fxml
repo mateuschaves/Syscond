@@ -43,18 +43,23 @@
                 <Insets top="5.0" />
             </FlowPane.margin>
         </TextField>
-        <JFXButton fx:id="procurarMorador" alignment="CENTER" onAction="#procurarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Pesquisar">
-            <graphic>
-                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/magnifying-glass.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <FlowPane.margin>
-                <Insets top="5.0" />
-            </FlowPane.margin>
-        </JFXButton>
+      <AnchorPane>
+         <children>
+              <JFXButton fx:id="procurarMorador" alignment="CENTER" layoutY="-1.0" onAction="#procurarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Pesquisar">
+                  <graphic>
+                      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../img/magnifying-glass.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </JFXButton>
+            <JFXButton fx:id="mostrarTodosButton" layoutX="615.0" onAction="#listarTodos" prefHeight="40.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Mostrar todos" />
+         </children>
+         <FlowPane.margin>
+            <Insets top="10.0" />
+         </FlowPane.margin>
+      </AnchorPane>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dados encontrados:">
             <font>
                 <Font size="18.0" />
@@ -69,11 +74,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="518.0">
                      <children>
-                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="216.0" prefWidth="615.0">
+                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="207.0" prefWidth="721.0">
                            <columns>
                               <TableColumn fx:id="nomeCollumn" prefWidth="300.0" text="Nome" />
                               <TableColumn fx:id="cpfCollumn" prefWidth="212.0" text="CPF" />
-                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="102.0" text="Apartamento" />
+                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="208.0" text="Apartamento" />
                            </columns>
                         </TableView>
                      </children>
@@ -84,12 +89,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableCarro" prefHeight="203.0" prefWidth="617.0">
+                        <TableView fx:id="tableCarro" prefHeight="203.0" prefWidth="721.0">
                           <columns>
                             <TableColumn fx:id="placaCollumn" prefWidth="122.0" text="Placa" />
                             <TableColumn fx:id="modeloCollumn" prefWidth="195.0" text="Modelo" />
                               <TableColumn fx:id="corCollumn" prefWidth="102.0" text="Cor" />
-                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="195.33331298828125" text="Responsável" />
+                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="301.0" text="Responsável" />
                           </columns>
                         </TableView>
                      </children>
@@ -100,12 +105,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="visitanteTable" prefHeight="215.0" prefWidth="615.0">
+                        <TableView fx:id="visitanteTable" prefHeight="197.0" prefWidth="721.0">
                           <columns>
                             <TableColumn fx:id="nomeVisitanteCollumn" prefWidth="216.0" text="Nome" />
                             <TableColumn fx:id="cpfVisitanteCollumn" prefWidth="144.0" text="CPF" />
-                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="148.00003051757812" text="Responsável" />
-                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="105.0" text="Apatamento" />
+                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="223.0" text="Responsável" />
+                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="137.0" text="Apatamento" />
                           </columns>
                         </TableView>
                      </children>
@@ -127,8 +132,8 @@
         </Text>
         <Pane prefHeight="44.0" prefWidth="566.0">
             <children>
-                <JFXButton fx:id="voltar" layoutX="509.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="100.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
-                <JFXButton fx:id="deletarMorador" alignment="CENTER" disable="true" layoutX="7.0" layoutY="1.0" onAction="#deletarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
+                <JFXButton fx:id="voltar" layoutX="615.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
+                <JFXButton fx:id="deletarMorador" alignment="CENTER" disable="true" layoutY="2.0" onAction="#deletarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
                     <graphic>
                         <ImageView disable="true" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
