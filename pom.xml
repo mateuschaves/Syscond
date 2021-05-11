@@ -7,9 +7,11 @@
     <artifactId>syscond</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>syscond</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <name>Syscond</name>
+    <description>
+        O Syscond é um software que auxilia no gerenciamento de condominios ou apartamentos.
+    </description>
+    <url>www.sith.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
