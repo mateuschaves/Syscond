@@ -6,10 +6,17 @@ import pojos.Funcionario;
 
 import java.util.List;
 
+/**
+ * Nessa classe de FuncionarioNegocios sera chamada a FuncionarioDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class FuncionarioNegocios {
 
     FuncionarioDaoInterface funcionarioDao = new FuncionarioDAO();
 
+    /**
+     *
+     * @param funcionario eh o parametro utilizado para cadastrar um funcionario.
+     */
     public void cadastrar(Funcionario funcionario){
 
         try{
@@ -19,6 +26,10 @@ public class FuncionarioNegocios {
         }
     }
 
+    /**
+     *
+     * @param funcionario eh o parametro utilizado para apagar um funcionario.
+     */
     public void deletar(Funcionario funcionario){
         try{
             funcionarioDao.remover(funcionario);
@@ -27,6 +38,10 @@ public class FuncionarioNegocios {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de funcionarios.
+     */
     public List<Funcionario> listarFuncionarios(){
         int index = 0;
         List<Funcionario> listaFuncionarios = null;
@@ -49,6 +64,11 @@ public class FuncionarioNegocios {
         return listaFuncionarios;
     }
 
+    /**
+     *
+     * @param funcionario eh o parametro utilizado para encontrar um apartamento e
+     * @param cpf eh o usado para colocar um novo cpf nesse funcionario.
+     */
     public void alterarID(Funcionario funcionario, String cpf){
         Funcionario target = null;
         try{
@@ -63,6 +83,10 @@ public class FuncionarioNegocios {
 
     }
 
+    /**
+     *
+     * @param funcionario eh o parametro utilizado para alterar um funcionario.
+     */
     public void alterar(Funcionario funcionario){
 
         try {
@@ -72,6 +96,11 @@ public class FuncionarioNegocios {
         }
     }
 
+    /**
+     *
+     * @param funcionario eh o parametro utilizado para procurar um funcionario, quando encontra
+     * @return retorna um funcionario pesquisado.
+     */
     public Funcionario pesquisar(Funcionario funcionario){
 
         return(funcionarioDao.procurar(funcionario));

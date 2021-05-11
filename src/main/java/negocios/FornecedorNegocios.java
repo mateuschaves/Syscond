@@ -6,10 +6,17 @@ import pojos.Fornecedor;
 
 import java.util.List;
 
+/**
+ * Nessa classe de FornecedorNegocios sera chamada a FornecedorDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class FornecedorNegocios {
 
     private FornecedorDaoInterface fornecedorDao = new FornecedorDAO();
 
+    /**
+     *
+     * @param fornecedor eh o parametro utilizado para cadastrar um fornecedor.
+     */
     public void cadastrar(Fornecedor fornecedor) {
 
         try {
@@ -20,6 +27,10 @@ public class FornecedorNegocios {
         }
     }
 
+    /**
+     *
+     * @param fornecedor eh o parametro utilizado para deletar um fornecedor.
+     */
     public void deletar(Fornecedor fornecedor) {
         try {
             fornecedorDao.remover(fornecedor);
@@ -28,6 +39,10 @@ public class FornecedorNegocios {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de fornecedores.
+     */
     public List<Fornecedor> listarFornecedores() {
         int index = 0;
         List<Fornecedor> listaFornecedores = null;
@@ -50,6 +65,10 @@ public class FornecedorNegocios {
             return listaFornecedores;
     }
 
+    /**
+     *
+     * @param fornecedor eh o parametro utilizado para modificar um fornecedor.
+     */
     public void alterar(Fornecedor fornecedor) {
 
         try {
@@ -59,6 +78,11 @@ public class FornecedorNegocios {
         }
     }
 
+    /**
+     *
+     * @param fornecedor eh o parametro utilizado para procurar um fornecedor, quando acha
+     * @return retorna o fornecedor pesquisado.
+     */
     public Fornecedor pesquisar(Fornecedor fornecedor) {
             return (fornecedorDao.procurar(fornecedor));
     }

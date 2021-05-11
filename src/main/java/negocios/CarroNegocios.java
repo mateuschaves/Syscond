@@ -9,11 +9,18 @@ import pojos.Morador;
 
 import java.util.List;
 
+/**
+ * Nessa classe de CarroNegocios sera chamada a CarroDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class CarroNegocios {
 
     CarroDaoInterface carroDao = new CarroDAO();
     MoradorDaoInterface moradorDao = new MoradorDAO();
 
+    /**
+     *
+     * @param carro eh o parametro utilizado para cadastrar um carro.
+     */
     public void cadastrar(Carro carro){
         try {
             carroDao.adicionar(carro);
@@ -23,6 +30,10 @@ public class CarroNegocios {
         }
     }
 
+    /**
+     *
+     * @param carro eh o parametro utilizado para deletar um carro.
+     */
     public void deletar(Carro carro){
         try {
             carroDao.remover(carro);
@@ -31,6 +42,10 @@ public class CarroNegocios {
         }
     }
 
+    /**
+     *
+     * @param carro eh o parametro utilizado para alterar um carro.
+     */
     public void alterar(Carro carro){
 
         try {
@@ -40,6 +55,10 @@ public class CarroNegocios {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de carros.
+     */
     public List<Carro> listarCarros(){
         int index = 0;
         List<Carro> listaCarros = null;
@@ -56,6 +75,11 @@ public class CarroNegocios {
 
     }
 
+    /**
+     *
+     * @param carro eh o parametro utilizado para procurar um carro e quando encontra,
+     * @return retorna o carro que foi pesquisado.
+     */
     public Carro pesquisar(Carro carro){
         return (carroDao.procurar(carro));
     }

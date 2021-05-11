@@ -6,10 +6,17 @@ import pojos.Usuario;
 
 import java.util.List;
 
+/**
+ * Nessa classe de UsuarioNegocios sera chamada a UsuarioDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class UsuarioNegocios {
 
     private UsuarioDaoInterface usuarioDao= new UsuarioDao();
 
+    /**
+     *
+     * @param usuario eh o parametro usado para cadastrar um usuario.
+     */
     public void cadastrar(Usuario usuario){
 
         try{
@@ -20,6 +27,11 @@ public class UsuarioNegocios {
         }
 
     }
+
+    /**
+     *
+     * @param usuario eh o parametro usado para apagar um usuario.
+     */
     public void deletar(Usuario usuario){
         try{
             usuarioDao.remover(usuario);
@@ -27,6 +39,11 @@ public class UsuarioNegocios {
             System.out.println("UsuarioNegocios: Erro: " + e.getMessage());
         }
     }
+
+    /**
+     *
+     * @return retorna uma lista de usuarios.
+     */
     public List<Usuario> listarUsuarios(){
         int index = 0;
         List<Usuario> listaUsuarios = null;
@@ -46,19 +63,44 @@ public class UsuarioNegocios {
         }
         return listaUsuarios;
     }
+
+    /**
+     *
+     * @param usuario eh o parametro usado para alterar um usuario.
+     */
     public void alterar(Usuario usuario){
 
         usuarioDao.alterar(usuario);
 
     }
+
+    /**
+     *
+     * @param login eh o parametro usado para procurar um usuario, quando acha
+     * @return retorna um usuario pesquisado.
+     */
     public Usuario pesquisar(String login){
        return usuarioDao.procurar(login);
     }
 
+    /**
+     *
+     * @param usuario eh o parametro usado para procurar um usuario, quando acha
+     * @return retorna um usuario pesquisado.
+     */
     public Usuario pesquisar(Usuario usuario){
         return usuarioDao.procurar(usuario);
     }
 
+    /**
+     *
+     * @param usuario eh o parametro usado para procurar por um usuario, quando encontra retorna um usuario,
+     * com isso, esse metodo verifica se o login e a senha que o usuario digitou eh a mesma que esta salva no
+     * BD do sistema, se for a mesma,
+     * @return retorna um usuario e a mensagem de bem vindo, se for diferente retorna null e uma mensagem de
+     * erro pedindo que o usario verifique seus dados.
+     *
+     */
     public Usuario autenticar(Usuario usuario){
 
         Usuario user = pesquisar(usuario);

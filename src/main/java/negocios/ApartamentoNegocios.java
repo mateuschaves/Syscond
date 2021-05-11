@@ -8,11 +8,19 @@ import pojos.Morador;
 
 import java.util.List;
 
+/**
+ * Nessa classe de ApartamentoNegocios sera chamada a ApartamentoDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class ApartamentoNegocios {
 
 
     ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
 
+    /**
+     *
+     * @param apartamento eh o parametro utilizado para cadastrar um apartamento;
+     * @throws ApartamentoJaExistente confere se esse apartamento ja existe no BD, se nao existir pode cadastrar.
+     */
     public void cadastrar(Apartamento apartamento) throws ApartamentoJaExistente {
 
         try{
@@ -23,6 +31,10 @@ public class ApartamentoNegocios {
         }
     }
 
+    /**
+     *
+     * @param apartamento eh o parametro utilizado para apagar um apartamento.
+     */
     public void deletar(Apartamento apartamento){
         try{
             MoradorNegocios moradorNegocios = new MoradorNegocios();
@@ -48,6 +60,10 @@ public class ApartamentoNegocios {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de apartamentos.
+     */
     public List<Apartamento> listarApartamentos(){
         int index = 0;
         List<Apartamento> listaApartamentos = null;
@@ -72,6 +88,11 @@ public class ApartamentoNegocios {
 
     }
 
+    /**
+     *
+     * @param apartamento utilizado para encontrar um apartamento e
+     * @param novoNumero utilizado para colocar um novo numero no apartamento.
+     */
     public void alterarID(Apartamento apartamento, String novoNumero){
         Apartamento target = null;
         try{
@@ -86,6 +107,10 @@ public class ApartamentoNegocios {
 
     }
 
+    /**
+     *
+     * @param apartamento eh o parametro usado para alterar um apartamento.
+     */
     public void alterar(Apartamento apartamento){
 
         try {
@@ -95,6 +120,11 @@ public class ApartamentoNegocios {
         }
     }
 
+    /**
+     *
+     * @param apartamento parametro usado para encontrar um apartamento e quando encontra
+     * @return retorna o apartamento pesquisado.
+     */
     public Apartamento pesquisar(Apartamento apartamento){
 
         return(apartamentoDao.procurar(apartamento));

@@ -13,11 +13,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Nessa classe de MoradorNegocios sera chamada a MoradorDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class MoradorNegocios {
 
     private ApartamentoDaoInterface apartamentoDao = new ApartamentoDAO();
     private MoradorDaoInterface moradorDao = new MoradorDAO();
 
+    /**
+     *
+     * @param morador eh o parametro utilizado para cadastrar um morador.
+     */
     public void cadastrar(Morador morador){
 
         try{
@@ -28,6 +35,11 @@ public class MoradorNegocios {
         }
 
     }
+
+    /**
+     *
+     * @param morador eh o parametro utilizado para apagar um morador.
+     */
     public void deletar(Morador morador){
         try{
 
@@ -56,6 +68,11 @@ public class MoradorNegocios {
             System.out.println("MoradorNegocios: Erro: " + e.getMessage());
         }
     }
+
+    /**
+     *
+     * @return retorna uma lista de moradores.
+     */
     public List<Morador> listarMoradores(){
         int index = 0;
         List<Morador> listaMoradores = null;
@@ -68,12 +85,22 @@ public class MoradorNegocios {
         }
 
     }
+
+    /**
+     *
+     * @param morador eh o parametro utilizado para alterar um morador.
+     */
     public void alterar(Morador morador){
 
         moradorDao.alterar(morador);
 
     }
 
+    /**
+     *
+     * @param morador eh o parametro utilizado para procurar um morador, quando acha
+     * @return retorna um morador pesquisado.
+     */
     public Morador pesquisar(Morador morador){
         return(moradorDao.procurar(morador));
     }

@@ -9,11 +9,18 @@ import pojos.Visitante;
 
 import java.util.List;
 
+/**
+ * Nessa classe de VisitanteNegocios sera chamada a VisitanteDAO para fazer um CRUD que tenha relacao com um BD.
+ */
 public class VisitanteNegocios {
 
     VisitanteDaoInterface visitanteDao = new VisitanteDAO();
     MoradorDaoInterface moradorDao = new MoradorDAO();
 
+    /**
+     *
+     * @param visitante eh o parametro usado para cadastrar um visitante.
+     */
     public void cadastrar(Visitante visitante){
         try {
             visitanteDao.adicionar(visitante);
@@ -23,6 +30,10 @@ public class VisitanteNegocios {
         }
     }
 
+    /**
+     *
+     * @param visitante eh o parametro usado para apagar um visitante.
+     */
     public void deletar(Visitante visitante){
         try {
             visitanteDao.remover(visitante);
@@ -31,6 +42,10 @@ public class VisitanteNegocios {
         }
     }
 
+    /**
+     *
+     * @param visitante eh o parametro usado para alterar um visitante.
+     */
     public void alterar(Visitante visitante){
 
         try {
@@ -40,6 +55,10 @@ public class VisitanteNegocios {
         }
     }
 
+    /**
+     *
+     * @return retorna uma lista de visitantes.
+     */
     public List<Visitante> listarVisitante(){
         int index = 0;
         List<Visitante> listaVisitante = null;
@@ -54,6 +73,11 @@ public class VisitanteNegocios {
 
     }
 
+    /**
+     *
+     * @param visitante eh o parametro usado para procurar um visitante, quando encontra
+     * @return retorna um visitante pesquisado.
+     */
     public Visitante pesquisar(Visitante visitante){
         return (visitanteDao.procurar(visitante));
     }
