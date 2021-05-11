@@ -1,8 +1,7 @@
 package exceptions.produto;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um produto nao seja achado.
+ *  Exception criada caso um produto nao seja achado.
  */
 
 public class ProdutoNaoEncontrado extends Exception {

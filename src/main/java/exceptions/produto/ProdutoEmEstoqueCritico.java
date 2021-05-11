@@ -1,8 +1,7 @@
 package exceptions.produto;
 
 /**
- *  @author grupo Sith;
- *  exception criada caso um produto esteja acabando.
+ *  Exception criada caso um produto esteja acabando.
  */
 
 public class ProdutoEmEstoqueCritico extends Exception{
