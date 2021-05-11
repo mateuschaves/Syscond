@@ -47,6 +47,7 @@ public class ProcuraUsuarioController implements Initializable {
     private void listarUsuario() {
 
         UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
+        this.textFieldLogin.setText("");
 
         try{
 
@@ -66,17 +67,6 @@ public class ProcuraUsuarioController implements Initializable {
 
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                deletarUsuario.setDisable(false);
-                String UsuarioNomeToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String UsuarioSenhaToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String UsuarioLoginToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                this.usuarioToDelete.setNome(UsuarioNomeToDelete);
-                this.usuarioToDelete.setSenha(UsuarioSenhaToDelete);
-                this.usuarioToDelete.setLogin(UsuarioLoginToDelete);
-            });
 
         }catch (Exception e){
 
@@ -114,19 +104,6 @@ public class ProcuraUsuarioController implements Initializable {
             ObservableList<String> list = FXCollections.observableArrayList();
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                this.deletarUsuario.setDisable(false);
-                String nome = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String senha = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String login1 = tableView.getSelectionModel().getSelectedItem().getCampo3();
-                this.usuarioToDelete.setNome(nome);
-                this.usuarioToDelete.setSenha(senha);
-                this.usuarioToDelete.setLogin(login1);
-
-            });
-            tableView.setItems(dataCampos);
-            tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -144,8 +121,12 @@ public class ProcuraUsuarioController implements Initializable {
     @FXML
     private void deletarUsuario() {
         UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
+        usuarioToDelete = usuarioNegocios.pesquisar(usuarioToDelete);//completa todos os atributos através da pesquisa
+
         usuarioNegocios.deletar(this.usuarioToDelete);
         this.listarUsuario();
+        deletarUsuario.setDisable(true);
+        this.textFieldLogin.setText("");
     }
 
     @Override
@@ -158,6 +139,14 @@ public class ProcuraUsuarioController implements Initializable {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarUsuario();
             }
+        });
+
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+
+            this.deletarUsuario.setDisable(false);
+            String login = tableView.getSelectionModel().getSelectedItem().getCampo3();
+            this.usuarioToDelete.setLogin(login);
+
         });
     }
 }
