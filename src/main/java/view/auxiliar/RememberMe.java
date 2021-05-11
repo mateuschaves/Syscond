@@ -2,9 +2,18 @@ package view.auxiliar;
 
 import java.io.*;
 
+/**
+ * Nessa classe, operações de escrita e leitura são realizadas para guardar os dados do ultimo usuario que logou no sistema e
+ * marcou na caixinha de remember me (estado do butao).
+ */
 public class RememberMe {
     private File file = new File("src/main/resources/userUtil/RememberMe.txt");
 
+    /**
+     *
+     * @param userLogin eh o parametro usado para escrever em arquivo o usuario;
+     * @throws IOException Pode retorna uma exeção de entrada e saida.
+     */
     public void writeUser(String userLogin) throws IOException {
         int i;
 
@@ -16,6 +25,10 @@ public class RememberMe {
         arq.close();
     }
 
+    /**
+     *
+     * @return le um arquivo e retorna um usuario.
+     */
     public String readUser(){
 
         String user;

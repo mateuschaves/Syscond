@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- *Atu
+ *
  *  descricao:
  *  pojo de usuario com seus atributos mapeados, entidades, colouna, chave primaria;
  *  Alem de seus construtores gets e sets;
