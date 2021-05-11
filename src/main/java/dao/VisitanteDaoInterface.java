@@ -6,7 +6,7 @@ import pojos.Visitante;
 import java.util.List;
 
 /**
- * Implementando a interface de visitante com suas assinaturas
+ * Interface de visitante com suas assinaturas
  */
 public interface VisitanteDaoInterface {
 
