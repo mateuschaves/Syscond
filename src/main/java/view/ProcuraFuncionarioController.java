@@ -136,12 +136,16 @@ public class ProcuraFuncionarioController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listarFuncionario();
-        mainPane.setOnMousePressed(event -> {
-        });
+
         mainPane.setOnKeyPressed((keyEvent) -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarFuncionario();
             }
+        });
+
+        mainPane.setOnMousePressed((MouseEvent)->{
+            deletarFuncionario.setDisable(true);
+            mainPane.requestFocus();
         });
 
         tableView.setOnMouseClicked((MouseEvent e) -> {

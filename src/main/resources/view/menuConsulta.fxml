@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuConsultaController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuConsultaController">
    <left>
       <FlowPane alignment="TOP_RIGHT" columnHalignment="RIGHT" prefHeight="470.0" prefWidth="200.0" rowValignment="TOP" style="-fx-background-color: #E9ECEF;" BorderPane.alignment="CENTER">
          <children>
@@ -215,7 +215,7 @@
       </FlowPane>
    </bottom>
    <center>
-      <FlowPane fx:id="formularyPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="formularyPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Group opacity="0.16">
                <children>

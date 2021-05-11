@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcurarMoradorController">
+<FlowPane fx:id="mainPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="462.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcurarMoradorController">
     <children>
-        <FlowPane alignment="TOP_CENTER" prefHeight="32.0" prefWidth="615.0">
+        <FlowPane alignment="TOP_CENTER" prefHeight="35.0" prefWidth="549.0">
             <children>
-                <Label prefHeight="32.0" prefWidth="204.0" text="Procurar Morador">
+                <Label prefHeight="32.0" prefWidth="204.0" text="Procurar morador">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -35,15 +35,15 @@
                 <Font size="18.0" />
             </font>
             <FlowPane.margin>
-                <Insets top="10.0" />
+                <Insets />
             </FlowPane.margin>
         </Text>
-        <TextField fx:id="textFieldCpf" prefHeight="27.0" prefWidth="615.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
+        <TextField fx:id="textFieldCpf" prefHeight="27.0" prefWidth="540.0" style="-fx-border-color: #000; -fx-border-radius: 8; -fx-background-radius: 8;">
             <FlowPane.margin>
                 <Insets top="5.0" />
             </FlowPane.margin>
         </TextField>
-      <AnchorPane>
+      <AnchorPane prefHeight="41.0" prefWidth="554.0">
          <children>
               <JFXButton fx:id="procurarMorador" alignment="CENTER" layoutY="-1.0" onAction="#procurarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Pesquisar">
                   <graphic>
@@ -54,7 +54,7 @@
                       </ImageView>
                   </graphic>
               </JFXButton>
-            <JFXButton fx:id="mostrarTodosButton" layoutX="615.0" onAction="#listarTodos" prefHeight="40.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Mostrar todos" />
+            <JFXButton fx:id="mostrarTodosButton" layoutX="448.0" onAction="#listarTodos" prefHeight="40.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Mostrar todos" />
          </children>
          <FlowPane.margin>
             <Insets top="10.0" />
@@ -68,17 +68,17 @@
                 <Insets top="5.0" />
             </FlowPane.margin>
         </Text>
-      <TabPane prefHeight="226.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="226.0" prefWidth="545.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Moradores">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="518.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="559.0">
                      <children>
-                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="207.0" prefWidth="721.0">
+                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="207.0" prefWidth="554.0">
                            <columns>
-                              <TableColumn fx:id="nomeCollumn" prefWidth="300.0" text="Nome" />
-                              <TableColumn fx:id="cpfCollumn" prefWidth="212.0" text="CPF" />
-                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="208.0" text="Apartamento" />
+                              <TableColumn fx:id="nomeCollumn" prefWidth="286.0" text="Nome" />
+                              <TableColumn fx:id="cpfCollumn" prefWidth="169.0" text="CPF" />
+                              <TableColumn fx:id="numeroApMoradorCollumn" prefWidth="98.0" text="Apartamento" />
                            </columns>
                         </TableView>
                      </children>
@@ -89,12 +89,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableCarro" prefHeight="203.0" prefWidth="721.0">
+                        <TableView fx:id="tableCarro" prefHeight="203.0" prefWidth="554.0">
                           <columns>
                             <TableColumn fx:id="placaCollumn" prefWidth="122.0" text="Placa" />
-                            <TableColumn fx:id="modeloCollumn" prefWidth="195.0" text="Modelo" />
-                              <TableColumn fx:id="corCollumn" prefWidth="102.0" text="Cor" />
-                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="301.0" text="Responsável" />
+                            <TableColumn fx:id="modeloCollumn" prefWidth="151.0" text="Modelo" />
+                              <TableColumn fx:id="corCollumn" prefWidth="106.0" text="Cor" />
+                              <TableColumn fx:id="responsavelCarroCollumn" prefWidth="174.0" text="Responsável" />
                           </columns>
                         </TableView>
                      </children>
@@ -103,14 +103,14 @@
           </Tab>
             <Tab text="Visitantess">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="584.0">
                      <children>
-                        <TableView fx:id="visitanteTable" prefHeight="197.0" prefWidth="721.0">
+                        <TableView fx:id="visitanteTable" prefHeight="197.0" prefWidth="554.0">
                           <columns>
-                            <TableColumn fx:id="nomeVisitanteCollumn" prefWidth="216.0" text="Nome" />
-                            <TableColumn fx:id="cpfVisitanteCollumn" prefWidth="144.0" text="CPF" />
-                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="223.0" text="Responsável" />
-                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="137.0" text="Apatamento" />
+                            <TableColumn fx:id="nomeVisitanteCollumn" prefWidth="180.0" text="Nome" />
+                            <TableColumn fx:id="cpfVisitanteCollumn" prefWidth="154.0" text="CPF" />
+                              <TableColumn fx:id="responsavelVisitanteCollumn" prefWidth="137.0" text="Responsável" />
+                              <TableColumn fx:id="apartamentoVisitanteCollumn" prefWidth="82.0" text="Apatamento" />
                           </columns>
                         </TableView>
                      </children>
@@ -122,17 +122,9 @@
             <Insets top="5.0" />
          </FlowPane.margin>
       </TabPane>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0">
-            <font>
-                <Font size="18.0" />
-            </font>
-            <FlowPane.margin>
-                <Insets top="5.0" />
-            </FlowPane.margin>
-        </Text>
-        <Pane prefHeight="44.0" prefWidth="566.0">
+        <Pane prefHeight="44.0" prefWidth="541.0">
             <children>
-                <JFXButton fx:id="voltar" layoutX="615.0" layoutY="2.0" onAction="#voltar" prefHeight="40.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
+                <JFXButton fx:id="voltar" layoutX="448.0" layoutY="1.0" onAction="#voltar" prefHeight="42.0" prefWidth="106.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Voltar" />
                 <JFXButton fx:id="deletarMorador" alignment="CENTER" disable="true" layoutY="2.0" onAction="#deletarMorador" prefHeight="29.0" prefWidth="116.0" style="-fx-border-color: #000; -fx-border-radius: 8;" text="Deletar">
                     <graphic>
                         <ImageView disable="true" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -144,8 +136,16 @@
                 </JFXButton>
             </children>
             <FlowPane.margin>
-                <Insets />
+                <Insets top="10.0" />
             </FlowPane.margin>
         </Pane>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <FlowPane.margin>
+                <Insets top="5.0" />
+            </FlowPane.margin>
+        </Text>
     </children>
 </FlowPane>

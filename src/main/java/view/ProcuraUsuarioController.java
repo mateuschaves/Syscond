@@ -141,6 +141,11 @@ public class ProcuraUsuarioController implements Initializable {
             }
         });
 
+        mainPane.setOnMousePressed((MouseEvent)->{
+            deletarUsuario.setDisable(true);
+            mainPane.requestFocus();
+        });
+
         tableView.setOnMouseClicked((MouseEvent e) -> {
 
             this.deletarUsuario.setDisable(false);

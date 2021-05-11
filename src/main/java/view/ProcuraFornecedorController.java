@@ -47,6 +47,7 @@ public class ProcuraFornecedorController implements Initializable {
     private void listarFornecedor() {
 
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
+        textFieldCnpj.setText("");
 
         try{
 
@@ -67,17 +68,7 @@ public class ProcuraFornecedorController implements Initializable {
             tableView.setItems(dataCampos);
             tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-            tableView.setOnMouseClicked((MouseEvent e) -> {
-                System.out.println(e.getSource().toString());
-                deletarFornecedor.setDisable(false);
-                String FornecedorNomeToDelete = tableView.getSelectionModel().getSelectedItem().getCampo1();
-                String FornecedorTelefoneToDelete = tableView.getSelectionModel().getSelectedItem().getCampo2();
-                String FornecedorCnpjToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
-                this.fornecedorToDelete.setNome(FornecedorNomeToDelete);
-                this.fornecedorToDelete.setTelefone(FornecedorTelefoneToDelete);
-                this.fornecedorToDelete.setCnpj(FornecedorCnpjToDelete);
 
-            });
 
         }catch (Exception e){
 
@@ -88,6 +79,7 @@ public class ProcuraFornecedorController implements Initializable {
     private void procurarFornecedor(){
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
         String cnpj = textFieldCnpj.getText();
+
 
         if(cnpj == ""){
             this.listarFornecedor();
@@ -129,6 +121,8 @@ public class ProcuraFornecedorController implements Initializable {
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
         fornecedorNegocios.deletar(fornecedorToDelete);
         listarFornecedor();
+        this.textFieldCnpj.setText("");
+        this.deletarFornecedor.setDisable(true);
     }
 
     @Override
@@ -141,6 +135,19 @@ public class ProcuraFornecedorController implements Initializable {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 procurarFornecedor();
             }
+        });
+
+        mainPane.setOnMousePressed((MouseEvent)->{
+            deletarFornecedor.setDisable(true);
+            mainPane.requestFocus();
+        });
+
+        tableView.setOnMouseClicked((MouseEvent e) -> {
+
+            deletarFornecedor.setDisable(false);
+            String FornecedorCnpjToDelete = tableView.getSelectionModel().getSelectedItem().getCampo3();
+            this.fornecedorToDelete.setCnpj(FornecedorCnpjToDelete);
+
         });
 
     }

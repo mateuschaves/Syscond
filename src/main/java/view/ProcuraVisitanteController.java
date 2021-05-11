@@ -169,6 +169,11 @@ public class ProcuraVisitanteController implements Initializable {
             }
         });
 
+        mainPane.setOnMousePressed((MouseEvent)->{
+            deletarVisitante.setDisable(true);
+            mainPane.requestFocus();
+        });
+
         tableView.setOnMouseClicked((MouseEvent e) -> {
             this.deletarVisitante.setDisable(false);
             String cpfVisitante = tableView.getSelectionModel().getSelectedItem().getCampo2();
