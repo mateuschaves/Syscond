@@ -8,7 +8,7 @@ import exceptions.apartamento.ApartamentoNaoEncontrado;
 import pojos.Apartamento;
 
 /**
- * @author grupo Sith; Interface de apartamento com suas assinaturas
+ *  Interface de apartamento com suas assinaturas
  */
 public interface ApartamentoDaoInterface {
 	/**

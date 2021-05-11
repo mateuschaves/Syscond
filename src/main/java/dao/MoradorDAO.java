@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 /**
- * @author grupo Sith; Implementando a interface de morador sobrescrevendo suas assinaturas
+ *  Implementando a interface de morador sobrescrevendo suas assinaturas
  */
 public class MoradorDAO implements MoradorDaoInterface{
     /**

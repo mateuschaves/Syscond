@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author grupo Sith; Implementando a interface de usuario sobrescrevendo suas assinaturas
+ * Implementando a interface de usuario sobrescrevendo suas assinaturas
  */
 public class UsuarioDao implements UsuarioDaoInterface{
     /**
