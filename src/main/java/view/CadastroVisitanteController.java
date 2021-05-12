@@ -23,6 +23,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroVisitante.fxml;
+ */
 public class CadastroVisitanteController implements Initializable{
 
     @FXML
@@ -40,6 +43,11 @@ public class CadastroVisitanteController implements Initializable{
     @FXML
     private TableColumn apartamentoColumn;
 
+    /**
+     * nesse metodo a ideia eh procurar por um morador, saber se ele existe, para depois associar com visitante
+     * no metodo de cadastrarVisitante.
+     * @return alem disso, retornando um morador para no futuro associar com um morador.
+     */
     @FXML
     private Morador procurar (){
         MoradorNegocios moradorNegocios = new MoradorNegocios();
@@ -77,6 +85,12 @@ public class CadastroVisitanteController implements Initializable{
 
     }
 
+    /**
+     * metodo usado para cadastrar um visitante, esse controlador recebe valores da tela de cadastroVisitante.fxml
+     * como exemplo os textFields, instancia Visitante e VisitanteNegocios, coloca os valores dos textFields em
+     * Visitante e depois salva em VisitanteNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso.
+     */
     @FXML
     private void cadastrarVisitante() throws IOException {
         MoradorNegocios moradorNegocios = new MoradorNegocios();
@@ -115,6 +129,9 @@ public class CadastroVisitanteController implements Initializable{
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     @FXML
     private void voltar(){
         try {

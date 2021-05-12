@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroApartamentoPrototype.fxml;
+ */
 public class CadastroApartamentoController implements Initializable {
 
     @FXML
@@ -31,6 +34,12 @@ public class CadastroApartamentoController implements Initializable {
     private FlowPane mainPane;
 
 
+    /**
+     * metodo usado para cadastrar um apartamento, esse controlador recebe valores da tela de cadastroApartamentoPrototype.fxml
+     * como exemplo os textFields, instancia Apartamento e ApartamentoNegocios, coloca os valores dos textFields em
+     * Apartamento e depois salva em ApartamentosNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso ou nao.
+     */
     public void cadastrarApartamento(){
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
 
@@ -72,6 +81,9 @@ public class CadastroApartamentoController implements Initializable {
 
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     public void voltar(){
         try {
             App.setRoot("menuCadastro");
@@ -79,6 +91,7 @@ public class CadastroApartamentoController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
     @Override

@@ -13,6 +13,9 @@ import pojos.Funcionario;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroFuncionario.fxml;
+ */
 public class CadastroFuncionarioController {
 
     @FXML
@@ -23,6 +26,12 @@ public class CadastroFuncionarioController {
     private TextField textFieldFuncao;
 
 
+    /**
+     * metodo usado para cadastrar um funcionario, esse controlador recebe valores da tela de cadastroFuncionario.fxml
+     * como exemplo os textFields, instancia Funcionario e FuncionarioNegocios, coloca os valores dos textFields em
+     * Funcionario e depois salva em FuncionarioNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso.
+     */
     public void cadastrarFuncionario() throws IOException {
 
         FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
@@ -54,6 +63,9 @@ public class CadastroFuncionarioController {
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     public void voltar(){
         try {
             App.setRoot("menuCadastro");

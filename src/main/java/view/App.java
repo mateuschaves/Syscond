@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * JavaFX App responsavel pela tela a principal.
  */
 public class App extends Application {
 

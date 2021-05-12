@@ -14,6 +14,9 @@ import pojos.Fornecedor;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroFornecedor.fxml;
+ */
 public class CadastroFornecedorController{
 
     @FXML
@@ -25,6 +28,12 @@ public class CadastroFornecedorController{
 
 
 
+    /**
+     * metodo usado para cadastrar um fornecedor, esse controlador recebe valores da tela de cadastroFornecedor.fxml
+     * como exemplo os textFields, instancia Fornecedor e FornecedorNegocios, coloca os valores dos textFields em
+     * Fornecedor e depois salva em FornecedorNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso.
+     */
     public void cadastrarFornecedor() throws IOException {
 
         String nome = textFieldNome.getText(),
@@ -56,6 +65,9 @@ public class CadastroFornecedorController{
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     public void voltar(){
         try {
             App.setRoot("menuCadastro");

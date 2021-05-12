@@ -16,6 +16,9 @@ import utils.Campos;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroCarro.fxml;
+ */
 public class CadastroCarroController{
 
     @FXML
@@ -34,6 +37,13 @@ public class CadastroCarroController{
     private TableColumn apartamentoCollumn;
 
 
+    /**
+     * metodo usado para cadastrar um carro, esse controlador recebe valores da tela de cadastroCarro.fxml
+     * como exemplo os textFields, instancia Carro, CarroNegocios, Morador e MoradorDAO, pois carro depende de
+     * morador para existir, depois coloca os valores dos textFields em Carro e depois salva em
+     * CarroNegocios, além de procurar um morador, para associar com um carro
+     * depois exibe uma mensagem, se o cadastro foi realizado com sucesso.
+     */
     public void cadastrarCarro() throws IOException {
 
         MoradorDAO moradorDAO  = new MoradorDAO();
@@ -67,6 +77,9 @@ public class CadastroCarroController{
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     public void voltar(){
         try {
             App.setRoot("menuCadastro");
@@ -75,6 +88,10 @@ public class CadastroCarroController{
         }
     }
 
+    /**
+     * nesse metodo a ideia eh procurar por um morador, saber se ele existe, para depois associar com carros
+     * no metodo de cadastrarCarro.
+     */
     @FXML
     private void procurar (){
         MoradorNegocios moradorNegocios = new MoradorNegocios();

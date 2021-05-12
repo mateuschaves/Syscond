@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroUsuario.fxml;
+ */
 public class CadastroUsuarioController implements Initializable {
 
     @FXML
@@ -33,6 +36,13 @@ public class CadastroUsuarioController implements Initializable {
     @FXML
     private PasswordField confirmarSenha;
 
+    /**
+     * metodo usado para cadastrar um usuario, esse controlador recebe valores da tela de cadastroUsuario.fxml
+     * como exemplo os textFields, instancia Usuario e UsuarioNegocios, coloca os valores dos textFields em
+     * Usuario, depois verificia se a senha e confirmar senhas sao iguais e depois salva em
+     * UsuarioNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso.
+     */
     @FXML
     public void cadastrar(){
         UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
@@ -89,6 +99,9 @@ public class CadastroUsuarioController implements Initializable {
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior, que nesse caso eh a mesma da tela principal.
+     */
     public void voltar(){
         try {
             App.setRoot("loginInicial");
@@ -97,6 +110,9 @@ public class CadastroUsuarioController implements Initializable {
         }
     }
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     public void voltartela(){
         try {
             view.App.setRoot("menuCadastro");

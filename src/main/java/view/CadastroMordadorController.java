@@ -27,6 +27,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de cadastroMorador.fxml;
+ */
 public class CadastroMordadorController implements Initializable {
 
     @FXML
@@ -82,6 +85,9 @@ public class CadastroMordadorController implements Initializable {
     private TextField textApartamento;
 
 
+    /**
+     * metodo usado para ir para uma tela anterior.
+     */
     private void voltar(){
         try {
             App.setRoot("menuCadastro");
@@ -90,6 +96,9 @@ public class CadastroMordadorController implements Initializable {
         }
     }
 
+    /**
+     * metodo usado para limpar os textFields.
+     */
     private void limparTela(){
         tableViewVisitante.getItems().clear();
         tableViewCarro.getItems().clear();
@@ -100,6 +109,9 @@ public class CadastroMordadorController implements Initializable {
 
     }
 
+    /**
+     * metodo usado para percorrer os apartamentos e visualizar seus moradores para ver qual esta disponivel.
+     */
     private void listarDisponiveis(){
 
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
@@ -156,6 +168,9 @@ public class CadastroMordadorController implements Initializable {
 
     final ObservableList<Carro> list = FXCollections.observableArrayList();
 
+    /**
+     * metodo usado para adicionar carros em uma lista.
+     */
     public void adicionarVeiculo(){
         String placa = textPlaca.getText();
         String modelo = textModelo.getText();
@@ -177,6 +192,9 @@ public class CadastroMordadorController implements Initializable {
 
     final ObservableList<Visitante> listVisitante = FXCollections.observableArrayList();
 
+    /**
+     * metodo usado para adicionar visitantes em uma lista.
+     */
     public void adicionarVisitante(){
         String cpf = textCpf.getText();
         String nome = textNome.getText();
@@ -193,6 +211,10 @@ public class CadastroMordadorController implements Initializable {
         textCpf.setText("");
     }
 
+    /**
+     * metodo usado para pesquisar por um apartamento passando um textField para Apartamento e depois pesquisando
+     * pelo ApartamentoNegocios.
+     */
     public void pesquisarApartamento(){
 
         String numero = textApartamento.getText();
@@ -219,6 +241,13 @@ public class CadastroMordadorController implements Initializable {
         }
     }
 
+    /**
+     * metodo usado para cadastrar um morador, esse controlador recebe valores da tela de cadastroMorador.fxml
+     * como exemplo os textFields, instancia Morador e MoradorNegocios, depois recebe as listas de visitantes e carros
+     * que foram adicionadas nos metodos acima, depois coloca os valores dos textFields e das listas em Morador,
+     * e depois salva em MoradorNegocios, depois exibe uma mensagem, se o cadastro foi realizado com
+     * sucesso ou nao.
+     */
     public void cadastrar(){
 
         String cpf = textFieldCpf.getText();
