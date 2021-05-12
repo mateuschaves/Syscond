@@ -25,6 +25,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarCarro.fxml;
+ */
 public class ProcuraCarroController implements Initializable {
 
     @FXML
@@ -47,6 +50,10 @@ public class ProcuraCarroController implements Initializable {
     private Carro carroToDelete = new Carro();
 
 
+    /**
+     * metodo que pega uma lista de carros passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de carros.
+     */
     @FXML
     private void listarCarro() {
 
@@ -90,6 +97,10 @@ public class ProcuraCarroController implements Initializable {
     }
 
 
+    /**
+     * metodo que pega um textField e passa para um carro e depois verifica se esse carro existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de carros.
+     */
     @FXML
     private void procurarCarro(){
         CarroNegocios carroNegocios = new CarroNegocios();
@@ -133,6 +144,10 @@ public class ProcuraCarroController implements Initializable {
             //e.printStackTrace();
         }
     }
+
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -142,6 +157,9 @@ public class ProcuraCarroController implements Initializable {
         }
     }
 
+    /**
+     * metodo que deleta um carro atraves de um objeto.
+     */
     @FXML
     private void deletarCarro() {
         CarroNegocios carroNegocios = new CarroNegocios();

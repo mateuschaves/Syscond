@@ -25,6 +25,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarFornecedor.fxml;
+ */
 public class ProcuraFornecedorController implements Initializable {
 
     @FXML
@@ -45,6 +48,10 @@ public class ProcuraFornecedorController implements Initializable {
     private Fornecedor fornecedorToDelete = new Fornecedor();
 
 
+    /**
+     * metodo que pega uma lista de fornecedor passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de fornecedor.
+     */
     @FXML
     private void listarFornecedor() {
 
@@ -77,6 +84,10 @@ public class ProcuraFornecedorController implements Initializable {
         }
     }
 
+    /**
+     * metodo que pega um textField e passa para um fornecedor e depois verifica se esse fornecedor existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de fornecedor.
+     */
     @FXML
     private void procurarFornecedor(){
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();
@@ -118,6 +129,9 @@ public class ProcuraFornecedorController implements Initializable {
             textFieldCnpj.setText("");
         }
     }
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -126,6 +140,10 @@ public class ProcuraFornecedorController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * metodo que deleta um fornecedor atraves de um objeto.
+     */
     @FXML
     private void deletarFornecedor() {
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios();

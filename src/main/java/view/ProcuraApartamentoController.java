@@ -30,6 +30,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarApartamento.fxml;
+ */
 public class ProcuraApartamentoController implements Initializable {
 
     @FXML
@@ -51,6 +54,10 @@ public class ProcuraApartamentoController implements Initializable {
 
     private Apartamento apartamentoDelete = new Apartamento();
 
+    /**
+     * metodo que pega uma lista de apartamentos passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de Apartamento.
+     */
     @FXML
     private void listarApartamentos() {
 
@@ -81,6 +88,10 @@ public class ProcuraApartamentoController implements Initializable {
         }
     }
 
+    /**
+     * metodo que pega um textField e passa para um apartamento e depois verifica se esse apartamento existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de apartamentos.
+     */
     @FXML
     private void procurarApartamento(){
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
@@ -122,6 +133,10 @@ public class ProcuraApartamentoController implements Initializable {
         }
     }
 
+    /**
+     * metodo que pesquisa um apartamento que vai ser apagado, recebe seu objeto, atraves desse objeto pega seu numero
+     * e depois deleta essa apartamento.
+     */
     @FXML
     private void deletarApartamento(){
         ApartamentoNegocios apartamentoNegocios = new ApartamentoNegocios();
@@ -137,6 +152,9 @@ public class ProcuraApartamentoController implements Initializable {
 
     }
 
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar() {
         try {

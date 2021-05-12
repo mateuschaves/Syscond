@@ -27,6 +27,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarMorador.fxml;
+ */
 public class ProcurarMoradorController implements Initializable {
 
 
@@ -82,7 +85,9 @@ public class ProcurarMoradorController implements Initializable {
     private JFXButton deletarMorador;
 
 
-
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -94,6 +99,12 @@ public class ProcurarMoradorController implements Initializable {
 
     private Morador moradorToDelete = new Morador();
 
+    /**
+     * metodo que pega um textField e passa para um morador e depois verifica se esse morador existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de morador. Lembrando que morador
+     * esta associado a visitante, carro e apartamento, entao se faz necessario listar esses dados dessas classes
+     * tambem.
+     */
     @FXML
     private void procurarMorador(){
         MoradorNegocios moradorNegocios = new MoradorNegocios();
@@ -199,6 +210,12 @@ public class ProcurarMoradorController implements Initializable {
         }
     }
 
+
+    /**
+     * metodo que pega uma lista de morador passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de morador. Lembrando que morador esta associado a visitante, carro e
+     * apartamento, entao se faz necessario listar esses dados dessas classes tambem.
+     */
     @FXML
     private void listarTodos(){
         MoradorNegocios moradorNegocios = new MoradorNegocios();
@@ -282,6 +299,9 @@ public class ProcurarMoradorController implements Initializable {
         }
     }
 
+    /**
+     * metodo que deleta um morador atraves de um objeto.
+     */
     @FXML
     private void deletarMorador() {
 

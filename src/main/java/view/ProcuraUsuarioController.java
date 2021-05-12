@@ -26,6 +26,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarUsuario.fxml;
+ */
 public class ProcuraUsuarioController implements Initializable {
 
     @FXML
@@ -45,6 +48,10 @@ public class ProcuraUsuarioController implements Initializable {
 
     private Usuario usuarioToDelete = new Usuario();
 
+    /**
+     * metodo que pega uma lista de usuario passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de usuario.
+     */
     @FXML
     private void listarUsuario() {
 
@@ -76,6 +83,10 @@ public class ProcuraUsuarioController implements Initializable {
     }
 
 
+    /**
+     * metodo que pega um textField e passa para um usuario e depois verifica se esse usuario existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de usuario.
+     */
     @FXML
     private void procurarUsuario(){
         UsuarioNegocios usuarioNegocios  = new UsuarioNegocios();
@@ -116,6 +127,9 @@ public class ProcuraUsuarioController implements Initializable {
             textFieldLogin.setText("");
         }
     }
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -125,6 +139,9 @@ public class ProcuraUsuarioController implements Initializable {
         }
     }
 
+    /**
+     * metodo que deleta um usuario atraves de um objeto.
+     */
     @FXML
     private void deletarUsuario() {
         UsuarioNegocios usuarioNegocios = new UsuarioNegocios();

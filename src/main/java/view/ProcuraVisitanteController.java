@@ -24,6 +24,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarVisitante.fxml;
+ */
 public class ProcuraVisitanteController implements Initializable {
 
     @FXML
@@ -46,6 +49,10 @@ public class ProcuraVisitanteController implements Initializable {
     private Visitante visitanteToDelete = new Visitante();
 
 
+    /**
+     * metodo que pega uma lista de visitante passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de visitante.
+     */
     @FXML
     private void listarVisitante() {
 
@@ -89,6 +96,10 @@ public class ProcuraVisitanteController implements Initializable {
     }
 
 
+    /**
+     * metodo que pega um textField e passa para um visitante e depois verifica se esse visitante existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de visitante.
+     */
     @FXML
     private void procurarVisitante(){
         VisitanteNegocios visitanteNegocios = new VisitanteNegocios();
@@ -133,6 +144,10 @@ public class ProcuraVisitanteController implements Initializable {
             textFieldCpf.setText("");
         }
     }
+
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -142,6 +157,9 @@ public class ProcuraVisitanteController implements Initializable {
         }
     }
 
+    /**
+     * metodo que deleta um visitante atraves de um objeto.
+     */
     @FXML
     private void deletarVisitante() {
         try {

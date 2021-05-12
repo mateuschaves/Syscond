@@ -25,6 +25,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de procurarFuncionario.fxml;
+ */
 public class ProcuraFuncionarioController implements Initializable{
 
     @FXML
@@ -46,6 +49,10 @@ public class ProcuraFuncionarioController implements Initializable{
 
 
 
+    /**
+     * metodo que pega uma lista de funcionario passa para a classe Campos e essa classe vai exibir os dados na
+     * tableview da tela de consulta de funcionario.
+     */
     @FXML
     private void listarFuncionario() {
 
@@ -77,6 +84,10 @@ public class ProcuraFuncionarioController implements Initializable{
     }
 
 
+    /**
+     * metodo que pega um textField e passa para um funcionario e depois verifica se esse funcionario existe e passa
+     * para a classe Campos para exibir os dados na tableview da consulta de funcionario.
+     */
     @FXML
     private void procurarFuncionario(){
         FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
@@ -118,6 +129,9 @@ public class ProcuraFuncionarioController implements Initializable{
             textFieldCpf.setText("");
         }
     }
+    /**
+     * metodo que volta para a tela anterior.
+     */
     @FXML
     private void voltar(){
         try {
@@ -127,6 +141,9 @@ public class ProcuraFuncionarioController implements Initializable{
         }
     }
 
+    /**
+     * metodo que deleta um funcionario atraves de um objeto.
+     */
     @FXML
     private void deletarFuncionario() {
         try {
