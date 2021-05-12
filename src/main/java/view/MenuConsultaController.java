@@ -13,6 +13,9 @@ import javafx.scene.layout.FlowPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de menuConsulta.fxml;
+ */
 public class MenuConsultaController extends MenuController implements Initializable {
 
     @FXML
@@ -26,6 +29,9 @@ public class MenuConsultaController extends MenuController implements Initializa
         setRoot("menu");
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Visitante.
+     */
     public void exibirListarVisitante() {
         Node node;
         try{
@@ -39,6 +45,9 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Morador.
+     */
     public void exibirListarMorador() {
         Node node;
         try{
@@ -52,6 +61,9 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Carro.
+     */
     public void exibirListarCarro(){
         Node node;
         try{
@@ -65,6 +77,9 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Funcionario.
+     */
     public void exibirListarFuncionario(){
 
         Node node;
@@ -78,6 +93,9 @@ public class MenuConsultaController extends MenuController implements Initializa
         }
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Usuario.
+     */
     public void exibirListarUsuario(){
         Node node;
         try{
@@ -92,6 +110,9 @@ public class MenuConsultaController extends MenuController implements Initializa
     }
 
 
+    /**
+     * metodo usado para chamar a tela de consulta de Fornecedor.
+     */
     public void exibirListarFornecedor(){
         Node node;
         try{
@@ -106,6 +127,9 @@ public class MenuConsultaController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de consulta de Apartamento.
+     */
     public void exibirListarAp(){
         Node node;
         try{

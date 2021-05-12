@@ -12,6 +12,9 @@ import javafx.scene.layout.FlowPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de menuCadastro.fxml;
+ */
 public class MenuCadastroController extends MenuController implements Initializable {
 
     @FXML
@@ -25,6 +28,9 @@ public class MenuCadastroController extends MenuController implements Initializa
         this.setRoot("menu");
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Apartamento.
+     */
     public void exibirCadastroAp(){
 
         Node node;
@@ -40,6 +46,9 @@ public class MenuCadastroController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Fornecedor.
+     */
     public void exibirCadastroFornecedor(){
 
         Node node;
@@ -55,6 +64,9 @@ public class MenuCadastroController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Funcionario.
+     */
     public void exibirCadastroFuncionario(){
 
         Node node;
@@ -69,6 +81,9 @@ public class MenuCadastroController extends MenuController implements Initializa
 
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Usuario.
+     */
     public void exibirCadastroUsuario() {
 
         Node node;
@@ -82,6 +97,9 @@ public class MenuCadastroController extends MenuController implements Initializa
         }
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Carro.
+     */
     public void exibirCadastroCarro(){
 
         Node node;
@@ -95,6 +113,9 @@ public class MenuCadastroController extends MenuController implements Initializa
         }
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Visitante.
+     */
     public void exibirCadastroVisitante(){
 
         Node node;
@@ -108,6 +129,9 @@ public class MenuCadastroController extends MenuController implements Initializa
         }
     }
 
+    /**
+     * metodo usado para chamar a tela de cadastro de Morador.
+     */
     public void exibirCadastroMorador(){
 
         Node node;

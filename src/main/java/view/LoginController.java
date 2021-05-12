@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Responsavel por gerenciar e controlar a tela de loginInicial.fxml;
+ */
 public class LoginController implements Initializable {
 
     UsuarioNegocios usuarioNegocios = new UsuarioNegocios();
@@ -35,6 +38,10 @@ public class LoginController implements Initializable {
     private CurrentUserWriter currentUserWriter = new CurrentUserWriter();
     private RememberMe rememberMe = new RememberMe();
 
+    /**
+     * metodo que verifica se a senha e o login do usuario sao iguais aos cadastrados no BD do sistema,
+     * se sim o usuario se loga no sistema, se nao uma mensagem de erro eh mostrada.
+     */
     @FXML
     private void autenticar(){
 
@@ -83,6 +90,9 @@ public class LoginController implements Initializable {
         //view.App.setRoot("cadastrar");
     }
 
+    /**
+     * metodo que verifica o estado do butao remember me.
+     */
     private void rememberMeRegister(){
         if(this.rememberMeBox.isSelected()){
             System.out.println("SELECTED");
@@ -96,6 +106,9 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * metodo que salva o login e senha do ultimo usuario que logou no sistema e que ativou o botao remember me.
+     */
     private void rememberMeStart(){
 
         try{
